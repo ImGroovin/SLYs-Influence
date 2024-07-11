@@ -33504,16 +33504,16 @@ Object.defineProperty(exports, "IS_BROWSER", { enumerable: true, get: function (
  */
 exports.TEXT_TO_FELT_MAX_LEN = 31;
 exports.ZERO = 0n;
-exports.MASK_250 = Math.pow(2n, 250n) - 1n; // 2 ** 250 - 1
+exports.MASK_250 = 2n ** 250n - 1n; // 2 ** 250 - 1
 exports.API_VERSION = exports.ZERO;
-exports.PRIME = Math.pow(2n, 251n) + 17n * Math.pow(2n, 192n) + 1n;
+exports.PRIME = 2n ** 251n + 17n * 2n ** 192n + 1n;
 // based on: https://github.com/starkware-libs/cairo-lang/blob/v0.12.3/src/starkware/starknet/common/storage.cairo#L3
 exports.MAX_STORAGE_ITEM_SIZE = 256n;
-exports.ADDR_BOUND = Math.pow(2n, 251n) - exports.MAX_STORAGE_ITEM_SIZE;
+exports.ADDR_BOUND = 2n ** 251n - exports.MAX_STORAGE_ITEM_SIZE;
 var range = function (min, max) { return ({ min: min, max: max }); };
 exports.RANGE_FELT = range(exports.ZERO, exports.PRIME - 1n);
-exports.RANGE_I128 = range(-(Math.pow(2n, 127n)), Math.pow(2n, 127n) - 1n);
-exports.RANGE_U128 = range(exports.ZERO, Math.pow(2n, 128n) - 1n);
+exports.RANGE_I128 = range(-(2n ** 127n), 2n ** 127n - 1n);
+exports.RANGE_U128 = range(exports.ZERO, 2n ** 128n - 1n);
 var BaseUrl;
 (function (BaseUrl) {
     BaseUrl["SN_MAIN"] = "https://alpha-mainnet.starknet.io";
