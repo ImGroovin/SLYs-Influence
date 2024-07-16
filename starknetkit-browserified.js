@@ -185,8 +185,31 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "ArgentMobileConnector", {
+  enumerable: true,
+  get: function () {
+    return _index70f373da.A;
+  }
+});
+Object.defineProperty(exports, "isInArgentMobileAppBrowser", {
+  enumerable: true,
+  get: function () {
+    return _index70f373da.i;
+  }
+});
+require("starknet");
+var _index70f373da = require("./index-70f373da.js");
+require("./lastConnected-b964dc30.js");
+require("./publicRcpNodes-be041588.js");
+
+},{"./index-70f373da.js":7,"./lastConnected-b964dc30.js":12,"./publicRcpNodes-be041588.js":14,"starknet":undefined}],3:[function(require,module,exports){
 (function (process,global){(function (){
-"use strict";var Ru=Object.defineProperty;var Cu=(i,e,t)=>e in i?Ru(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t;var we=(i,e,t)=>(Cu(i,typeof e!="symbol"?e+"":e,t),t);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const Qe=require("./lastConnected-080a1315.cjs"),$i=BrowserStarknet.starknet,Au=require("./index-6f5141f0.cjs");require("./publicRcpNodes-77022e83.cjs");var sn={exports:{}},Fi=typeof Reflect=="object"?Reflect:null,Bn=Fi&&typeof Fi.apply=="function"?Fi.apply:function(e,t,s){return Function.prototype.apply.call(e,t,s)},qs;Fi&&typeof Fi.ownKeys=="function"?qs=Fi.ownKeys:Object.getOwnPropertySymbols?qs=function(e){return Object.getOwnPropertyNames(e).concat(Object.getOwnPropertySymbols(e))}:qs=function(e){return Object.getOwnPropertyNames(e)};function Tu(i){console&&console.warn&&console.warn(i)}var Ga=Number.isNaN||function(e){return e!==e};function Oe(){Oe.init.call(this)}sn.exports=Oe;sn.exports.once=Lu;Oe.EventEmitter=Oe;Oe.prototype._events=void 0;Oe.prototype._eventsCount=0;Oe.prototype._maxListeners=void 0;var kn=10;function tr(i){if(typeof i!="function")throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof i)}Object.defineProperty(Oe,"defaultMaxListeners",{enumerable:!0,get:function(){return kn},set:function(i){if(typeof i!="number"||i<0||Ga(i))throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received '+i+".");kn=i}});Oe.init=function(){(this._events===void 0||this._events===Object.getPrototypeOf(this)._events)&&(this._events=Object.create(null),this._eventsCount=0),this._maxListeners=this._maxListeners||void 0};Oe.prototype.setMaxListeners=function(e){if(typeof e!="number"||e<0||Ga(e))throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received '+e+".");return this._maxListeners=e,this};function Wa(i){return i._maxListeners===void 0?Oe.defaultMaxListeners:i._maxListeners}Oe.prototype.getMaxListeners=function(){return Wa(this)};Oe.prototype.emit=function(e){for(var t=[],s=1;s<arguments.length;s++)t.push(arguments[s]);var r=e==="error",n=this._events;if(n!==void 0)r=r&&n.error===void 0;else if(!r)return!1;if(r){var o;if(t.length>0&&(o=t[0]),o instanceof Error)throw o;var c=new Error("Unhandled error."+(o?" ("+o.message+")":""));throw c.context=o,c}var u=n[e];if(u===void 0)return!1;if(typeof u=="function")Bn(u,this,t);else for(var d=u.length,p=Za(u,d),s=0;s<d;++s)Bn(p[s],this,t);return!0};function Ya(i,e,t,s){var r,n,o;if(tr(t),n=i._events,n===void 0?(n=i._events=Object.create(null),i._eventsCount=0):(n.newListener!==void 0&&(i.emit("newListener",e,t.listener?t.listener:t),n=i._events),o=n[e]),o===void 0)o=n[e]=t,++i._eventsCount;else if(typeof o=="function"?o=n[e]=s?[t,o]:[o,t]:s?o.unshift(t):o.push(t),r=Wa(i),r>0&&o.length>r&&!o.warned){o.warned=!0;var c=new Error("Possible EventEmitter memory leak detected. "+o.length+" "+String(e)+" listeners added. Use emitter.setMaxListeners() to increase limit");c.name="MaxListenersExceededWarning",c.emitter=i,c.type=e,c.count=o.length,Tu(c)}return i}Oe.prototype.addListener=function(e,t){return Ya(this,e,t,!1)};Oe.prototype.on=Oe.prototype.addListener;Oe.prototype.prependListener=function(e,t){return Ya(this,e,t,!0)};function $u(){if(!this.fired)return this.target.removeListener(this.type,this.wrapFn),this.fired=!0,arguments.length===0?this.listener.call(this.target):this.listener.apply(this.target,arguments)}function Ja(i,e,t){var s={fired:!1,wrapFn:void 0,target:i,type:e,listener:t},r=$u.bind(s);return r.listener=t,s.wrapFn=r,r}Oe.prototype.once=function(e,t){return tr(t),this.on(e,Ja(this,e,t)),this};Oe.prototype.prependOnceListener=function(e,t){return tr(t),this.prependListener(e,Ja(this,e,t)),this};Oe.prototype.removeListener=function(e,t){var s,r,n,o,c;if(tr(t),r=this._events,r===void 0)return this;if(s=r[e],s===void 0)return this;if(s===t||s.listener===t)--this._eventsCount===0?this._events=Object.create(null):(delete r[e],r.removeListener&&this.emit("removeListener",e,s.listener||t));else if(typeof s!="function"){for(n=-1,o=s.length-1;o>=0;o--)if(s[o]===t||s[o].listener===t){c=s[o].listener,n=o;break}if(n<0)return this;n===0?s.shift():Fu(s,n),s.length===1&&(r[e]=s[0]),r.removeListener!==void 0&&this.emit("removeListener",e,c||t)}return this};Oe.prototype.off=Oe.prototype.removeListener;Oe.prototype.removeAllListeners=function(e){var t,s,r;if(s=this._events,s===void 0)return this;if(s.removeListener===void 0)return arguments.length===0?(this._events=Object.create(null),this._eventsCount=0):s[e]!==void 0&&(--this._eventsCount===0?this._events=Object.create(null):delete s[e]),this;if(arguments.length===0){var n=Object.keys(s),o;for(r=0;r<n.length;++r)o=n[r],o!=="removeListener"&&this.removeAllListeners(o);return this.removeAllListeners("removeListener"),this._events=Object.create(null),this._eventsCount=0,this}if(t=s[e],typeof t=="function")this.removeListener(e,t);else if(t!==void 0)for(r=t.length-1;r>=0;r--)this.removeListener(e,t[r]);return this};function Qa(i,e,t){var s=i._events;if(s===void 0)return[];var r=s[e];return r===void 0?[]:typeof r=="function"?t?[r.listener||r]:[r]:t?Uu(r):Za(r,r.length)}Oe.prototype.listeners=function(e){return Qa(this,e,!0)};Oe.prototype.rawListeners=function(e){return Qa(this,e,!1)};Oe.listenerCount=function(i,e){return typeof i.listenerCount=="function"?i.listenerCount(e):Xa.call(i,e)};Oe.prototype.listenerCount=Xa;function Xa(i){var e=this._events;if(e!==void 0){var t=e[i];if(typeof t=="function")return 1;if(t!==void 0)return t.length}return 0}Oe.prototype.eventNames=function(){return this._eventsCount>0?qs(this._events):[]};function Za(i,e){for(var t=new Array(e),s=0;s<e;++s)t[s]=i[s];return t}function Fu(i,e){for(;e+1<i.length;e++)i[e]=i[e+1];i.pop()}function Uu(i){for(var e=new Array(i.length),t=0;t<e.length;++t)e[t]=i[t].listener||i[t];return e}function Lu(i,e){return new Promise(function(t,s){function r(o){i.removeListener(e,n),s(o)}function n(){typeof i.removeListener=="function"&&i.removeListener("error",r),t([].slice.call(arguments))}ec(i,e,n,{once:!0}),e!=="error"&&Mu(i,r,{once:!0})})}function Mu(i,e,t){typeof i.on=="function"&&ec(i,"error",e,t)}function ec(i,e,t,s){if(typeof i.on=="function")s.once?i.once(e,t):i.on(e,t);else if(typeof i.addEventListener=="function")i.addEventListener(e,function r(n){s.once&&i.removeEventListener(e,r),t(n)});else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type '+typeof i)}var We=sn.exports;const ir=Qe.getDefaultExportFromCjs(We);var sr={},tc={exports:{}};/*! *****************************************************************************
+"use strict";var Ru=Object.defineProperty;var Cu=(i,e,t)=>e in i?Ru(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t;var we=(i,e,t)=>(Cu(i,typeof e!="symbol"?e+"":e,t),t);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const Qe=require("./lastConnected-080a1315.cjs"),$i=require("starknet"),Au=require("./index-6f5141f0.cjs");require("./publicRcpNodes-77022e83.cjs");var sn={exports:{}},Fi=typeof Reflect=="object"?Reflect:null,Bn=Fi&&typeof Fi.apply=="function"?Fi.apply:function(e,t,s){return Function.prototype.apply.call(e,t,s)},qs;Fi&&typeof Fi.ownKeys=="function"?qs=Fi.ownKeys:Object.getOwnPropertySymbols?qs=function(e){return Object.getOwnPropertyNames(e).concat(Object.getOwnPropertySymbols(e))}:qs=function(e){return Object.getOwnPropertyNames(e)};function Tu(i){console&&console.warn&&console.warn(i)}var Ga=Number.isNaN||function(e){return e!==e};function Oe(){Oe.init.call(this)}sn.exports=Oe;sn.exports.once=Lu;Oe.EventEmitter=Oe;Oe.prototype._events=void 0;Oe.prototype._eventsCount=0;Oe.prototype._maxListeners=void 0;var kn=10;function tr(i){if(typeof i!="function")throw new TypeError('The "listener" argument must be of type Function. Received type '+typeof i)}Object.defineProperty(Oe,"defaultMaxListeners",{enumerable:!0,get:function(){return kn},set:function(i){if(typeof i!="number"||i<0||Ga(i))throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received '+i+".");kn=i}});Oe.init=function(){(this._events===void 0||this._events===Object.getPrototypeOf(this)._events)&&(this._events=Object.create(null),this._eventsCount=0),this._maxListeners=this._maxListeners||void 0};Oe.prototype.setMaxListeners=function(e){if(typeof e!="number"||e<0||Ga(e))throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received '+e+".");return this._maxListeners=e,this};function Wa(i){return i._maxListeners===void 0?Oe.defaultMaxListeners:i._maxListeners}Oe.prototype.getMaxListeners=function(){return Wa(this)};Oe.prototype.emit=function(e){for(var t=[],s=1;s<arguments.length;s++)t.push(arguments[s]);var r=e==="error",n=this._events;if(n!==void 0)r=r&&n.error===void 0;else if(!r)return!1;if(r){var o;if(t.length>0&&(o=t[0]),o instanceof Error)throw o;var c=new Error("Unhandled error."+(o?" ("+o.message+")":""));throw c.context=o,c}var u=n[e];if(u===void 0)return!1;if(typeof u=="function")Bn(u,this,t);else for(var d=u.length,p=Za(u,d),s=0;s<d;++s)Bn(p[s],this,t);return!0};function Ya(i,e,t,s){var r,n,o;if(tr(t),n=i._events,n===void 0?(n=i._events=Object.create(null),i._eventsCount=0):(n.newListener!==void 0&&(i.emit("newListener",e,t.listener?t.listener:t),n=i._events),o=n[e]),o===void 0)o=n[e]=t,++i._eventsCount;else if(typeof o=="function"?o=n[e]=s?[t,o]:[o,t]:s?o.unshift(t):o.push(t),r=Wa(i),r>0&&o.length>r&&!o.warned){o.warned=!0;var c=new Error("Possible EventEmitter memory leak detected. "+o.length+" "+String(e)+" listeners added. Use emitter.setMaxListeners() to increase limit");c.name="MaxListenersExceededWarning",c.emitter=i,c.type=e,c.count=o.length,Tu(c)}return i}Oe.prototype.addListener=function(e,t){return Ya(this,e,t,!1)};Oe.prototype.on=Oe.prototype.addListener;Oe.prototype.prependListener=function(e,t){return Ya(this,e,t,!0)};function $u(){if(!this.fired)return this.target.removeListener(this.type,this.wrapFn),this.fired=!0,arguments.length===0?this.listener.call(this.target):this.listener.apply(this.target,arguments)}function Ja(i,e,t){var s={fired:!1,wrapFn:void 0,target:i,type:e,listener:t},r=$u.bind(s);return r.listener=t,s.wrapFn=r,r}Oe.prototype.once=function(e,t){return tr(t),this.on(e,Ja(this,e,t)),this};Oe.prototype.prependOnceListener=function(e,t){return tr(t),this.prependListener(e,Ja(this,e,t)),this};Oe.prototype.removeListener=function(e,t){var s,r,n,o,c;if(tr(t),r=this._events,r===void 0)return this;if(s=r[e],s===void 0)return this;if(s===t||s.listener===t)--this._eventsCount===0?this._events=Object.create(null):(delete r[e],r.removeListener&&this.emit("removeListener",e,s.listener||t));else if(typeof s!="function"){for(n=-1,o=s.length-1;o>=0;o--)if(s[o]===t||s[o].listener===t){c=s[o].listener,n=o;break}if(n<0)return this;n===0?s.shift():Fu(s,n),s.length===1&&(r[e]=s[0]),r.removeListener!==void 0&&this.emit("removeListener",e,c||t)}return this};Oe.prototype.off=Oe.prototype.removeListener;Oe.prototype.removeAllListeners=function(e){var t,s,r;if(s=this._events,s===void 0)return this;if(s.removeListener===void 0)return arguments.length===0?(this._events=Object.create(null),this._eventsCount=0):s[e]!==void 0&&(--this._eventsCount===0?this._events=Object.create(null):delete s[e]),this;if(arguments.length===0){var n=Object.keys(s),o;for(r=0;r<n.length;++r)o=n[r],o!=="removeListener"&&this.removeAllListeners(o);return this.removeAllListeners("removeListener"),this._events=Object.create(null),this._eventsCount=0,this}if(t=s[e],typeof t=="function")this.removeListener(e,t);else if(t!==void 0)for(r=t.length-1;r>=0;r--)this.removeListener(e,t[r]);return this};function Qa(i,e,t){var s=i._events;if(s===void 0)return[];var r=s[e];return r===void 0?[]:typeof r=="function"?t?[r.listener||r]:[r]:t?Uu(r):Za(r,r.length)}Oe.prototype.listeners=function(e){return Qa(this,e,!0)};Oe.prototype.rawListeners=function(e){return Qa(this,e,!1)};Oe.listenerCount=function(i,e){return typeof i.listenerCount=="function"?i.listenerCount(e):Xa.call(i,e)};Oe.prototype.listenerCount=Xa;function Xa(i){var e=this._events;if(e!==void 0){var t=e[i];if(typeof t=="function")return 1;if(t!==void 0)return t.length}return 0}Oe.prototype.eventNames=function(){return this._eventsCount>0?qs(this._events):[]};function Za(i,e){for(var t=new Array(e),s=0;s<e;++s)t[s]=i[s];return t}function Fu(i,e){for(;e+1<i.length;e++)i[e]=i[e+1];i.pop()}function Uu(i){for(var e=new Array(i.length),t=0;t<e.length;++t)e[t]=i[t].listener||i[t];return e}function Lu(i,e){return new Promise(function(t,s){function r(o){i.removeListener(e,n),s(o)}function n(){typeof i.removeListener=="function"&&i.removeListener("error",r),t([].slice.call(arguments))}ec(i,e,n,{once:!0}),e!=="error"&&Mu(i,r,{once:!0})})}function Mu(i,e,t){typeof i.on=="function"&&ec(i,"error",e,t)}function ec(i,e,t,s){if(typeof i.on=="function")s.once?i.once(e,t):i.on(e,t);else if(typeof i.addEventListener=="function")i.addEventListener(e,function r(n){s.once&&i.removeEventListener(e,r),t(n)});else throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type '+typeof i)}var We=sn.exports;const ir=Qe.getDefaultExportFromCjs(We);var sr={},tc={exports:{}};/*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -224,11 +247,179 @@ PERFORMANCE OF THIS SOFTWARE.
         Approved: ${x.toString()}`))}),o.forEach(b=>{s||(Ei(r[b].methods,n[b].methods)?Ei(r[b].events,n[b].events)||(s=J("NON_CONFORMING_NAMESPACES",`${t} namespaces events don't satisfy namespace events for ${b}`)):s=J("NON_CONFORMING_NAMESPACES",`${t} namespaces methods don't satisfy namespace methods for ${b}`))}),s}function Xb(i){const e={};return Object.keys(i).forEach(t=>{var s;t.includes(":")?e[t]=i[t]:(s=i[t].chains)==null||s.forEach(r=>{e[r]={methods:i[t].methods,events:i[t].events}})}),e}function Da(i){return[...new Set(i.map(e=>e.includes(":")?e.split(":")[0]:e))]}function Zb(i){const e={};return Object.keys(i).forEach(t=>{t.includes(":")?e[t]=i[t]:Ki(i[t].accounts)?.forEach(r=>{e[r]={accounts:i[t].accounts.filter(n=>n.includes(`${r}:`)),methods:i[t].methods,events:i[t].events}})}),e}function ew(i,e){return Pn(i,!1)&&i<=e.max&&i>=e.min}function tw(i,e){if(i.length>=255)throw new TypeError("Alphabet too long");for(var t=new Uint8Array(256),s=0;s<t.length;s++)t[s]=255;for(var r=0;r<i.length;r++){var n=i.charAt(r),o=n.charCodeAt(0);if(t[o]!==255)throw new TypeError(n+" is ambiguous");t[o]=r}var c=i.length,u=i.charAt(0),d=Math.log(c)/Math.log(256),p=Math.log(256)/Math.log(c);function b(_){if(_ instanceof Uint8Array||(ArrayBuffer.isView(_)?_=new Uint8Array(_.buffer,_.byteOffset,_.byteLength):Array.isArray(_)&&(_=Uint8Array.from(_))),!(_ instanceof Uint8Array))throw new TypeError("Expected Uint8Array");if(_.length===0)return"";for(var C=0,F=0,K=0,I=_.length;K!==I&&_[K]===0;)K++,C++;for(var D=(I-K)*p+1>>>0,y=new Uint8Array(D);K!==I;){for(var w=_[K],f=0,a=D-1;(w!==0||f<F)&&a!==-1;a--,f++)w+=256*y[a]>>>0,y[a]=w%c>>>0,w=w/c>>>0;if(w!==0)throw new Error("Non-zero carry");F=f,K++}for(var l=D-F;l!==D&&y[l]===0;)l++;for(var L=u.repeat(C);l<D;++l)L+=i.charAt(y[l]);return L}function x(_){if(typeof _!="string")throw new TypeError("Expected String");if(_.length===0)return new Uint8Array;var C=0;if(_[C]!==" "){for(var F=0,K=0;_[C]===u;)F++,C++;for(var I=(_.length-C)*d+1>>>0,D=new Uint8Array(I);_[C];){var y=t[_.charCodeAt(C)];if(y===255)return;for(var w=0,f=I-1;(y!==0||w<K)&&f!==-1;f--,w++)y+=c*D[f]>>>0,D[f]=y%256>>>0,y=y/256>>>0;if(y!==0)throw new Error("Non-zero carry");K=w,C++}if(_[C]!==" "){for(var a=I-K;a!==I&&D[a]===0;)a++;for(var l=new Uint8Array(F+(I-a)),L=F;a!==I;)l[L++]=D[a++];return l}}}function O(_){var C=x(_);if(C)return C;throw new Error(`Non-${e} character`)}return{encode:b,decodeUnsafe:x,decode:O}}var iw=tw,sw=iw;const Ih=i=>{if(i instanceof Uint8Array&&i.constructor.name==="Uint8Array")return i;if(i instanceof ArrayBuffer)return new Uint8Array(i);if(ArrayBuffer.isView(i))return new Uint8Array(i.buffer,i.byteOffset,i.byteLength);throw new Error("Unknown type, must be binary type")},rw=i=>new TextEncoder().encode(i),nw=i=>new TextDecoder().decode(i);class ow{constructor(e,t,s){this.name=e,this.prefix=t,this.baseEncode=s}encode(e){if(e instanceof Uint8Array)return`${this.prefix}${this.baseEncode(e)}`;throw Error("Unknown type, must be binary type")}}class aw{constructor(e,t,s){if(this.name=e,this.prefix=t,t.codePointAt(0)===void 0)throw new Error("Invalid prefix character");this.prefixCodePoint=t.codePointAt(0),this.baseDecode=s}decode(e){if(typeof e=="string"){if(e.codePointAt(0)!==this.prefixCodePoint)throw Error(`Unable to decode multibase string ${JSON.stringify(e)}, ${this.name} decoder only supports inputs prefixed with ${this.prefix}`);return this.baseDecode(e.slice(this.prefix.length))}else throw Error("Can only multibase decode strings")}or(e){return Dh(this,e)}}class cw{constructor(e){this.decoders=e}or(e){return Dh(this,e)}decode(e){const t=e[0],s=this.decoders[t];if(s)return s.decode(e);throw RangeError(`Unable to decode multibase string ${JSON.stringify(e)}, only inputs prefixed with ${Object.keys(this.decoders)} are supported`)}}const Dh=(i,e)=>new cw({...i.decoders||{[i.prefix]:i},...e.decoders||{[e.prefix]:e}});class hw{constructor(e,t,s,r){this.name=e,this.prefix=t,this.baseEncode=s,this.baseDecode=r,this.encoder=new ow(e,t,s),this.decoder=new aw(e,t,r)}encode(e){return this.encoder.encode(e)}decode(e){return this.decoder.decode(e)}}const fr=({name:i,prefix:e,encode:t,decode:s})=>new hw(i,e,t,s),Os=({prefix:i,name:e,alphabet:t})=>{const{encode:s,decode:r}=sw(t,e);return fr({prefix:i,name:e,encode:s,decode:n=>Ih(r(n))})},uw=(i,e,t,s)=>{const r={};for(let p=0;p<e.length;++p)r[e[p]]=p;let n=i.length;for(;i[n-1]==="=";)--n;const o=new Uint8Array(n*t/8|0);let c=0,u=0,d=0;for(let p=0;p<n;++p){const b=r[i[p]];if(b===void 0)throw new SyntaxError(`Non-${s} character`);u=u<<t|b,c+=t,c>=8&&(c-=8,o[d++]=255&u>>c)}if(c>=t||255&u<<8-c)throw new SyntaxError("Unexpected end of data");return o},lw=(i,e,t)=>{const s=e[e.length-1]==="=",r=(1<<t)-1;let n="",o=0,c=0;for(let u=0;u<i.length;++u)for(c=c<<8|i[u],o+=8;o>t;)o-=t,n+=e[r&c>>o];if(o&&(n+=e[r&c<<t-o]),s)for(;n.length*t&7;)n+="=";return n},ft=({name:i,prefix:e,bitsPerChar:t,alphabet:s})=>fr({prefix:e,name:i,encode(r){return lw(r,s,t)},decode(r){return uw(r,s,t,i)}}),dw=fr({prefix:"\0",name:"identity",encode:i=>nw(i),decode:i=>rw(i)});var fw=Object.freeze({__proto__:null,identity:dw});const pw=ft({prefix:"0",name:"base2",alphabet:"01",bitsPerChar:1});var gw=Object.freeze({__proto__:null,base2:pw});const yw=ft({prefix:"7",name:"base8",alphabet:"01234567",bitsPerChar:3});var mw=Object.freeze({__proto__:null,base8:yw});const bw=Os({prefix:"9",name:"base10",alphabet:"0123456789"});var ww=Object.freeze({__proto__:null,base10:bw});const vw=ft({prefix:"f",name:"base16",alphabet:"0123456789abcdef",bitsPerChar:4}),_w=ft({prefix:"F",name:"base16upper",alphabet:"0123456789ABCDEF",bitsPerChar:4});var Ew=Object.freeze({__proto__:null,base16:vw,base16upper:_w});const Sw=ft({prefix:"b",name:"base32",alphabet:"abcdefghijklmnopqrstuvwxyz234567",bitsPerChar:5}),Iw=ft({prefix:"B",name:"base32upper",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZ234567",bitsPerChar:5}),Dw=ft({prefix:"c",name:"base32pad",alphabet:"abcdefghijklmnopqrstuvwxyz234567=",bitsPerChar:5}),xw=ft({prefix:"C",name:"base32padupper",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=",bitsPerChar:5}),Ow=ft({prefix:"v",name:"base32hex",alphabet:"0123456789abcdefghijklmnopqrstuv",bitsPerChar:5}),Nw=ft({prefix:"V",name:"base32hexupper",alphabet:"0123456789ABCDEFGHIJKLMNOPQRSTUV",bitsPerChar:5}),Pw=ft({prefix:"t",name:"base32hexpad",alphabet:"0123456789abcdefghijklmnopqrstuv=",bitsPerChar:5}),Rw=ft({prefix:"T",name:"base32hexpadupper",alphabet:"0123456789ABCDEFGHIJKLMNOPQRSTUV=",bitsPerChar:5}),Cw=ft({prefix:"h",name:"base32z",alphabet:"ybndrfg8ejkmcpqxot1uwisza345h769",bitsPerChar:5});var Aw=Object.freeze({__proto__:null,base32:Sw,base32upper:Iw,base32pad:Dw,base32padupper:xw,base32hex:Ow,base32hexupper:Nw,base32hexpad:Pw,base32hexpadupper:Rw,base32z:Cw});const Tw=Os({prefix:"k",name:"base36",alphabet:"0123456789abcdefghijklmnopqrstuvwxyz"}),$w=Os({prefix:"K",name:"base36upper",alphabet:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"});var Fw=Object.freeze({__proto__:null,base36:Tw,base36upper:$w});const Uw=Os({name:"base58btc",prefix:"z",alphabet:"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"}),Lw=Os({name:"base58flickr",prefix:"Z",alphabet:"123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"});var Mw=Object.freeze({__proto__:null,base58btc:Uw,base58flickr:Lw});const qw=ft({prefix:"m",name:"base64",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",bitsPerChar:6}),jw=ft({prefix:"M",name:"base64pad",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",bitsPerChar:6}),zw=ft({prefix:"u",name:"base64url",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",bitsPerChar:6}),Kw=ft({prefix:"U",name:"base64urlpad",alphabet:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=",bitsPerChar:6});var Vw=Object.freeze({__proto__:null,base64:qw,base64pad:jw,base64url:zw,base64urlpad:Kw});const xh=Array.from("🚀🪐☄🛰🌌🌑🌒🌓🌔🌕🌖🌗🌘🌍🌏🌎🐉☀💻🖥💾💿😂❤😍🤣😊🙏💕😭😘👍😅👏😁🔥🥰💔💖💙😢🤔😆🙄💪😉☺👌🤗💜😔😎😇🌹🤦🎉💞✌✨🤷😱😌🌸🙌😋💗💚😏💛🙂💓🤩😄😀🖤😃💯🙈👇🎶😒🤭❣😜💋👀😪😑💥🙋😞😩😡🤪👊🥳😥🤤👉💃😳✋😚😝😴🌟😬🙃🍀🌷😻😓⭐✅🥺🌈😈🤘💦✔😣🏃💐☹🎊💘😠☝😕🌺🎂🌻😐🖕💝🙊😹🗣💫💀👑🎵🤞😛🔴😤🌼😫⚽🤙☕🏆🤫👈😮🙆🍻🍃🐶💁😲🌿🧡🎁⚡🌞🎈❌✊👋😰🤨😶🤝🚶💰🍓💢🤟🙁🚨💨🤬✈🎀🍺🤓😙💟🌱😖👶🥴▶➡❓💎💸⬇😨🌚🦋😷🕺⚠🙅😟😵👎🤲🤠🤧📌🔵💅🧐🐾🍒😗🤑🌊🤯🐷☎💧😯💆👆🎤🙇🍑❄🌴💣🐸💌📍🥀🤢👅💡💩👐📸👻🤐🤮🎼🥵🚩🍎🍊👼💍📣🥂"),Bw=xh.reduce((i,e,t)=>(i[t]=e,i),[]),kw=xh.reduce((i,e,t)=>(i[e.codePointAt(0)]=t,i),[]);function Hw(i){return i.reduce((e,t)=>(e+=Bw[t],e),"")}function Gw(i){const e=[];for(const t of i){const s=kw[t.codePointAt(0)];if(s===void 0)throw new Error(`Non-base256emoji character: ${t}`);e.push(s)}return new Uint8Array(e)}const Ww=fr({prefix:"🚀",name:"base256emoji",encode:Hw,decode:Gw});var Yw=Object.freeze({__proto__:null,base256emoji:Ww}),Jw=Oh,xa=128,Qw=127,Xw=~Qw,Zw=Math.pow(2,31);function Oh(i,e,t){e=e||[],t=t||0;for(var s=t;i>=Zw;)e[t++]=i&255|xa,i/=128;for(;i&Xw;)e[t++]=i&255|xa,i>>>=7;return e[t]=i|0,Oh.bytes=t-s+1,e}var e0=en,t0=128,Oa=127;function en(i,s){var t=0,s=s||0,r=0,n=s,o,c=i.length;do{if(n>=c)throw en.bytes=0,new RangeError("Could not decode varint");o=i[n++],t+=r<28?(o&Oa)<<r:(o&Oa)*Math.pow(2,r),r+=7}while(o>=t0);return en.bytes=n-s,t}var i0=Math.pow(2,7),s0=Math.pow(2,14),r0=Math.pow(2,21),n0=Math.pow(2,28),o0=Math.pow(2,35),a0=Math.pow(2,42),c0=Math.pow(2,49),h0=Math.pow(2,56),u0=Math.pow(2,63),l0=function(i){return i<i0?1:i<s0?2:i<r0?3:i<n0?4:i<o0?5:i<a0?6:i<c0?7:i<h0?8:i<u0?9:10},d0={encode:Jw,decode:e0,encodingLength:l0},Nh=d0;const Na=(i,e,t=0)=>(Nh.encode(i,e,t),e),Pa=i=>Nh.encodingLength(i),tn=(i,e)=>{const t=e.byteLength,s=Pa(i),r=s+Pa(t),n=new Uint8Array(r+t);return Na(i,n,0),Na(t,n,s),n.set(e,r),new f0(i,t,e,n)};class f0{constructor(e,t,s,r){this.code=e,this.size=t,this.digest=s,this.bytes=r}}const Ph=({name:i,code:e,encode:t})=>new p0(i,e,t);class p0{constructor(e,t,s){this.name=e,this.code=t,this.encode=s}digest(e){if(e instanceof Uint8Array){const t=this.encode(e);return t instanceof Uint8Array?tn(this.code,t):t.then(s=>tn(this.code,s))}else throw Error("Unknown type, must be binary type")}}const Rh=i=>async e=>new Uint8Array(await crypto.subtle.digest(i,e)),g0=Ph({name:"sha2-256",code:18,encode:Rh("SHA-256")}),y0=Ph({name:"sha2-512",code:19,encode:Rh("SHA-512")});var m0=Object.freeze({__proto__:null,sha256:g0,sha512:y0});const Ch=0,b0="identity",Ah=Ih,w0=i=>tn(Ch,Ah(i)),v0={code:Ch,name:b0,encode:Ah,digest:w0};var _0=Object.freeze({__proto__:null,identity:v0});new TextEncoder,new TextDecoder;const Ra={...fw,...gw,...mw,...ww,...Ew,...Aw,...Fw,...Mw,...Vw,...Yw};({...m0,..._0});function Th(i){return globalThis.Buffer!=null?new Uint8Array(i.buffer,i.byteOffset,i.byteLength):i}function E0(i=0){return globalThis.Buffer!=null&&globalThis.Buffer.allocUnsafe!=null?Th(globalThis.Buffer.allocUnsafe(i)):new Uint8Array(i)}function $h(i,e,t,s){return{name:i,prefix:e,encoder:{name:i,prefix:e,encode:t},decoder:{decode:s}}}const Ca=$h("utf8","u",i=>"u"+new TextDecoder("utf8").decode(i),i=>new TextEncoder().encode(i.substring(1))),Ar=$h("ascii","a",i=>{let e="a";for(let t=0;t<i.length;t++)e+=String.fromCharCode(i[t]);return e},i=>{i=i.substring(1);const e=E0(i.length);for(let t=0;t<i.length;t++)e[t]=i.charCodeAt(t);return e}),S0={utf8:Ca,"utf-8":Ca,hex:Ra.base16,latin1:Ar,ascii:Ar,binary:Ar,...Ra};function I0(i,e="utf8"){const t=S0[e];if(!t)throw new Error(`Unsupported encoding "${e}"`);return(e==="utf8"||e==="utf-8")&&globalThis.Buffer!=null&&globalThis.Buffer.from!=null?Th(globalThis.Buffer.from(i,"utf-8")):t.decoder.decode(`${t.prefix}${i}`)}const Fh="wc",D0=2,Cn="core",ui=`${Fh}@2:${Cn}:`,x0={name:Cn,logger:"error"},O0={database:":memory:"},N0="crypto",Aa="client_ed25519_seed",P0=V.ONE_DAY,R0="keychain",C0="0.3",A0="messages",T0="0.3",$0=V.SIX_HOURS,F0="publisher",Uh="irn",U0="error",Lh="wss://relay.walletconnect.com",L0="relayer",He={message:"relayer_message",message_ack:"relayer_message_ack",connect:"relayer_connect",disconnect:"relayer_disconnect",error:"relayer_error",connection_stalled:"relayer_connection_stalled",transport_closed:"relayer_transport_closed",publish:"relayer_publish"},M0="_subscription",ss={payload:"payload",connect:"connect",disconnect:"disconnect",error:"error"},q0=V.ONE_SECOND/2,j0="y",z0=1e4,K0="0.3",Bt={created:"subscription_created",deleted:"subscription_deleted",expired:"subscription_expired",disabled:"subscription_disabled",sync:"subscription_sync",resubscribed:"subscription_resubscribed"},V0="subscription",B0="0.3",k0=V.FIVE_SECONDS*1e3,H0="pairing",G0="0.3",rs={wc_pairingDelete:{req:{ttl:V.ONE_DAY,prompt:!1,tag:1e3},res:{ttl:V.ONE_DAY,prompt:!1,tag:1001}},wc_pairingPing:{req:{ttl:V.THIRTY_SECONDS,prompt:!1,tag:1002},res:{ttl:V.THIRTY_SECONDS,prompt:!1,tag:1003}},unregistered_method:{req:{ttl:V.ONE_DAY,prompt:!1,tag:0},res:{ttl:V.ONE_DAY,prompt:!1,tag:0}}},Kt={created:"history_created",updated:"history_updated",deleted:"history_deleted",sync:"history_sync"},W0="history",Y0="0.3",J0="expirer",$t={created:"expirer_created",deleted:"expirer_deleted",expired:"expirer_expired",sync:"expirer_sync"},Q0="0.3",Tr="verify-api",Ta="https://verify.walletconnect.com";class X0{constructor(e,t){this.core=e,this.logger=t,this.keychain=new Map,this.name=R0,this.version=C0,this.initialized=!1,this.storagePrefix=ui,this.init=async()=>{if(!this.initialized){const s=await this.getKeyChain();typeof s<"u"&&(this.keychain=s),this.initialized=!0}},this.has=s=>(this.isInitialized(),this.keychain.has(s)),this.set=async(s,r)=>{this.isInitialized(),this.keychain.set(s,r),await this.persist()},this.get=s=>{this.isInitialized();const r=this.keychain.get(s);if(typeof r>"u"){const{message:n}=J("NO_MATCHING_KEY",`${this.name}: ${s}`);throw new Error(n)}return r},this.del=async s=>{this.isInitialized(),this.keychain.delete(s),await this.persist()},this.core=e,this.logger=ee.generateChildLogger(t,this.name)}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}async setKeyChain(e){await this.core.storage.setItem(this.storageKey,bh(e))}async getKeyChain(){const e=await this.core.storage.getItem(this.storageKey);return typeof e<"u"?wh(e):void 0}async persist(){await this.setKeyChain(this.keychain)}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class Z0{constructor(e,t,s){this.core=e,this.logger=t,this.name=N0,this.initialized=!1,this.init=async()=>{this.initialized||(await this.keychain.init(),this.initialized=!0)},this.hasKeys=r=>(this.isInitialized(),this.keychain.has(r)),this.getClientId=async()=>{this.isInitialized();const r=await this.getClientSeed(),n=Ws(r);return an(n.publicKey)},this.generateKeyPair=()=>{this.isInitialized();const r=Wm();return this.setPrivateKey(r.publicKey,r.privateKey)},this.signJWT=async r=>{this.isInitialized();const n=await this.getClientSeed(),o=Ws(n),c=Xr();return await Ec(c,r,P0,o)},this.generateSharedKey=(r,n,o)=>{this.isInitialized();const c=this.getPrivateKey(r),u=Ym(c,n);return this.setSymKey(u,o)},this.setSymKey=async(r,n)=>{this.isInitialized();const o=n||Jm(r);return await this.keychain.set(o,r),o},this.deleteKeyPair=async r=>{this.isInitialized(),await this.keychain.del(r)},this.deleteSymKey=async r=>{this.isInitialized(),await this.keychain.del(r)},this.encode=async(r,n,o)=>{this.isInitialized();const c=yh(o),u=rr(n);if(ya(c)){const x=c.senderPublicKey,O=c.receiverPublicKey;r=await this.generateSharedKey(x,O)}const d=this.getSymKey(r),{type:p,senderPublicKey:b}=c;return Xm({type:p,symKey:d,message:u,senderPublicKey:b})},this.decode=async(r,n,o)=>{this.isInitialized();const c=tb(n,o);if(ya(c)){const p=c.receiverPublicKey,b=c.senderPublicKey;r=await this.generateSharedKey(p,b)}const u=this.getSymKey(r),d=Zm({symKey:u,encoded:n});return rn(d)},this.getPayloadType=r=>{const n=Zs(r);return Ds(n.type)},this.getPayloadSenderPublicKey=r=>{const n=Zs(r);return n.senderPublicKey?Ne(n.senderPublicKey,_t):void 0},this.core=e,this.logger=ee.generateChildLogger(t,this.name),this.keychain=s||new X0(this.core,this.logger)}get context(){return ee.getLoggerContext(this.logger)}async setPrivateKey(e,t){return await this.keychain.set(e,t),e}getPrivateKey(e){return this.keychain.get(e)}async getClientSeed(){let e="";try{e=this.keychain.get(Aa)}catch{e=Xr(),await this.keychain.set(Aa,e)}return I0(e,"base16")}getSymKey(e){return this.keychain.get(e)}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class ev extends Rm{constructor(e,t){super(e,t),this.logger=e,this.core=t,this.messages=new Map,this.name=A0,this.version=T0,this.initialized=!1,this.storagePrefix=ui,this.init=async()=>{if(!this.initialized){this.logger.trace("Initialized");try{const s=await this.getRelayerMessages();typeof s<"u"&&(this.messages=s),this.logger.debug(`Successfully Restored records for ${this.name}`),this.logger.trace({type:"method",method:"restore",size:this.messages.size})}catch(s){this.logger.debug(`Failed to Restore records for ${this.name}`),this.logger.error(s)}finally{this.initialized=!0}}},this.set=async(s,r)=>{this.isInitialized();const n=Li(r);let o=this.messages.get(s);return typeof o>"u"&&(o={}),typeof o[n]<"u"||(o[n]=r,this.messages.set(s,o),await this.persist()),n},this.get=s=>{this.isInitialized();let r=this.messages.get(s);return typeof r>"u"&&(r={}),r},this.has=(s,r)=>{this.isInitialized();const n=this.get(s),o=Li(r);return typeof n[o]<"u"},this.del=async s=>{this.isInitialized(),this.messages.delete(s),await this.persist()},this.logger=ee.generateChildLogger(e,this.name),this.core=t}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}async setRelayerMessages(e){await this.core.storage.setItem(this.storageKey,bh(e))}async getRelayerMessages(){const e=await this.core.storage.getItem(this.storageKey);return typeof e<"u"?wh(e):void 0}async persist(){await this.setRelayerMessages(this.messages)}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class tv extends Cm{constructor(e,t){super(e,t),this.relayer=e,this.logger=t,this.events=new We.EventEmitter,this.name=F0,this.queue=new Map,this.publishTimeout=1e4,this.publish=async(s,r,n)=>{this.logger.debug("Publishing Payload"),this.logger.trace({type:"method",method:"publish",params:{topic:s,message:r,opts:n}});try{const o=n?.ttl||$0,c=Zr(n),u=n?.prompt||!1,d=n?.tag||0,p=n?.id||vn().toString(),b={topic:s,message:r,opts:{ttl:o,relay:c,prompt:u,tag:d,id:p}};this.queue.set(p,b);try{await await er(this.rpcPublish(s,r,o,c,u,d,p),this.publishTimeout),this.relayer.events.emit(He.publish,b)}catch{this.logger.debug("Publishing Payload stalled"),this.relayer.events.emit(He.connection_stalled);return}this.logger.debug("Successfully Published Payload"),this.logger.trace({type:"method",method:"publish",params:{topic:s,message:r,opts:n}})}catch(o){throw this.logger.debug("Failed to Publish Payload"),this.logger.error(o),o}},this.on=(s,r)=>{this.events.on(s,r)},this.once=(s,r)=>{this.events.once(s,r)},this.off=(s,r)=>{this.events.off(s,r)},this.removeListener=(s,r)=>{this.events.removeListener(s,r)},this.relayer=e,this.logger=ee.generateChildLogger(t,this.name),this.registerEventListeners()}get context(){return ee.getLoggerContext(this.logger)}rpcPublish(e,t,s,r,n,o,c){var u,d,p,b;const x={method:Vs(r.protocol).publish,params:{topic:e,message:t,ttl:s,prompt:n,tag:o},id:c};return wt((u=x.params)==null?void 0:u.prompt)&&((d=x.params)==null||delete d.prompt),wt((p=x.params)==null?void 0:p.tag)&&((b=x.params)==null||delete b.tag),this.logger.debug("Outgoing Relay Payload"),this.logger.trace({type:"message",direction:"outgoing",request:x}),this.relayer.request(x)}onPublish(e){this.queue.delete(e)}checkQueue(){this.queue.forEach(async e=>{const{topic:t,message:s,opts:r}=e;await this.publish(t,s,r)})}registerEventListeners(){this.relayer.core.heartbeat.on(Wt.HEARTBEAT_EVENTS.pulse,()=>{this.checkQueue()}),this.relayer.on(He.message_ack,e=>{this.onPublish(e.id.toString())})}}class iv{constructor(){this.map=new Map,this.set=(e,t)=>{const s=this.get(e);this.exists(e,t)||this.map.set(e,[...s,t])},this.get=e=>this.map.get(e)||[],this.exists=(e,t)=>this.get(e).includes(t),this.delete=(e,t)=>{if(typeof t>"u"){this.map.delete(e);return}if(!this.map.has(e))return;const s=this.get(e);if(!this.exists(e,t))return;const r=s.filter(n=>n!==t);if(!r.length){this.map.delete(e);return}this.map.set(e,r)},this.clear=()=>{this.map.clear()}}get topics(){return Array.from(this.map.keys())}}var sv=Object.defineProperty,rv=Object.defineProperties,nv=Object.getOwnPropertyDescriptors,$a=Object.getOwnPropertySymbols,ov=Object.prototype.hasOwnProperty,av=Object.prototype.propertyIsEnumerable,Fa=(i,e,t)=>e in i?sv(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t,ns=(i,e)=>{for(var t in e||(e={}))ov.call(e,t)&&Fa(i,t,e[t]);if($a)for(var t of $a(e))av.call(e,t)&&Fa(i,t,e[t]);return i},$r=(i,e)=>rv(i,nv(e));class cv extends $m{constructor(e,t){super(e,t),this.relayer=e,this.logger=t,this.subscriptions=new Map,this.topicMap=new iv,this.events=new We.EventEmitter,this.name=V0,this.version=B0,this.pending=new Map,this.cached=[],this.initialized=!1,this.pendingSubscriptionWatchLabel="pending_sub_watch_label",this.pollingInterval=20,this.storagePrefix=ui,this.subscribeTimeout=1e4,this.restartInProgress=!1,this.batchSubscribeTopicsLimit=500,this.init=async()=>{this.initialized||(this.logger.trace("Initialized"),await this.restart(),this.registerEventListeners(),this.onEnable(),this.clientId=await this.relayer.core.crypto.getClientId())},this.subscribe=async(s,r)=>{await this.restartToComplete(),this.isInitialized(),this.logger.debug("Subscribing Topic"),this.logger.trace({type:"method",method:"subscribe",params:{topic:s,opts:r}});try{const n=Zr(r),o={topic:s,relay:n};this.pending.set(s,o);const c=await this.rpcSubscribe(s,n);return this.onSubscribe(c,o),this.logger.debug("Successfully Subscribed Topic"),this.logger.trace({type:"method",method:"subscribe",params:{topic:s,opts:r}}),c}catch(n){throw this.logger.debug("Failed to Subscribe Topic"),this.logger.error(n),n}},this.unsubscribe=async(s,r)=>{await this.restartToComplete(),this.isInitialized(),typeof r?.id<"u"?await this.unsubscribeById(s,r.id,r):await this.unsubscribeByTopic(s,r)},this.isSubscribed=async s=>this.topics.includes(s)?!0:await new Promise((r,n)=>{const o=new V.Watch;o.start(this.pendingSubscriptionWatchLabel);const c=setInterval(()=>{!this.pending.has(s)&&this.topics.includes(s)&&(clearInterval(c),o.stop(this.pendingSubscriptionWatchLabel),r(!0)),o.elapsed(this.pendingSubscriptionWatchLabel)>=k0&&(clearInterval(c),o.stop(this.pendingSubscriptionWatchLabel),n(new Error("Subscription resolution timeout")))},this.pollingInterval)}).catch(()=>!1),this.on=(s,r)=>{this.events.on(s,r)},this.once=(s,r)=>{this.events.once(s,r)},this.off=(s,r)=>{this.events.off(s,r)},this.removeListener=(s,r)=>{this.events.removeListener(s,r)},this.restart=async()=>{this.restartInProgress=!0,await this.restore(),await this.reset(),this.restartInProgress=!1},this.relayer=e,this.logger=ee.generateChildLogger(t,this.name),this.clientId=""}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}get length(){return this.subscriptions.size}get ids(){return Array.from(this.subscriptions.keys())}get values(){return Array.from(this.subscriptions.values())}get topics(){return this.topicMap.topics}hasSubscription(e,t){let s=!1;try{s=this.getSubscription(e).topic===t}catch{}return s}onEnable(){this.cached=[],this.initialized=!0}onDisable(){this.cached=this.values,this.subscriptions.clear(),this.topicMap.clear()}async unsubscribeByTopic(e,t){const s=this.topicMap.get(e);await Promise.all(s.map(async r=>await this.unsubscribeById(e,r,t)))}async unsubscribeById(e,t,s){this.logger.debug("Unsubscribing Topic"),this.logger.trace({type:"method",method:"unsubscribe",params:{topic:e,id:t,opts:s}});try{const r=Zr(s);await this.rpcUnsubscribe(e,t,r);const n=Je("USER_DISCONNECTED",`${this.name}, ${e}`);await this.onUnsubscribe(e,t,n),this.logger.debug("Successfully Unsubscribed Topic"),this.logger.trace({type:"method",method:"unsubscribe",params:{topic:e,id:t,opts:s}})}catch(r){throw this.logger.debug("Failed to Unsubscribe Topic"),this.logger.error(r),r}}async rpcSubscribe(e,t){const s={method:Vs(t.protocol).subscribe,params:{topic:e}};this.logger.debug("Outgoing Relay Payload"),this.logger.trace({type:"payload",direction:"outgoing",request:s});try{await await er(this.relayer.request(s),this.subscribeTimeout)}catch{this.logger.debug("Outgoing Relay Subscribe Payload stalled"),this.relayer.events.emit(He.connection_stalled)}return Li(e+this.clientId)}async rpcBatchSubscribe(e){if(!e.length)return;const t=e[0].relay,s={method:Vs(t.protocol).batchSubscribe,params:{topics:e.map(r=>r.topic)}};this.logger.debug("Outgoing Relay Payload"),this.logger.trace({type:"payload",direction:"outgoing",request:s});try{return await await er(this.relayer.request(s),this.subscribeTimeout)}catch{this.logger.debug("Outgoing Relay Payload stalled"),this.relayer.events.emit(He.connection_stalled)}}rpcUnsubscribe(e,t,s){const r={method:Vs(s.protocol).unsubscribe,params:{topic:e,id:t}};return this.logger.debug("Outgoing Relay Payload"),this.logger.trace({type:"payload",direction:"outgoing",request:r}),this.relayer.request(r)}onSubscribe(e,t){this.setSubscription(e,$r(ns({},t),{id:e})),this.pending.delete(t.topic)}onBatchSubscribe(e){e.length&&e.forEach(t=>{this.setSubscription(t.id,ns({},t)),this.pending.delete(t.topic)})}async onUnsubscribe(e,t,s){this.events.removeAllListeners(t),this.hasSubscription(t,e)&&this.deleteSubscription(t,s),await this.relayer.messages.del(e)}async setRelayerSubscriptions(e){await this.relayer.core.storage.setItem(this.storageKey,e)}async getRelayerSubscriptions(){return await this.relayer.core.storage.getItem(this.storageKey)}setSubscription(e,t){this.subscriptions.has(e)||(this.logger.debug("Setting subscription"),this.logger.trace({type:"method",method:"setSubscription",id:e,subscription:t}),this.addSubscription(e,t))}addSubscription(e,t){this.subscriptions.set(e,ns({},t)),this.topicMap.set(t.topic,e),this.events.emit(Bt.created,t)}getSubscription(e){this.logger.debug("Getting subscription"),this.logger.trace({type:"method",method:"getSubscription",id:e});const t=this.subscriptions.get(e);if(!t){const{message:s}=J("NO_MATCHING_KEY",`${this.name}: ${e}`);throw new Error(s)}return t}deleteSubscription(e,t){this.logger.debug("Deleting subscription"),this.logger.trace({type:"method",method:"deleteSubscription",id:e,reason:t});const s=this.getSubscription(e);this.subscriptions.delete(e),this.topicMap.delete(s.topic,e),this.events.emit(Bt.deleted,$r(ns({},s),{reason:t}))}async persist(){await this.setRelayerSubscriptions(this.values),this.events.emit(Bt.sync)}async reset(){if(this.cached.length){const e=Math.ceil(this.cached.length/this.batchSubscribeTopicsLimit);for(let t=0;t<e;t++){const s=this.cached.splice(0,this.batchSubscribeTopicsLimit);await this.batchSubscribe(s)}}this.events.emit(Bt.resubscribed)}async restore(){try{const e=await this.getRelayerSubscriptions();if(typeof e>"u"||!e.length)return;if(this.subscriptions.size){const{message:t}=J("RESTORE_WILL_OVERRIDE",this.name);throw this.logger.error(t),this.logger.error(`${this.name}: ${JSON.stringify(this.values)}`),new Error(t)}this.cached=e,this.logger.debug(`Successfully Restored subscriptions for ${this.name}`),this.logger.trace({type:"method",method:"restore",subscriptions:this.values})}catch(e){this.logger.debug(`Failed to Restore subscriptions for ${this.name}`),this.logger.error(e)}}async batchSubscribe(e){if(!e.length)return;const t=await this.rpcBatchSubscribe(e);xs(t)&&this.onBatchSubscribe(t.map((s,r)=>$r(ns({},e[r]),{id:s})))}async onConnect(){this.restartInProgress||(await this.restart(),this.onEnable())}onDisconnect(){this.onDisable()}async checkPending(){if(this.relayer.transportExplicitlyClosed)return;const e=[];this.pending.forEach(t=>{e.push(t)}),await this.batchSubscribe(e)}registerEventListeners(){this.relayer.core.heartbeat.on(Wt.HEARTBEAT_EVENTS.pulse,async()=>{await this.checkPending()}),this.relayer.on(He.connect,async()=>{await this.onConnect()}),this.relayer.on(He.disconnect,()=>{this.onDisconnect()}),this.events.on(Bt.created,async e=>{const t=Bt.created;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,data:e}),await this.persist()}),this.events.on(Bt.deleted,async e=>{const t=Bt.deleted;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,data:e}),await this.persist()})}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}async restartToComplete(){this.restartInProgress&&await new Promise(e=>{const t=setInterval(()=>{this.restartInProgress||(clearInterval(t),e())},this.pollingInterval)})}}var hv=Object.defineProperty,Ua=Object.getOwnPropertySymbols,uv=Object.prototype.hasOwnProperty,lv=Object.prototype.propertyIsEnumerable,La=(i,e,t)=>e in i?hv(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t,dv=(i,e)=>{for(var t in e||(e={}))uv.call(e,t)&&La(i,t,e[t]);if(Ua)for(var t of Ua(e))lv.call(e,t)&&La(i,t,e[t]);return i};class fv extends Am{constructor(e){super(e),this.protocol="wc",this.version=2,this.events=new We.EventEmitter,this.name=L0,this.transportExplicitlyClosed=!1,this.initialized=!1,this.reconnecting=!1,this.connectionStatusPollingInterval=20,this.staleConnectionErrors=["socket hang up","socket stalled"],this.request=async t=>{this.logger.debug("Publishing Request Payload");try{return await this.toEstablishConnection(),await this.provider.request(t)}catch(s){throw this.logger.debug("Failed to Publish Request"),this.logger.error(s),s}},this.core=e.core,this.logger=typeof e.logger<"u"&&typeof e.logger!="string"?ee.generateChildLogger(e.logger,this.name):ee.pino(ee.getDefaultLoggerOptions({level:e.logger||U0})),this.messages=new ev(this.logger,e.core),this.subscriber=new cv(this,this.logger),this.publisher=new tv(this,this.logger),this.relayUrl=e?.relayUrl||Lh,this.projectId=e.projectId,this.provider={}}async init(){this.logger.trace("Initialized"),await this.createProvider(),await Promise.all([this.messages.init(),this.transportOpen(),this.subscriber.init()]),this.registerEventListeners(),this.initialized=!0,setTimeout(async()=>{this.subscriber.topics.length===0&&(this.logger.info("No topics subscribted to after init, closing transport"),await this.transportClose(),this.transportExplicitlyClosed=!1)},z0)}get context(){return ee.getLoggerContext(this.logger)}get connected(){return this.provider.connection.connected}get connecting(){return this.provider.connection.connecting}async publish(e,t,s){this.isInitialized(),await this.publisher.publish(e,t,s),await this.recordMessageEvent({topic:e,message:t,publishedAt:Date.now()})}async subscribe(e,t){this.isInitialized();let s="";return await Promise.all([new Promise(r=>{this.subscriber.once(Bt.created,n=>{n.topic===e&&r()})}),new Promise(async r=>{s=await this.subscriber.subscribe(e,t),r()})]),s}async unsubscribe(e,t){this.isInitialized(),await this.subscriber.unsubscribe(e,t)}on(e,t){this.events.on(e,t)}once(e,t){this.events.once(e,t)}off(e,t){this.events.off(e,t)}removeListener(e,t){this.events.removeListener(e,t)}async transportClose(){this.transportExplicitlyClosed=!0,this.connected&&(await this.provider.disconnect(),this.events.emit(He.transport_closed))}async transportOpen(e){if(this.transportExplicitlyClosed=!1,!this.reconnecting){this.relayUrl=e||this.relayUrl,this.reconnecting=!0;try{await Promise.all([new Promise(t=>{this.initialized||t(),this.subscriber.once(Bt.resubscribed,()=>{t()})}),await Promise.race([new Promise(async(t,s)=>{await er(this.provider.connect(),5e3,"socket stalled").catch(r=>s(r)).then(()=>t()).finally(()=>this.removeListener(He.transport_closed,this.rejectTransportOpen))}),new Promise(t=>this.once(He.transport_closed,this.rejectTransportOpen))])])}catch(t){this.logger.error(t);const s=t;if(!this.isConnectionStalled(s.message))throw t;this.events.emit(He.transport_closed)}finally{this.reconnecting=!1}}}async restartTransport(e){this.transportExplicitlyClosed||(this.relayUrl=e||this.relayUrl,this.connected&&await Promise.all([new Promise(t=>{this.provider.once(ss.disconnect,()=>{t()})}),this.transportClose()]),await this.createProvider(),await this.transportOpen())}isConnectionStalled(e){return this.staleConnectionErrors.some(t=>e.includes(t))}rejectTransportOpen(){throw new Error("closeTransport called before connection was established")}async createProvider(){const e=await this.core.crypto.signJWT(this.relayUrl);this.provider=new _n(new Hc(fb({sdkVersion:j0,protocol:this.protocol,version:this.version,relayUrl:this.relayUrl,projectId:this.projectId,auth:e,useOnCloseEvent:!0}))),this.registerProviderListeners()}async recordMessageEvent(e){const{topic:t,message:s}=e;await this.messages.set(t,s)}async shouldIgnoreMessageEvent(e){const{topic:t,message:s}=e;return await this.subscriber.isSubscribed(t)?this.messages.has(t,s):!0}async onProviderPayload(e){if(this.logger.debug("Incoming Relay Payload"),this.logger.trace({type:"payload",direction:"incoming",payload:e}),zi(e)){if(!e.method.endsWith(M0))return;const t=e.params,{topic:s,message:r,publishedAt:n}=t.data,o={topic:s,message:r,publishedAt:n};this.logger.debug("Emitting Relayer Payload"),this.logger.trace(dv({type:"event",event:t.id},o)),this.events.emit(t.id,o),await this.acknowledgePayload(e),await this.onMessageEvent(o)}else Oi(e)&&this.events.emit(He.message_ack,e)}async onMessageEvent(e){await this.shouldIgnoreMessageEvent(e)||(this.events.emit(He.message,e),await this.recordMessageEvent(e))}async acknowledgePayload(e){const t=xi(e.id,!0);await this.provider.connection.send(t)}registerProviderListeners(){this.provider.on(ss.payload,e=>this.onProviderPayload(e)),this.provider.on(ss.connect,()=>{this.events.emit(He.connect)}),this.provider.on(ss.disconnect,()=>{this.onProviderDisconnect()}),this.provider.on(ss.error,e=>{this.logger.error(e),this.events.emit(He.error,e)})}registerEventListeners(){this.events.on(He.connection_stalled,async()=>{await this.restartTransport()})}onProviderDisconnect(){this.events.emit(He.disconnect),this.attemptToReconnect()}attemptToReconnect(){this.transportExplicitlyClosed||setTimeout(async()=>{await this.restartTransport()},V.toMiliseconds(q0))}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}async toEstablishConnection(){if(!this.connected){if(this.connecting)return await new Promise(e=>{const t=setInterval(()=>{this.connected&&(clearInterval(t),e())},this.connectionStatusPollingInterval)});await this.restartTransport()}}}var pv=Object.defineProperty,Ma=Object.getOwnPropertySymbols,gv=Object.prototype.hasOwnProperty,yv=Object.prototype.propertyIsEnumerable,qa=(i,e,t)=>e in i?pv(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t,ja=(i,e)=>{for(var t in e||(e={}))gv.call(e,t)&&qa(i,t,e[t]);if(Ma)for(var t of Ma(e))yv.call(e,t)&&qa(i,t,e[t]);return i};class pr extends Tm{constructor(e,t,s,r=ui,n=void 0){super(e,t,s,r),this.core=e,this.logger=t,this.name=s,this.map=new Map,this.version=K0,this.cached=[],this.initialized=!1,this.storagePrefix=ui,this.init=async()=>{this.initialized||(this.logger.trace("Initialized"),await this.restore(),this.cached.forEach(o=>{this.getKey&&o!==null&&!wt(o)?this.map.set(this.getKey(o),o):Fb(o)?this.map.set(o.id,o):Ub(o)&&this.map.set(o.topic,o)}),this.cached=[],this.initialized=!0)},this.set=async(o,c)=>{this.isInitialized(),this.map.has(o)?await this.update(o,c):(this.logger.debug("Setting value"),this.logger.trace({type:"method",method:"set",key:o,value:c}),this.map.set(o,c),await this.persist())},this.get=o=>(this.isInitialized(),this.logger.debug("Getting value"),this.logger.trace({type:"method",method:"get",key:o}),this.getData(o)),this.getAll=o=>(this.isInitialized(),o?this.values.filter(c=>Object.keys(o).every(u=>Gc(c[u],o[u]))):this.values),this.update=async(o,c)=>{this.isInitialized(),this.logger.debug("Updating value"),this.logger.trace({type:"method",method:"update",key:o,update:c});const u=ja(ja({},this.getData(o)),c);this.map.set(o,u),await this.persist()},this.delete=async(o,c)=>{this.isInitialized(),this.map.has(o)&&(this.logger.debug("Deleting value"),this.logger.trace({type:"method",method:"delete",key:o,reason:c}),this.map.delete(o),await this.persist())},this.logger=ee.generateChildLogger(t,this.name),this.storagePrefix=r,this.getKey=n}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}get length(){return this.map.size}get keys(){return Array.from(this.map.keys())}get values(){return Array.from(this.map.values())}async setDataStore(e){await this.core.storage.setItem(this.storageKey,e)}async getDataStore(){return await this.core.storage.getItem(this.storageKey)}getData(e){const t=this.map.get(e);if(!t){const{message:s}=J("NO_MATCHING_KEY",`${this.name}: ${e}`);throw this.logger.error(s),new Error(s)}return t}async persist(){await this.setDataStore(this.values)}async restore(){try{const e=await this.getDataStore();if(typeof e>"u"||!e.length)return;if(this.map.size){const{message:t}=J("RESTORE_WILL_OVERRIDE",this.name);throw this.logger.error(t),new Error(t)}this.cached=e,this.logger.debug(`Successfully Restored value for ${this.name}`),this.logger.trace({type:"method",method:"restore",value:this.values})}catch(e){this.logger.debug(`Failed to Restore value for ${this.name}`),this.logger.error(e)}}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class mv{constructor(e,t){this.core=e,this.logger=t,this.name=H0,this.version=G0,this.events=new ir,this.initialized=!1,this.storagePrefix=ui,this.ignoredPayloadTypes=[Ni],this.registeredMethods=[],this.init=async()=>{this.initialized||(await this.pairings.init(),await this.cleanup(),this.registerRelayerEvents(),this.registerExpirerEvents(),this.initialized=!0,this.logger.trace("Initialized"))},this.register=({methods:s})=>{this.isInitialized(),this.registeredMethods=[...new Set([...this.registeredMethods,...s])]},this.create=async()=>{this.isInitialized();const s=Xr(),r=await this.core.crypto.setSymKey(s),n=Ht(V.FIVE_MINUTES),o={protocol:Uh},c={topic:r,expiry:n,relay:o,active:!1},u=Db({protocol:this.core.protocol,version:this.core.version,topic:r,symKey:s,relay:o});return await this.pairings.set(r,c),await this.core.relayer.subscribe(r),this.core.expirer.set(r,n),{topic:r,uri:u}},this.pair=async s=>{this.isInitialized(),this.isValidPair(s);const{topic:r,symKey:n,relay:o}=Eb(s.uri);if(this.pairings.keys.includes(r))throw new Error(`Pairing already exists: ${r}`);if(this.core.crypto.hasKeys(r))throw new Error(`Keychain already exists: ${r}`);const c=Ht(V.FIVE_MINUTES),u={topic:r,relay:o,expiry:c,active:!1};return await this.pairings.set(r,u),await this.core.crypto.setSymKey(n,r),await this.core.relayer.subscribe(r,{relay:o}),this.core.expirer.set(r,c),s.activatePairing&&await this.activate({topic:r}),u},this.activate=async({topic:s})=>{this.isInitialized();const r=Ht(V.THIRTY_DAYS);await this.pairings.update(s,{active:!0,expiry:r}),this.core.expirer.set(s,r)},this.ping=async s=>{this.isInitialized(),await this.isValidPing(s);const{topic:r}=s;if(this.pairings.keys.includes(r)){const n=await this.sendRequest(r,"wc_pairingPing",{}),{done:o,resolve:c,reject:u}=Ti();this.events.once(ke("pairing_ping",n),({error:d})=>{d?u(d):c()}),await o()}},this.updateExpiry=async({topic:s,expiry:r})=>{this.isInitialized(),await this.pairings.update(s,{expiry:r})},this.updateMetadata=async({topic:s,metadata:r})=>{this.isInitialized(),await this.pairings.update(s,{peerMetadata:r})},this.getPairings=()=>(this.isInitialized(),this.pairings.values),this.disconnect=async s=>{this.isInitialized(),await this.isValidDisconnect(s);const{topic:r}=s;this.pairings.keys.includes(r)&&(await this.sendRequest(r,"wc_pairingDelete",Je("USER_DISCONNECTED")),await this.deletePairing(r))},this.sendRequest=async(s,r,n)=>{const o=ti(r,n),c=await this.core.crypto.encode(s,o),u=rs[r].req;return this.core.history.set(s,o),this.core.relayer.publish(s,c,u),o.id},this.sendResult=async(s,r,n)=>{const o=xi(s,n),c=await this.core.crypto.encode(r,o),u=await this.core.history.get(r,s),d=rs[u.request.method].res;await this.core.relayer.publish(r,c,d),await this.core.history.resolve(o)},this.sendError=async(s,r,n)=>{const o=ji(s,n),c=await this.core.crypto.encode(r,o),u=await this.core.history.get(r,s),d=rs[u.request.method]?rs[u.request.method].res:rs.unregistered_method.res;await this.core.relayer.publish(r,c,d),await this.core.history.resolve(o)},this.deletePairing=async(s,r)=>{await this.core.relayer.unsubscribe(s),await Promise.all([this.pairings.delete(s,Je("USER_DISCONNECTED")),this.core.crypto.deleteSymKey(s),r?Promise.resolve():this.core.expirer.del(s)])},this.cleanup=async()=>{const s=this.pairings.getAll().filter(r=>ci(r.expiry));await Promise.all(s.map(r=>this.deletePairing(r.topic)))},this.onRelayEventRequest=s=>{const{topic:r,payload:n}=s,o=n.method;if(this.pairings.keys.includes(r))switch(o){case"wc_pairingPing":return this.onPairingPingRequest(r,n);case"wc_pairingDelete":return this.onPairingDeleteRequest(r,n);default:return this.onUnknownRpcMethodRequest(r,n)}},this.onRelayEventResponse=async s=>{const{topic:r,payload:n}=s,o=(await this.core.history.get(r,n.id)).request.method;if(this.pairings.keys.includes(r))switch(o){case"wc_pairingPing":return this.onPairingPingResponse(r,n);default:return this.onUnknownRpcMethodResponse(o)}},this.onPairingPingRequest=async(s,r)=>{const{id:n}=r;try{this.isValidPing({topic:s}),await this.sendResult(n,s,!0),this.events.emit("pairing_ping",{id:n,topic:s})}catch(o){await this.sendError(n,s,o),this.logger.error(o)}},this.onPairingPingResponse=(s,r)=>{const{id:n}=r;setTimeout(()=>{ut(r)?this.events.emit(ke("pairing_ping",n),{}):Ge(r)&&this.events.emit(ke("pairing_ping",n),{error:r.error})},500)},this.onPairingDeleteRequest=async(s,r)=>{const{id:n}=r;try{this.isValidDisconnect({topic:s}),await this.deletePairing(s),this.events.emit("pairing_delete",{id:n,topic:s})}catch(o){await this.sendError(n,s,o),this.logger.error(o)}},this.onUnknownRpcMethodRequest=async(s,r)=>{const{id:n,method:o}=r;try{if(this.registeredMethods.includes(o))return;const c=Je("WC_METHOD_UNSUPPORTED",o);await this.sendError(n,s,c),this.logger.error(c)}catch(c){await this.sendError(n,s,c),this.logger.error(c)}},this.onUnknownRpcMethodResponse=s=>{this.registeredMethods.includes(s)||this.logger.error(Je("WC_METHOD_UNSUPPORTED",s))},this.isValidPair=s=>{if(!It(s)){const{message:r}=J("MISSING_OR_INVALID",`pair() params: ${s}`);throw new Error(r)}if(!$b(s.uri)){const{message:r}=J("MISSING_OR_INVALID",`pair() uri: ${s.uri}`);throw new Error(r)}},this.isValidPing=async s=>{if(!It(s)){const{message:n}=J("MISSING_OR_INVALID",`ping() params: ${s}`);throw new Error(n)}const{topic:r}=s;await this.isValidPairingTopic(r)},this.isValidDisconnect=async s=>{if(!It(s)){const{message:n}=J("MISSING_OR_INVALID",`disconnect() params: ${s}`);throw new Error(n)}const{topic:r}=s;await this.isValidPairingTopic(r)},this.isValidPairingTopic=async s=>{if(!ct(s,!1)){const{message:r}=J("MISSING_OR_INVALID",`pairing topic should be a string: ${s}`);throw new Error(r)}if(!this.pairings.keys.includes(s)){const{message:r}=J("NO_MATCHING_KEY",`pairing topic doesn't exist: ${s}`);throw new Error(r)}if(ci(this.pairings.get(s).expiry)){await this.deletePairing(s);const{message:r}=J("EXPIRED",`pairing topic: ${s}`);throw new Error(r)}},this.core=e,this.logger=ee.generateChildLogger(t,this.name),this.pairings=new pr(this.core,this.logger,this.name,this.storagePrefix)}get context(){return ee.getLoggerContext(this.logger)}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}registerRelayerEvents(){this.core.relayer.on(He.message,async e=>{const{topic:t,message:s}=e;if(this.ignoredPayloadTypes.includes(this.core.crypto.getPayloadType(s)))return;const r=await this.core.crypto.decode(t,s);zi(r)?(this.core.history.set(t,r),this.onRelayEventRequest({topic:t,payload:r})):Oi(r)&&(await this.core.history.resolve(r),this.onRelayEventResponse({topic:t,payload:r}))})}registerExpirerEvents(){this.core.expirer.on($t.expired,async e=>{const{topic:t}=_h(e.target);t&&this.pairings.keys.includes(t)&&(await this.deletePairing(t,!0),this.events.emit("pairing_expire",{topic:t}))})}}class bv extends Pm{constructor(e,t){super(e,t),this.core=e,this.logger=t,this.records=new Map,this.events=new We.EventEmitter,this.name=W0,this.version=Y0,this.cached=[],this.initialized=!1,this.storagePrefix=ui,this.init=async()=>{this.initialized||(this.logger.trace("Initialized"),await this.restore(),this.cached.forEach(s=>this.records.set(s.id,s)),this.cached=[],this.registerEventListeners(),this.initialized=!0)},this.set=(s,r,n)=>{if(this.isInitialized(),this.logger.debug("Setting JSON-RPC request history record"),this.logger.trace({type:"method",method:"set",topic:s,request:r,chainId:n}),this.records.has(r.id))return;const o={id:r.id,topic:s,request:{method:r.method,params:r.params||null},chainId:n};this.records.set(o.id,o),this.events.emit(Kt.created,o)},this.resolve=async s=>{if(this.isInitialized(),this.logger.debug("Updating JSON-RPC response history record"),this.logger.trace({type:"method",method:"update",response:s}),!this.records.has(s.id))return;const r=await this.getRecord(s.id);typeof r.response>"u"&&(r.response=Ge(s)?{error:s.error}:{result:s.result},this.records.set(r.id,r),this.events.emit(Kt.updated,r))},this.get=async(s,r)=>(this.isInitialized(),this.logger.debug("Getting record"),this.logger.trace({type:"method",method:"get",topic:s,id:r}),await this.getRecord(r)),this.delete=(s,r)=>{this.isInitialized(),this.logger.debug("Deleting record"),this.logger.trace({type:"method",method:"delete",id:r}),this.values.forEach(n=>{if(n.topic===s){if(typeof r<"u"&&n.id!==r)return;this.records.delete(n.id),this.events.emit(Kt.deleted,n)}})},this.exists=async(s,r)=>(this.isInitialized(),this.records.has(r)?(await this.getRecord(r)).topic===s:!1),this.on=(s,r)=>{this.events.on(s,r)},this.once=(s,r)=>{this.events.once(s,r)},this.off=(s,r)=>{this.events.off(s,r)},this.removeListener=(s,r)=>{this.events.removeListener(s,r)},this.logger=ee.generateChildLogger(t,this.name)}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}get size(){return this.records.size}get keys(){return Array.from(this.records.keys())}get values(){return Array.from(this.records.values())}get pending(){const e=[];return this.values.forEach(t=>{if(typeof t.response<"u")return;const s={topic:t.topic,request:ti(t.request.method,t.request.params,t.id),chainId:t.chainId};return e.push(s)}),e}async setJsonRpcRecords(e){await this.core.storage.setItem(this.storageKey,e)}async getJsonRpcRecords(){return await this.core.storage.getItem(this.storageKey)}getRecord(e){this.isInitialized();const t=this.records.get(e);if(!t){const{message:s}=J("NO_MATCHING_KEY",`${this.name}: ${e}`);throw new Error(s)}return t}async persist(){await this.setJsonRpcRecords(this.values),this.events.emit(Kt.sync)}async restore(){try{const e=await this.getJsonRpcRecords();if(typeof e>"u"||!e.length)return;if(this.records.size){const{message:t}=J("RESTORE_WILL_OVERRIDE",this.name);throw this.logger.error(t),new Error(t)}this.cached=e,this.logger.debug(`Successfully Restored records for ${this.name}`),this.logger.trace({type:"method",method:"restore",records:this.values})}catch(e){this.logger.debug(`Failed to Restore records for ${this.name}`),this.logger.error(e)}}registerEventListeners(){this.events.on(Kt.created,e=>{const t=Kt.created;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,record:e}),this.persist()}),this.events.on(Kt.updated,e=>{const t=Kt.updated;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,record:e}),this.persist()}),this.events.on(Kt.deleted,e=>{const t=Kt.deleted;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,record:e}),this.persist()})}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class wv extends Fm{constructor(e,t){super(e,t),this.core=e,this.logger=t,this.expirations=new Map,this.events=new We.EventEmitter,this.name=J0,this.version=Q0,this.cached=[],this.initialized=!1,this.storagePrefix=ui,this.init=async()=>{this.initialized||(this.logger.trace("Initialized"),await this.restore(),this.cached.forEach(s=>this.expirations.set(s.target,s)),this.cached=[],this.registerEventListeners(),this.initialized=!0)},this.has=s=>{try{const r=this.formatTarget(s);return typeof this.getExpiration(r)<"u"}catch{return!1}},this.set=(s,r)=>{this.isInitialized();const n=this.formatTarget(s),o={target:n,expiry:r};this.expirations.set(n,o),this.checkExpiry(n,o),this.events.emit($t.created,{target:n,expiration:o})},this.get=s=>{this.isInitialized();const r=this.formatTarget(s);return this.getExpiration(r)},this.del=s=>{if(this.isInitialized(),this.has(s)){const r=this.formatTarget(s),n=this.getExpiration(r);this.expirations.delete(r),this.events.emit($t.deleted,{target:r,expiration:n})}},this.on=(s,r)=>{this.events.on(s,r)},this.once=(s,r)=>{this.events.once(s,r)},this.off=(s,r)=>{this.events.off(s,r)},this.removeListener=(s,r)=>{this.events.removeListener(s,r)},this.logger=ee.generateChildLogger(t,this.name)}get context(){return ee.getLoggerContext(this.logger)}get storageKey(){return this.storagePrefix+this.version+"//"+this.name}get length(){return this.expirations.size}get keys(){return Array.from(this.expirations.keys())}get values(){return Array.from(this.expirations.values())}formatTarget(e){if(typeof e=="string")return pb(e);if(typeof e=="number")return gb(e);const{message:t}=J("UNKNOWN_TYPE",`Target type: ${typeof e}`);throw new Error(t)}async setExpirations(e){await this.core.storage.setItem(this.storageKey,e)}async getExpirations(){return await this.core.storage.getItem(this.storageKey)}async persist(){await this.setExpirations(this.values),this.events.emit($t.sync)}async restore(){try{const e=await this.getExpirations();if(typeof e>"u"||!e.length)return;if(this.expirations.size){const{message:t}=J("RESTORE_WILL_OVERRIDE",this.name);throw this.logger.error(t),new Error(t)}this.cached=e,this.logger.debug(`Successfully Restored expirations for ${this.name}`),this.logger.trace({type:"method",method:"restore",expirations:this.values})}catch(e){this.logger.debug(`Failed to Restore expirations for ${this.name}`),this.logger.error(e)}}getExpiration(e){const t=this.expirations.get(e);if(!t){const{message:s}=J("NO_MATCHING_KEY",`${this.name}: ${e}`);throw this.logger.error(s),new Error(s)}return t}checkExpiry(e,t){const{expiry:s}=t;V.toMiliseconds(s)-Date.now()<=0&&this.expire(e,t)}expire(e,t){this.expirations.delete(e),this.events.emit($t.expired,{target:e,expiration:t})}checkExpirations(){this.core.relayer.connected&&this.expirations.forEach((e,t)=>this.checkExpiry(t,e))}registerEventListeners(){this.core.heartbeat.on(Wt.HEARTBEAT_EVENTS.pulse,()=>this.checkExpirations()),this.events.on($t.created,e=>{const t=$t.created;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,data:e}),this.persist()}),this.events.on($t.expired,e=>{const t=$t.expired;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,data:e}),this.persist()}),this.events.on($t.deleted,e=>{const t=$t.deleted;this.logger.info(`Emitting ${t}`),this.logger.debug({type:"event",event:t,data:e}),this.persist()})}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}}class vv extends Um{constructor(e,t){super(e,t),this.projectId=e,this.logger=t,this.name=Tr,this.initialized=!1,this.init=async s=>{mh()||!Nn()||(this.verifyUrl=s?.verifyUrl||Ta,await this.createIframe())},this.register=async s=>{var r;this.initialized||await this.init(),this.iframe&&((r=this.iframe.contentWindow)==null||r.postMessage(s.attestationId,this.verifyUrl),this.logger.info(`postMessage sent: ${s.attestationId} ${this.verifyUrl}`))},this.resolve=async s=>{var r;if(this.isDevEnv)return"";this.logger.info(`resolving attestation: ${s.attestationId}`);const n=this.startAbortTimer(V.FIVE_SECONDS),o=await fetch(`${this.verifyUrl}/attestation/${s.attestationId}`,{signal:this.abortController.signal});return clearTimeout(n),o.status===200?(r=await o.json())==null?void 0:r.origin:""},this.createIframe=async()=>{try{await Promise.race([new Promise((s,r)=>{if(document.getElementById(Tr))return s();const n=document.createElement("iframe");n.setAttribute("id",Tr),n.setAttribute("src",`${this.verifyUrl}/${this.projectId}`),n.style.display="none",n.addEventListener("load",()=>{this.initialized=!0,s()}),n.addEventListener("error",o=>{r(o)}),document.body.append(n),this.iframe=n}),new Promise(s=>{setTimeout(()=>s("iframe load timeout"),V.toMiliseconds(V.ONE_SECOND/2))})])}catch(s){this.logger.error(`Verify iframe failed to load: ${this.verifyUrl}`),this.logger.error(s)}},this.logger=ee.generateChildLogger(t,this.name),this.verifyUrl=Ta,this.abortController=new AbortController,this.isDevEnv=On()&&process.env.IS_VITEST}get context(){return ee.getLoggerContext(this.logger)}startAbortTimer(e){return setTimeout(()=>this.abortController.abort(),V.toMiliseconds(e))}}var _v=Object.defineProperty,za=Object.getOwnPropertySymbols,Ev=Object.prototype.hasOwnProperty,Sv=Object.prototype.propertyIsEnumerable,Ka=(i,e,t)=>e in i?_v(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t,Va=(i,e)=>{for(var t in e||(e={}))Ev.call(e,t)&&Ka(i,t,e[t]);if(za)for(var t of za(e))Sv.call(e,t)&&Ka(i,t,e[t]);return i};let Iv=class Mh extends Nm{constructor(e){super(e),this.protocol=Fh,this.version=D0,this.name=Cn,this.events=new We.EventEmitter,this.initialized=!1,this.on=(s,r)=>this.events.on(s,r),this.once=(s,r)=>this.events.once(s,r),this.off=(s,r)=>this.events.off(s,r),this.removeListener=(s,r)=>this.events.removeListener(s,r),this.projectId=e?.projectId,this.relayUrl=e?.relayUrl||Lh;const t=typeof e?.logger<"u"&&typeof e?.logger!="string"?e.logger:ee.pino(ee.getDefaultLoggerOptions({level:e?.logger||x0.logger}));this.logger=ee.generateChildLogger(t,this.name),this.heartbeat=new Wt.HeartBeat,this.crypto=new Z0(this,this.logger,e?.keychain),this.history=new bv(this,this.logger),this.expirer=new wv(this,this.logger),this.storage=e!=null&&e.storage?e.storage:new sc(Va(Va({},O0),e?.storageOptions)),this.relayer=new fv({core:this,logger:this.logger,relayUrl:this.relayUrl,projectId:this.projectId}),this.pairing=new mv(this,this.logger),this.verify=new vv(this.projectId||"",this.logger)}static async init(e){const t=new Mh(e);return await t.initialize(),t}get context(){return ee.getLoggerContext(this.logger)}async start(){this.initialized||await this.initialize()}async initialize(){this.logger.trace("Initialized");try{await this.crypto.init(),await this.history.init(),await this.expirer.init(),await this.relayer.init(),await this.heartbeat.init(),await this.pairing.init(),this.initialized=!0,this.logger.info("Core Initialization Success")}catch(e){throw this.logger.warn(`Core Initialization Failure at epoch ${Date.now()}`,e),this.logger.error(e.message),e}}};const Dv=Iv,qh="wc",jh=2,zh="client",An=`${qh}@${jh}:${zh}:`,Fr={name:zh,logger:"error",controller:!1,relayUrl:"wss://relay.walletconnect.com"},xv="proposal",Ov="Proposal expired",Nv="session",Ms=V.SEVEN_DAYS,Pv="engine",os={wc_sessionPropose:{req:{ttl:V.FIVE_MINUTES,prompt:!0,tag:1100},res:{ttl:V.FIVE_MINUTES,prompt:!1,tag:1101}},wc_sessionSettle:{req:{ttl:V.FIVE_MINUTES,prompt:!1,tag:1102},res:{ttl:V.FIVE_MINUTES,prompt:!1,tag:1103}},wc_sessionUpdate:{req:{ttl:V.ONE_DAY,prompt:!1,tag:1104},res:{ttl:V.ONE_DAY,prompt:!1,tag:1105}},wc_sessionExtend:{req:{ttl:V.ONE_DAY,prompt:!1,tag:1106},res:{ttl:V.ONE_DAY,prompt:!1,tag:1107}},wc_sessionRequest:{req:{ttl:V.FIVE_MINUTES,prompt:!0,tag:1108},res:{ttl:V.FIVE_MINUTES,prompt:!1,tag:1109}},wc_sessionEvent:{req:{ttl:V.FIVE_MINUTES,prompt:!0,tag:1110},res:{ttl:V.FIVE_MINUTES,prompt:!1,tag:1111}},wc_sessionDelete:{req:{ttl:V.ONE_DAY,prompt:!1,tag:1112},res:{ttl:V.ONE_DAY,prompt:!1,tag:1113}},wc_sessionPing:{req:{ttl:V.THIRTY_SECONDS,prompt:!1,tag:1114},res:{ttl:V.THIRTY_SECONDS,prompt:!1,tag:1115}}},Ur={min:V.FIVE_MINUTES,max:V.SEVEN_DAYS},Rv="request",Cv=["wc_sessionPropose","wc_sessionRequest","wc_authRequest"];var Av=Object.defineProperty,Tv=Object.defineProperties,$v=Object.getOwnPropertyDescriptors,Ba=Object.getOwnPropertySymbols,Fv=Object.prototype.hasOwnProperty,Uv=Object.prototype.propertyIsEnumerable,ka=(i,e,t)=>e in i?Av(i,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):i[e]=t,At=(i,e)=>{for(var t in e||(e={}))Fv.call(e,t)&&ka(i,t,e[t]);if(Ba)for(var t of Ba(e))Uv.call(e,t)&&ka(i,t,e[t]);return i},Lr=(i,e)=>Tv(i,$v(e));class Lv extends Mm{constructor(e){super(e),this.name=Pv,this.events=new ir,this.initialized=!1,this.ignoredPayloadTypes=[Ni],this.init=async()=>{this.initialized||(await this.cleanup(),this.registerRelayerEvents(),this.registerExpirerEvents(),this.client.core.pairing.register({methods:Object.keys(os)}),this.initialized=!0)},this.connect=async t=>{this.isInitialized();const s=Lr(At({},t),{requiredNamespaces:t.requiredNamespaces||{},optionalNamespaces:t.optionalNamespaces||{}});await this.isValidConnect(s);const{pairingTopic:r,requiredNamespaces:n,optionalNamespaces:o,sessionProperties:c,relays:u}=s;let d=r,p,b=!1;if(d&&(b=this.client.core.pairing.pairings.get(d).active),!d||!b){const{topic:D,uri:y}=await this.client.core.pairing.create();d=D,p=y}const x=await this.client.core.crypto.generateKeyPair(),O=At({requiredNamespaces:n,optionalNamespaces:o,relays:u??[{protocol:Uh}],proposer:{publicKey:x,metadata:this.client.metadata}},c&&{sessionProperties:c}),{reject:_,resolve:C,done:F}=Ti(V.FIVE_MINUTES,Ov);if(this.events.once(ke("session_connect"),async({error:D,session:y})=>{if(D)_(D);else if(y){y.self.publicKey=x;const w=Lr(At({},y),{requiredNamespaces:y.requiredNamespaces,optionalNamespaces:y.optionalNamespaces});await this.client.session.set(y.topic,w),await this.setExpiry(y.topic,y.expiry),d&&await this.client.core.pairing.updateMetadata({topic:d,metadata:y.peer.metadata}),C(w)}}),!d){const{message:D}=J("NO_MATCHING_KEY",`connect() pairing topic: ${d}`);throw new Error(D)}const K=await this.sendRequest(d,"wc_sessionPropose",O),I=Ht(V.FIVE_MINUTES);return await this.setProposal(K,At({id:K,expiry:I},O)),{uri:p,approval:F}},this.pair=async t=>(this.isInitialized(),await this.client.core.pairing.pair(t)),this.approve=async t=>{this.isInitialized(),await this.isValidApprove(t);const{id:s,relayProtocol:r,namespaces:n,sessionProperties:o}=t,c=this.client.proposal.get(s);let{pairingTopic:u,proposer:d,requiredNamespaces:p,optionalNamespaces:b}=c;u=u||"",ls(p)||(p=Pb(n,"approve()"));const x=await this.client.core.crypto.generateKeyPair(),O=d.publicKey,_=await this.client.core.crypto.generateSharedKey(x,O);u&&s&&(await this.client.core.pairing.updateMetadata({topic:u,metadata:d.metadata}),await this.sendResult(s,u,{relay:{protocol:r??"irn"},responderPublicKey:x}),await this.client.proposal.delete(s,Je("USER_DISCONNECTED")),await this.client.core.pairing.activate({topic:u}));const C=At({relay:{protocol:r??"irn"},namespaces:n,requiredNamespaces:p,optionalNamespaces:b,pairingTopic:u,controller:{publicKey:x,metadata:this.client.metadata},expiry:Ht(Ms)},o&&{sessionProperties:o});await this.client.core.relayer.subscribe(_),await this.sendRequest(_,"wc_sessionSettle",C);const F=Lr(At({},C),{topic:_,pairingTopic:u,acknowledged:!1,self:C.controller,peer:{publicKey:d.publicKey,metadata:d.metadata},controller:x});return await this.client.session.set(_,F),await this.setExpiry(_,Ht(Ms)),{topic:_,acknowledged:()=>new Promise(K=>setTimeout(()=>K(this.client.session.get(_)),500))}},this.reject=async t=>{this.isInitialized(),await this.isValidReject(t);const{id:s,reason:r}=t,{pairingTopic:n}=this.client.proposal.get(s);n&&(await this.sendError(s,n,r),await this.client.proposal.delete(s,Je("USER_DISCONNECTED")))},this.update=async t=>{this.isInitialized(),await this.isValidUpdate(t);const{topic:s,namespaces:r}=t,n=await this.sendRequest(s,"wc_sessionUpdate",{namespaces:r}),{done:o,resolve:c,reject:u}=Ti();return this.events.once(ke("session_update",n),({error:d})=>{d?u(d):c()}),await this.client.session.update(s,{namespaces:r}),{acknowledged:o}},this.extend=async t=>{this.isInitialized(),await this.isValidExtend(t);const{topic:s}=t,r=await this.sendRequest(s,"wc_sessionExtend",{}),{done:n,resolve:o,reject:c}=Ti();return this.events.once(ke("session_extend",r),({error:u})=>{u?c(u):o()}),await this.setExpiry(s,Ht(Ms)),{acknowledged:n}},this.request=async t=>{this.isInitialized(),await this.isValidRequest(t);const{chainId:s,request:r,topic:n,expiry:o}=t,c=await this.sendRequest(n,"wc_sessionRequest",{request:r,chainId:s},o),{done:u,resolve:d,reject:p}=Ti(o);return this.events.once(ke("session_request",c),({error:b,result:x})=>{b?p(b):d(x)}),this.client.events.emit("session_request_sent",{topic:n,request:r,chainId:s,id:c}),await u()},this.respond=async t=>{this.isInitialized(),await this.isValidRespond(t);const{topic:s,response:r}=t,{id:n}=r;ut(r)?await this.sendResult(n,s,r.result):Ge(r)&&await this.sendError(n,s,r.error),this.deletePendingSessionRequest(t.response.id,{message:"fulfilled",code:0})},this.ping=async t=>{this.isInitialized(),await this.isValidPing(t);const{topic:s}=t;if(this.client.session.keys.includes(s)){const r=await this.sendRequest(s,"wc_sessionPing",{}),{done:n,resolve:o,reject:c}=Ti();this.events.once(ke("session_ping",r),({error:u})=>{u?c(u):o()}),await n()}else this.client.core.pairing.pairings.keys.includes(s)&&await this.client.core.pairing.ping({topic:s})},this.emit=async t=>{this.isInitialized(),await this.isValidEmit(t);const{topic:s,event:r,chainId:n}=t;await this.sendRequest(s,"wc_sessionEvent",{event:r,chainId:n})},this.disconnect=async t=>{this.isInitialized(),await this.isValidDisconnect(t);const{topic:s}=t;this.client.session.keys.includes(s)?(await this.sendRequest(s,"wc_sessionDelete",Je("USER_DISCONNECTED")),await this.deleteSession(s)):await this.client.core.pairing.disconnect({topic:s})},this.find=t=>(this.isInitialized(),this.client.session.getAll().filter(s=>Ab(s,t))),this.getPendingSessionRequests=()=>(this.isInitialized(),this.client.pendingRequest.getAll()),this.cleanupDuplicatePairings=async t=>{try{const s=this.client.core.pairing.pairings.get(t.pairingTopic),r=this.client.core.pairing.pairings.getAll().filter(n=>{var o,c;return((o=n.peerMetadata)==null?void 0:o.url)&&((c=n.peerMetadata)==null?void 0:c.url)===t.self.metadata.url&&n.topic!==s.topic});if(r.length===0)return;this.client.logger.info(`Cleaning up ${r.length} duplicate pairing(s)`),await Promise.all(r.map(n=>this.client.core.pairing.disconnect({topic:n.topic}))),this.client.logger.info("Duplicate pairings clean up finished")}catch(s){this.client.logger.error(s)}},this.deleteSession=async(t,s)=>{const{self:r}=this.client.session.get(t);await this.client.core.relayer.unsubscribe(t),await Promise.all([this.client.session.delete(t,Je("USER_DISCONNECTED")),this.client.core.crypto.deleteKeyPair(r.publicKey),this.client.core.crypto.deleteSymKey(t),s?Promise.resolve():this.client.core.expirer.del(t)])},this.deleteProposal=async(t,s)=>{await Promise.all([this.client.proposal.delete(t,Je("USER_DISCONNECTED")),s?Promise.resolve():this.client.core.expirer.del(t)])},this.deletePendingSessionRequest=async(t,s,r=!1)=>{await Promise.all([this.client.pendingRequest.delete(t,s),r?Promise.resolve():this.client.core.expirer.del(t)])},this.setExpiry=async(t,s)=>{this.client.session.keys.includes(t)&&await this.client.session.update(t,{expiry:s}),this.client.core.expirer.set(t,s)},this.setProposal=async(t,s)=>{await this.client.proposal.set(t,s),this.client.core.expirer.set(t,s.expiry)},this.setPendingSessionRequest=async t=>{const s=os.wc_sessionRequest.req.ttl,{id:r,topic:n,params:o}=t;await this.client.pendingRequest.set(r,{id:r,topic:n,params:o}),s&&this.client.core.expirer.set(r,Ht(s))},this.sendRequest=async(t,s,r,n)=>{const o=ti(s,r);if(Nn()&&Cv.includes(s)){const d=Li(JSON.stringify(o));await this.client.core.verify.register({attestationId:d})}const c=await this.client.core.crypto.encode(t,o),u=os[s].req;return n&&(u.ttl=n),this.client.core.history.set(t,o),this.client.core.relayer.publish(t,c,u),o.id},this.sendResult=async(t,s,r)=>{const n=xi(t,r),o=await this.client.core.crypto.encode(s,n),c=await this.client.core.history.get(s,t),u=os[c.request.method].res;this.client.core.relayer.publish(s,o,u),await this.client.core.history.resolve(n)},this.sendError=async(t,s,r)=>{const n=ji(t,r),o=await this.client.core.crypto.encode(s,n),c=await this.client.core.history.get(s,t),u=os[c.request.method].res;this.client.core.relayer.publish(s,o,u),await this.client.core.history.resolve(n)},this.cleanup=async()=>{const t=[],s=[];this.client.session.getAll().forEach(r=>{ci(r.expiry)&&t.push(r.topic)}),this.client.proposal.getAll().forEach(r=>{ci(r.expiry)&&s.push(r.id)}),await Promise.all([...t.map(r=>this.deleteSession(r)),...s.map(r=>this.deleteProposal(r))])},this.onRelayEventRequest=t=>{const{topic:s,payload:r}=t,n=r.method;switch(n){case"wc_sessionPropose":return this.onSessionProposeRequest(s,r);case"wc_sessionSettle":return this.onSessionSettleRequest(s,r);case"wc_sessionUpdate":return this.onSessionUpdateRequest(s,r);case"wc_sessionExtend":return this.onSessionExtendRequest(s,r);case"wc_sessionPing":return this.onSessionPingRequest(s,r);case"wc_sessionDelete":return this.onSessionDeleteRequest(s,r);case"wc_sessionRequest":return this.onSessionRequest(s,r);case"wc_sessionEvent":return this.onSessionEventRequest(s,r);default:return this.client.logger.info(`Unsupported request method ${n}`)}},this.onRelayEventResponse=async t=>{const{topic:s,payload:r}=t,n=(await this.client.core.history.get(s,r.id)).request.method;switch(n){case"wc_sessionPropose":return this.onSessionProposeResponse(s,r);case"wc_sessionSettle":return this.onSessionSettleResponse(s,r);case"wc_sessionUpdate":return this.onSessionUpdateResponse(s,r);case"wc_sessionExtend":return this.onSessionExtendResponse(s,r);case"wc_sessionPing":return this.onSessionPingResponse(s,r);case"wc_sessionRequest":return this.onSessionRequestResponse(s,r);default:return this.client.logger.info(`Unsupported response method ${n}`)}},this.onSessionProposeRequest=async(t,s)=>{const{params:r,id:n}=s;try{this.isValidConnect(At({},s.params));const o=Ht(V.FIVE_MINUTES),c=At({id:n,pairingTopic:t,expiry:o},r);await this.setProposal(n,c);const u=Li(JSON.stringify(s)),d=await this.getVerifyContext(u,c.proposer.metadata);this.client.events.emit("session_proposal",{id:n,params:c,verifyContext:d})}catch(o){await this.sendError(n,t,o),this.client.logger.error(o)}},this.onSessionProposeResponse=async(t,s)=>{const{id:r}=s;if(ut(s)){const{result:n}=s;this.client.logger.trace({type:"method",method:"onSessionProposeResponse",result:n});const o=this.client.proposal.get(r);this.client.logger.trace({type:"method",method:"onSessionProposeResponse",proposal:o});const c=o.proposer.publicKey;this.client.logger.trace({type:"method",method:"onSessionProposeResponse",selfPublicKey:c});const u=n.responderPublicKey;this.client.logger.trace({type:"method",method:"onSessionProposeResponse",peerPublicKey:u});const d=await this.client.core.crypto.generateSharedKey(c,u);this.client.logger.trace({type:"method",method:"onSessionProposeResponse",sessionTopic:d});const p=await this.client.core.relayer.subscribe(d);this.client.logger.trace({type:"method",method:"onSessionProposeResponse",subscriptionId:p}),await this.client.core.pairing.activate({topic:t})}else Ge(s)&&(await this.client.proposal.delete(r,Je("USER_DISCONNECTED")),this.events.emit(ke("session_connect"),{error:s.error}))},this.onSessionSettleRequest=async(t,s)=>{const{id:r,params:n}=s;try{this.isValidSessionSettleRequest(n);const{relay:o,controller:c,expiry:u,namespaces:d,requiredNamespaces:p,optionalNamespaces:b,sessionProperties:x,pairingTopic:O}=s.params,_=At({topic:t,relay:o,expiry:u,namespaces:d,acknowledged:!0,pairingTopic:O,requiredNamespaces:p,optionalNamespaces:b,controller:c.publicKey,self:{publicKey:"",metadata:this.client.metadata},peer:{publicKey:c.publicKey,metadata:c.metadata}},x&&{sessionProperties:x});await this.sendResult(s.id,t,!0),this.events.emit(ke("session_connect"),{session:_}),this.cleanupDuplicatePairings(_)}catch(o){await this.sendError(r,t,o),this.client.logger.error(o)}},this.onSessionSettleResponse=async(t,s)=>{const{id:r}=s;ut(s)?(await this.client.session.update(t,{acknowledged:!0}),this.events.emit(ke("session_approve",r),{})):Ge(s)&&(await this.client.session.delete(t,Je("USER_DISCONNECTED")),this.events.emit(ke("session_approve",r),{error:s.error}))},this.onSessionUpdateRequest=async(t,s)=>{const{params:r,id:n}=s;try{this.isValidUpdate(At({topic:t},r)),await this.client.session.update(t,{namespaces:r.namespaces}),await this.sendResult(n,t,!0),this.client.events.emit("session_update",{id:n,topic:t,params:r})}catch(o){await this.sendError(n,t,o),this.client.logger.error(o)}},this.onSessionUpdateResponse=(t,s)=>{const{id:r}=s;ut(s)?this.events.emit(ke("session_update",r),{}):Ge(s)&&this.events.emit(ke("session_update",r),{error:s.error})},this.onSessionExtendRequest=async(t,s)=>{const{id:r}=s;try{this.isValidExtend({topic:t}),await this.setExpiry(t,Ht(Ms)),await this.sendResult(r,t,!0),this.client.events.emit("session_extend",{id:r,topic:t})}catch(n){await this.sendError(r,t,n),this.client.logger.error(n)}},this.onSessionExtendResponse=(t,s)=>{const{id:r}=s;ut(s)?this.events.emit(ke("session_extend",r),{}):Ge(s)&&this.events.emit(ke("session_extend",r),{error:s.error})},this.onSessionPingRequest=async(t,s)=>{const{id:r}=s;try{this.isValidPing({topic:t}),await this.sendResult(r,t,!0),this.client.events.emit("session_ping",{id:r,topic:t})}catch(n){await this.sendError(r,t,n),this.client.logger.error(n)}},this.onSessionPingResponse=(t,s)=>{const{id:r}=s;setTimeout(()=>{ut(s)?this.events.emit(ke("session_ping",r),{}):Ge(s)&&this.events.emit(ke("session_ping",r),{error:s.error})},500)},this.onSessionDeleteRequest=async(t,s)=>{const{id:r}=s;try{this.isValidDisconnect({topic:t,reason:s.params}),await Promise.all([new Promise(n=>{this.client.core.relayer.once(He.publish,async()=>{n(await this.deleteSession(t))})}),this.sendResult(r,t,!0)]),this.client.events.emit("session_delete",{id:r,topic:t})}catch(n){await this.sendError(r,t,n),this.client.logger.error(n)}},this.onSessionRequest=async(t,s)=>{const{id:r,params:n}=s;try{this.isValidRequest(At({topic:t},n)),await this.setPendingSessionRequest({id:r,topic:t,params:n});const o=Li(JSON.stringify(s)),c=this.client.session.get(t),u=await this.getVerifyContext(o,c.peer.metadata);this.client.events.emit("session_request",{id:r,topic:t,params:n,verifyContext:u})}catch(o){await this.sendError(r,t,o),this.client.logger.error(o)}},this.onSessionRequestResponse=(t,s)=>{const{id:r}=s;ut(s)?this.events.emit(ke("session_request",r),{result:s.result}):Ge(s)&&this.events.emit(ke("session_request",r),{error:s.error})},this.onSessionEventRequest=async(t,s)=>{const{id:r,params:n}=s;try{this.isValidEmit(At({topic:t},n)),this.client.events.emit("session_event",{id:r,topic:t,params:n})}catch(o){await this.sendError(r,t,o),this.client.logger.error(o)}},this.isValidConnect=async t=>{if(!It(t)){const{message:u}=J("MISSING_OR_INVALID",`connect() params: ${JSON.stringify(t)}`);throw new Error(u)}const{pairingTopic:s,requiredNamespaces:r,optionalNamespaces:n,sessionProperties:o,relays:c}=t;if(wt(s)||await this.isValidPairingTopic(s),!Bb(c,!0)){const{message:u}=J("MISSING_OR_INVALID",`connect() relays: ${c}`);throw new Error(u)}!wt(r)&&ls(r)!==0&&this.validateNamespaces(r,"requiredNamespaces"),!wt(n)&&ls(n)!==0&&this.validateNamespaces(n,"optionalNamespaces"),wt(o)||this.validateSessionProps(o,"sessionProperties")},this.validateNamespaces=(t,s)=>{const r=Vb(t,"connect()",s);if(r)throw new Error(r.message)},this.isValidApprove=async t=>{if(!It(t))throw new Error(J("MISSING_OR_INVALID",`approve() params: ${t}`).message);const{id:s,namespaces:r,relayProtocol:n,sessionProperties:o}=t;await this.isValidProposalId(s);const c=this.client.proposal.get(s),u=Bs(r,"approve()");if(u)throw new Error(u.message);const d=Ia(c.requiredNamespaces,r,"approve()");if(d)throw new Error(d.message);if(!ct(n,!0)){const{message:p}=J("MISSING_OR_INVALID",`approve() relayProtocol: ${n}`);throw new Error(p)}wt(o)||this.validateSessionProps(o,"sessionProperties")},this.isValidReject=async t=>{if(!It(t)){const{message:n}=J("MISSING_OR_INVALID",`reject() params: ${t}`);throw new Error(n)}const{id:s,reason:r}=t;if(await this.isValidProposalId(s),!Hb(r)){const{message:n}=J("MISSING_OR_INVALID",`reject() reason: ${JSON.stringify(r)}`);throw new Error(n)}},this.isValidSessionSettleRequest=t=>{if(!It(t)){const{message:d}=J("MISSING_OR_INVALID",`onSessionSettleRequest() params: ${t}`);throw new Error(d)}const{relay:s,controller:r,namespaces:n,expiry:o}=t;if(!Sh(s)){const{message:d}=J("MISSING_OR_INVALID","onSessionSettleRequest() relay protocol should be a string");throw new Error(d)}const c=Lb(r,"onSessionSettleRequest()");if(c)throw new Error(c.message);const u=Bs(n,"onSessionSettleRequest()");if(u)throw new Error(u.message);if(ci(o)){const{message:d}=J("EXPIRED","onSessionSettleRequest()");throw new Error(d)}},this.isValidUpdate=async t=>{if(!It(t)){const{message:u}=J("MISSING_OR_INVALID",`update() params: ${t}`);throw new Error(u)}const{topic:s,namespaces:r}=t;await this.isValidSessionTopic(s);const n=this.client.session.get(s),o=Bs(r,"update()");if(o)throw new Error(o.message);const c=Ia(n.requiredNamespaces,r,"update()");if(c)throw new Error(c.message)},this.isValidExtend=async t=>{if(!It(t)){const{message:r}=J("MISSING_OR_INVALID",`extend() params: ${t}`);throw new Error(r)}const{topic:s}=t;await this.isValidSessionTopic(s)},this.isValidRequest=async t=>{if(!It(t)){const{message:u}=J("MISSING_OR_INVALID",`request() params: ${t}`);throw new Error(u)}const{topic:s,request:r,chainId:n,expiry:o}=t;await this.isValidSessionTopic(s);const{namespaces:c}=this.client.session.get(s);if(!Sa(c,n)){const{message:u}=J("MISSING_OR_INVALID",`request() chainId: ${n}`);throw new Error(u)}if(!Gb(r)){const{message:u}=J("MISSING_OR_INVALID",`request() ${JSON.stringify(r)}`);throw new Error(u)}if(!Jb(c,n,r.method)){const{message:u}=J("MISSING_OR_INVALID",`request() method: ${r.method}`);throw new Error(u)}if(o&&!ew(o,Ur)){const{message:u}=J("MISSING_OR_INVALID",`request() expiry: ${o}. Expiry must be a number (in seconds) between ${Ur.min} and ${Ur.max}`);throw new Error(u)}},this.isValidRespond=async t=>{if(!It(t)){const{message:n}=J("MISSING_OR_INVALID",`respond() params: ${t}`);throw new Error(n)}const{topic:s,response:r}=t;if(await this.isValidSessionTopic(s),!Wb(r)){const{message:n}=J("MISSING_OR_INVALID",`respond() response: ${JSON.stringify(r)}`);throw new Error(n)}},this.isValidPing=async t=>{if(!It(t)){const{message:r}=J("MISSING_OR_INVALID",`ping() params: ${t}`);throw new Error(r)}const{topic:s}=t;await this.isValidSessionOrPairingTopic(s)},this.isValidEmit=async t=>{if(!It(t)){const{message:c}=J("MISSING_OR_INVALID",`emit() params: ${t}`);throw new Error(c)}const{topic:s,event:r,chainId:n}=t;await this.isValidSessionTopic(s);const{namespaces:o}=this.client.session.get(s);if(!Sa(o,n)){const{message:c}=J("MISSING_OR_INVALID",`emit() chainId: ${n}`);throw new Error(c)}if(!Yb(r)){const{message:c}=J("MISSING_OR_INVALID",`emit() event: ${JSON.stringify(r)}`);throw new Error(c)}if(!Qb(o,n,r.name)){const{message:c}=J("MISSING_OR_INVALID",`emit() event: ${JSON.stringify(r)}`);throw new Error(c)}},this.isValidDisconnect=async t=>{if(!It(t)){const{message:r}=J("MISSING_OR_INVALID",`disconnect() params: ${t}`);throw new Error(r)}const{topic:s}=t;await this.isValidSessionOrPairingTopic(s)},this.getVerifyContext=async(t,s)=>{const r={verified:{verifyUrl:s.verifyUrl||"",validation:"UNKNOWN",origin:s.url||""}};try{const n=await this.client.core.verify.resolve({attestationId:t,verifyUrl:s.verifyUrl});n&&(r.verified.origin=n,r.verified.validation=n===s.url?"VALID":"INVALID")}catch(n){this.client.logger.error(n)}return this.client.logger.info(`Verify context: ${JSON.stringify(r)}`),r},this.validateSessionProps=(t,s)=>{Object.values(t).forEach(r=>{if(!ct(r,!1)){const{message:n}=J("MISSING_OR_INVALID",`${s} must be in Record<string, string> format. Received: ${JSON.stringify(r)}`);throw new Error(n)}})}}isInitialized(){if(!this.initialized){const{message:e}=J("NOT_INITIALIZED",this.name);throw new Error(e)}}registerRelayerEvents(){this.client.core.relayer.on(He.message,async e=>{const{topic:t,message:s}=e;if(this.ignoredPayloadTypes.includes(this.client.core.crypto.getPayloadType(s)))return;const r=await this.client.core.crypto.decode(t,s);zi(r)?(this.client.core.history.set(t,r),this.onRelayEventRequest({topic:t,payload:r})):Oi(r)&&(await this.client.core.history.resolve(r),this.onRelayEventResponse({topic:t,payload:r}))})}registerExpirerEvents(){this.client.core.expirer.on($t.expired,async e=>{const{topic:t,id:s}=_h(e.target);if(s&&this.client.pendingRequest.keys.includes(s))return await this.deletePendingSessionRequest(s,J("EXPIRED"),!0);t?this.client.session.keys.includes(t)&&(await this.deleteSession(t,!0),this.client.events.emit("session_expire",{topic:t})):s&&(await this.deleteProposal(s,!0),this.client.events.emit("proposal_expire",{id:s}))})}isValidPairingTopic(e){if(!ct(e,!1)){const{message:t}=J("MISSING_OR_INVALID",`pairing topic should be a string: ${e}`);throw new Error(t)}if(!this.client.core.pairing.pairings.keys.includes(e)){const{message:t}=J("NO_MATCHING_KEY",`pairing topic doesn't exist: ${e}`);throw new Error(t)}if(ci(this.client.core.pairing.pairings.get(e).expiry)){const{message:t}=J("EXPIRED",`pairing topic: ${e}`);throw new Error(t)}}async isValidSessionTopic(e){if(!ct(e,!1)){const{message:t}=J("MISSING_OR_INVALID",`session topic should be a string: ${e}`);throw new Error(t)}if(!this.client.session.keys.includes(e)){const{message:t}=J("NO_MATCHING_KEY",`session topic doesn't exist: ${e}`);throw new Error(t)}if(ci(this.client.session.get(e).expiry)){await this.deleteSession(e);const{message:t}=J("EXPIRED",`session topic: ${e}`);throw new Error(t)}}async isValidSessionOrPairingTopic(e){if(this.client.session.keys.includes(e))await this.isValidSessionTopic(e);else if(this.client.core.pairing.pairings.keys.includes(e))this.isValidPairingTopic(e);else if(ct(e,!1)){const{message:t}=J("NO_MATCHING_KEY",`session or pairing topic doesn't exist: ${e}`);throw new Error(t)}else{const{message:t}=J("MISSING_OR_INVALID",`session or pairing topic should be a string: ${e}`);throw new Error(t)}}async isValidProposalId(e){if(!kb(e)){const{message:t}=J("MISSING_OR_INVALID",`proposal id should be a number: ${e}`);throw new Error(t)}if(!this.client.proposal.keys.includes(e)){const{message:t}=J("NO_MATCHING_KEY",`proposal id doesn't exist: ${e}`);throw new Error(t)}if(ci(this.client.proposal.get(e).expiry)){await this.deleteProposal(e);const{message:t}=J("EXPIRED",`proposal id: ${e}`);throw new Error(t)}}}class Mv extends pr{constructor(e,t){super(e,t,xv,An),this.core=e,this.logger=t}}class qv extends pr{constructor(e,t){super(e,t,Nv,An),this.core=e,this.logger=t}}class jv extends pr{constructor(e,t){super(e,t,Rv,An,s=>s.id),this.core=e,this.logger=t}}class Tn extends Lm{constructor(e){super(e),this.protocol=qh,this.version=jh,this.name=Fr.name,this.events=new We.EventEmitter,this.on=(s,r)=>this.events.on(s,r),this.once=(s,r)=>this.events.once(s,r),this.off=(s,r)=>this.events.off(s,r),this.removeListener=(s,r)=>this.events.removeListener(s,r),this.removeAllListeners=s=>this.events.removeAllListeners(s),this.connect=async s=>{try{return await this.engine.connect(s)}catch(r){throw this.logger.error(r.message),r}},this.pair=async s=>{try{return await this.engine.pair(s)}catch(r){throw this.logger.error(r.message),r}},this.approve=async s=>{try{return await this.engine.approve(s)}catch(r){throw this.logger.error(r.message),r}},this.reject=async s=>{try{return await this.engine.reject(s)}catch(r){throw this.logger.error(r.message),r}},this.update=async s=>{try{return await this.engine.update(s)}catch(r){throw this.logger.error(r.message),r}},this.extend=async s=>{try{return await this.engine.extend(s)}catch(r){throw this.logger.error(r.message),r}},this.request=async s=>{try{return await this.engine.request(s)}catch(r){throw this.logger.error(r.message),r}},this.respond=async s=>{try{return await this.engine.respond(s)}catch(r){throw this.logger.error(r.message),r}},this.ping=async s=>{try{return await this.engine.ping(s)}catch(r){throw this.logger.error(r.message),r}},this.emit=async s=>{try{return await this.engine.emit(s)}catch(r){throw this.logger.error(r.message),r}},this.disconnect=async s=>{try{return await this.engine.disconnect(s)}catch(r){throw this.logger.error(r.message),r}},this.find=s=>{try{return this.engine.find(s)}catch(r){throw this.logger.error(r.message),r}},this.getPendingSessionRequests=()=>{try{return this.engine.getPendingSessionRequests()}catch(s){throw this.logger.error(s.message),s}},this.name=e?.name||Fr.name,this.metadata=e?.metadata||hb();const t=typeof e?.logger<"u"&&typeof e?.logger!="string"?e.logger:ee.pino(ee.getDefaultLoggerOptions({level:e?.logger||Fr.logger}));this.core=e?.core||new Dv(e),this.logger=ee.generateChildLogger(t,this.name),this.session=new qv(this.core,this.logger),this.proposal=new Mv(this.core,this.logger),this.pendingRequest=new jv(this.core,this.logger),this.engine=new Lv(this)}static async init(e){const t=new Tn(e);return await t.initialize(),t}get context(){return ee.getLoggerContext(this.logger)}get pairing(){return this.core.pairing.pairings}async initialize(){this.logger.trace("Initialized");try{await this.core.start(),await this.session.init(),await this.proposal.init(),await this.pendingRequest.init(),await this.engine.init(),this.core.verify.init({verifyUrl:this.metadata.verifyUrl}),this.logger.info("SignClient Initialization Success")}catch(e){throw this.logger.info("SignClient Initialization Failure"),this.logger.error(e.message),e}}}function zv(i){return typeof i<"u"&&typeof i.context<"u"}const Gt={init:"signer_init",uri:"signer_uri",created:"signer_created",updated:"signer_updated",deleted:"signer_deleted",event:"signer_event"};class Kv extends _g{constructor(e){super(),this.events=new We.EventEmitter,this.pending=!1,this.initializing=!1,this.requiredNamespaces=e?.requiredNamespaces||{},this.opts=e?.client}get connected(){return typeof this.session<"u"}get connecting(){return this.pending}get chains(){return this.session?km(this.session.namespaces):Hm(this.requiredNamespaces)}get accounts(){return this.session?Bm(this.session.namespaces):[]}on(e,t){this.events.on(e,t)}once(e,t){this.events.once(e,t)}off(e,t){this.events.off(e,t)}removeListener(e,t){this.events.removeListener(e,t)}async open(){if(this.pending)return new Promise((e,t)=>{this.events.once("open",()=>{if(this.events.once("open_error",s=>{t(s)}),typeof this.client>"u")return t(new Error("Sign Client not initialized"));e()})});try{this.pending=!0;const e=await this.register(),t=e.find({requiredNamespaces:this.requiredNamespaces});if(t.length)return this.onOpen(t[0]);const{uri:s,approval:r}=await e.connect({requiredNamespaces:this.requiredNamespaces});this.events.emit(Gt.uri,{uri:s}),this.session=await r(),this.events.emit(Gt.created,this.session),this.onOpen()}catch(e){throw this.events.emit("open_error",e),e}}async close(){typeof this.session>"u"||(await(await this.register()).disconnect({topic:this.session.topic,reason:Je("USER_DISCONNECTED")}),this.onClose())}async send(e,t){if(typeof this.client>"u"&&(this.client=await this.register(),this.connected||await this.open()),typeof this.session>"u")throw new Error("Signer connection is missing session");this.client.request({topic:this.session.topic,request:e,chainId:t?.chainId}).then(s=>this.events.emit("payload",xi(e.id,s))).catch(s=>this.events.emit("payload",ji(e.id,s.message)))}async register(e=this.opts){if(typeof this.client<"u")return this.client;if(this.initializing)return new Promise((t,s)=>{this.events.once("register_error",r=>{s(r)}),this.events.once(Gt.init,()=>{if(typeof this.client>"u")return s(new Error("Sign Client not initialized"));t(this.client)})});if(zv(e))return this.client=e,this.registerEventListeners(),this.client;try{return this.initializing=!0,this.client=await Tn.init(e),this.initializing=!1,this.registerEventListeners(),this.events.emit(Gt.init),this.client}catch(t){throw this.events.emit("register_error",t),t}}onOpen(e){this.pending=!1,e&&(this.session=e),this.events.emit("open")}onClose(){this.pending=!1,this.client&&(this.client=void 0),this.events.emit("close")}registerEventListeners(){typeof this.client<"u"&&(this.client.on("session_event",e=>{var t;this.session&&((t=this.session)==null?void 0:t.topic)!==e.topic||this.events.emit(Gt.event,e.params)}),this.client.on("session_update",e=>{var t;typeof this.client<"u"&&(this.session&&((t=this.session)==null?void 0:t.topic)!==e.topic||(this.session=this.client.session.get(e.topic),this.events.emit(Gt.updated,this.session)))}),this.client.on("session_delete",e=>{var t;this.session&&(this.session&&((t=this.session)==null?void 0:t.topic)!==e.topic||(this.onClose(),this.events.emit(Gt.deleted,this.session),this.session=void 0))}))}}const Kh=":";function Vv(i){const{namespace:e,reference:t}=i;return[e,t].join(Kh)}function Bv(i){const[e,t,s]=i.split(Kh);return{namespace:e,reference:t,address:s}}function kv(i,e){const t=[];return i.forEach(s=>{const r=e(s);t.includes(r)||t.push(r)}),t}function Hv(i){const{namespace:e,reference:t}=Bv(i);return Vv({namespace:e,reference:t})}function Gv(i){return kv(i,Hv)}function Wv(i,e=[]){const t=[];return Object.keys(i).forEach(s=>{if(e.length&&!e.includes(s))return;const r=i[s];t.push(...r.accounts)}),t}function Yv(i,e=[]){const t=[];return Object.keys(i).forEach(s=>{if(e.length&&!e.includes(s))return;const r=i[s];t.push(...Gv(r.accounts))}),t}class Jv{constructor(){we(this,"accounts",[]);we(this,"eventEmitter",new We.EventEmitter);we(this,"updateSession",e=>{if(!this.isValidSession(e))throw console.warn("updateSession incompatible session",e,"for adapter",this.formatChainId(this.chainId)),new Error("Invalid session");this.session=e;const t=Yv(e.namespaces,[this.namespace]);this.setChainIds(t);const s=Wv(e.namespaces,[this.namespace]);this.setAccounts(s)});we(this,"isValidSession",({namespaces:e,requiredNamespaces:t})=>{const s=this.formatChainId(this.chainId);return t?!!t[this.namespace]?.chains?.includes(s):!!e?.[this.namespace]?.accounts.some(r=>r.startsWith(s))})}getRequiredNamespaces(){const e=[this.formatChainId(this.chainId)];return{[this.namespace]:{chains:e,methods:this.methods,events:this.events}}}isCompatibleChainId(e){return typeof e=="string"?e.startsWith(`${this.namespace}:`):!1}setChainIds(e){const s=e.filter(r=>this.isCompatibleChainId(r)).map(r=>this.parseChainId(r)).filter(r=>r!==this.chainId);s.length&&(this.chainId=s[0],this.eventEmitter.emit("chainChanged",this.chainId))}setChainId(e){if(this.isCompatibleChainId(e)){const t=this.parseChainId(e);this.chainId=t,this.eventEmitter.emit("chainChanged",this.chainId)}}parseAccountId(e){const[t,s,r]=e.split(":");return{chainId:`${t}:${s}`,address:r}}getSignerConnection(e){return new Kv({requiredNamespaces:{[this.namespace]:{chains:this.rpc.chains,methods:this.rpc.methods,events:this.rpc.events}},client:e})}registerEventListeners(){this.rpcProvider.on("connect",()=>{const{chains:e,accounts:t}=this.signerConnection;e?.length&&this.setChainIds(e),t?.length&&this.setAccounts(t)}),this.signerConnection.on(Gt.created,this.updateSession),this.signerConnection.on(Gt.updated,this.updateSession),this.signerConnection.on(Gt.event,e=>{if(!this.rpc.chains.includes(e.chainId))return;const{event:t}=e;t.name==="accountsChanged"?(this.accounts=t.data,this.eventEmitter.emit("accountsChanged",this.accounts)):t.name==="chainChanged"?this.setChainId(t.data):this.eventEmitter.emit(t.name,t.data)}),this.rpcProvider.on("disconnect",()=>{this.eventEmitter.emit("disconnect")})}}class Ha extends $i.Account{constructor(e,t,s,r){super(e,t,s),this.wallet=r}async execute(e,t=void 0,s={}){return e=Array.isArray(e)?e:[e],await this.wallet.starknet_requestAddInvokeTransaction({accountAddress:this.address,executionRequest:{calls:e,abis:t,invocationDetails:s}})}async declare(e,t){throw new Error("Not supported via Argent Login")}async deployAccount(e,t){throw new Error("Not supported via Argent Login")}}class Qv{constructor(e){this.wallet=e}async getPubKey(){throw new Error("Not supported via Argent Login")}async signMessage(e,t){const{signature:s}=await this.wallet.starknet_signTypedData({accountAddress:t,typedData:e});return s}async signTransaction(e,t,s){throw new Error("Not supported via Argent Login")}async signDeployAccountTransaction(e){throw new Error("Not supported via Argent Login")}async signDeclareTransaction(e){throw new Error("Not supported via Argent Login")}}const Xv=i=>i.replace(/^SN_/,"SN"),Zv=i=>i.replace(/^SN/,"SN_");class e_ extends Jv{constructor({client:t,chainId:s,rpcUrl:r,provider:n}){super();we(this,"id","argentMobile");we(this,"name","Argent Mobile");we(this,"version","0.1.0");we(this,"icon","");we(this,"provider");we(this,"signer");we(this,"account");we(this,"selectedAddress","");we(this,"namespace","starknet");we(this,"methods",["starknet_signTypedData","starknet_requestAddInvokeTransaction"]);we(this,"events",["chainChanged","accountsChanged"]);we(this,"remoteSigner");we(this,"signerConnection");we(this,"rpcProvider");we(this,"chainId");we(this,"client");we(this,"session");we(this,"rpc");we(this,"walletRpc");we(this,"on",(t,s)=>{this.eventEmitter.on(t,s)});we(this,"off",(t,s)=>{this.eventEmitter.off(t,s)});this.chainId=String(s??$i.constants.NetworkName.SN_MAIN),this.rpc={chains:s?[this.formatChainId(this.chainId)]:[],methods:this.methods,events:this.events},this.signerConnection=this.getSignerConnection(t),this.rpcProvider=new _n(this.signerConnection),this.client=t,this.registerEventListeners(),this.walletRpc=new Proxy({},{get:(o,c)=>u=>this.requestWallet({method:c,params:u})}),this.remoteSigner=new Qv(this.walletRpc),this.provider=n||new $i.RpcProvider({nodeUrl:r}),this.account=new Ha(this.provider,"",this.remoteSigner,this.walletRpc)}getNetworkName(t){if(t==="SN_SEPOLIA")return $i.constants.NetworkName.SN_SEPOLIA;if(t==="SN_MAIN")return $i.constants.NetworkName.SN_MAIN;throw new Error(`Unknown starknet.js network name for chainId ${t}`)}async request(t){throw new Error("Not implemented: .request()")}async enable(){return await this.rpcProvider.connect(),this.accounts}get isConnected(){return!0}async isPreauthorized(){return!!this.client.session.getAll().find(this.isValidSession)}async requestWallet(t){if(!this.session)throw new Error("No session");try{const{topic:s}=this.session,r=this.formatChainId(this.chainId);kt.showApprovalModal(t);const n=await this.client.request({topic:s,chainId:r,request:t});return kt.closeModal("animateSuccess"),n}catch(s){throw kt.closeModal(),s instanceof Error?new Error(s.message):new Error("Unknow error on requestWallet")}}get isConnecting(){return this.signerConnection.connecting}async disable(){await this.rpcProvider.disconnect()}get isWalletConnect(){return!0}registerEventListeners(){super.registerEventListeners(),this.eventEmitter.on("chainChanged",t=>{throw new Error("Not implemented: chainChanged")})}formatChainId(t){return`${this.namespace}:${Xv(t)}`}parseChainId(t){return Zv(t.split(":")[1])}setAccounts(t){this.accounts=t.filter(n=>this.parseChainId(this.parseAccountId(n).chainId)===this.chainId).map(n=>this.parseAccountId(n).address);const{address:s}=this.parseAccountId(t[0]),r=s.startsWith("0x")?s:`0x${s}`;this.account=new Ha(this.provider,r,this.remoteSigner,this.walletRpc),this.eventEmitter.emit("accountsChanged",this.accounts),this.selectedAddress=r}}const t_=async i=>Dm(i,e_);exports.getStarknetWindowObject=t_;
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./index-6f5141f0.cjs":4,"./lastConnected-080a1315.cjs":6,"./publicRcpNodes-77022e83.cjs":7,"_process":1,"starknet":undefined,"ws":9}],3:[function(require,module,exports){
-"use strict";var s=Object.defineProperty;var o=(n,i,t)=>i in n?s(n,i,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[i]=t;var N=(n,i,t)=>(o(n,typeof i!="symbol"?i+"":i,t),t);const a=BrowserStarknet.starknet,M=require("./lastConnected-080a1315.cjs"),r="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE4LjQwMTggNy41NTU1NkgxMy41OTgyQzEzLjQzNzcgNy41NTU1NiAxMy4zMDkxIDcuNjg3NDcgMTMuMzA1NiA3Ljg1MTQzQzEzLjIwODUgMTIuNDYwMyAxMC44NDg0IDE2LjgzNDcgNi43ODYwOCAxOS45MzMxQzYuNjU3MTEgMjAuMDMxNCA2LjYyNzczIDIwLjIxNjIgNi43MjIwMiAyMC4zNDkzTDkuNTMyNTMgMjQuMzE5NkM5LjYyODE1IDI0LjQ1NDggOS44MTQ0NCAyNC40ODUzIDkuOTQ1NTggMjQuMzg2QzEyLjQ4NTYgMjIuNDYxMyAxNC41Mjg3IDIwLjEzOTUgMTYgMTcuNTY2QzE3LjQ3MTMgMjAuMTM5NSAxOS41MTQ1IDIyLjQ2MTMgMjIuMDU0NSAyNC4zODZDMjIuMTg1NiAyNC40ODUzIDIyLjM3MTkgMjQuNDU0OCAyMi40Njc2IDI0LjMxOTZMMjUuMjc4MSAyMC4zNDkzQzI1LjM3MjMgMjAuMjE2MiAyNS4zNDI5IDIwLjAzMTQgMjUuMjE0IDE5LjkzMzFDMjEuMTUxNiAxNi44MzQ3IDE4Ljc5MTUgMTIuNDYwMyAxOC42OTQ2IDcuODUxNDNDMTguNjkxMSA3LjY4NzQ3IDE4LjU2MjMgNy41NTU1NiAxOC40MDE4IDcuNTU1NTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQuNzIzNiAxMC40OTJMMjQuMjIzMSA4LjkyNDM5QzI0LjEyMTMgOC42MDYxNCAyMy44NzM0IDguMzU4MjQgMjMuNTU3NyA4LjI2MDIzTDIyLjAwMzkgNy43NzU5NUMyMS43ODk1IDcuNzA5MDYgMjEuNzg3MyA3LjQwMTc3IDIyLjAwMTEgNy4zMzIwMUwyMy41NDY5IDYuODI0NjZDMjMuODYwOSA2LjcyMTQ2IDI0LjEwNiA2LjQ2OTUyIDI0LjIwMjcgNi4xNTAxMUwyNC42Nzk4IDQuNTc1MDJDMjQuNzQ1OCA0LjM1NzA5IDI1LjA0ODkgNC4zNTQ3NyAyNS4xMTgzIDQuNTcxNTZMMjUuNjE4OCA2LjEzOTE1QzI1LjcyMDYgNi40NTc0IDI1Ljk2ODYgNi43MDUzMSAyNi4yODQyIDYuODAzOUwyNy44MzggNy4yODc2MUMyOC4wNTI0IDcuMzU0NSAyOC4wNTQ3IDcuNjYxNzkgMjcuODQwOCA3LjczMjEzTDI2LjI5NSA4LjIzOTQ4QzI1Ljk4MTEgOC4zNDIxIDI1LjczNiA4LjU5NDA0IDI1LjYzOTMgOC45MTQwMkwyNS4xNjIxIDEwLjQ4ODVDMjUuMDk2MSAxMC43MDY1IDI0Ljc5MyAxMC43MDg4IDI0LjcyMzYgMTAuNDkyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==",D="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iYmxhY2siPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+",g="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0id2hpdGUiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+Cg==";class u extends M.Connector{constructor({options:t}){super();N(this,"_wallet");N(this,"_options");this._options=t}available(){return this.ensureWallet(),this._wallet!==void 0}async ready(){return this.ensureWallet(),this._wallet?await this._wallet.isPreauthorized():!1}async chainId(){if(this.ensureWallet(),!this._wallet)throw new M.ConnectorNotConnectedError;const t=await this._wallet.provider.getChainId();return BigInt(t)}async onAccountsChanged(t){let e;if(typeof t=="string"?e=t:e=t[0],e){const c=await this.chainId();this.emit("change",{account:e,chainId:c})}else this.emit("disconnect")}onNetworkChanged(t){switch(t){case"SN_MAIN":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_MAIN)});break;case"SN_SEPOLIA":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_SEPOLIA)});break;case"mainnet-alpha":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_MAIN)});break;case"sepolia-alpha":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_SEPOLIA)});break;default:this.emit("change",{});break}}async connect(){if(this.ensureWallet(),!this._wallet)throw new M.ConnectorNotFoundError;let t;try{t=await this._wallet.enable({starknetVersion:"v5"});const{provider:I}=this._options;I&&Object.assign(this._wallet.account,{provider:I})}catch{throw new M.UserRejectedRequestError}if(!this._wallet.isConnected||!t)throw new M.UserRejectedRequestError;this._wallet.on("accountsChanged",async I=>{await this.onAccountsChanged(I)}),this._wallet.on("networkChanged",I=>{this.onNetworkChanged(I)}),await this.onAccountsChanged(t);const e=this._wallet.account.address,c=await this.chainId();return this.emit("connect",{account:e,chainId:c}),{account:e,chainId:c}}async disconnect(){if(this.ensureWallet(),M.removeStarknetLastConnectedWallet(),!this.available())throw new M.ConnectorNotFoundError;if(!this._wallet?.isConnected)throw new M.UserNotConnectedError}async account(){if(this.ensureWallet(),!this._wallet||!this._wallet.account)throw new M.ConnectorNotConnectedError;return this._wallet.account}get id(){return this._options.id}get name(){if(!this._wallet)throw new M.ConnectorNotConnectedError;return this._wallet.name}get icon(){return this._options.icon?this._options.icon:this._wallet?.icon?{dark:this._wallet.icon,light:this._wallet.icon}:{dark:g,light:D}}get wallet(){if(!this._wallet)throw new M.ConnectorNotConnectedError;return this._wallet}ensureWallet(){const e=j(globalThis).filter(c=>c.id===this._options.id)[0];if(e){const{provider:c}=this._options;c&&Object.assign(e,{provider:c}),this._wallet=e}}}function j(n){return Object.values(Object.getOwnPropertyNames(n).reduce((i,t)=>{if(t.startsWith("starknet")){const e=n[t];l(e)&&!i[e.id]&&(i[e.id]=e)}return i},{}))}function l(n){try{return n&&["request","isConnected","provider","enable","isPreauthorized","on","off","version","id","name","icon"].every(i=>i in n)}catch{}return!1}exports.ARGENT_X_ICON=r;exports.InjectedConnector=u;
+},{"./index-6f5141f0.cjs":6,"./lastConnected-080a1315.cjs":11,"./publicRcpNodes-77022e83.cjs":13,"_process":1,"starknet":undefined,"ws":17}],4:[function(require,module,exports){
+"use strict";
 
-},{"./lastConnected-080a1315.cjs":6,"starknet":undefined}],4:[function(require,module,exports){
-"use strict";var b=Object.defineProperty;var v=(e,o,t)=>o in e?b(e,o,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[o]=t;var l=(e,o,t)=>(v(e,typeof o!="symbol"?o+"":o,t),t);const h=BrowserStarknet.starknet,n=require("./lastConnected-080a1315.cjs"),m=require("./publicRcpNodes-77022e83.cjs"),d="f2e613881f7a0e811295cdd57999e31b",u=`<svg
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.I = exports.A = void 0;
+var _starknet = require("starknet");
+var _lastConnectedB964dc = require("./lastConnected-b964dc30.js");
+var g = Object.defineProperty;
+var o = (M, e, t) => e in M ? g(M, e, {
+  enumerable: !0,
+  configurable: !0,
+  writable: !0,
+  value: t
+}) : M[e] = t;
+var N = (M, e, t) => (o(M, typeof e != "symbol" ? e + "" : e, t), t);
+const d = exports.A = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE4LjQwMTggNy41NTU1NkgxMy41OTgyQzEzLjQzNzcgNy41NTU1NiAxMy4zMDkxIDcuNjg3NDcgMTMuMzA1NiA3Ljg1MTQzQzEzLjIwODUgMTIuNDYwMyAxMC44NDg0IDE2LjgzNDcgNi43ODYwOCAxOS45MzMxQzYuNjU3MTEgMjAuMDMxNCA2LjYyNzczIDIwLjIxNjIgNi43MjIwMiAyMC4zNDkzTDkuNTMyNTMgMjQuMzE5NkM5LjYyODE1IDI0LjQ1NDggOS44MTQ0NCAyNC40ODUzIDkuOTQ1NTggMjQuMzg2QzEyLjQ4NTYgMjIuNDYxMyAxNC41Mjg3IDIwLjEzOTUgMTYgMTcuNTY2QzE3LjQ3MTMgMjAuMTM5NSAxOS41MTQ1IDIyLjQ2MTMgMjIuMDU0NSAyNC4zODZDMjIuMTg1NiAyNC40ODUzIDIyLjM3MTkgMjQuNDU0OCAyMi40Njc2IDI0LjMxOTZMMjUuMjc4MSAyMC4zNDkzQzI1LjM3MjMgMjAuMjE2MiAyNS4zNDI5IDIwLjAzMTQgMjUuMjE0IDE5LjkzMzFDMjEuMTUxNiAxNi44MzQ3IDE4Ljc5MTUgMTIuNDYwMyAxOC42OTQ2IDcuODUxNDNDMTguNjkxMSA3LjY4NzQ3IDE4LjU2MjMgNy41NTU1NiAxOC40MDE4IDcuNTU1NTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQuNzIzNiAxMC40OTJMMjQuMjIzMSA4LjkyNDM5QzI0LjEyMTMgOC42MDYxNCAyMy44NzM0IDguMzU4MjQgMjMuNTU3NyA4LjI2MDIzTDIyLjAwMzkgNy43NzU5NUMyMS43ODk1IDcuNzA5MDYgMjEuNzg3MyA3LjQwMTc3IDIyLjAwMTEgNy4zMzIwMUwyMy41NDY5IDYuODI0NjZDMjMuODYwOSA2LjcyMTQ2IDI0LjEwNiA2LjQ2OTUyIDI0LjIwMjcgNi4xNTAxMUwyNC42Nzk4IDQuNTc1MDJDMjQuNzQ1OCA0LjM1NzA5IDI1LjA0ODkgNC4zNTQ3NyAyNS4xMTgzIDQuNTcxNTZMMjUuNjE4OCA2LjEzOTE1QzI1LjcyMDYgNi40NTc0IDI1Ljk2ODYgNi43MDUzMSAyNi4yODQyIDYuODAzOUwyNy44MzggNy4yODc2MUMyOC4wNTI0IDcuMzU0NSAyOC4wNTQ3IDcuNjYxNzkgMjcuODQwOCA3LjczMjEzTDI2LjI5NSA4LjIzOTQ4QzI1Ljk4MTEgOC4zNDIxIDI1LjczNiA4LjU5NDA0IDI1LjYzOTMgOC45MTQwMkwyNS4xNjIxIDEwLjQ4ODVDMjUuMDk2MSAxMC43MDY1IDI0Ljc5MyAxMC43MDg4IDI0LjcyMzYgMTAuNDkyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==",
+  l = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iYmxhY2siPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+",
+  h = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0id2hpdGUiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+Cg==";
+class L extends _lastConnectedB964dc.C {
+  constructor({
+    options: t
+  }) {
+    super();
+    N(this, "_wallet");
+    N(this, "_options");
+    this._options = t;
+  }
+  available() {
+    return this.ensureWallet(), this._wallet !== void 0;
+  }
+  async ready() {
+    return this.ensureWallet(), this._wallet ? await this._wallet.isPreauthorized() : !1;
+  }
+  async chainId() {
+    if (this.ensureWallet(), !this._wallet) throw new _lastConnectedB964dc.a();
+    const t = await this._wallet.provider.getChainId();
+    return BigInt(t);
+  }
+  async onAccountsChanged(t) {
+    let i;
+    if (typeof t == "string" ? i = t : i = t[0], i) {
+      const n = await this.chainId();
+      this.emit("change", {
+        account: i,
+        chainId: n
+      });
+    } else this.emit("disconnect");
+  }
+  onNetworkChanged(t) {
+    switch (t) {
+      case "SN_MAIN":
+        this.emit("change", {
+          chainId: BigInt(_starknet.constants.StarknetChainId.SN_MAIN)
+        });
+        break;
+      case "SN_SEPOLIA":
+        this.emit("change", {
+          chainId: BigInt(_starknet.constants.StarknetChainId.SN_SEPOLIA)
+        });
+        break;
+      case "mainnet-alpha":
+        this.emit("change", {
+          chainId: BigInt(_starknet.constants.StarknetChainId.SN_MAIN)
+        });
+        break;
+      case "sepolia-alpha":
+        this.emit("change", {
+          chainId: BigInt(_starknet.constants.StarknetChainId.SN_SEPOLIA)
+        });
+        break;
+      default:
+        this.emit("change", {});
+        break;
+    }
+  }
+  async connect() {
+    if (this.ensureWallet(), !this._wallet) throw new _lastConnectedB964dc.b();
+    let t;
+    try {
+      t = await this._wallet.enable({
+        starknetVersion: "v5"
+      });
+      const {
+        provider: a
+      } = this._options;
+      a && Object.assign(this._wallet.account, {
+        provider: a
+      });
+    } catch {
+      throw new _lastConnectedB964dc.U();
+    }
+    if (!this._wallet.isConnected || !t) throw new _lastConnectedB964dc.U();
+    this._wallet.on("accountsChanged", async a => {
+      await this.onAccountsChanged(a);
+    }), this._wallet.on("networkChanged", a => {
+      this.onNetworkChanged(a);
+    }), await this.onAccountsChanged(t);
+    const i = this._wallet.account.address,
+      n = await this.chainId();
+    return this.emit("connect", {
+      account: i,
+      chainId: n
+    }), {
+      account: i,
+      chainId: n
+    };
+  }
+  async disconnect() {
+    if (this.ensureWallet(), (0, _lastConnectedB964dc.r)(), !this.available()) throw new _lastConnectedB964dc.b();
+    if (!this._wallet?.isConnected) throw new _lastConnectedB964dc.d();
+  }
+  async account() {
+    if (this.ensureWallet(), !this._wallet || !this._wallet.account) throw new _lastConnectedB964dc.a();
+    return this._wallet.account;
+  }
+  get id() {
+    return this._options.id;
+  }
+  get name() {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    return this._wallet.name;
+  }
+  get icon() {
+    return this._options.icon ? this._options.icon : this._wallet?.icon ? {
+      dark: this._wallet.icon,
+      light: this._wallet.icon
+    } : {
+      dark: h,
+      light: l
+    };
+  }
+  get wallet() {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    return this._wallet;
+  }
+  ensureWallet() {
+    const i = z(globalThis).filter(n => n.id === this._options.id)[0];
+    if (i) {
+      const {
+        provider: n
+      } = this._options;
+      n && Object.assign(i, {
+        provider: n
+      }), this._wallet = i;
+    }
+  }
+}
+exports.I = L;
+function z(M) {
+  return Object.values(Object.getOwnPropertyNames(M).reduce((e, t) => {
+    if (t.startsWith("starknet")) {
+      const i = M[t];
+      A(i) && !e[i.id] && (e[i.id] = i);
+    }
+    return e;
+  }, {}));
+}
+function A(M) {
+  try {
+    return M && [
+    // wallet's must have methods/members, see IStarknetWindowObject
+    "request", "isConnected", "provider", "enable", "isPreauthorized", "on", "off", "version", "id", "name", "icon"].every(e => e in M);
+  } catch {}
+  return !1;
+}
+
+},{"./lastConnected-b964dc30.js":12,"starknet":undefined}],5:[function(require,module,exports){
+"use strict";var s=Object.defineProperty;var o=(n,i,t)=>i in n?s(n,i,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[i]=t;var N=(n,i,t)=>(o(n,typeof i!="symbol"?i+"":i,t),t);const a=require("starknet"),M=require("./lastConnected-080a1315.cjs"),r="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE4LjQwMTggNy41NTU1NkgxMy41OTgyQzEzLjQzNzcgNy41NTU1NiAxMy4zMDkxIDcuNjg3NDcgMTMuMzA1NiA3Ljg1MTQzQzEzLjIwODUgMTIuNDYwMyAxMC44NDg0IDE2LjgzNDcgNi43ODYwOCAxOS45MzMxQzYuNjU3MTEgMjAuMDMxNCA2LjYyNzczIDIwLjIxNjIgNi43MjIwMiAyMC4zNDkzTDkuNTMyNTMgMjQuMzE5NkM5LjYyODE1IDI0LjQ1NDggOS44MTQ0NCAyNC40ODUzIDkuOTQ1NTggMjQuMzg2QzEyLjQ4NTYgMjIuNDYxMyAxNC41Mjg3IDIwLjEzOTUgMTYgMTcuNTY2QzE3LjQ3MTMgMjAuMTM5NSAxOS41MTQ1IDIyLjQ2MTMgMjIuMDU0NSAyNC4zODZDMjIuMTg1NiAyNC40ODUzIDIyLjM3MTkgMjQuNDU0OCAyMi40Njc2IDI0LjMxOTZMMjUuMjc4MSAyMC4zNDkzQzI1LjM3MjMgMjAuMjE2MiAyNS4zNDI5IDIwLjAzMTQgMjUuMjE0IDE5LjkzMzFDMjEuMTUxNiAxNi44MzQ3IDE4Ljc5MTUgMTIuNDYwMyAxOC42OTQ2IDcuODUxNDNDMTguNjkxMSA3LjY4NzQ3IDE4LjU2MjMgNy41NTU1NiAxOC40MDE4IDcuNTU1NTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQuNzIzNiAxMC40OTJMMjQuMjIzMSA4LjkyNDM5QzI0LjEyMTMgOC42MDYxNCAyMy44NzM0IDguMzU4MjQgMjMuNTU3NyA4LjI2MDIzTDIyLjAwMzkgNy43NzU5NUMyMS43ODk1IDcuNzA5MDYgMjEuNzg3MyA3LjQwMTc3IDIyLjAwMTEgNy4zMzIwMUwyMy41NDY5IDYuODI0NjZDMjMuODYwOSA2LjcyMTQ2IDI0LjEwNiA2LjQ2OTUyIDI0LjIwMjcgNi4xNTAxMUwyNC42Nzk4IDQuNTc1MDJDMjQuNzQ1OCA0LjM1NzA5IDI1LjA0ODkgNC4zNTQ3NyAyNS4xMTgzIDQuNTcxNTZMMjUuNjE4OCA2LjEzOTE1QzI1LjcyMDYgNi40NTc0IDI1Ljk2ODYgNi43MDUzMSAyNi4yODQyIDYuODAzOUwyNy44MzggNy4yODc2MUMyOC4wNTI0IDcuMzU0NSAyOC4wNTQ3IDcuNjYxNzkgMjcuODQwOCA3LjczMjEzTDI2LjI5NSA4LjIzOTQ4QzI1Ljk4MTEgOC4zNDIxIDI1LjczNiA4LjU5NDA0IDI1LjYzOTMgOC45MTQwMkwyNS4xNjIxIDEwLjQ4ODVDMjUuMDk2MSAxMC43MDY1IDI0Ljc5MyAxMC43MDg4IDI0LjcyMzYgMTAuNDkyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==",D="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iYmxhY2siPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+",g="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0id2hpdGUiPgogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTkuODc5IDcuNTE5YzEuMTcxLTEuMDI1IDMuMDcxLTEuMDI1IDQuMjQyIDAgMS4xNzIgMS4wMjUgMS4xNzIgMi42ODcgMCAzLjcxMi0uMjAzLjE3OS0uNDMuMzI2LS42Ny40NDItLjc0NS4zNjEtMS40NS45OTktMS40NSAxLjgyN3YuNzVNMjEgMTJhOSA5IDAgMTEtMTggMCA5IDkgMCAwMTE4IDB6bS05IDUuMjVoLjAwOHYuMDA4SDEydi0uMDA4eiIgLz4KPC9zdmc+Cg==";class u extends M.Connector{constructor({options:t}){super();N(this,"_wallet");N(this,"_options");this._options=t}available(){return this.ensureWallet(),this._wallet!==void 0}async ready(){return this.ensureWallet(),this._wallet?await this._wallet.isPreauthorized():!1}async chainId(){if(this.ensureWallet(),!this._wallet)throw new M.ConnectorNotConnectedError;const t=await this._wallet.provider.getChainId();return BigInt(t)}async onAccountsChanged(t){let e;if(typeof t=="string"?e=t:e=t[0],e){const c=await this.chainId();this.emit("change",{account:e,chainId:c})}else this.emit("disconnect")}onNetworkChanged(t){switch(t){case"SN_MAIN":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_MAIN)});break;case"SN_SEPOLIA":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_SEPOLIA)});break;case"mainnet-alpha":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_MAIN)});break;case"sepolia-alpha":this.emit("change",{chainId:BigInt(a.constants.StarknetChainId.SN_SEPOLIA)});break;default:this.emit("change",{});break}}async connect(){if(this.ensureWallet(),!this._wallet)throw new M.ConnectorNotFoundError;let t;try{t=await this._wallet.enable({starknetVersion:"v5"});const{provider:I}=this._options;I&&Object.assign(this._wallet.account,{provider:I})}catch{throw new M.UserRejectedRequestError}if(!this._wallet.isConnected||!t)throw new M.UserRejectedRequestError;this._wallet.on("accountsChanged",async I=>{await this.onAccountsChanged(I)}),this._wallet.on("networkChanged",I=>{this.onNetworkChanged(I)}),await this.onAccountsChanged(t);const e=this._wallet.account.address,c=await this.chainId();return this.emit("connect",{account:e,chainId:c}),{account:e,chainId:c}}async disconnect(){if(this.ensureWallet(),M.removeStarknetLastConnectedWallet(),!this.available())throw new M.ConnectorNotFoundError;if(!this._wallet?.isConnected)throw new M.UserNotConnectedError}async account(){if(this.ensureWallet(),!this._wallet||!this._wallet.account)throw new M.ConnectorNotConnectedError;return this._wallet.account}get id(){return this._options.id}get name(){if(!this._wallet)throw new M.ConnectorNotConnectedError;return this._wallet.name}get icon(){return this._options.icon?this._options.icon:this._wallet?.icon?{dark:this._wallet.icon,light:this._wallet.icon}:{dark:g,light:D}}get wallet(){if(!this._wallet)throw new M.ConnectorNotConnectedError;return this._wallet}ensureWallet(){const e=j(globalThis).filter(c=>c.id===this._options.id)[0];if(e){const{provider:c}=this._options;c&&Object.assign(e,{provider:c}),this._wallet=e}}}function j(n){return Object.values(Object.getOwnPropertyNames(n).reduce((i,t)=>{if(t.startsWith("starknet")){const e=n[t];l(e)&&!i[e.id]&&(i[e.id]=e)}return i},{}))}function l(n){try{return n&&["request","isConnected","provider","enable","isPreauthorized","on","off","version","id","name","icon"].every(i=>i in n)}catch{}return!1}exports.ARGENT_X_ICON=r;exports.InjectedConnector=u;
+
+},{"./lastConnected-080a1315.cjs":11,"starknet":undefined}],6:[function(require,module,exports){
+"use strict";var b=Object.defineProperty;var v=(e,o,t)=>o in e?b(e,o,{enumerable:!0,configurable:!0,writable:!0,value:t}):e[o]=t;var l=(e,o,t)=>(v(e,typeof o!="symbol"?o+"":o,t),t);const h=require("starknet"),n=require("./lastConnected-080a1315.cjs"),m=require("./publicRcpNodes-77022e83.cjs"),d="f2e613881f7a0e811295cdd57999e31b",u=`<svg
     width="32"
     height="32"
     viewBox="0 0 32 32"
@@ -242,9 +433,151 @@ PERFORMANCE OF THIS SOFTWARE.
     />
   </svg>`,y=()=>Object.keys(localStorage).some(e=>e==="walletconnect"||e.startsWith("wc@2:")),c=()=>{if(y()){delete localStorage.walletconnect;for(const e in localStorage)e.startsWith("wc@2:")&&delete localStorage[e]}},A=()=>window?.starknet_argentX?window?.starknet_argentX?.isInAppBrowser:!1;class k extends n.Connector{constructor(t={}){super();l(this,"_wallet",null);l(this,"_options");this._options=t}available(){return!0}async ready(){return await this.ensureWallet(),this._wallet?this._wallet.isPreauthorized():!1}get id(){return"argentMobile"}get name(){return"Argent (mobile)"}get icon(){return{dark:u,light:u}}get wallet(){if(!this._wallet)throw new n.ConnectorNotConnectedError;return this._wallet}async connect(){if(await this.ensureWallet(),!this._wallet)throw new n.ConnectorNotFoundError;const t=this._wallet.account,r=await this.chainId();return{account:t.address,chainId:r}}async disconnect(){if(await this._wallet.disable(),c(),!this.available()&&!this._wallet)throw new n.ConnectorNotFoundError;if(!this._wallet?.isConnected)throw new n.UserNotConnectedError;this._wallet=null}async account(){if(!this._wallet||!this._wallet.account)throw new n.ConnectorNotConnectedError;return this._wallet.account}async chainId(){if(!this._wallet||!this.wallet.account||!this._wallet.provider)throw new n.ConnectorNotConnectedError;const t=await this._wallet.provider.getChainId();return BigInt(t)}async initEventListener(t){if(!this._wallet)throw new n.ConnectorNotConnectedError;this._wallet.on("accountsChanged",t)}async removeEventListener(t){if(!this._wallet)throw new n.ConnectorNotConnectedError;this._wallet.off("accountsChanged",t),this._wallet=null}async ensureWallet(){const{getStarknetWindowObject:t}=await Promise.resolve().then(()=>require("./index-03381a57.cjs")),{chainId:r,projectId:a,dappName:C,description:_,url:g,icons:p,provider:f,rpcUrl:I}=this._options,s=m.getRandomPublicRPCNode(),N=I??(!r||r===h.constants.NetworkName.SN_MAIN?s.mainnet:s.testnet),E={chainId:r??h.constants.NetworkName.SN_MAIN,name:C,projectId:a??d,description:_,url:g,icons:p,provider:f,rpcUrl:N};a===d&&(console.log("========= NOTICE ========="),console.log("While your application will continue to function, we highly recommended"),console.log("signing up for your own API keys."),console.log("Go to WalletConnect Cloud (https://cloud.walletconnect.com) and create a new account."),console.log("Once your account is created, create a new project and collect the Project ID"),console.log("=========================="));const i=await t(E);if(!i)throw new n.UserRejectedRequestError;this._wallet=i;const w=this._wallet;await w.enable(),w.client.on("session_delete",()=>{c(),this._wallet=null,n.removeStarknetLastConnectedWallet(),document.dispatchEvent(new Event("wallet_disconnected"))})}}exports.ArgentMobileConnector=k;exports.isInArgentMobileAppBrowser=A;exports.resetWalletConnect=c;
 
-},{"./index-03381a57.cjs":2,"./lastConnected-080a1315.cjs":6,"./publicRcpNodes-77022e83.cjs":7,"starknet":undefined}],5:[function(require,module,exports){
+},{"./index-03381a57.cjs":3,"./lastConnected-080a1315.cjs":11,"./publicRcpNodes-77022e83.cjs":13,"starknet":undefined}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.r = exports.i = exports.A = void 0;
+var _starknet = require("starknet");
+var _lastConnectedB964dc = require("./lastConnected-b964dc30.js");
+var _publicRcpNodesBe = require("./publicRcpNodes-be041588.js");
+var b = Object.defineProperty;
+var y = (e, n, t) => n in e ? b(e, n, {
+  enumerable: !0,
+  configurable: !0,
+  writable: !0,
+  value: t
+}) : e[n] = t;
+var l = (e, n, t) => (y(e, typeof n != "symbol" ? n + "" : n, t), t);
+const d = "f2e613881f7a0e811295cdd57999e31b",
+  u = `<svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#FF875B" />
+    <path
+      d="M18.316 8H13.684C13.5292 8 13.4052 8.1272 13.4018 8.28531C13.3082 12.7296 11.0323 16.9477 7.11513 19.9355C6.99077 20.0303 6.96243 20.2085 7.05335 20.3369L9.76349 24.1654C9.85569 24.2957 10.0353 24.3251 10.1618 24.2294C12.6111 22.3734 14.5812 20.1345 16 17.6529C17.4187 20.1345 19.389 22.3734 21.8383 24.2294C21.9646 24.3251 22.1443 24.2957 22.2366 24.1654L24.9467 20.3369C25.0375 20.2085 25.0092 20.0303 24.885 19.9355C20.9676 16.9477 18.6918 12.7296 18.5983 8.28531C18.5949 8.1272 18.4708 8 18.316 8Z"
+      fill="white"
+    />
+  </svg>`,
+  R = () => Object.keys(localStorage).some(e => e === "walletconnect" || e.startsWith("wc@2:")),
+  _ = () => {
+    if (R()) {
+      delete localStorage.walletconnect;
+      for (const e in localStorage) e.startsWith("wc@2:") && delete localStorage[e];
+    }
+  },
+  j = () => window?.starknet_argentX ? window?.starknet_argentX?.isInAppBrowser : !1;
+exports.i = j;
+exports.r = _;
+class O extends _lastConnectedB964dc.C {
+  constructor(t = {}) {
+    super();
+    l(this, "_wallet", null);
+    l(this, "_options");
+    this._options = t;
+  }
+  available() {
+    return !0;
+  }
+  async ready() {
+    return await this.ensureWallet(), this._wallet ? this._wallet.isPreauthorized() : !1;
+  }
+  get id() {
+    return "argentMobile";
+  }
+  get name() {
+    return "Argent (mobile)";
+  }
+  get icon() {
+    return {
+      dark: u,
+      light: u
+    };
+  }
+  get wallet() {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    return this._wallet;
+  }
+  async connect() {
+    if (await this.ensureWallet(), !this._wallet) throw new _lastConnectedB964dc.b();
+    const t = this._wallet.account,
+      o = await this.chainId();
+    return {
+      account: t.address,
+      chainId: o
+    };
+  }
+  async disconnect() {
+    if (await this._wallet.disable(), _(), !this.available() && !this._wallet) throw new _lastConnectedB964dc.b();
+    if (!this._wallet?.isConnected) throw new _lastConnectedB964dc.d();
+    this._wallet = null;
+  }
+  async account() {
+    if (!this._wallet || !this._wallet.account) throw new _lastConnectedB964dc.a();
+    return this._wallet.account;
+  }
+  async chainId() {
+    if (!this._wallet || !this.wallet.account || !this._wallet.provider) throw new _lastConnectedB964dc.a();
+    const t = await this._wallet.provider.getChainId();
+    return BigInt(t);
+  }
+  // needed, methods required by starknet-react. Otherwise an exception is throwd
+  async initEventListener(t) {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    this._wallet.on("accountsChanged", t);
+  }
+  // needed, methods required by starknet-react. Otherwise an exception is throwd
+  async removeEventListener(t) {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    this._wallet.off("accountsChanged", t), this._wallet = null;
+  }
+  async ensureWallet() {
+    const {
+        getStarknetWindowObject: t
+      } = await import("./index-00451f1a.js"),
+      {
+        chainId: o,
+        projectId: r,
+        dappName: g,
+        description: p,
+        url: C,
+        icons: f,
+        provider: m,
+        rpcUrl: I
+      } = this._options,
+      s = (0, _publicRcpNodesBe.g)(),
+      v = I ?? (!o || o === _starknet.constants.NetworkName.SN_MAIN ? s.mainnet : s.testnet),
+      N = {
+        chainId: o ?? _starknet.constants.NetworkName.SN_MAIN,
+        name: g,
+        projectId: r ?? d,
+        description: p,
+        url: C,
+        icons: f,
+        provider: m,
+        rpcUrl: v
+      };
+    r === d && (console.log("========= NOTICE ========="), console.log("While your application will continue to function, we highly recommended"), console.log("signing up for your own API keys."), console.log("Go to WalletConnect Cloud (https://cloud.walletconnect.com) and create a new account."), console.log("Once your account is created, create a new project and collect the Project ID"), console.log("=========================="));
+    const i = await t(N);
+    if (!i) throw new _lastConnectedB964dc.U();
+    this._wallet = i;
+    const c = this._wallet;
+    await c.enable(), c.client.on("session_delete", () => {
+      _(), this._wallet = null, (0, _lastConnectedB964dc.r)(), document.dispatchEvent(new Event("wallet_disconnected"));
+    });
+  }
+}
+exports.A = O;
+
+},{"./lastConnected-b964dc30.js":12,"./publicRcpNodes-be041588.js":14,"starknet":undefined}],8:[function(require,module,exports){
 (function (process){(function (){
-"use strict";var tn=Object.defineProperty;var rn=(t,e,r)=>e in t?tn(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[e]=r;var ae=(t,e,r)=>(rn(t,typeof e!="symbol"?e+"":e,r),r);const S=require("./lastConnected-080a1315.cjs"),Ye=BrowserStarknet.starknet,nn=require("./publicRcpNodes-77022e83.cjs"),kt="https://web.argent.xyz",Zt=`<svg
+"use strict";var tn=Object.defineProperty;var rn=(t,e,r)=>e in t?tn(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[e]=r;var ae=(t,e,r)=>(rn(t,typeof e!="symbol"?e+"":e,r),r);const S=require("./lastConnected-080a1315.cjs"),Ye=require("starknet"),nn=require("./publicRcpNodes-77022e83.cjs"),kt="https://web.argent.xyz",Zt=`<svg
     width="32"
     height="28"
     viewBox="0 0 18 14"
@@ -278,15 +611,6082 @@ const result = await caller.call('myProcedure', input);
 `);if(i.length===1)n+=i[0];else if(i.length>1){e(n+i[0]);for(let c=1;c<i.length-1;c++)e(i[c]);n=i[i.length-1]}};"getReader"in t?await Ns(t,s):await Ss(t,s),e(n)}function Ss(t,e){return new Promise(r=>{t.on("data",e),t.on("end",r)})}async function Ns(t,e){const r=t.getReader();let n=await r.read();for(;!n.done;)e(n.value),n=await r.read()}const Ls=(t,e)=>{const r=t.AbortController?new t.AbortController:null,n=we.fetchHTTPResponse({...t,contentTypeHeader:"application/json",batchModeHeader:"stream",getUrl:we.getUrl,getBody:we.getBody},r),s=()=>r?.abort(),o=n.then(async a=>{if(!a.body)throw new Error("Received response without body");const i={response:a};return Os({readableStream:a.body,onSingle:e,parse:c=>({json:JSON.parse(c),meta:i}),signal:r?.signal,textDecoder:t.textDecoder})});return{cancel:s,promise:o}},Is=t=>{const e=Rs(t.opts.textDecoder);return(r,n)=>{const s=r.map(c=>c.path).join(","),o=r.map(c=>c.input),{cancel:a,promise:i}=Ls({...t,textDecoder:e,path:s,inputs:o,headers(){return t.opts.headers?typeof t.opts.headers=="function"?t.opts.headers({opList:r}):t.opts.headers:{}}},(c,u)=>{n(c,u)});return{promise:i.then(()=>[]),cancel:a}}},As=Ar.createHTTPBatchLink(Is),js=t=>{if("input"in t){if(!(t.input instanceof FormData))throw new Error("Input is not FormData");return t.input}},Ms=t=>{if(t.type!=="mutation")throw new Error("We only handle mutations with formdata");return we.httpRequest({...t,getUrl(){return`${t.url}/${t.path}`},getBody:js})},$s=Lt.httpLinkFactory({requester:Ms});O.splitLink=Lr.splitLink;O.TRPCClientError=Ir.TRPCClientError;O.getFetch=we.getFetch;O.httpBatchLink=Ar.httpBatchLink;O.httpLink=Lt.httpLink;O.httpLinkFactory=Lt.httpLinkFactory;O.loggerLink=vs.loggerLink;O.createWSClient=jr.createWSClient;O.wsLink=jr.wsLink;O.TRPCUntypedClient=nt;O.clientCallTypeToProcedureType=Mr;O.createTRPCClient=Ts;O.createTRPCClientProxy=$r;O.createTRPCProxyClient=ks;O.createTRPCUntypedClient=xs;O.experimental_formDataLink=$s;O.getUntypedClient=Cs;O.unstable_httpBatchStreamLink=As;var K={},It={};function Ds(t){return t}function Zs(t){return t.length===0?Ds:t.length===1?t[0]:function(r){return t.reduce((n,s)=>s(n),r)}}function Us(t){return typeof t=="object"&&t!==null&&"subscribe"in t}function Ws(t){const e={subscribe(r){let n=null,s=!1,o=!1,a=!1;function i(){if(n===null){a=!0;return}o||(o=!0,typeof n=="function"?n():n&&n.unsubscribe())}return n=t({next(c){s||r.next?.(c)},error(c){s||(s=!0,r.error?.(c),i())},complete(){s||(s=!0,r.complete?.(),i())}}),a&&i(),{unsubscribe:i}},pipe(...r){return Zs(r)(e)}};return e}It.isObservable=Us;It.observable=Ws;Object.defineProperty(K,"__esModule",{value:!0});var Dr=It;function qs(t){return e=>{let r=0,n=null;const s=[];function o(){n||(n=e.subscribe({next(i){for(const c of s)c.next?.(i)},error(i){for(const c of s)c.error?.(i)},complete(){for(const i of s)i.complete?.()}}))}function a(){if(r===0&&n){const i=n;n=null,i.unsubscribe()}}return{subscribe(i){return r++,s.push(i),o(),{unsubscribe(){r--,a();const c=s.findIndex(u=>u===i);c>-1&&s.splice(c,1)}}}}}}function zs(t){return e=>({subscribe(r){let n=0;return e.subscribe({next(o){r.next?.(t(o,n++))},error(o){r.error?.(o)},complete(){r.complete?.()}})}})}function Bs(t){return e=>({subscribe(r){return e.subscribe({next(n){t.next?.(n),r.next?.(n)},error(n){t.error?.(n),r.error?.(n)},complete(){t.complete?.(),r.complete?.()}})}})}class At extends Error{constructor(e){super(e),this.name="ObservableAbortError",Object.setPrototypeOf(this,At.prototype)}}function Vs(t){let e;return{promise:new Promise((n,s)=>{let o=!1;function a(){o||(o=!0,s(new At("This operation was aborted.")),i.unsubscribe())}const i=t.subscribe({next(c){o=!0,n(c),a()},error(c){o=!0,s(c),a()},complete(){o=!0,a()}});e=a}),abort:e}}K.isObservable=Dr.isObservable;K.observable=Dr.observable;K.map=zs;K.observableToPromise=Vs;K.share=qs;K.tap=Bs;var U={};Object.defineProperty(U,"__esModule",{value:!0});U.isTRPCRequestWithId=U.isTRPCRequest=U.isTRPCResponse=U.isTRPCMessage=void 0;function Kt(t){return typeof t=="object"&&t!==null&&!Array.isArray(t)}function Hs(t){return t==null}function Zr(t){return!!(Kt(t)&&"trpc"in t&&Kt(t.trpc))}U.isTRPCMessage=Zr;function jt(t){return Zr(t)&&"id"in t.trpc&&!Hs(t.trpc.id)}function Fs(t){return jt(t)&&("error"in t.trpc||"result"in t.trpc)}U.isTRPCResponse=Fs;function Ur(t){return jt(t)&&"method"in t.trpc}U.isTRPCRequest=Ur;function Js(t){return Ur(t)&&jt(t)}U.isTRPCRequestWithId=Js;Object.defineProperty(he,"__esModule",{value:!0});he.createBaseLink=void 0;const mt=O,Gs=K,Ys=U,Qs=t=>e=>({op:r})=>(0,Gs.observable)(n=>{const s=[],{id:o,type:a,path:i}=r;try{const c=e.transformer.serialize(r.input),u=()=>{n.error(new mt.TRPCClientError("Port disconnected prematurely"))};t.addCloseListener(u),s.push(()=>t.removeCloseListener(u));const l=f=>{if(!(0,Ys.isTRPCResponse)(f))return;const{trpc:m}=f;if(o===m.id){if("error"in m){const v=e.transformer.deserialize(m.error);n.error(mt.TRPCClientError.from(Object.assign(Object.assign({},m),{error:v})));return}n.next({result:Object.assign(Object.assign({},m.result),(!m.result.type||m.result.type==="data")&&{type:"data",data:e.transformer.deserialize(m.result.data)})}),(a!=="subscription"||m.result.type==="stopped")&&n.complete()}};t.addMessageListener(l),s.push(()=>t.removeMessageListener(l)),t.postMessage({trpc:{id:o,jsonrpc:void 0,method:a,params:{path:i,input:c}}})}catch(c){n.error(new mt.TRPCClientError(c instanceof Error?c.message:"Unknown error"))}return()=>{a==="subscription"&&t.postMessage({trpc:{id:o,jsonrpc:void 0,method:"subscription.stop"}}),s.forEach(c=>c())}});he.createBaseLink=Qs;Object.defineProperty(Ke,"__esModule",{value:!0});Ke.chromeLink=void 0;const Xs=he,Ks=t=>(0,Xs.createBaseLink)({postMessage(e){t.port.postMessage(e)},addMessageListener(e){t.port.onMessage.addListener(e)},removeMessageListener(e){t.port.onMessage.removeListener(e)},addCloseListener(e){t.port.onDisconnect.addListener(e)},removeCloseListener(e){t.port.onDisconnect.removeListener(e)}});Ke.chromeLink=Ks;var st={};Object.defineProperty(st,"__esModule",{value:!0});st.windowLink=void 0;const eo=he,to=t=>{var e;const r=new Map,n=t.window,s=(e=t.postWindow)!==null&&e!==void 0?e:n;return(0,eo.createBaseLink)({postMessage(o){s.postMessage(o,{targetOrigin:t.postOrigin})},addMessageListener(o){const a=i=>{o(i.data)};r.set(o,a),n.addEventListener("message",a)},removeMessageListener(o){const a=r.get(o);a&&n.removeEventListener("message",a)},addCloseListener(o){n.addEventListener("beforeunload",o)},removeCloseListener(o){n.removeEventListener("beforeunload",o)}})};st.windowLink=to;var ot={},at={};Object.defineProperty(at,"__esModule",{value:!0});at.TRPC_BROWSER_LOADED_EVENT=void 0;at.TRPC_BROWSER_LOADED_EVENT="TRPC_BROWSER::POPUP_LOADED";Object.defineProperty(ot,"__esModule",{value:!0});ot.popupLink=void 0;const ro=at,no=he,so=t=>{const e=new Map,r=new Set;let n=null;async function s(o){if(!n||n.closed){n=t.createPopup(),await Promise.race([new Promise(a=>{var i;try{(i=n?.addEventListener)===null||i===void 0||i.call(n,"load",a)}catch{}}),new Promise(a=>{o.addEventListener("message",i=>{i.data===ro.TRPC_BROWSER_LOADED_EVENT&&a()})}),new Promise(a=>{console.warn("Could not detect if popup loading succeeded after 15s timeout, continuing anyway"),setTimeout(a,15e3)})]);try{if(!n.addEventListener)throw new Error("popupWindow.addEventListener is not a function");n.addEventListener("beforeunload",()=>{n=null})}catch{const i=setInterval(()=>{n&&n.closed&&(n=null,r.forEach(c=>{c()}),clearInterval(i))},1e3)}}return n}return(0,no.createBaseLink)({async postMessage(o){return(await s(t.listenWindow)).postMessage(o,{targetOrigin:t.postOrigin})},addMessageListener(o){const a=i=>{o(i.data)};e.set(o,a),t.listenWindow.addEventListener("message",a)},removeMessageListener(o){const a=e.get(o);a&&t.listenWindow.removeEventListener("message",a)},addCloseListener(o){t.listenWindow.addEventListener("beforeunload",o),r.add(o)},removeCloseListener(o){t.listenWindow.removeEventListener("beforeunload",o),r.delete(o)}})};ot.popupLink=so;(function(t){var e=S.commonjsGlobal&&S.commonjsGlobal.__createBinding||(Object.create?function(n,s,o,a){a===void 0&&(a=o);var i=Object.getOwnPropertyDescriptor(s,o);(!i||("get"in i?!s.__esModule:i.writable||i.configurable))&&(i={enumerable:!0,get:function(){return s[o]}}),Object.defineProperty(n,a,i)}:function(n,s,o,a){a===void 0&&(a=o),n[a]=s[o]}),r=S.commonjsGlobal&&S.commonjsGlobal.__exportStar||function(n,s){for(var o in n)o!=="default"&&!Object.prototype.hasOwnProperty.call(s,o)&&e(s,n,o)};Object.defineProperty(t,"__esModule",{value:!0}),r(Ke,t),r(st,t),r(ot,t)})(bt);var T;(function(t){t.assertEqual=s=>s;function e(s){}t.assertIs=e;function r(s){throw new Error}t.assertNever=r,t.arrayToEnum=s=>{const o={};for(const a of s)o[a]=a;return o},t.getValidEnumValues=s=>{const o=t.objectKeys(s).filter(i=>typeof s[s[i]]!="number"),a={};for(const i of o)a[i]=s[i];return t.objectValues(a)},t.objectValues=s=>t.objectKeys(s).map(function(o){return s[o]}),t.objectKeys=typeof Object.keys=="function"?s=>Object.keys(s):s=>{const o=[];for(const a in s)Object.prototype.hasOwnProperty.call(s,a)&&o.push(a);return o},t.find=(s,o)=>{for(const a of s)if(o(a))return a},t.isInteger=typeof Number.isInteger=="function"?s=>Number.isInteger(s):s=>typeof s=="number"&&isFinite(s)&&Math.floor(s)===s;function n(s,o=" | "){return s.map(a=>typeof a=="string"?`'${a}'`:a).join(o)}t.joinValues=n,t.jsonStringifyReplacer=(s,o)=>typeof o=="bigint"?o.toString():o})(T||(T={}));const h=T.arrayToEnum(["string","nan","number","integer","float","boolean","date","bigint","symbol","function","undefined","null","array","object","unknown","promise","void","never","map","set"]),Y=t=>{switch(typeof t){case"undefined":return h.undefined;case"string":return h.string;case"number":return isNaN(t)?h.nan:h.number;case"boolean":return h.boolean;case"function":return h.function;case"bigint":return h.bigint;case"symbol":return h.symbol;case"object":return Array.isArray(t)?h.array:t===null?h.null:t.then&&typeof t.then=="function"&&t.catch&&typeof t.catch=="function"?h.promise:typeof Map<"u"&&t instanceof Map?h.map:typeof Set<"u"&&t instanceof Set?h.set:typeof Date<"u"&&t instanceof Date?h.date:h.object;default:return h.unknown}},d=T.arrayToEnum(["invalid_type","invalid_literal","custom","invalid_union","invalid_union_discriminator","invalid_enum_value","unrecognized_keys","invalid_arguments","invalid_return_type","invalid_date","invalid_string","too_small","too_big","invalid_intersection_types","not_multiple_of","not_finite"]),oo=t=>JSON.stringify(t,null,2).replace(/"([^"]+)":/g,"$1:");class H extends Error{constructor(e){super(),this.issues=[],this.addIssue=n=>{this.issues=[...this.issues,n]},this.addIssues=(n=[])=>{this.issues=[...this.issues,...n]};const r=new.target.prototype;Object.setPrototypeOf?Object.setPrototypeOf(this,r):this.__proto__=r,this.name="ZodError",this.issues=e}get errors(){return this.issues}format(e){const r=e||function(o){return o.message},n={_errors:[]},s=o=>{for(const a of o.issues)if(a.code==="invalid_union")a.unionErrors.map(s);else if(a.code==="invalid_return_type")s(a.returnTypeError);else if(a.code==="invalid_arguments")s(a.argumentsError);else if(a.path.length===0)n._errors.push(r(a));else{let i=n,c=0;for(;c<a.path.length;){const u=a.path[c];c===a.path.length-1?(i[u]=i[u]||{_errors:[]},i[u]._errors.push(r(a))):i[u]=i[u]||{_errors:[]},i=i[u],c++}}};return s(this),n}toString(){return this.message}get message(){return JSON.stringify(this.issues,T.jsonStringifyReplacer,2)}get isEmpty(){return this.issues.length===0}flatten(e=r=>r.message){const r={},n=[];for(const s of this.issues)s.path.length>0?(r[s.path[0]]=r[s.path[0]]||[],r[s.path[0]].push(e(s))):n.push(e(s));return{formErrors:n,fieldErrors:r}}get formErrors(){return this.flatten()}}H.create=t=>new H(t);const xe=(t,e)=>{let r;switch(t.code){case d.invalid_type:t.received===h.undefined?r="Required":r=`Expected ${t.expected}, received ${t.received}`;break;case d.invalid_literal:r=`Invalid literal value, expected ${JSON.stringify(t.expected,T.jsonStringifyReplacer)}`;break;case d.unrecognized_keys:r=`Unrecognized key(s) in object: ${T.joinValues(t.keys,", ")}`;break;case d.invalid_union:r="Invalid input";break;case d.invalid_union_discriminator:r=`Invalid discriminator value. Expected ${T.joinValues(t.options)}`;break;case d.invalid_enum_value:r=`Invalid enum value. Expected ${T.joinValues(t.options)}, received '${t.received}'`;break;case d.invalid_arguments:r="Invalid function arguments";break;case d.invalid_return_type:r="Invalid function return type";break;case d.invalid_date:r="Invalid date";break;case d.invalid_string:typeof t.validation=="object"?"startsWith"in t.validation?r=`Invalid input: must start with "${t.validation.startsWith}"`:"endsWith"in t.validation?r=`Invalid input: must end with "${t.validation.endsWith}"`:T.assertNever(t.validation):t.validation!=="regex"?r=`Invalid ${t.validation}`:r="Invalid";break;case d.too_small:t.type==="array"?r=`Array must contain ${t.exact?"exactly":t.inclusive?"at least":"more than"} ${t.minimum} element(s)`:t.type==="string"?r=`String must contain ${t.exact?"exactly":t.inclusive?"at least":"over"} ${t.minimum} character(s)`:t.type==="number"?r=`Number must be ${t.exact?"exactly equal to ":t.inclusive?"greater than or equal to ":"greater than "}${t.minimum}`:t.type==="date"?r=`Date must be ${t.exact?"exactly equal to ":t.inclusive?"greater than or equal to ":"greater than "}${new Date(t.minimum)}`:r="Invalid input";break;case d.too_big:t.type==="array"?r=`Array must contain ${t.exact?"exactly":t.inclusive?"at most":"less than"} ${t.maximum} element(s)`:t.type==="string"?r=`String must contain ${t.exact?"exactly":t.inclusive?"at most":"under"} ${t.maximum} character(s)`:t.type==="number"?r=`Number must be ${t.exact?"exactly":t.inclusive?"less than or equal to":"less than"} ${t.maximum}`:t.type==="date"?r=`Date must be ${t.exact?"exactly":t.inclusive?"smaller than or equal to":"smaller than"} ${new Date(t.maximum)}`:r="Invalid input";break;case d.custom:r="Invalid input";break;case d.invalid_intersection_types:r="Intersection results could not be merged";break;case d.not_multiple_of:r=`Number must be a multiple of ${t.multipleOf}`;break;case d.not_finite:r="Number must be finite";break;default:r=e.defaultError,T.assertNever(t)}return{message:r}};let Wr=xe;function ao(t){Wr=t}function Ue(){return Wr}const We=t=>{const{data:e,path:r,errorMaps:n,issueData:s}=t,o=[...r,...s.path||[]],a={...s,path:o};let i="";const c=n.filter(u=>!!u).slice().reverse();for(const u of c)i=u(a,{data:e,defaultError:i}).message;return{...s,path:o,message:s.message||i}},io=[];function y(t,e){const r=We({issueData:e,data:t.data,path:t.path,errorMaps:[t.common.contextualErrorMap,t.schemaErrorMap,Ue(),xe].filter(n=>!!n)});t.common.issues.push(r)}class I{constructor(){this.value="valid"}dirty(){this.value==="valid"&&(this.value="dirty")}abort(){this.value!=="aborted"&&(this.value="aborted")}static mergeArray(e,r){const n=[];for(const s of r){if(s.status==="aborted")return b;s.status==="dirty"&&e.dirty(),n.push(s.value)}return{status:e.value,value:n}}static async mergeObjectAsync(e,r){const n=[];for(const s of r)n.push({key:await s.key,value:await s.value});return I.mergeObjectSync(e,n)}static mergeObjectSync(e,r){const n={};for(const s of r){const{key:o,value:a}=s;if(o.status==="aborted"||a.status==="aborted")return b;o.status==="dirty"&&e.dirty(),a.status==="dirty"&&e.dirty(),(typeof a.value<"u"||s.alwaysSet)&&(n[o.value]=a.value)}return{status:e.value,value:n}}}const b=Object.freeze({status:"aborted"}),qr=t=>({status:"dirty",value:t}),L=t=>({status:"valid",value:t}),_t=t=>t.status==="aborted",vt=t=>t.status==="dirty",qe=t=>t.status==="valid",ze=t=>typeof Promise<"u"&&t instanceof Promise;var x;(function(t){t.errToObj=e=>typeof e=="string"?{message:e}:e||{},t.toString=e=>typeof e=="string"?e:e?.message})(x||(x={}));class W{constructor(e,r,n,s){this.parent=e,this.data=r,this._path=n,this._key=s}get path(){return this._path.concat(this._key)}}const er=(t,e)=>{if(qe(e))return{success:!0,data:e.value};if(!t.common.issues.length)throw new Error("Validation failed but no issues detected.");return{success:!1,error:new H(t.common.issues)}};function w(t){if(!t)return{};const{errorMap:e,invalid_type_error:r,required_error:n,description:s}=t;if(e&&(r||n))throw new Error(`Can't use "invalid_type_error" or "required_error" in conjunction with custom error map.`);return e?{errorMap:e,description:s}:{errorMap:(a,i)=>a.code!=="invalid_type"?{message:i.defaultError}:typeof i.data>"u"?{message:n??i.defaultError}:{message:r??i.defaultError},description:s}}class _{constructor(e){this.spa=this.safeParseAsync,this._def=e,this.parse=this.parse.bind(this),this.safeParse=this.safeParse.bind(this),this.parseAsync=this.parseAsync.bind(this),this.safeParseAsync=this.safeParseAsync.bind(this),this.spa=this.spa.bind(this),this.refine=this.refine.bind(this),this.refinement=this.refinement.bind(this),this.superRefine=this.superRefine.bind(this),this.optional=this.optional.bind(this),this.nullable=this.nullable.bind(this),this.nullish=this.nullish.bind(this),this.array=this.array.bind(this),this.promise=this.promise.bind(this),this.or=this.or.bind(this),this.and=this.and.bind(this),this.transform=this.transform.bind(this),this.brand=this.brand.bind(this),this.default=this.default.bind(this),this.catch=this.catch.bind(this),this.describe=this.describe.bind(this),this.pipe=this.pipe.bind(this),this.isNullable=this.isNullable.bind(this),this.isOptional=this.isOptional.bind(this)}get description(){return this._def.description}_getType(e){return Y(e.data)}_getOrReturnCtx(e,r){return r||{common:e.parent.common,data:e.data,parsedType:Y(e.data),schemaErrorMap:this._def.errorMap,path:e.path,parent:e.parent}}_processInputParams(e){return{status:new I,ctx:{common:e.parent.common,data:e.data,parsedType:Y(e.data),schemaErrorMap:this._def.errorMap,path:e.path,parent:e.parent}}}_parseSync(e){const r=this._parse(e);if(ze(r))throw new Error("Synchronous parse encountered promise.");return r}_parseAsync(e){const r=this._parse(e);return Promise.resolve(r)}parse(e,r){const n=this.safeParse(e,r);if(n.success)return n.data;throw n.error}safeParse(e,r){var n;const s={common:{issues:[],async:(n=r?.async)!==null&&n!==void 0?n:!1,contextualErrorMap:r?.errorMap},path:r?.path||[],schemaErrorMap:this._def.errorMap,parent:null,data:e,parsedType:Y(e)},o=this._parseSync({data:e,path:s.path,parent:s});return er(s,o)}async parseAsync(e,r){const n=await this.safeParseAsync(e,r);if(n.success)return n.data;throw n.error}async safeParseAsync(e,r){const n={common:{issues:[],contextualErrorMap:r?.errorMap,async:!0},path:r?.path||[],schemaErrorMap:this._def.errorMap,parent:null,data:e,parsedType:Y(e)},s=this._parse({data:e,path:n.path,parent:n}),o=await(ze(s)?s:Promise.resolve(s));return er(n,o)}refine(e,r){const n=s=>typeof r=="string"||typeof r>"u"?{message:r}:typeof r=="function"?r(s):r;return this._refinement((s,o)=>{const a=e(s),i=()=>o.addIssue({code:d.custom,...n(s)});return typeof Promise<"u"&&a instanceof Promise?a.then(c=>c?!0:(i(),!1)):a?!0:(i(),!1)})}refinement(e,r){return this._refinement((n,s)=>e(n)?!0:(s.addIssue(typeof r=="function"?r(n,s):r),!1))}_refinement(e){return new Z({schema:this,typeName:g.ZodEffects,effect:{type:"refinement",refinement:e}})}superRefine(e){return this._refinement(e)}optional(){return F.create(this,this._def)}nullable(){return ne.create(this,this._def)}nullish(){return this.nullable().optional()}array(){return D.create(this,this._def)}promise(){return pe.create(this,this._def)}or(e){return Re.create([this,e],this._def)}and(e){return Oe.create(this,e,this._def)}transform(e){return new Z({...w(this._def),schema:this,typeName:g.ZodEffects,effect:{type:"transform",transform:e}})}default(e){const r=typeof e=="function"?e:()=>e;return new Ie({...w(this._def),innerType:this,defaultValue:r,typeName:g.ZodDefault})}brand(){return new Br({typeName:g.ZodBranded,type:this,...w(this._def)})}catch(e){const r=typeof e=="function"?e:()=>e;return new Je({...w(this._def),innerType:this,catchValue:r,typeName:g.ZodCatch})}describe(e){const r=this.constructor;return new r({...this._def,description:e})}pipe(e){return Ae.create(this,e)}isOptional(){return this.safeParse(void 0).success}isNullable(){return this.safeParse(null).success}}const co=/^c[^\s-]{8,}$/i,uo=/^[a-z][a-z0-9]*$/,lo=/^([a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[a-f0-9]{4}-[a-f0-9]{12}|00000000-0000-0000-0000-000000000000)$/i,fo=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|([^-]([a-zA-Z0-9-]*\.)+[a-zA-Z]{2,}))$/,po=t=>t.precision?t.offset?new RegExp(`^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{${t.precision}}(([+-]\\d{2}(:?\\d{2})?)|Z)$`):new RegExp(`^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{${t.precision}}Z$`):t.precision===0?t.offset?new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(([+-]\\d{2}(:?\\d{2})?)|Z)$"):new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"):t.offset?new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(([+-]\\d{2}(:?\\d{2})?)|Z)$"):new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$");class J extends _{constructor(){super(...arguments),this._regex=(e,r,n)=>this.refinement(s=>e.test(s),{validation:r,code:d.invalid_string,...x.errToObj(n)}),this.nonempty=e=>this.min(1,x.errToObj(e)),this.trim=()=>new J({...this._def,checks:[...this._def.checks,{kind:"trim"}]})}_parse(e){if(this._def.coerce&&(e.data=String(e.data)),this._getType(e)!==h.string){const o=this._getOrReturnCtx(e);return y(o,{code:d.invalid_type,expected:h.string,received:o.parsedType}),b}const n=new I;let s;for(const o of this._def.checks)if(o.kind==="min")e.data.length<o.value&&(s=this._getOrReturnCtx(e,s),y(s,{code:d.too_small,minimum:o.value,type:"string",inclusive:!0,exact:!1,message:o.message}),n.dirty());else if(o.kind==="max")e.data.length>o.value&&(s=this._getOrReturnCtx(e,s),y(s,{code:d.too_big,maximum:o.value,type:"string",inclusive:!0,exact:!1,message:o.message}),n.dirty());else if(o.kind==="length"){const a=e.data.length>o.value,i=e.data.length<o.value;(a||i)&&(s=this._getOrReturnCtx(e,s),a?y(s,{code:d.too_big,maximum:o.value,type:"string",inclusive:!0,exact:!0,message:o.message}):i&&y(s,{code:d.too_small,minimum:o.value,type:"string",inclusive:!0,exact:!0,message:o.message}),n.dirty())}else if(o.kind==="email")fo.test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{validation:"email",code:d.invalid_string,message:o.message}),n.dirty());else if(o.kind==="uuid")lo.test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{validation:"uuid",code:d.invalid_string,message:o.message}),n.dirty());else if(o.kind==="cuid")co.test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{validation:"cuid",code:d.invalid_string,message:o.message}),n.dirty());else if(o.kind==="cuid2")uo.test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{validation:"cuid2",code:d.invalid_string,message:o.message}),n.dirty());else if(o.kind==="url")try{new URL(e.data)}catch{s=this._getOrReturnCtx(e,s),y(s,{validation:"url",code:d.invalid_string,message:o.message}),n.dirty()}else o.kind==="regex"?(o.regex.lastIndex=0,o.regex.test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{validation:"regex",code:d.invalid_string,message:o.message}),n.dirty())):o.kind==="trim"?e.data=e.data.trim():o.kind==="startsWith"?e.data.startsWith(o.value)||(s=this._getOrReturnCtx(e,s),y(s,{code:d.invalid_string,validation:{startsWith:o.value},message:o.message}),n.dirty()):o.kind==="endsWith"?e.data.endsWith(o.value)||(s=this._getOrReturnCtx(e,s),y(s,{code:d.invalid_string,validation:{endsWith:o.value},message:o.message}),n.dirty()):o.kind==="datetime"?po(o).test(e.data)||(s=this._getOrReturnCtx(e,s),y(s,{code:d.invalid_string,validation:"datetime",message:o.message}),n.dirty()):T.assertNever(o);return{status:n.value,value:e.data}}_addCheck(e){return new J({...this._def,checks:[...this._def.checks,e]})}email(e){return this._addCheck({kind:"email",...x.errToObj(e)})}url(e){return this._addCheck({kind:"url",...x.errToObj(e)})}uuid(e){return this._addCheck({kind:"uuid",...x.errToObj(e)})}cuid(e){return this._addCheck({kind:"cuid",...x.errToObj(e)})}cuid2(e){return this._addCheck({kind:"cuid2",...x.errToObj(e)})}datetime(e){var r;return typeof e=="string"?this._addCheck({kind:"datetime",precision:null,offset:!1,message:e}):this._addCheck({kind:"datetime",precision:typeof e?.precision>"u"?null:e?.precision,offset:(r=e?.offset)!==null&&r!==void 0?r:!1,...x.errToObj(e?.message)})}regex(e,r){return this._addCheck({kind:"regex",regex:e,...x.errToObj(r)})}startsWith(e,r){return this._addCheck({kind:"startsWith",value:e,...x.errToObj(r)})}endsWith(e,r){return this._addCheck({kind:"endsWith",value:e,...x.errToObj(r)})}min(e,r){return this._addCheck({kind:"min",value:e,...x.errToObj(r)})}max(e,r){return this._addCheck({kind:"max",value:e,...x.errToObj(r)})}length(e,r){return this._addCheck({kind:"length",value:e,...x.errToObj(r)})}get isDatetime(){return!!this._def.checks.find(e=>e.kind==="datetime")}get isEmail(){return!!this._def.checks.find(e=>e.kind==="email")}get isURL(){return!!this._def.checks.find(e=>e.kind==="url")}get isUUID(){return!!this._def.checks.find(e=>e.kind==="uuid")}get isCUID(){return!!this._def.checks.find(e=>e.kind==="cuid")}get isCUID2(){return!!this._def.checks.find(e=>e.kind==="cuid2")}get minLength(){let e=null;for(const r of this._def.checks)r.kind==="min"&&(e===null||r.value>e)&&(e=r.value);return e}get maxLength(){let e=null;for(const r of this._def.checks)r.kind==="max"&&(e===null||r.value<e)&&(e=r.value);return e}}J.create=t=>{var e;return new J({checks:[],typeName:g.ZodString,coerce:(e=t?.coerce)!==null&&e!==void 0?e:!1,...w(t)})};function ho(t,e){const r=(t.toString().split(".")[1]||"").length,n=(e.toString().split(".")[1]||"").length,s=r>n?r:n,o=parseInt(t.toFixed(s).replace(".","")),a=parseInt(e.toFixed(s).replace(".",""));return o%a/Math.pow(10,s)}class Q extends _{constructor(){super(...arguments),this.min=this.gte,this.max=this.lte,this.step=this.multipleOf}_parse(e){if(this._def.coerce&&(e.data=Number(e.data)),this._getType(e)!==h.number){const o=this._getOrReturnCtx(e);return y(o,{code:d.invalid_type,expected:h.number,received:o.parsedType}),b}let n;const s=new I;for(const o of this._def.checks)o.kind==="int"?T.isInteger(e.data)||(n=this._getOrReturnCtx(e,n),y(n,{code:d.invalid_type,expected:"integer",received:"float",message:o.message}),s.dirty()):o.kind==="min"?(o.inclusive?e.data<o.value:e.data<=o.value)&&(n=this._getOrReturnCtx(e,n),y(n,{code:d.too_small,minimum:o.value,type:"number",inclusive:o.inclusive,exact:!1,message:o.message}),s.dirty()):o.kind==="max"?(o.inclusive?e.data>o.value:e.data>=o.value)&&(n=this._getOrReturnCtx(e,n),y(n,{code:d.too_big,maximum:o.value,type:"number",inclusive:o.inclusive,exact:!1,message:o.message}),s.dirty()):o.kind==="multipleOf"?ho(e.data,o.value)!==0&&(n=this._getOrReturnCtx(e,n),y(n,{code:d.not_multiple_of,multipleOf:o.value,message:o.message}),s.dirty()):o.kind==="finite"?Number.isFinite(e.data)||(n=this._getOrReturnCtx(e,n),y(n,{code:d.not_finite,message:o.message}),s.dirty()):T.assertNever(o);return{status:s.value,value:e.data}}gte(e,r){return this.setLimit("min",e,!0,x.toString(r))}gt(e,r){return this.setLimit("min",e,!1,x.toString(r))}lte(e,r){return this.setLimit("max",e,!0,x.toString(r))}lt(e,r){return this.setLimit("max",e,!1,x.toString(r))}setLimit(e,r,n,s){return new Q({...this._def,checks:[...this._def.checks,{kind:e,value:r,inclusive:n,message:x.toString(s)}]})}_addCheck(e){return new Q({...this._def,checks:[...this._def.checks,e]})}int(e){return this._addCheck({kind:"int",message:x.toString(e)})}positive(e){return this._addCheck({kind:"min",value:0,inclusive:!1,message:x.toString(e)})}negative(e){return this._addCheck({kind:"max",value:0,inclusive:!1,message:x.toString(e)})}nonpositive(e){return this._addCheck({kind:"max",value:0,inclusive:!0,message:x.toString(e)})}nonnegative(e){return this._addCheck({kind:"min",value:0,inclusive:!0,message:x.toString(e)})}multipleOf(e,r){return this._addCheck({kind:"multipleOf",value:e,message:x.toString(r)})}finite(e){return this._addCheck({kind:"finite",message:x.toString(e)})}get minValue(){let e=null;for(const r of this._def.checks)r.kind==="min"&&(e===null||r.value>e)&&(e=r.value);return e}get maxValue(){let e=null;for(const r of this._def.checks)r.kind==="max"&&(e===null||r.value<e)&&(e=r.value);return e}get isInt(){return!!this._def.checks.find(e=>e.kind==="int"||e.kind==="multipleOf"&&T.isInteger(e.value))}get isFinite(){let e=null,r=null;for(const n of this._def.checks){if(n.kind==="finite"||n.kind==="int"||n.kind==="multipleOf")return!0;n.kind==="min"?(r===null||n.value>r)&&(r=n.value):n.kind==="max"&&(e===null||n.value<e)&&(e=n.value)}return Number.isFinite(r)&&Number.isFinite(e)}}Q.create=t=>new Q({checks:[],typeName:g.ZodNumber,coerce:t?.coerce||!1,...w(t)});class Te extends _{_parse(e){if(this._def.coerce&&(e.data=BigInt(e.data)),this._getType(e)!==h.bigint){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.bigint,received:n.parsedType}),b}return L(e.data)}}Te.create=t=>{var e;return new Te({typeName:g.ZodBigInt,coerce:(e=t?.coerce)!==null&&e!==void 0?e:!1,...w(t)})};class Ee extends _{_parse(e){if(this._def.coerce&&(e.data=!!e.data),this._getType(e)!==h.boolean){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.boolean,received:n.parsedType}),b}return L(e.data)}}Ee.create=t=>new Ee({typeName:g.ZodBoolean,coerce:t?.coerce||!1,...w(t)});class te extends _{_parse(e){if(this._def.coerce&&(e.data=new Date(e.data)),this._getType(e)!==h.date){const o=this._getOrReturnCtx(e);return y(o,{code:d.invalid_type,expected:h.date,received:o.parsedType}),b}if(isNaN(e.data.getTime())){const o=this._getOrReturnCtx(e);return y(o,{code:d.invalid_date}),b}const n=new I;let s;for(const o of this._def.checks)o.kind==="min"?e.data.getTime()<o.value&&(s=this._getOrReturnCtx(e,s),y(s,{code:d.too_small,message:o.message,inclusive:!0,exact:!1,minimum:o.value,type:"date"}),n.dirty()):o.kind==="max"?e.data.getTime()>o.value&&(s=this._getOrReturnCtx(e,s),y(s,{code:d.too_big,message:o.message,inclusive:!0,exact:!1,maximum:o.value,type:"date"}),n.dirty()):T.assertNever(o);return{status:n.value,value:new Date(e.data.getTime())}}_addCheck(e){return new te({...this._def,checks:[...this._def.checks,e]})}min(e,r){return this._addCheck({kind:"min",value:e.getTime(),message:x.toString(r)})}max(e,r){return this._addCheck({kind:"max",value:e.getTime(),message:x.toString(r)})}get minDate(){let e=null;for(const r of this._def.checks)r.kind==="min"&&(e===null||r.value>e)&&(e=r.value);return e!=null?new Date(e):null}get maxDate(){let e=null;for(const r of this._def.checks)r.kind==="max"&&(e===null||r.value<e)&&(e=r.value);return e!=null?new Date(e):null}}te.create=t=>new te({checks:[],coerce:t?.coerce||!1,typeName:g.ZodDate,...w(t)});class Be extends _{_parse(e){if(this._getType(e)!==h.symbol){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.symbol,received:n.parsedType}),b}return L(e.data)}}Be.create=t=>new Be({typeName:g.ZodSymbol,...w(t)});class ke extends _{_parse(e){if(this._getType(e)!==h.undefined){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.undefined,received:n.parsedType}),b}return L(e.data)}}ke.create=t=>new ke({typeName:g.ZodUndefined,...w(t)});class Ce extends _{_parse(e){if(this._getType(e)!==h.null){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.null,received:n.parsedType}),b}return L(e.data)}}Ce.create=t=>new Ce({typeName:g.ZodNull,...w(t)});class fe extends _{constructor(){super(...arguments),this._any=!0}_parse(e){return L(e.data)}}fe.create=t=>new fe({typeName:g.ZodAny,...w(t)});class ee extends _{constructor(){super(...arguments),this._unknown=!0}_parse(e){return L(e.data)}}ee.create=t=>new ee({typeName:g.ZodUnknown,...w(t)});class G extends _{_parse(e){const r=this._getOrReturnCtx(e);return y(r,{code:d.invalid_type,expected:h.never,received:r.parsedType}),b}}G.create=t=>new G({typeName:g.ZodNever,...w(t)});class Ve extends _{_parse(e){if(this._getType(e)!==h.undefined){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.void,received:n.parsedType}),b}return L(e.data)}}Ve.create=t=>new Ve({typeName:g.ZodVoid,...w(t)});class D extends _{_parse(e){const{ctx:r,status:n}=this._processInputParams(e),s=this._def;if(r.parsedType!==h.array)return y(r,{code:d.invalid_type,expected:h.array,received:r.parsedType}),b;if(s.exactLength!==null){const a=r.data.length>s.exactLength.value,i=r.data.length<s.exactLength.value;(a||i)&&(y(r,{code:a?d.too_big:d.too_small,minimum:i?s.exactLength.value:void 0,maximum:a?s.exactLength.value:void 0,type:"array",inclusive:!0,exact:!0,message:s.exactLength.message}),n.dirty())}if(s.minLength!==null&&r.data.length<s.minLength.value&&(y(r,{code:d.too_small,minimum:s.minLength.value,type:"array",inclusive:!0,exact:!1,message:s.minLength.message}),n.dirty()),s.maxLength!==null&&r.data.length>s.maxLength.value&&(y(r,{code:d.too_big,maximum:s.maxLength.value,type:"array",inclusive:!0,exact:!1,message:s.maxLength.message}),n.dirty()),r.common.async)return Promise.all([...r.data].map((a,i)=>s.type._parseAsync(new W(r,a,r.path,i)))).then(a=>I.mergeArray(n,a));const o=[...r.data].map((a,i)=>s.type._parseSync(new W(r,a,r.path,i)));return I.mergeArray(n,o)}get element(){return this._def.type}min(e,r){return new D({...this._def,minLength:{value:e,message:x.toString(r)}})}max(e,r){return new D({...this._def,maxLength:{value:e,message:x.toString(r)}})}length(e,r){return new D({...this._def,exactLength:{value:e,message:x.toString(r)}})}nonempty(e){return this.min(1,e)}}D.create=(t,e)=>new D({type:t,minLength:null,maxLength:null,exactLength:null,typeName:g.ZodArray,...w(e)});var He;(function(t){t.mergeShapes=(e,r)=>({...e,...r})})(He||(He={}));function ce(t){if(t instanceof C){const e={};for(const r in t.shape){const n=t.shape[r];e[r]=F.create(ce(n))}return new C({...t._def,shape:()=>e})}else return t instanceof D?D.create(ce(t.element)):t instanceof F?F.create(ce(t.unwrap())):t instanceof ne?ne.create(ce(t.unwrap())):t instanceof q?q.create(t.items.map(e=>ce(e))):t}class C extends _{constructor(){super(...arguments),this._cached=null,this.nonstrict=this.passthrough,this.augment=this.extend}_getCached(){if(this._cached!==null)return this._cached;const e=this._def.shape(),r=T.objectKeys(e);return this._cached={shape:e,keys:r}}_parse(e){if(this._getType(e)!==h.object){const u=this._getOrReturnCtx(e);return y(u,{code:d.invalid_type,expected:h.object,received:u.parsedType}),b}const{status:n,ctx:s}=this._processInputParams(e),{shape:o,keys:a}=this._getCached(),i=[];if(!(this._def.catchall instanceof G&&this._def.unknownKeys==="strip"))for(const u in s.data)a.includes(u)||i.push(u);const c=[];for(const u of a){const l=o[u],f=s.data[u];c.push({key:{status:"valid",value:u},value:l._parse(new W(s,f,s.path,u)),alwaysSet:u in s.data})}if(this._def.catchall instanceof G){const u=this._def.unknownKeys;if(u==="passthrough")for(const l of i)c.push({key:{status:"valid",value:l},value:{status:"valid",value:s.data[l]}});else if(u==="strict")i.length>0&&(y(s,{code:d.unrecognized_keys,keys:i}),n.dirty());else if(u!=="strip")throw new Error("Internal ZodObject error: invalid unknownKeys value.")}else{const u=this._def.catchall;for(const l of i){const f=s.data[l];c.push({key:{status:"valid",value:l},value:u._parse(new W(s,f,s.path,l)),alwaysSet:l in s.data})}}return s.common.async?Promise.resolve().then(async()=>{const u=[];for(const l of c){const f=await l.key;u.push({key:f,value:await l.value,alwaysSet:l.alwaysSet})}return u}).then(u=>I.mergeObjectSync(n,u)):I.mergeObjectSync(n,c)}get shape(){return this._def.shape()}strict(e){return x.errToObj,new C({...this._def,unknownKeys:"strict",...e!==void 0?{errorMap:(r,n)=>{var s,o,a,i;const c=(a=(o=(s=this._def).errorMap)===null||o===void 0?void 0:o.call(s,r,n).message)!==null&&a!==void 0?a:n.defaultError;return r.code==="unrecognized_keys"?{message:(i=x.errToObj(e).message)!==null&&i!==void 0?i:c}:{message:c}}}:{}})}strip(){return new C({...this._def,unknownKeys:"strip"})}passthrough(){return new C({...this._def,unknownKeys:"passthrough"})}extend(e){return new C({...this._def,shape:()=>({...this._def.shape(),...e})})}merge(e){return new C({unknownKeys:e._def.unknownKeys,catchall:e._def.catchall,shape:()=>He.mergeShapes(this._def.shape(),e._def.shape()),typeName:g.ZodObject})}setKey(e,r){return this.augment({[e]:r})}catchall(e){return new C({...this._def,catchall:e})}pick(e){const r={};return T.objectKeys(e).forEach(n=>{e[n]&&this.shape[n]&&(r[n]=this.shape[n])}),new C({...this._def,shape:()=>r})}omit(e){const r={};return T.objectKeys(this.shape).forEach(n=>{e[n]||(r[n]=this.shape[n])}),new C({...this._def,shape:()=>r})}deepPartial(){return ce(this)}partial(e){const r={};return T.objectKeys(this.shape).forEach(n=>{const s=this.shape[n];e&&!e[n]?r[n]=s:r[n]=s.optional()}),new C({...this._def,shape:()=>r})}required(e){const r={};return T.objectKeys(this.shape).forEach(n=>{if(e&&!e[n])r[n]=this.shape[n];else{let o=this.shape[n];for(;o instanceof F;)o=o._def.innerType;r[n]=o}}),new C({...this._def,shape:()=>r})}keyof(){return zr(T.objectKeys(this.shape))}}C.create=(t,e)=>new C({shape:()=>t,unknownKeys:"strip",catchall:G.create(),typeName:g.ZodObject,...w(e)});C.strictCreate=(t,e)=>new C({shape:()=>t,unknownKeys:"strict",catchall:G.create(),typeName:g.ZodObject,...w(e)});C.lazycreate=(t,e)=>new C({shape:t,unknownKeys:"strip",catchall:G.create(),typeName:g.ZodObject,...w(e)});class Re extends _{_parse(e){const{ctx:r}=this._processInputParams(e),n=this._def.options;function s(o){for(const i of o)if(i.result.status==="valid")return i.result;for(const i of o)if(i.result.status==="dirty")return r.common.issues.push(...i.ctx.common.issues),i.result;const a=o.map(i=>new H(i.ctx.common.issues));return y(r,{code:d.invalid_union,unionErrors:a}),b}if(r.common.async)return Promise.all(n.map(async o=>{const a={...r,common:{...r.common,issues:[]},parent:null};return{result:await o._parseAsync({data:r.data,path:r.path,parent:a}),ctx:a}})).then(s);{let o;const a=[];for(const c of n){const u={...r,common:{...r.common,issues:[]},parent:null},l=c._parseSync({data:r.data,path:r.path,parent:u});if(l.status==="valid")return l;l.status==="dirty"&&!o&&(o={result:l,ctx:u}),u.common.issues.length&&a.push(u.common.issues)}if(o)return r.common.issues.push(...o.ctx.common.issues),o.result;const i=a.map(c=>new H(c));return y(r,{code:d.invalid_union,unionErrors:i}),b}}get options(){return this._def.options}}Re.create=(t,e)=>new Re({options:t,typeName:g.ZodUnion,...w(e)});const De=t=>t instanceof Se?De(t.schema):t instanceof Z?De(t.innerType()):t instanceof Ne?[t.value]:t instanceof X?t.options:t instanceof Le?Object.keys(t.enum):t instanceof Ie?De(t._def.innerType):t instanceof ke?[void 0]:t instanceof Ce?[null]:null;class it extends _{_parse(e){const{ctx:r}=this._processInputParams(e);if(r.parsedType!==h.object)return y(r,{code:d.invalid_type,expected:h.object,received:r.parsedType}),b;const n=this.discriminator,s=r.data[n],o=this.optionsMap.get(s);return o?r.common.async?o._parseAsync({data:r.data,path:r.path,parent:r}):o._parseSync({data:r.data,path:r.path,parent:r}):(y(r,{code:d.invalid_union_discriminator,options:Array.from(this.optionsMap.keys()),path:[n]}),b)}get discriminator(){return this._def.discriminator}get options(){return this._def.options}get optionsMap(){return this._def.optionsMap}static create(e,r,n){const s=new Map;for(const o of r){const a=De(o.shape[e]);if(!a)throw new Error(`A discriminator value for key \`${e}\` could not be extracted from all schema options`);for(const i of a){if(s.has(i))throw new Error(`Discriminator property ${String(e)} has duplicate value ${String(i)}`);s.set(i,o)}}return new it({typeName:g.ZodDiscriminatedUnion,discriminator:e,options:r,optionsMap:s,...w(n)})}}function xt(t,e){const r=Y(t),n=Y(e);if(t===e)return{valid:!0,data:t};if(r===h.object&&n===h.object){const s=T.objectKeys(e),o=T.objectKeys(t).filter(i=>s.indexOf(i)!==-1),a={...t,...e};for(const i of o){const c=xt(t[i],e[i]);if(!c.valid)return{valid:!1};a[i]=c.data}return{valid:!0,data:a}}else if(r===h.array&&n===h.array){if(t.length!==e.length)return{valid:!1};const s=[];for(let o=0;o<t.length;o++){const a=t[o],i=e[o],c=xt(a,i);if(!c.valid)return{valid:!1};s.push(c.data)}return{valid:!0,data:s}}else return r===h.date&&n===h.date&&+t==+e?{valid:!0,data:t}:{valid:!1}}class Oe extends _{_parse(e){const{status:r,ctx:n}=this._processInputParams(e),s=(o,a)=>{if(_t(o)||_t(a))return b;const i=xt(o.value,a.value);return i.valid?((vt(o)||vt(a))&&r.dirty(),{status:r.value,value:i.data}):(y(n,{code:d.invalid_intersection_types}),b)};return n.common.async?Promise.all([this._def.left._parseAsync({data:n.data,path:n.path,parent:n}),this._def.right._parseAsync({data:n.data,path:n.path,parent:n})]).then(([o,a])=>s(o,a)):s(this._def.left._parseSync({data:n.data,path:n.path,parent:n}),this._def.right._parseSync({data:n.data,path:n.path,parent:n}))}}Oe.create=(t,e,r)=>new Oe({left:t,right:e,typeName:g.ZodIntersection,...w(r)});class q extends _{_parse(e){const{status:r,ctx:n}=this._processInputParams(e);if(n.parsedType!==h.array)return y(n,{code:d.invalid_type,expected:h.array,received:n.parsedType}),b;if(n.data.length<this._def.items.length)return y(n,{code:d.too_small,minimum:this._def.items.length,inclusive:!0,exact:!1,type:"array"}),b;!this._def.rest&&n.data.length>this._def.items.length&&(y(n,{code:d.too_big,maximum:this._def.items.length,inclusive:!0,exact:!1,type:"array"}),r.dirty());const o=[...n.data].map((a,i)=>{const c=this._def.items[i]||this._def.rest;return c?c._parse(new W(n,a,n.path,i)):null}).filter(a=>!!a);return n.common.async?Promise.all(o).then(a=>I.mergeArray(r,a)):I.mergeArray(r,o)}get items(){return this._def.items}rest(e){return new q({...this._def,rest:e})}}q.create=(t,e)=>{if(!Array.isArray(t))throw new Error("You must pass an array of schemas to z.tuple([ ... ])");return new q({items:t,typeName:g.ZodTuple,rest:null,...w(e)})};class Pe extends _{get keySchema(){return this._def.keyType}get valueSchema(){return this._def.valueType}_parse(e){const{status:r,ctx:n}=this._processInputParams(e);if(n.parsedType!==h.object)return y(n,{code:d.invalid_type,expected:h.object,received:n.parsedType}),b;const s=[],o=this._def.keyType,a=this._def.valueType;for(const i in n.data)s.push({key:o._parse(new W(n,i,n.path,i)),value:a._parse(new W(n,n.data[i],n.path,i))});return n.common.async?I.mergeObjectAsync(r,s):I.mergeObjectSync(r,s)}get element(){return this._def.valueType}static create(e,r,n){return r instanceof _?new Pe({keyType:e,valueType:r,typeName:g.ZodRecord,...w(n)}):new Pe({keyType:J.create(),valueType:e,typeName:g.ZodRecord,...w(r)})}}class Fe extends _{_parse(e){const{status:r,ctx:n}=this._processInputParams(e);if(n.parsedType!==h.map)return y(n,{code:d.invalid_type,expected:h.map,received:n.parsedType}),b;const s=this._def.keyType,o=this._def.valueType,a=[...n.data.entries()].map(([i,c],u)=>({key:s._parse(new W(n,i,n.path,[u,"key"])),value:o._parse(new W(n,c,n.path,[u,"value"]))}));if(n.common.async){const i=new Map;return Promise.resolve().then(async()=>{for(const c of a){const u=await c.key,l=await c.value;if(u.status==="aborted"||l.status==="aborted")return b;(u.status==="dirty"||l.status==="dirty")&&r.dirty(),i.set(u.value,l.value)}return{status:r.value,value:i}})}else{const i=new Map;for(const c of a){const u=c.key,l=c.value;if(u.status==="aborted"||l.status==="aborted")return b;(u.status==="dirty"||l.status==="dirty")&&r.dirty(),i.set(u.value,l.value)}return{status:r.value,value:i}}}}Fe.create=(t,e,r)=>new Fe({valueType:e,keyType:t,typeName:g.ZodMap,...w(r)});class re extends _{_parse(e){const{status:r,ctx:n}=this._processInputParams(e);if(n.parsedType!==h.set)return y(n,{code:d.invalid_type,expected:h.set,received:n.parsedType}),b;const s=this._def;s.minSize!==null&&n.data.size<s.minSize.value&&(y(n,{code:d.too_small,minimum:s.minSize.value,type:"set",inclusive:!0,exact:!1,message:s.minSize.message}),r.dirty()),s.maxSize!==null&&n.data.size>s.maxSize.value&&(y(n,{code:d.too_big,maximum:s.maxSize.value,type:"set",inclusive:!0,exact:!1,message:s.maxSize.message}),r.dirty());const o=this._def.valueType;function a(c){const u=new Set;for(const l of c){if(l.status==="aborted")return b;l.status==="dirty"&&r.dirty(),u.add(l.value)}return{status:r.value,value:u}}const i=[...n.data.values()].map((c,u)=>o._parse(new W(n,c,n.path,u)));return n.common.async?Promise.all(i).then(c=>a(c)):a(i)}min(e,r){return new re({...this._def,minSize:{value:e,message:x.toString(r)}})}max(e,r){return new re({...this._def,maxSize:{value:e,message:x.toString(r)}})}size(e,r){return this.min(e,r).max(e,r)}nonempty(e){return this.min(1,e)}}re.create=(t,e)=>new re({valueType:t,minSize:null,maxSize:null,typeName:g.ZodSet,...w(e)});class le extends _{constructor(){super(...arguments),this.validate=this.implement}_parse(e){const{ctx:r}=this._processInputParams(e);if(r.parsedType!==h.function)return y(r,{code:d.invalid_type,expected:h.function,received:r.parsedType}),b;function n(i,c){return We({data:i,path:r.path,errorMaps:[r.common.contextualErrorMap,r.schemaErrorMap,Ue(),xe].filter(u=>!!u),issueData:{code:d.invalid_arguments,argumentsError:c}})}function s(i,c){return We({data:i,path:r.path,errorMaps:[r.common.contextualErrorMap,r.schemaErrorMap,Ue(),xe].filter(u=>!!u),issueData:{code:d.invalid_return_type,returnTypeError:c}})}const o={errorMap:r.common.contextualErrorMap},a=r.data;return this._def.returns instanceof pe?L(async(...i)=>{const c=new H([]),u=await this._def.args.parseAsync(i,o).catch(m=>{throw c.addIssue(n(i,m)),c}),l=await a(...u);return await this._def.returns._def.type.parseAsync(l,o).catch(m=>{throw c.addIssue(s(l,m)),c})}):L((...i)=>{const c=this._def.args.safeParse(i,o);if(!c.success)throw new H([n(i,c.error)]);const u=a(...c.data),l=this._def.returns.safeParse(u,o);if(!l.success)throw new H([s(u,l.error)]);return l.data})}parameters(){return this._def.args}returnType(){return this._def.returns}args(...e){return new le({...this._def,args:q.create(e).rest(ee.create())})}returns(e){return new le({...this._def,returns:e})}implement(e){return this.parse(e)}strictImplement(e){return this.parse(e)}static create(e,r,n){return new le({args:e||q.create([]).rest(ee.create()),returns:r||ee.create(),typeName:g.ZodFunction,...w(n)})}}class Se extends _{get schema(){return this._def.getter()}_parse(e){const{ctx:r}=this._processInputParams(e);return this._def.getter()._parse({data:r.data,path:r.path,parent:r})}}Se.create=(t,e)=>new Se({getter:t,typeName:g.ZodLazy,...w(e)});class Ne extends _{_parse(e){if(e.data!==this._def.value){const r=this._getOrReturnCtx(e);return y(r,{received:r.data,code:d.invalid_literal,expected:this._def.value}),b}return{status:"valid",value:e.data}}get value(){return this._def.value}}Ne.create=(t,e)=>new Ne({value:t,typeName:g.ZodLiteral,...w(e)});function zr(t,e){return new X({values:t,typeName:g.ZodEnum,...w(e)})}class X extends _{_parse(e){if(typeof e.data!="string"){const r=this._getOrReturnCtx(e),n=this._def.values;return y(r,{expected:T.joinValues(n),received:r.parsedType,code:d.invalid_type}),b}if(this._def.values.indexOf(e.data)===-1){const r=this._getOrReturnCtx(e),n=this._def.values;return y(r,{received:r.data,code:d.invalid_enum_value,options:n}),b}return L(e.data)}get options(){return this._def.values}get enum(){const e={};for(const r of this._def.values)e[r]=r;return e}get Values(){const e={};for(const r of this._def.values)e[r]=r;return e}get Enum(){const e={};for(const r of this._def.values)e[r]=r;return e}extract(e){return X.create(e)}exclude(e){return X.create(this.options.filter(r=>!e.includes(r)))}}X.create=zr;class Le extends _{_parse(e){const r=T.getValidEnumValues(this._def.values),n=this._getOrReturnCtx(e);if(n.parsedType!==h.string&&n.parsedType!==h.number){const s=T.objectValues(r);return y(n,{expected:T.joinValues(s),received:n.parsedType,code:d.invalid_type}),b}if(r.indexOf(e.data)===-1){const s=T.objectValues(r);return y(n,{received:n.data,code:d.invalid_enum_value,options:s}),b}return L(e.data)}get enum(){return this._def.values}}Le.create=(t,e)=>new Le({values:t,typeName:g.ZodNativeEnum,...w(e)});class pe extends _{unwrap(){return this._def.type}_parse(e){const{ctx:r}=this._processInputParams(e);if(r.parsedType!==h.promise&&r.common.async===!1)return y(r,{code:d.invalid_type,expected:h.promise,received:r.parsedType}),b;const n=r.parsedType===h.promise?r.data:Promise.resolve(r.data);return L(n.then(s=>this._def.type.parseAsync(s,{path:r.path,errorMap:r.common.contextualErrorMap})))}}pe.create=(t,e)=>new pe({type:t,typeName:g.ZodPromise,...w(e)});class Z extends _{innerType(){return this._def.schema}sourceType(){return this._def.schema._def.typeName===g.ZodEffects?this._def.schema.sourceType():this._def.schema}_parse(e){const{status:r,ctx:n}=this._processInputParams(e),s=this._def.effect||null;if(s.type==="preprocess"){const a=s.transform(n.data);return n.common.async?Promise.resolve(a).then(i=>this._def.schema._parseAsync({data:i,path:n.path,parent:n})):this._def.schema._parseSync({data:a,path:n.path,parent:n})}const o={addIssue:a=>{y(n,a),a.fatal?r.abort():r.dirty()},get path(){return n.path}};if(o.addIssue=o.addIssue.bind(o),s.type==="refinement"){const a=i=>{const c=s.refinement(i,o);if(n.common.async)return Promise.resolve(c);if(c instanceof Promise)throw new Error("Async refinement encountered during synchronous parse operation. Use .parseAsync instead.");return i};if(n.common.async===!1){const i=this._def.schema._parseSync({data:n.data,path:n.path,parent:n});return i.status==="aborted"?b:(i.status==="dirty"&&r.dirty(),a(i.value),{status:r.value,value:i.value})}else return this._def.schema._parseAsync({data:n.data,path:n.path,parent:n}).then(i=>i.status==="aborted"?b:(i.status==="dirty"&&r.dirty(),a(i.value).then(()=>({status:r.value,value:i.value}))))}if(s.type==="transform")if(n.common.async===!1){const a=this._def.schema._parseSync({data:n.data,path:n.path,parent:n});if(!qe(a))return a;const i=s.transform(a.value,o);if(i instanceof Promise)throw new Error("Asynchronous transform encountered during synchronous parse operation. Use .parseAsync instead.");return{status:r.value,value:i}}else return this._def.schema._parseAsync({data:n.data,path:n.path,parent:n}).then(a=>qe(a)?Promise.resolve(s.transform(a.value,o)).then(i=>({status:r.value,value:i})):a);T.assertNever(s)}}Z.create=(t,e,r)=>new Z({schema:t,typeName:g.ZodEffects,effect:e,...w(r)});Z.createWithPreprocess=(t,e,r)=>new Z({schema:e,effect:{type:"preprocess",transform:t},typeName:g.ZodEffects,...w(r)});class F extends _{_parse(e){return this._getType(e)===h.undefined?L(void 0):this._def.innerType._parse(e)}unwrap(){return this._def.innerType}}F.create=(t,e)=>new F({innerType:t,typeName:g.ZodOptional,...w(e)});class ne extends _{_parse(e){return this._getType(e)===h.null?L(null):this._def.innerType._parse(e)}unwrap(){return this._def.innerType}}ne.create=(t,e)=>new ne({innerType:t,typeName:g.ZodNullable,...w(e)});class Ie extends _{_parse(e){const{ctx:r}=this._processInputParams(e);let n=r.data;return r.parsedType===h.undefined&&(n=this._def.defaultValue()),this._def.innerType._parse({data:n,path:r.path,parent:r})}removeDefault(){return this._def.innerType}}Ie.create=(t,e)=>new Ie({innerType:t,typeName:g.ZodDefault,defaultValue:typeof e.default=="function"?e.default:()=>e.default,...w(e)});class Je extends _{_parse(e){const{ctx:r}=this._processInputParams(e),n=this._def.innerType._parse({data:r.data,path:r.path,parent:{...r,common:{...r.common,issues:[]}}});return ze(n)?n.then(s=>({status:"valid",value:s.status==="valid"?s.value:this._def.catchValue()})):{status:"valid",value:n.status==="valid"?n.value:this._def.catchValue()}}removeCatch(){return this._def.innerType}}Je.create=(t,e)=>new Je({innerType:t,typeName:g.ZodCatch,catchValue:typeof e.catch=="function"?e.catch:()=>e.catch,...w(e)});class Ge extends _{_parse(e){if(this._getType(e)!==h.nan){const n=this._getOrReturnCtx(e);return y(n,{code:d.invalid_type,expected:h.nan,received:n.parsedType}),b}return{status:"valid",value:e.data}}}Ge.create=t=>new Ge({typeName:g.ZodNaN,...w(t)});const mo=Symbol("zod_brand");class Br extends _{_parse(e){const{ctx:r}=this._processInputParams(e),n=r.data;return this._def.type._parse({data:n,path:r.path,parent:r})}unwrap(){return this._def.type}}class Ae extends _{_parse(e){const{status:r,ctx:n}=this._processInputParams(e);if(n.common.async)return(async()=>{const o=await this._def.in._parseAsync({data:n.data,path:n.path,parent:n});return o.status==="aborted"?b:o.status==="dirty"?(r.dirty(),qr(o.value)):this._def.out._parseAsync({data:o.value,path:n.path,parent:n})})();{const s=this._def.in._parseSync({data:n.data,path:n.path,parent:n});return s.status==="aborted"?b:s.status==="dirty"?(r.dirty(),{status:"dirty",value:s.value}):this._def.out._parseSync({data:s.value,path:n.path,parent:n})}}static create(e,r){return new Ae({in:e,out:r,typeName:g.ZodPipeline})}}const Vr=(t,e={},r)=>t?fe.create().superRefine((n,s)=>{if(!t(n)){const o=typeof e=="function"?e(n):e,a=typeof o=="string"?{message:o}:o;s.addIssue({code:"custom",...a,fatal:r})}}):fe.create(),yo={object:C.lazycreate};var g;(function(t){t.ZodString="ZodString",t.ZodNumber="ZodNumber",t.ZodNaN="ZodNaN",t.ZodBigInt="ZodBigInt",t.ZodBoolean="ZodBoolean",t.ZodDate="ZodDate",t.ZodSymbol="ZodSymbol",t.ZodUndefined="ZodUndefined",t.ZodNull="ZodNull",t.ZodAny="ZodAny",t.ZodUnknown="ZodUnknown",t.ZodNever="ZodNever",t.ZodVoid="ZodVoid",t.ZodArray="ZodArray",t.ZodObject="ZodObject",t.ZodUnion="ZodUnion",t.ZodDiscriminatedUnion="ZodDiscriminatedUnion",t.ZodIntersection="ZodIntersection",t.ZodTuple="ZodTuple",t.ZodRecord="ZodRecord",t.ZodMap="ZodMap",t.ZodSet="ZodSet",t.ZodFunction="ZodFunction",t.ZodLazy="ZodLazy",t.ZodLiteral="ZodLiteral",t.ZodEnum="ZodEnum",t.ZodEffects="ZodEffects",t.ZodNativeEnum="ZodNativeEnum",t.ZodOptional="ZodOptional",t.ZodNullable="ZodNullable",t.ZodDefault="ZodDefault",t.ZodCatch="ZodCatch",t.ZodPromise="ZodPromise",t.ZodBranded="ZodBranded",t.ZodPipeline="ZodPipeline"})(g||(g={}));const go=(t,e={message:`Input not instance of ${t.name}`})=>Vr(r=>r instanceof t,e,!0),Hr=J.create,Fr=Q.create,bo=Ge.create,wo=Te.create,Jr=Ee.create,_o=te.create,vo=Be.create,xo=ke.create,To=Ce.create,Eo=fe.create,ko=ee.create,Co=G.create,Ro=Ve.create,Oo=D.create,Po=C.create,So=C.strictCreate,No=Re.create,Lo=it.create,Io=Oe.create,Ao=q.create,jo=Pe.create,Mo=Fe.create,$o=re.create,Do=le.create,Zo=Se.create,Uo=Ne.create,Wo=X.create,qo=Le.create,zo=pe.create,tr=Z.create,Bo=F.create,Vo=ne.create,Ho=Z.createWithPreprocess,Fo=Ae.create,Jo=()=>Hr().optional(),Go=()=>Fr().optional(),Yo=()=>Jr().optional(),Qo={string:t=>J.create({...t,coerce:!0}),number:t=>Q.create({...t,coerce:!0}),boolean:t=>Ee.create({...t,coerce:!0}),bigint:t=>Te.create({...t,coerce:!0}),date:t=>te.create({...t,coerce:!0})},Xo=b;var p=Object.freeze({__proto__:null,defaultErrorMap:xe,setErrorMap:ao,getErrorMap:Ue,makeIssue:We,EMPTY_PATH:io,addIssueToContext:y,ParseStatus:I,INVALID:b,DIRTY:qr,OK:L,isAborted:_t,isDirty:vt,isValid:qe,isAsync:ze,get util(){return T},ZodParsedType:h,getParsedType:Y,ZodType:_,ZodString:J,ZodNumber:Q,ZodBigInt:Te,ZodBoolean:Ee,ZodDate:te,ZodSymbol:Be,ZodUndefined:ke,ZodNull:Ce,ZodAny:fe,ZodUnknown:ee,ZodNever:G,ZodVoid:Ve,ZodArray:D,get objectUtil(){return He},ZodObject:C,ZodUnion:Re,ZodDiscriminatedUnion:it,ZodIntersection:Oe,ZodTuple:q,ZodRecord:Pe,ZodMap:Fe,ZodSet:re,ZodFunction:le,ZodLazy:Se,ZodLiteral:Ne,ZodEnum:X,ZodNativeEnum:Le,ZodPromise:pe,ZodEffects:Z,ZodTransformer:Z,ZodOptional:F,ZodNullable:ne,ZodDefault:Ie,ZodCatch:Je,ZodNaN:Ge,BRAND:mo,ZodBranded:Br,ZodPipeline:Ae,custom:Vr,Schema:_,ZodSchema:_,late:yo,get ZodFirstPartyTypeKind(){return g},coerce:Qo,any:Eo,array:Oo,bigint:wo,boolean:Jr,date:_o,discriminatedUnion:Lo,effect:tr,enum:Wo,function:Do,instanceof:go,intersection:Io,lazy:Zo,literal:Uo,map:Mo,nan:bo,nativeEnum:qo,never:Co,null:To,nullable:Vo,number:Fr,object:Po,oboolean:Yo,onumber:Go,optional:Bo,ostring:Jo,pipeline:Fo,preprocess:Ho,promise:zo,record:jo,set:$o,strictObject:So,string:Hr,symbol:vo,transformer:tr,tuple:Ao,undefined:xo,union:No,unknown:ko,void:Ro,NEVER:Xo,ZodIssueCode:d,quotelessJson:oo,ZodError:H});const Gr=/^0x[0-9a-f]+$/i,Yr=/^\d+$/,Ko=p.string().nonempty("The short string cannot be empty").max(31,"The short string cannot exceed 31 characters").refine(t=>!Gr.test(t),"The shortString should not be a hex string").refine(t=>!Yr.test(t),"The shortString should not be an integer string"),_e=p.union([p.string().regex(Gr,"Only hex, integers and bigint are supported in calldata"),p.string().regex(Yr,"Only hex, integers and bigint are supported in calldata"),Ko,p.number().int("Only hex, integers and bigint are supported in calldata"),p.bigint()]),Qr=p.object({contractAddress:p.string(),entrypoint:p.string(),calldata:p.array(_e.or(p.array(_e))).optional()}),ea=p.array(Qr).nonempty(),ta=p.object({types:p.record(p.array(p.union([p.object({name:p.string(),type:p.string()}),p.object({name:p.string(),type:p.literal("merkletree"),contains:p.string()})]))),primaryType:p.string(),domain:p.record(p.unknown()),message:p.record(p.unknown())}),rr={enable:p.tuple([p.object({starknetVersion:p.union([p.literal("v4"),p.literal("v5")]).optional()}).optional()]).or(p.tuple([])),addStarknetChain:p.tuple([p.object({id:p.string(),chainId:p.string(),chainName:p.string(),rpcUrls:p.array(p.string()).optional(),nativeCurrency:p.object({name:p.string(),symbol:p.string(),decimals:p.number()}).optional(),blockExplorerUrls:p.array(p.string()).optional()})]),switchStarknetChain:p.tuple([p.object({chainId:p.string()})]),watchAsset:p.tuple([p.object({type:p.literal("ERC20"),options:p.object({address:p.string(),symbol:p.string().optional(),decimals:p.number().optional(),image:p.string().optional(),name:p.string().optional()})})]),execute:p.tuple([ea.or(Qr),p.object({nonce:_e.optional(),maxFee:_e.optional(),version:_e.optional()}).optional()]),signMessage:p.tuple([ta])},$=Hn.create({isServer:!1,allowOutsideOfServer:!0});let Tt=kt,Et="",Xr="";const ve=({width:t=775,height:e=385,origin:r,location:n,atLeftBottom:s=!1})=>{const o=window?.outerWidth??window?.innerWidth??window?.screen.width??0,a=window?.outerHeight??window?.innerHeight??window?.screen.height??0,i=window?.screenLeft??window?.screenX??0,c=window?.screenTop??window?.screenY??0,u=s?0:i+o/2-t/2,l=s?window.screen.availHeight+10:c+a/2-e/2;Tt=r??Tt,Et=n??Et,Xr=`width=${t},height=${e},top=${l},left=${u},toolbar=no,menubar=no,scrollbars=no,location=no,status=no,popup=1`};$.router({authorize:$.procedure.output(p.boolean()).mutation(async()=>!0),connect:$.procedure.mutation(async()=>""),enable:$.procedure.output(p.string()).mutation(async()=>""),execute:$.procedure.input(rr.execute).output(p.string()).mutation(async()=>""),signMessage:$.procedure.input(rr.signMessage).output(p.string().array()).mutation(async()=>[]),getLoginStatus:$.procedure.output(p.object({isLoggedIn:p.boolean(),hasSession:p.boolean().optional(),isPreauthorized:p.boolean().optional()})).mutation(async()=>({isLoggedIn:!0})),addStarknetChain:$.procedure.mutation(t=>{throw Error("not implemented")}),switchStarknetChain:$.procedure.mutation(t=>{throw Error("not implemented")}),watchAsset:$.procedure.mutation(t=>{throw Error("not implemented")}),updateModal:$.procedure.subscription(async()=>{})});const yt=({iframe:t})=>On({links:[Tn({enabled:e=>process.env.NODE_ENV==="development"&&typeof window<"u"||process.env.NODE_ENV==="development"&&e.direction==="down"&&e.result instanceof Error}),pn({condition(e){if(!t&&e.type==="subscription")throw new Error("subscription is not supported without an iframe window");return!!t},true:bt.windowLink({window,postWindow:t,postOrigin:"*"}),false:bt.popupLink({listenWindow:window,createPopup:()=>{let e=null;const r=document.createElement("button");if(r.style.display="none",r.addEventListener("click",()=>{e=window.open(`${Tt}${Et}`,"popup",Xr)}),r.click(),(async()=>{for(;!e;)await new Promise(n=>setTimeout(n,100))})(),!e)throw new Error("Could not open popup");return e},postOrigin:"*"})})]}),ra=385,na=775,sa=385,oa=440,aa=886,ia=562;class nr{async getPubKey(){throw new Error("Method not implemented")}async signMessage(){throw new Error("Method not implemented")}async signTransaction(){throw new Error("Method not implemented")}async signDeclareTransaction(){throw new Error("Method not implemented")}async signDeployAccountTransaction(){throw new Error("Method not implemented")}}class ca extends Ye.Account{constructor(r,n,s){super(r,n,new nr);ae(this,"signer",new nr);ae(this,"execute",async(r,n,s={})=>{try{ve({width:ra,height:na,location:"/review"}),Array.isArray(r)&&r[0]&&r[0].entrypoint==="use_offchain_session"&&ve({width:1,height:1,location:"/executeSessionTx",atLeftBottom:!0});const o=n===void 0||Array.isArray(n)?s:n;return{transaction_hash:await this.proxyLink.execute.mutate([r,o])}}catch(o){throw o instanceof Error?new Error(o.message):new Error("Error while execute a transaction")}});ae(this,"signMessage",async r=>{try{return ve({width:sa,height:oa,location:"/signMessage"}),await this.proxyLink.signMessage.mutate([r])}catch(n){throw n instanceof Error?new Error(n.message):new Error("Error while sign a message")}});this.address=n,this.proxyLink=s}}const je=[],ua=(t,e,r)=>{const n={...t,isConnected:!1,provider:e,getLoginStatus:()=>r.getLoginStatus.mutate(),async request(s){switch(s.type){case"wallet_addStarknetChain":return await r.addStarknetChain.mutate();case"wallet_switchStarknetChain":return await r.switchStarknetChain.mutate();case"wallet_watchAsset":return await r.watchAsset.mutate();default:throw new Error("not implemented")}},async enable(s){if(s?.starknetVersion!=="v4")throw Error("not implemented");try{ve({width:aa,height:ia,location:"/interstitialLogin"});const a=await r.enable.mutate();return await la(n,e,r,a),[a]}catch(o){throw o instanceof Error?new Error(o.message):new Error("Unknow error on enable wallet")}},async isPreauthorized(){const{isLoggedIn:s,isPreauthorized:o}=await r.getLoginStatus.mutate();return!!(s&&o)},on:(s,o)=>{if(s==="accountsChanged")je.push({type:s,handler:o});else if(s==="networkChanged")je.push({type:s,handler:o});else throw new Error(`Unknwown event: ${s}`)},off:(s,o)=>{if(s!=="accountsChanged"&&s!=="networkChanged")throw new Error(`Unknwown event: ${s}`);const a=je.findIndex(i=>i.type===s&&i.handler===o);a>=0&&je.splice(a,1)}};return n};async function la(t,e,r,n){if(t.isConnected)return t;const o={isConnected:!0,chainId:await e.getChainId(),selectedAddress:n,account:new ca(e,n,r),provider:e};return Object.assign(t,o)}const da=t=>{t.style.position="fixed",t.style.top="50%",t.style.left="50%",t.style.transform="translate(-50%, -50%)",t.style.width="380px",t.style.height="420px",t.style.border="none",t.style.borderRadius="40px",t.style.boxShadow="0px 4px 20px rgba(0, 0, 0, 0.5)";const e=document.createElement("div");return e.style.display="none",e.style.position="fixed",e.style.top="0",e.style.left="0",e.style.right="0",e.style.bottom="0",e.style.backgroundColor="rgba(0, 0, 0, 0.5)",e.style.zIndex="99999",e.style.backdropFilter="blur(4px)",e.appendChild(t),e},fa=t=>{t.style.display="block"},pa=t=>{t.style.display="none"},ha=(t,e)=>{t.style.height=`min(${e||420}px, 100%)`},ma=async(t,e)=>{const r=new URL(t);r.pathname="/iframes/comms",t=r.toString();const n=document.createElement("iframe");n.src=t,n.loading="eager",n.sandbox.add("allow-scripts","allow-same-origin","allow-forms","allow-top-navigation","allow-popups"),n.allow="clipboard-write",n.id="argent-webwallet-iframe";const s=da(n);return s.style.display=e?"block":"none",s.id="argent-webwallet-modal",window.document.body.appendChild(s),await new Promise((o,a)=>{const i=setTimeout(()=>a(new Error("Timeout while loading an iframe")),2e4);n.addEventListener("load",async()=>{clearTimeout(i),o()})}),{iframe:n,modal:s}};function ya(t){const e=nn.getRandomPublicRPCNode();try{const{origin:r}=new URL(t);if(r.includes("localhost")||r.includes("127.0.0.1")||r.includes("hydrogen"))return e.testnet;if(r.includes("staging")||r.includes("argent.xyz"))return e.mainnet}catch{console.warn("Could not determine rpc nodeUrl from target URL, defaulting to mainnet")}return e.mainnet}const gt=async(t,e,r,n)=>{const s=typeof window<"u"?window:void 0;if(!s)throw new Error("window is not defined");const o=ya(t),a=r??new Ye.RpcProvider({nodeUrl:o}),i=ua({host:s.location.origin,id:"argentWebWallet",icon:"https://www.argent.xyz/favicon.ico",name:"Argent Web Wallet",version:"1.0.0"},a,e);if(n){const{iframe:c,modal:u}=n;e.updateModal.subscribe.apply(null,[void 0,{onData(l){switch(l.action){case"show":fa(u);break;case"hide":pa(u);break;case"updateHeight":ha(c,l.height)}}}])}return i},ue=Ye.constants.NetworkName,ga=ue.SN_SEPOLIA;function ba(t){try{const{origin:e}=new URL(t);if(e.includes("localhost")||e.includes("127.0.0.1"))return ga;if(e.includes("hydrogen"))return ue.SN_SEPOLIA;if(e.includes("staging"))return ue.SN_MAIN;if(e.includes("dev"))return ue.SN_SEPOLIA;if(e.includes("argent.xyz"))return ue.SN_MAIN}catch{console.warn("Could not determine network from target URL, defaulting to mainnet-alpha")}return ue.SN_MAIN}const sr="allowed-dapps",wa=async t=>{const e=t===Ye.constants.NetworkName.SN_MAIN?on:sn;try{const n=await(await caches.open(sr)).match(e);if(n){const u=parseInt(n.headers.get("X-Cache-Timestamp"),10);if((new Date().getTime()-u)/(1e3*60*60)<24)return n.json()}const s=await fetch(e),o=new Headers(s.headers);o.set("X-Cache-Timestamp",new Date().getTime().toString());const a=await s.json(),i=new Response(JSON.stringify(a),{status:s.status,statusText:s.statusText,headers:o});return await(await caches.open(sr)).put(e,i),a}catch(r){throw new Error(r)}},_a=async t=>new Promise(e=>{if(!t)return e(!1);try{navigator.webkitTemporaryStorage.queryUsageAndQuota((n,s)=>{e(Math.round(s/(1024*1024))<Math.round((performance?.memory?.jsHeapSizeLimit??1073741824)/(1024*1024))*2)},()=>e(!1))}catch{e(!1)}}),va=async(t,e)=>{const{userAgent:r}=navigator,n=!!(navigator.vendor&&navigator.vendor.indexOf("Google")===0&&navigator.brave===void 0&&!r.match(/Edg/)&&!r.match(/OPR/)),s=await _a(n);if(!n||s){const i=yt({});return await gt(t,i,e,void 0)}const o=ba(t),{allowedDapps:a}=await wa(o);if(a.includes(window.location.hostname)){const i="argent-webwallet-modal",c="argent-webwallet-iframe",u=document.getElementById(i),l=document.getElementById(c);u&&u&&l&&(u.remove(),l.remove());const{iframe:f,modal:m}=await ma(t,!1),v=yt({iframe:f.contentWindow??void 0});return await v.authorize.mutate(),await gt(t,v,e,{modal:m,iframe:f})}else{const i=yt({});return await gt(t,i,e,void 0)}};let M=null;class xa extends S.Connector{constructor(r={}){super();ae(this,"_wallet",null);ae(this,"_options");this._options=r}available(){return!0}async ready(){return M?(this._wallet=M,this._wallet.isPreauthorized()):(this._wallet=null,!1)}get id(){return this._wallet=M,this._wallet?.id||"argentWebWallet"}get name(){return this._wallet=M,this._wallet?.name||"Argent Web Wallet"}get icon(){return{light:Zt,dark:Zt}}get wallet(){if(!this._wallet)throw new S.ConnectorNotConnectedError;return this._wallet}get title(){return"Email"}get subtitle(){return"Powered by Argent"}async connect(){if(await this.ensureWallet(),!this._wallet)throw new S.ConnectorNotFoundError;try{await this._wallet.enable({starknetVersion:"v4"})}catch(s){throw console.log(s),new S.UserRejectedRequestError}if(!this._wallet.isConnected)throw new S.UserRejectedRequestError;const r=this._wallet.account,n=await this.chainId();return{account:r.address,chainId:n}}async disconnect(){if(!this.available()&&!this._wallet)throw new S.ConnectorNotFoundError;if(!this._wallet?.isConnected)throw new S.UserNotConnectedError;M=null,this._wallet=M,S.removeStarknetLastConnectedWallet()}async account(){if(this._wallet=M,!this._wallet||!this._wallet.account)throw new S.ConnectorNotConnectedError;return this._wallet.account}async chainId(){if(!this._wallet||!this.wallet.account||!this._wallet.provider)throw new S.ConnectorNotConnectedError;const r=await this._wallet.provider.getChainId();return BigInt(r)}async initEventListener(r){if(this._wallet=M,!this._wallet)throw new S.ConnectorNotConnectedError;this._wallet.on("accountsChanged",r)}async removeEventListener(r){if(this._wallet=M,!this._wallet)throw new S.ConnectorNotConnectedError;this._wallet.off("accountsChanged",r),M=null,this._wallet=null}async ensureWallet(){const r=this._options.url||kt,n=this._options.provider;ve({origin:r,location:"/interstitialLogin"}),M=await va(r,n)??null,this._wallet=M}}exports.DEFAULT_WEBWALLET_URL=kt;exports.WebWalletConnector=xa;
 
 }).call(this)}).call(this,require('_process'))
-},{"./lastConnected-080a1315.cjs":6,"./publicRcpNodes-77022e83.cjs":7,"_process":1,"starknet":undefined}],6:[function(require,module,exports){
+},{"./lastConnected-080a1315.cjs":11,"./publicRcpNodes-77022e83.cjs":13,"_process":1,"starknet":undefined}],9:[function(require,module,exports){
+(function (process){(function (){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.W = exports.D = void 0;
+var _lastConnectedB964dc = require("./lastConnected-b964dc30.js");
+var _starknet = require("starknet");
+var _publicRcpNodesBe = require("./publicRcpNodes-be041588.js");
+var an = Object.defineProperty;
+var on = (t, e, r) => e in t ? an(t, e, {
+  enumerable: !0,
+  configurable: !0,
+  writable: !0,
+  value: r
+}) : t[e] = r;
+var ae = (t, e, r) => (on(t, typeof e != "symbol" ? e + "" : e, r), r);
+const cr = exports.D = "https://web.argent.xyz",
+  Ut = `<svg
+    width="32"
+    height="28"
+    viewBox="0 0 18 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M1.5 0.4375C0.982233 0.4375 0.5625 0.857233 0.5625 1.375V12C0.5625 12.4144 0.72712 12.8118 1.02015 13.1049C1.31317 13.3979 1.7106 13.5625 2.125 13.5625H15.875C16.2894 13.5625 16.6868 13.3979 16.9799 13.1049C17.2729 12.8118 17.4375 12.4144 17.4375 12V1.375C17.4375 0.857233 17.0178 0.4375 16.5 0.4375H1.5ZM2.4375 3.50616V11.6875H15.5625V3.50616L9.63349 8.94108C9.27507 9.26964 8.72493 9.26964 8.36651 8.94108L2.4375 3.50616ZM14.0899 2.3125H3.91013L9 6.97822L14.0899 2.3125Z"
+      fill="currentColor"
+    />
+  </svg>`,
+  hn = "https://static.hydrogen.argent47.net/webwallet/iframe_whitelist_testnet.json",
+  mn = "https://static.argent.net/webwallet/iframe_whitelist_mainnet.json";
+function yn(t) {
+  return t;
+}
+function gn(t) {
+  return t.length === 0 ? yn : t.length === 1 ? t[0] : function (r) {
+    return t.reduce((n, s) => s(n), r);
+  };
+}
+function bn(t) {
+  return typeof t == "object" && t !== null && "subscribe" in t;
+}
+function Qe(t) {
+  const e = {
+    subscribe(r) {
+      let n = null,
+        s = !1,
+        a = !1,
+        o = !1;
+      function i() {
+        if (n === null) {
+          o = !0;
+          return;
+        }
+        a || (a = !0, typeof n == "function" ? n() : n && n.unsubscribe());
+      }
+      return n = t({
+        next(c) {
+          s || r.next?.(c);
+        },
+        error(c) {
+          s || (s = !0, r.error?.(c), i());
+        },
+        complete() {
+          s || (s = !0, r.complete?.(), i());
+        }
+      }), o && i(), {
+        unsubscribe: i
+      };
+    },
+    pipe(...r) {
+      return gn(r)(e);
+    }
+  };
+  return e;
+}
+function ur(t) {
+  return e => {
+    let r = 0,
+      n = null;
+    const s = [];
+    function a() {
+      n || (n = e.subscribe({
+        next(i) {
+          for (const c of s) c.next?.(i);
+        },
+        error(i) {
+          for (const c of s) c.error?.(i);
+        },
+        complete() {
+          for (const i of s) i.complete?.();
+        }
+      }));
+    }
+    function o() {
+      if (r === 0 && n) {
+        const i = n;
+        n = null, i.unsubscribe();
+      }
+    }
+    return {
+      subscribe(i) {
+        return r++, s.push(i), a(), {
+          unsubscribe() {
+            r--, o();
+            const c = s.findIndex(u => u === i);
+            c > -1 && s.splice(c, 1);
+          }
+        };
+      }
+    };
+  };
+}
+function wn(t) {
+  return e => ({
+    subscribe(r) {
+      let n = 0;
+      return e.subscribe({
+        next(a) {
+          r.next?.(t(a, n++));
+        },
+        error(a) {
+          r.error?.(a);
+        },
+        complete() {
+          r.complete?.();
+        }
+      });
+    }
+  });
+}
+function lr(t) {
+  return e => ({
+    subscribe(r) {
+      return e.subscribe({
+        next(n) {
+          t.next?.(n), r.next?.(n);
+        },
+        error(n) {
+          t.error?.(n), r.error?.(n);
+        },
+        complete() {
+          t.complete?.(), r.complete?.();
+        }
+      });
+    }
+  });
+}
+let _n = class dr extends Error {
+  constructor(e) {
+    super(e), this.name = "ObservableAbortError", Object.setPrototypeOf(this, dr.prototype);
+  }
+};
+function fr(t) {
+  let e;
+  return {
+    promise: new Promise((n, s) => {
+      let a = !1;
+      function o() {
+        a || (a = !0, s(new _n("This operation was aborted.")), i.unsubscribe());
+      }
+      const i = t.subscribe({
+        next(c) {
+          a = !0, n(c), o();
+        },
+        error(c) {
+          a = !0, s(c), o();
+        },
+        complete() {
+          a = !0, o();
+        }
+      });
+      e = o;
+    }),
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    abort: e
+  };
+}
+const vn = /* @__PURE__ */Object.freeze( /* @__PURE__ */Object.defineProperty({
+  __proto__: null,
+  isObservable: bn,
+  map: wn,
+  observable: Qe,
+  observableToPromise: fr,
+  share: ur,
+  tap: lr
+}, Symbol.toStringTag, {
+  value: "Module"
+}));
+function pr(t) {
+  return Qe(e => {
+    function r(s = 0, a = t.op) {
+      const o = t.links[s];
+      if (!o) throw new Error("No more links to execute - did you forget to add an ending link?");
+      return o({
+        op: a,
+        next(c) {
+          return r(s + 1, c);
+        }
+      });
+    }
+    return r().subscribe(e);
+  });
+}
+function Wt(t) {
+  return Array.isArray(t) ? t : [t];
+}
+function xn(t) {
+  return e => {
+    const r = Wt(t.true).map(s => s(e)),
+      n = Wt(t.false).map(s => s(e));
+    return s => Qe(a => {
+      const o = t.condition(s.op) ? r : n;
+      return pr({
+        op: s.op,
+        links: o
+      }).subscribe(a);
+    });
+  };
+}
+function Tn(t) {
+  return t instanceof hr ||
+  /**
+  * @deprecated
+  * Delete in next major
+  */
+  t.name === "TRPCClientError";
+}
+let hr = class $e extends Error {
+  static from(e, r = {}) {
+    return e instanceof Error ? Tn(e) ? (r.meta && (e.meta = {
+      ...e.meta,
+      ...r.meta
+    }), e) : new $e(e.message, {
+      ...r,
+      cause: e,
+      result: null
+    }) : new $e(e.error.message ?? "", {
+      ...r,
+      cause: void 0,
+      result: e
+    });
+  }
+  constructor(e, r) {
+    const n = r?.cause;
+    super(e, {
+      cause: n
+    }), this.meta = r?.meta, this.cause = n, this.shape = r?.result?.error, this.data = r?.result?.error.data, this.name = "TRPCClientError", Object.setPrototypeOf(this, $e.prototype);
+  }
+};
+function mr(t) {
+  const e = /* @__PURE__ */Object.create(null);
+  for (const r in t) {
+    const n = t[r];
+    e[n] = r;
+  }
+  return e;
+}
+const Xe = {
+  /**
+  * Invalid JSON was received by the server.
+  * An error occurred on the server while parsing the JSON text.
+  */
+  PARSE_ERROR: -32700,
+  /**
+  * The JSON sent is not a valid Request object.
+  */
+  BAD_REQUEST: -32600,
+  // Internal JSON-RPC error
+  INTERNAL_SERVER_ERROR: -32603,
+  NOT_IMPLEMENTED: -32603,
+  // Implementation specific errors
+  UNAUTHORIZED: -32001,
+  FORBIDDEN: -32003,
+  NOT_FOUND: -32004,
+  METHOD_NOT_SUPPORTED: -32005,
+  TIMEOUT: -32008,
+  CONFLICT: -32009,
+  PRECONDITION_FAILED: -32012,
+  PAYLOAD_TOO_LARGE: -32013,
+  UNPROCESSABLE_CONTENT: -32022,
+  TOO_MANY_REQUESTS: -32029,
+  CLIENT_CLOSED_REQUEST: -32099
+};
+mr(Xe);
+mr(Xe);
+const En = {
+  PARSE_ERROR: 400,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  FORBIDDEN: 403,
+  METHOD_NOT_SUPPORTED: 405,
+  TIMEOUT: 408,
+  CONFLICT: 409,
+  PRECONDITION_FAILED: 412,
+  PAYLOAD_TOO_LARGE: 413,
+  UNPROCESSABLE_CONTENT: 422,
+  TOO_MANY_REQUESTS: 429,
+  CLIENT_CLOSED_REQUEST: 499,
+  INTERNAL_SERVER_ERROR: 500,
+  NOT_IMPLEMENTED: 501
+};
+function kn(t) {
+  return En[t] ?? 500;
+}
+function yr(t) {
+  return kn(t.code);
+}
+const gr = () => {};
+function br(t, e) {
+  return new Proxy(gr, {
+    get(n, s) {
+      if (!(typeof s != "string" || s === "then")) return br(t, [...e, s]);
+    },
+    apply(n, s, a) {
+      const o = e[e.length - 1] === "apply";
+      return t({
+        args: o ? a.length >= 2 ? a[1] : [] : a,
+        path: o ? e.slice(0, -1) : e
+      });
+    }
+  });
+}
+const kt = t => br(t, []),
+  Ct = t => new Proxy(gr, {
+    get(e, r) {
+      if (!(typeof r != "string" || r === "then")) return t(r);
+    }
+  });
+function Cn(t) {
+  const {
+      path: e,
+      error: r,
+      config: n
+    } = t,
+    {
+      code: s
+    } = t.error,
+    a = {
+      message: r.message,
+      code: Xe[s],
+      data: {
+        code: s,
+        httpStatus: yr(r)
+      }
+    };
+  return n.isDev && typeof t.error.stack == "string" && (a.data.stack = t.error.stack), typeof e == "string" && (a.data.path = e), n.errorFormatter({
+    ...t,
+    shape: a
+  });
+}
+function zt(t, e) {
+  return "error" in e ? {
+    ...e,
+    error: t.transformer.output.serialize(e.error)
+  } : "data" in e.result ? {
+    ...e,
+    result: {
+      ...e.result,
+      data: t.transformer.output.serialize(e.result.data)
+    }
+  } : e;
+}
+function Rn(t, e) {
+  return Array.isArray(e) ? e.map(r => zt(t, r)) : zt(t, e);
+}
+const On = /* @__PURE__ */Object.freeze( /* @__PURE__ */Object.defineProperty({
+  __proto__: null,
+  createFlatProxy: Ct,
+  createRecursiveProxy: kt,
+  getErrorShape: Cn,
+  transformTRPCResponse: Rn
+}, Symbol.toStringTag, {
+  value: "Module"
+}));
+function Pn(t) {
+  return typeof FormData > "u" ? !1 : t instanceof FormData;
+}
+const ut = {
+  css: {
+    query: ["72e3ff", "3fb0d8"],
+    mutation: ["c5a3fc", "904dfc"],
+    subscription: ["ff49e1", "d83fbe"]
+  },
+  ansi: {
+    regular: {
+      // Cyan background, black and white text respectively
+      query: ["\x1B[30;46m", "\x1B[97;46m"],
+      // Magenta background, black and white text respectively
+      mutation: ["\x1B[30;45m", "\x1B[97;45m"],
+      // Green background, black and white text respectively
+      subscription: ["\x1B[30;42m", "\x1B[97;42m"]
+    },
+    bold: {
+      query: ["\x1B[1;30;46m", "\x1B[1;97;46m"],
+      mutation: ["\x1B[1;30;45m", "\x1B[1;97;45m"],
+      subscription: ["\x1B[1;30;42m", "\x1B[1;97;42m"]
+    }
+  }
+};
+function Sn(t) {
+  const {
+      direction: e,
+      type: r,
+      path: n,
+      id: s,
+      input: a
+    } = t,
+    o = [],
+    i = [];
+  if (t.colorMode === "ansi") {
+    const [f, m] = ut.ansi.regular[r],
+      [v, E] = ut.ansi.bold[r],
+      S = "\x1B[0m";
+    return o.push(e === "up" ? f : m, e === "up" ? ">>" : "<<", r, e === "up" ? v : E, `#${s}`, n, S), e === "up" ? i.push({
+      input: t.input
+    }) : i.push({
+      input: t.input,
+      // strip context from result cause it's too noisy in terminal wihtout collapse mode
+      result: "result" in t.result ? t.result.result : t.result,
+      elapsedMs: t.elapsedMs
+    }), {
+      parts: o,
+      args: i
+    };
+  }
+  const [c, u] = ut.css[r],
+    l = `
+    background-color: #${e === "up" ? c : u}; 
+    color: ${e === "up" ? "black" : "white"};
+    padding: 2px;
+  `;
+  return o.push("%c", e === "up" ? ">>" : "<<", r, `#${s}`, `%c${n}%c`, "%O"), i.push(l, `${l}; font-weight: bold;`, `${l}; font-weight: normal;`), e === "up" ? i.push({
+    input: a,
+    context: t.context
+  }) : i.push({
+    input: a,
+    result: t.result,
+    elapsedMs: t.elapsedMs,
+    context: t.context
+  }), {
+    parts: o,
+    args: i
+  };
+}
+const Nn = ({
+  c: t = console,
+  colorMode: e = "css"
+}) => r => {
+  const n = r.input,
+    s = Pn(n) ? Object.fromEntries(n) : n,
+    {
+      parts: a,
+      args: o
+    } = Sn({
+      ...r,
+      colorMode: e,
+      input: s
+    }),
+    i = r.direction === "down" && r.result && (r.result instanceof Error || "error" in r.result.result) ? "error" : "log";
+  t[i].apply(null, [a.join(" ")].concat(o));
+};
+function In(t = {}) {
+  const {
+      enabled: e = () => !0
+    } = t,
+    r = t.colorMode ?? (typeof window > "u" ? "ansi" : "css"),
+    {
+      logger: n = Nn({
+        c: t.console,
+        colorMode: r
+      })
+    } = t;
+  return () => ({
+    op: s,
+    next: a
+  }) => Qe(o => {
+    e({
+      ...s,
+      direction: "up"
+    }) && n({
+      ...s,
+      direction: "up"
+    });
+    const i = Date.now();
+    function c(u) {
+      const l = Date.now() - i;
+      e({
+        ...s,
+        direction: "down",
+        result: u
+      }) && n({
+        ...s,
+        direction: "down",
+        elapsedMs: l,
+        result: u
+      });
+    }
+    return a(s).pipe(lr({
+      next(u) {
+        c(u);
+      },
+      error(u) {
+        c(u);
+      }
+    })).subscribe(o);
+  });
+}
+let Ln = class {
+  $request({
+    type: e,
+    input: r,
+    path: n,
+    context: s = {}
+  }) {
+    return pr({
+      links: this.links,
+      op: {
+        id: ++this.requestId,
+        type: e,
+        path: n,
+        input: r,
+        context: s
+      }
+    }).pipe(ur());
+  }
+  requestAsPromise(e) {
+    const r = this.$request(e),
+      {
+        promise: n,
+        abort: s
+      } = fr(r);
+    return new Promise((o, i) => {
+      e.signal?.addEventListener("abort", s), n.then(c => {
+        o(c.result.data);
+      }).catch(c => {
+        i(hr.from(c));
+      });
+    });
+  }
+  query(e, r, n) {
+    return this.requestAsPromise({
+      type: "query",
+      path: e,
+      input: r,
+      context: n?.context,
+      signal: n?.signal
+    });
+  }
+  mutation(e, r, n) {
+    return this.requestAsPromise({
+      type: "mutation",
+      path: e,
+      input: r,
+      context: n?.context,
+      signal: n?.signal
+    });
+  }
+  subscription(e, r, n) {
+    return this.$request({
+      type: "subscription",
+      path: e,
+      input: r,
+      context: n?.context
+    }).subscribe({
+      next(a) {
+        a.result.type === "started" ? n.onStarted?.() : a.result.type === "stopped" ? n.onStopped?.() : n.onData?.(a.result.data);
+      },
+      error(a) {
+        n.onError?.(a);
+      },
+      complete() {
+        n.onComplete?.();
+      }
+    });
+  }
+  constructor(e) {
+    this.requestId = 0;
+    const r = (() => {
+      const n = e.transformer;
+      return n ? "input" in n ? e.transformer : {
+        input: n,
+        output: n
+      } : {
+        input: {
+          serialize: s => s,
+          deserialize: s => s
+        },
+        output: {
+          serialize: s => s,
+          deserialize: s => s
+        }
+      };
+    })();
+    this.runtime = {
+      transformer: {
+        serialize: n => r.input.serialize(n),
+        deserialize: n => r.output.deserialize(n)
+      },
+      combinedTransformer: r
+    }, this.links = e.links.map(n => n(this.runtime));
+  }
+};
+const An = {
+    query: "query",
+    mutate: "mutation",
+    subscribe: "subscription"
+  },
+  Mn = t => An[t];
+function jn(t) {
+  return Ct(e => t.hasOwnProperty(e) ? t[e] : e === "__untypedClient" ? t : kt(({
+    path: r,
+    args: n
+  }) => {
+    const s = [e, ...r],
+      a = Mn(s.pop()),
+      o = s.join(".");
+    return t[a](o, ...n);
+  }));
+}
+function $n(t) {
+  const e = new Ln(t);
+  return jn(e);
+}
+function Dn(t) {
+  return !!t && !Array.isArray(t) && typeof t == "object";
+}
+function Zn(t) {
+  if (t instanceof le) return t;
+  const e = new le({
+    code: "INTERNAL_SERVER_ERROR",
+    cause: t
+  });
+  return t instanceof Error && t.stack && (e.stack = t.stack), e;
+}
+class Un extends Error {}
+function Wn(t) {
+  if (t instanceof Error) return t;
+  const e = typeof t;
+  if (!(e === "undefined" || e === "function" || t === null)) {
+    if (e !== "object") return new Error(String(t));
+    if (Dn(t)) {
+      const r = new Un();
+      for (const n in t) r[n] = t[n];
+      return r;
+    }
+  }
+}
+class le extends Error {
+  constructor(e) {
+    const r = Wn(e.cause),
+      n = e.message ?? r?.message ?? e.code;
+    super(n, {
+      cause: r
+    }), this.code = e.code, this.name = this.constructor.name;
+  }
+}
+function zn(t) {
+  return "input" in t ? t : {
+    input: t,
+    output: t
+  };
+}
+const ge = {
+    _default: !0,
+    input: {
+      serialize: t => t,
+      deserialize: t => t
+    },
+    output: {
+      serialize: t => t,
+      deserialize: t => t
+    }
+  },
+  be = ({
+    shape: t
+  }) => t;
+function qn(t) {
+  return Object.assign( /* @__PURE__ */Object.create(null), t);
+}
+const Bn = ["query", "mutation", "subscription"];
+function Vn(t) {
+  return "router" in t._def;
+}
+const Hn = {
+    _ctx: null,
+    _errorShape: null,
+    _meta: null,
+    queries: {},
+    mutations: {},
+    subscriptions: {},
+    errorFormatter: be,
+    transformer: ge
+  },
+  Fn = [
+  /**
+  * Then is a reserved word because otherwise we can't return a promise that returns a Proxy
+  * since JS will think that `.then` is something that exists
+  */
+  "then"];
+function wr(t) {
+  return function (r) {
+    const n = new Set(Object.keys(r).filter(c => Fn.includes(c)));
+    if (n.size > 0) throw new Error("Reserved words used in `router({})` call: " + Array.from(n).join(", "));
+    const s = qn({});
+    function a(c, u = "") {
+      for (const [l, f] of Object.entries(c ?? {})) {
+        const m = `${u}${l}`;
+        if (Vn(f)) {
+          a(f._def.procedures, `${m}.`);
+          continue;
+        }
+        if (s[m]) throw new Error(`Duplicate key: ${m}`);
+        s[m] = f;
+      }
+    }
+    a(r);
+    const o = {
+      _config: t,
+      router: !0,
+      procedures: s,
+      ...Hn,
+      record: r,
+      queries: Object.entries(s).filter(c => c[1]._def.query).reduce((c, [u, l]) => ({
+        ...c,
+        [u]: l
+      }), {}),
+      mutations: Object.entries(s).filter(c => c[1]._def.mutation).reduce((c, [u, l]) => ({
+        ...c,
+        [u]: l
+      }), {}),
+      subscriptions: Object.entries(s).filter(c => c[1]._def.subscription).reduce((c, [u, l]) => ({
+        ...c,
+        [u]: l
+      }), {})
+    };
+    return {
+      ...r,
+      _def: o,
+      createCaller(c) {
+        return kt(({
+          path: l,
+          args: f
+        }) => {
+          if (l.length === 1 && Bn.includes(l[0])) return Jn({
+            procedures: o.procedures,
+            path: f[0],
+            rawInput: f[1],
+            ctx: c,
+            type: l[0]
+          });
+          const m = l.join("."),
+            v = o.procedures[m];
+          let E = "query";
+          return v._def.mutation ? E = "mutation" : v._def.subscription && (E = "subscription"), v({
+            path: m,
+            rawInput: f[0],
+            ctx: c,
+            type: E
+          });
+        });
+      },
+      getErrorShape(c) {
+        const {
+            path: u,
+            error: l
+          } = c,
+          {
+            code: f
+          } = c.error,
+          m = {
+            message: l.message,
+            code: Xe[f],
+            data: {
+              code: f,
+              httpStatus: yr(l)
+            }
+          };
+        return t.isDev && typeof c.error.stack == "string" && (m.data.stack = c.error.stack), typeof u == "string" && (m.data.path = u), this._def._config.errorFormatter({
+          ...c,
+          shape: m
+        });
+      }
+    };
+  };
+}
+function Jn(t) {
+  const {
+    type: e,
+    path: r
+  } = t;
+  if (!(r in t.procedures) || !t.procedures[r]?._def[e]) throw new le({
+    code: "NOT_FOUND",
+    message: `No "${e}"-procedure on path "${r}"`
+  });
+  const n = t.procedures[r];
+  return n(t);
+}
+const qt = typeof window > "u" || "Deno" in window || globalThis.process?.env?.NODE_ENV === "test" || !!globalThis.process?.env?.JEST_WORKER_ID || !!globalThis.process?.env?.VITEST_WORKER_ID;
+function Bt(t) {
+  const e = t;
+  if (typeof e == "function") return e;
+  if (typeof e.parseAsync == "function") return e.parseAsync.bind(e);
+  if (typeof e.parse == "function") return e.parse.bind(e);
+  if (typeof e.validateSync == "function") return e.validateSync.bind(e);
+  if (typeof e.create == "function") return e.create.bind(e);
+  if (typeof e.assert == "function") return r => (e.assert(r), r);
+  throw new Error("Could not find a validator fn");
+}
+function _r(t, ...e) {
+  const r = Object.assign( /* @__PURE__ */Object.create(null), t);
+  for (const n of e) for (const s in n) {
+    if (s in r && r[s] !== n[s]) throw new Error(`Duplicate key ${s}`);
+    r[s] = n[s];
+  }
+  return r;
+}
+function Gn() {
+  function t(r) {
+    return {
+      _middlewares: r,
+      unstable_pipe(n) {
+        const s = "_middlewares" in n ? n._middlewares : [n];
+        return t([...r, ...s]);
+      }
+    };
+  }
+  function e(r) {
+    return t([r]);
+  }
+  return e;
+}
+function Vt(t) {
+  return t && typeof t == "object" && !Array.isArray(t);
+}
+function Yn(t) {
+  const e = async ({
+    next: r,
+    rawInput: n,
+    input: s
+  }) => {
+    let a;
+    try {
+      a = await t(n);
+    } catch (i) {
+      throw new le({
+        code: "BAD_REQUEST",
+        cause: i
+      });
+    }
+    const o = Vt(s) && Vt(a) ? {
+      ...s,
+      ...a
+    } : a;
+    return r({
+      input: o
+    });
+  };
+  return e._type = "input", e;
+}
+function Qn(t) {
+  const e = async ({
+    next: r
+  }) => {
+    const n = await r();
+    if (!n.ok) return n;
+    try {
+      const s = await t(n.data);
+      return {
+        ...n,
+        data: s
+      };
+    } catch (s) {
+      throw new le({
+        message: "Output validation failed",
+        code: "INTERNAL_SERVER_ERROR",
+        cause: s
+      });
+    }
+  };
+  return e._type = "output", e;
+}
+const vr = "middlewareMarker";
+function oe(t, e) {
+  const {
+    middlewares: r = [],
+    inputs: n,
+    meta: s,
+    ...a
+  } = e;
+  return xr({
+    ..._r(t, a),
+    inputs: [...t.inputs, ...(n ?? [])],
+    middlewares: [...t.middlewares, ...r],
+    meta: t.meta && s ? {
+      ...t.meta,
+      ...s
+    } : s ?? t.meta
+  });
+}
+function xr(t = {}) {
+  const e = {
+    inputs: [],
+    middlewares: [],
+    ...t
+  };
+  return {
+    _def: e,
+    input(r) {
+      const n = Bt(r);
+      return oe(e, {
+        inputs: [r],
+        middlewares: [Yn(n)]
+      });
+    },
+    output(r) {
+      const n = Bt(r);
+      return oe(e, {
+        output: r,
+        middlewares: [Qn(n)]
+      });
+    },
+    meta(r) {
+      return oe(e, {
+        meta: r
+      });
+    },
+    /**
+    * @deprecated
+    * This functionality is deprecated and will be removed in the next major version.
+    */
+    unstable_concat(r) {
+      return oe(e, r._def);
+    },
+    use(r) {
+      const n = "_middlewares" in r ? r._middlewares : [r];
+      return oe(e, {
+        middlewares: n
+      });
+    },
+    query(r) {
+      return lt({
+        ...e,
+        query: !0
+      }, r);
+    },
+    mutation(r) {
+      return lt({
+        ...e,
+        mutation: !0
+      }, r);
+    },
+    subscription(r) {
+      return lt({
+        ...e,
+        subscription: !0
+      }, r);
+    }
+  };
+}
+function lt(t, e) {
+  const r = oe(t, {
+    resolver: e,
+    middlewares: [async function (s) {
+      const a = await e(s);
+      return {
+        marker: vr,
+        ok: !0,
+        data: a,
+        ctx: s.ctx
+      };
+    }]
+  });
+  return Kn(r._def);
+}
+const Xn = `
+If you want to call this function on the server, you do the following:
+This is a client-only function.
+
+const caller = appRouter.createCaller({
+  /* ... your context */
+});
+
+const result = await caller.call('myProcedure', input);
+`.trim();
+function Kn(t) {
+  const e = async function (n) {
+    if (!n || !("rawInput" in n)) throw new Error(Xn);
+    const s = async (o = {
+        index: 0,
+        ctx: n.ctx
+      }) => {
+        try {
+          const i = t.middlewares[o.index];
+          return await i({
+            ctx: o.ctx,
+            type: n.type,
+            path: n.path,
+            rawInput: o.rawInput ?? n.rawInput,
+            meta: t.meta,
+            input: o.input,
+            next(u) {
+              const l = u;
+              return s({
+                index: o.index + 1,
+                ctx: l && "ctx" in l ? {
+                  ...o.ctx,
+                  ...l.ctx
+                } : o.ctx,
+                input: l && "input" in l ? l.input : o.input,
+                rawInput: l && "rawInput" in l ? l.rawInput : o.rawInput
+              });
+            }
+          });
+        } catch (i) {
+          return {
+            ok: !1,
+            error: Zn(i),
+            marker: vr
+          };
+        }
+      },
+      a = await s();
+    if (!a) throw new le({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "No result from middlewares - did you forget to `return next()`?"
+    });
+    if (!a.ok) throw a.error;
+    return a.data;
+  };
+  return e._def = t, e.meta = t.meta, e;
+}
+function es(...t) {
+  const e = _r({}, ...t.map(a => a._def.record)),
+    r = t.reduce((a, o) => {
+      if (o._def._config.errorFormatter && o._def._config.errorFormatter !== be) {
+        if (a !== be && a !== o._def._config.errorFormatter) throw new Error("You seem to have several error formatters");
+        return o._def._config.errorFormatter;
+      }
+      return a;
+    }, be),
+    n = t.reduce((a, o) => {
+      if (o._def._config.transformer && o._def._config.transformer !== ge) {
+        if (a !== ge && a !== o._def._config.transformer) throw new Error("You seem to have several transformers");
+        return o._def._config.transformer;
+      }
+      return a;
+    }, ge);
+  return wr({
+    errorFormatter: r,
+    transformer: n,
+    isDev: t.some(a => a._def._config.isDev),
+    allowOutsideOfServer: t.some(a => a._def._config.allowOutsideOfServer),
+    isServer: t.some(a => a._def._config.isServer),
+    $types: t[0]?._def._config.$types
+  })(e);
+}
+class Ue {
+  context() {
+    return new Ue();
+  }
+  meta() {
+    return new Ue();
+  }
+  create(e) {
+    return rs()(e);
+  }
+}
+const ts = new Ue();
+function rs() {
+  return function (e) {
+    const r = e?.errorFormatter ?? be,
+      s = {
+        transformer: zn(e?.transformer ?? ge),
+        isDev: e?.isDev ?? globalThis.process?.env?.NODE_ENV !== "production",
+        allowOutsideOfServer: e?.allowOutsideOfServer ?? !1,
+        errorFormatter: r,
+        isServer: e?.isServer ?? qt,
+        /**
+        * @internal
+        */
+        $types: Ct(a => {
+          throw new Error(`Tried to access "$types.${a}" which is not available at runtime`);
+        })
+      };
+    if (!(e?.isServer ?? qt) && e?.allowOutsideOfServer !== !0) throw new Error("You're trying to use @trpc/server in a non-server environment. This is not supported by default.");
+    return {
+      /**
+      * These are just types, they can't be used
+      * @internal
+      */
+      _config: s,
+      /**
+      * Builder object for creating procedures
+      */
+      procedure: xr({
+        meta: e?.defaultMeta
+      }),
+      /**
+      * Create reusable middlewares
+      */
+      middleware: Gn(),
+      /**
+      * Create a router
+      */
+      router: wr(s),
+      /**
+      * Merge Routers
+      */
+      mergeRouters: es
+    };
+  };
+}
+var bt = {},
+  Ke = {},
+  pe = {},
+  O = {};
+const he = /* @__PURE__ */(0, _lastConnectedB964dc.g)(vn);
+var Rt = {},
+  Tr = he;
+function Er(t) {
+  return Tr.observable(e => {
+    function r(s = 0, a = t.op) {
+      const o = t.links[s];
+      if (!o) throw new Error("No more links to execute - did you forget to add an ending link?");
+      return o({
+        op: a,
+        next(c) {
+          return r(s + 1, c);
+        }
+      });
+    }
+    return r().subscribe(e);
+  });
+}
+function Ht(t) {
+  return Array.isArray(t) ? t : [t];
+}
+function ns(t) {
+  return e => {
+    const r = Ht(t.true).map(s => s(e)),
+      n = Ht(t.false).map(s => s(e));
+    return s => Tr.observable(a => {
+      const o = t.condition(s.op) ? r : n;
+      return Er({
+        op: s.op,
+        links: o
+      }).subscribe(a);
+    });
+  };
+}
+Rt.createChain = Er;
+Rt.splitLink = ns;
+var me = {};
+function ss(t) {
+  return t instanceof kr ||
+  /**
+  * @deprecated
+  * Delete in next major
+  */
+  t.name === "TRPCClientError";
+}
+let kr = class De extends Error {
+  static from(e, r = {}) {
+    return e instanceof Error ? ss(e) ? (r.meta && (e.meta = {
+      ...e.meta,
+      ...r.meta
+    }), e) : new De(e.message, {
+      ...r,
+      cause: e,
+      result: null
+    }) : new De(e.error.message ?? "", {
+      ...r,
+      cause: void 0,
+      result: e
+    });
+  }
+  constructor(e, r) {
+    const n = r?.cause;
+    super(e, {
+      cause: n
+    }), this.meta = r?.meta, this.cause = n, this.shape = r?.result?.error, this.data = r?.result?.error.data, this.name = "TRPCClientError", Object.setPrototypeOf(this, De.prototype);
+  }
+};
+me.TRPCClientError = kr;
+const as = /* @__PURE__ */(0, _lastConnectedB964dc.g)(On);
+var z = {},
+  os = me;
+const Ft = t => typeof t == "function";
+function Cr(t) {
+  if (t) return t;
+  if (typeof window < "u" && Ft(window.fetch)) return window.fetch;
+  if (typeof globalThis < "u" && Ft(globalThis.fetch)) return globalThis.fetch;
+  throw new Error("No fetch implementation found");
+}
+function is(t) {
+  return t || (typeof window < "u" && window.AbortController ? window.AbortController : typeof globalThis < "u" && globalThis.AbortController ? globalThis.AbortController : null);
+}
+function cs(t) {
+  return {
+    url: t.url,
+    fetch: t.fetch,
+    AbortController: is(t.AbortController)
+  };
+}
+function us(t) {
+  const e = {};
+  for (let r = 0; r < t.length; r++) {
+    const n = t[r];
+    e[r] = n;
+  }
+  return e;
+}
+const ls = {
+  query: "GET",
+  mutation: "POST"
+};
+function Rr(t) {
+  return "input" in t ? t.runtime.transformer.serialize(t.input) : us(t.inputs.map(e => t.runtime.transformer.serialize(e)));
+}
+const Or = t => {
+    let e = t.url + "/" + t.path;
+    const r = [];
+    if ("inputs" in t && r.push("batch=1"), t.type === "query") {
+      const n = Rr(t);
+      n !== void 0 && r.push(`input=${encodeURIComponent(JSON.stringify(n))}`);
+    }
+    return r.length && (e += "?" + r.join("&")), e;
+  },
+  Pr = t => {
+    if (t.type === "query") return;
+    const e = Rr(t);
+    return e !== void 0 ? JSON.stringify(e) : void 0;
+  },
+  ds = t => Nr({
+    ...t,
+    contentTypeHeader: "application/json",
+    getUrl: Or,
+    getBody: Pr
+  });
+async function Sr(t, e) {
+  const r = t.getUrl(t),
+    n = t.getBody(t),
+    {
+      type: s
+    } = t,
+    a = await t.headers();
+  /* istanbul ignore if -- @preserve */
+  if (s === "subscription") throw new Error("Subscriptions should use wsLink");
+  const o = {
+    ...(t.contentTypeHeader ? {
+      "content-type": t.contentTypeHeader
+    } : {}),
+    ...(t.batchModeHeader ? {
+      "trpc-batch-mode": t.batchModeHeader
+    } : {}),
+    ...a
+  };
+  return Cr(t.fetch)(r, {
+    method: ls[s],
+    signal: e?.signal,
+    body: n,
+    headers: o
+  });
+}
+function Nr(t) {
+  const e = t.AbortController ? new t.AbortController() : null,
+    r = {};
+  return {
+    promise: new Promise((a, o) => {
+      Sr(t, e).then(i => (r.response = i, i.json())).then(i => {
+        r.responseJSON = i, a({
+          json: i,
+          meta: r
+        });
+      }).catch(i => {
+        o(os.TRPCClientError.from(i, {
+          meta: r
+        }));
+      });
+    }),
+    cancel: () => {
+      e?.abort();
+    }
+  };
+}
+z.fetchHTTPResponse = Sr;
+z.getBody = Pr;
+z.getFetch = Cr;
+z.getUrl = Or;
+z.httpRequest = Nr;
+z.jsonHttpRequester = ds;
+z.resolveHTTPLinkOptions = cs;
+var Ot = {},
+  et = {};
+function Jt(t) {
+  return !!t && !Array.isArray(t) && typeof t == "object";
+}
+function fs(t, e) {
+  if ("error" in t) {
+    const n = e.transformer.deserialize(t.error);
+    return {
+      ok: !1,
+      error: {
+        ...t,
+        error: n
+      }
+    };
+  }
+  return {
+    ok: !0,
+    result: {
+      ...t.result,
+      ...((!t.result.type || t.result.type === "data") && {
+        type: "data",
+        data: e.transformer.deserialize(t.result.data)
+      })
+    }
+  };
+}
+class dt extends Error {
+  constructor() {
+    super("Unable to transform response from server");
+  }
+}
+function ps(t, e) {
+  let r;
+  try {
+    r = fs(t, e);
+  } catch {
+    throw new dt();
+  }
+  if (!r.ok && (!Jt(r.error.error) || typeof r.error.error.code != "number")) throw new dt();
+  if (r.ok && !Jt(r.result)) throw new dt();
+  return r;
+}
+et.transformResult = ps;
+var hs = he,
+  ms = et,
+  Gt = me,
+  wt = z;
+const ft = () => {
+  throw new Error("Something went wrong. Please submit an issue at https://github.com/trpc/trpc/issues/new");
+};
+function pt(t) {
+  let e = null,
+    r = null;
+  const n = () => {
+    clearTimeout(r), r = null, e = null;
+  };
+  function s(i) {
+    const c = [[]];
+    let u = 0;
+    for (;;) {
+      const l = i[u];
+      if (!l) break;
+      const f = c[c.length - 1];
+      if (l.aborted) {
+        l.reject?.(new Error("Aborted")), u++;
+        continue;
+      }
+      if (t.validate(f.concat(l).map(v => v.key))) {
+        f.push(l), u++;
+        continue;
+      }
+      if (f.length === 0) {
+        l.reject?.(new Error("Input is too big for a single dispatch")), u++;
+        continue;
+      }
+      c.push([]);
+    }
+    return c;
+  }
+  function a() {
+    const i = s(e);
+    n();
+    for (const c of i) {
+      if (!c.length) continue;
+      const u = {
+        items: c,
+        cancel: ft
+      };
+      for (const v of c) v.batch = u;
+      const l = (v, E) => {
+          const S = u.items[v];
+          S.resolve?.(E), S.batch = null, S.reject = null, S.resolve = null;
+        },
+        {
+          promise: f,
+          cancel: m
+        } = t.fetch(u.items.map(v => v.key), l);
+      u.cancel = m, f.then(v => {
+        for (let E = 0; E < v.length; E++) {
+          const S = v[E];
+          l(E, S);
+        }
+        for (const E of u.items) E.reject?.(new Error("Missing result")), E.batch = null;
+      }).catch(v => {
+        for (const E of u.items) E.reject?.(v), E.batch = null;
+      });
+    }
+  }
+  function o(i) {
+    const c = {
+        aborted: !1,
+        key: i,
+        batch: null,
+        resolve: ft,
+        reject: ft
+      },
+      u = new Promise((f, m) => {
+        c.reject = m, c.resolve = f, e || (e = []), e.push(c);
+      });
+    return r || (r = setTimeout(a)), {
+      promise: u,
+      cancel: () => {
+        c.aborted = !0, c.batch?.items.every(f => f.aborted) && (c.batch.cancel(), c.batch = null);
+      }
+    };
+  }
+  return {
+    load: o
+  };
+}
+function Ir(t) {
+  return function (r) {
+    const n = wt.resolveHTTPLinkOptions(r),
+      s = r.maxURLLength ?? 1 / 0;
+    return a => {
+      const o = f => {
+          const m = E => {
+              if (s === 1 / 0) return !0;
+              const S = E.map(q => q.path).join(","),
+                ne = E.map(q => q.input);
+              return wt.getUrl({
+                ...n,
+                runtime: a,
+                type: f,
+                path: S,
+                inputs: ne
+              }).length <= s;
+            },
+            v = t({
+              ...n,
+              runtime: a,
+              type: f,
+              opts: r
+            });
+          return {
+            validate: m,
+            fetch: v
+          };
+        },
+        i = pt(o("query")),
+        c = pt(o("mutation")),
+        u = pt(o("subscription")),
+        l = {
+          query: i,
+          subscription: u,
+          mutation: c
+        };
+      return ({
+        op: f
+      }) => hs.observable(m => {
+        const v = l[f.type],
+          {
+            promise: E,
+            cancel: S
+          } = v.load(f);
+        let ne;
+        return E.then(A => {
+          ne = A;
+          const q = ms.transformResult(A.json, a);
+          if (!q.ok) {
+            m.error(Gt.TRPCClientError.from(q.error, {
+              meta: A.meta
+            }));
+            return;
+          }
+          m.next({
+            context: A.meta,
+            result: q.result
+          }), m.complete();
+        }).catch(A => {
+          m.error(Gt.TRPCClientError.from(A, {
+            meta: ne?.meta
+          }));
+        }), () => {
+          S();
+        };
+      });
+    };
+  };
+}
+const ys = t => e => {
+    const r = e.map(o => o.path).join(","),
+      n = e.map(o => o.input),
+      {
+        promise: s,
+        cancel: a
+      } = wt.jsonHttpRequester({
+        ...t,
+        path: r,
+        inputs: n,
+        headers() {
+          return t.opts.headers ? typeof t.opts.headers == "function" ? t.opts.headers({
+            opList: e
+          }) : t.opts.headers : {};
+        }
+      });
+    return {
+      promise: s.then(o => (Array.isArray(o.json) ? o.json : e.map(() => o.json)).map(u => ({
+        meta: o.meta,
+        json: u
+      }))),
+      cancel: a
+    };
+  },
+  gs = Ir(ys);
+Ot.createHTTPBatchLink = Ir;
+Ot.httpBatchLink = gs;
+var tt = {};
+Object.defineProperty(tt, "__esModule", {
+  value: !0
+});
+var bs = he,
+  ws = et,
+  Yt = me,
+  Lr = z;
+function Ar(t) {
+  return e => {
+    const r = Lr.resolveHTTPLinkOptions(e);
+    return n => ({
+      op: s
+    }) => bs.observable(a => {
+      const {
+          path: o,
+          input: i,
+          type: c
+        } = s,
+        {
+          promise: u,
+          cancel: l
+        } = t.requester({
+          ...r,
+          runtime: n,
+          type: c,
+          path: o,
+          input: i,
+          headers() {
+            return e.headers ? typeof e.headers == "function" ? e.headers({
+              op: s
+            }) : e.headers : {};
+          }
+        });
+      let f;
+      return u.then(m => {
+        f = m.meta;
+        const v = ws.transformResult(m.json, n);
+        if (!v.ok) {
+          a.error(Yt.TRPCClientError.from(v.error, {
+            meta: f
+          }));
+          return;
+        }
+        a.next({
+          context: m.meta,
+          result: v.result
+        }), a.complete();
+      }).catch(m => {
+        a.error(Yt.TRPCClientError.from(m, {
+          meta: f
+        }));
+      }), () => {
+        l();
+      };
+    });
+  };
+}
+const _s = Ar({
+  requester: Lr.jsonHttpRequester
+});
+tt.httpLink = _s;
+tt.httpLinkFactory = Ar;
+var Pt = {};
+Object.defineProperty(Pt, "__esModule", {
+  value: !0
+});
+var Qt = he;
+function vs(t) {
+  return typeof FormData > "u" ? !1 : t instanceof FormData;
+}
+const ht = {
+  css: {
+    query: ["72e3ff", "3fb0d8"],
+    mutation: ["c5a3fc", "904dfc"],
+    subscription: ["ff49e1", "d83fbe"]
+  },
+  ansi: {
+    regular: {
+      // Cyan background, black and white text respectively
+      query: ["\x1B[30;46m", "\x1B[97;46m"],
+      // Magenta background, black and white text respectively
+      mutation: ["\x1B[30;45m", "\x1B[97;45m"],
+      // Green background, black and white text respectively
+      subscription: ["\x1B[30;42m", "\x1B[97;42m"]
+    },
+    bold: {
+      query: ["\x1B[1;30;46m", "\x1B[1;97;46m"],
+      mutation: ["\x1B[1;30;45m", "\x1B[1;97;45m"],
+      subscription: ["\x1B[1;30;42m", "\x1B[1;97;42m"]
+    }
+  }
+};
+function xs(t) {
+  const {
+      direction: e,
+      type: r,
+      path: n,
+      id: s,
+      input: a
+    } = t,
+    o = [],
+    i = [];
+  if (t.colorMode === "ansi") {
+    const [f, m] = ht.ansi.regular[r],
+      [v, E] = ht.ansi.bold[r],
+      S = "\x1B[0m";
+    return o.push(e === "up" ? f : m, e === "up" ? ">>" : "<<", r, e === "up" ? v : E, `#${s}`, n, S), e === "up" ? i.push({
+      input: t.input
+    }) : i.push({
+      input: t.input,
+      // strip context from result cause it's too noisy in terminal wihtout collapse mode
+      result: "result" in t.result ? t.result.result : t.result,
+      elapsedMs: t.elapsedMs
+    }), {
+      parts: o,
+      args: i
+    };
+  }
+  const [c, u] = ht.css[r],
+    l = `
+    background-color: #${e === "up" ? c : u}; 
+    color: ${e === "up" ? "black" : "white"};
+    padding: 2px;
+  `;
+  return o.push("%c", e === "up" ? ">>" : "<<", r, `#${s}`, `%c${n}%c`, "%O"), i.push(l, `${l}; font-weight: bold;`, `${l}; font-weight: normal;`), e === "up" ? i.push({
+    input: a,
+    context: t.context
+  }) : i.push({
+    input: a,
+    result: t.result,
+    elapsedMs: t.elapsedMs,
+    context: t.context
+  }), {
+    parts: o,
+    args: i
+  };
+}
+const Ts = ({
+  c: t = console,
+  colorMode: e = "css"
+}) => r => {
+  const n = r.input,
+    s = vs(n) ? Object.fromEntries(n) : n,
+    {
+      parts: a,
+      args: o
+    } = xs({
+      ...r,
+      colorMode: e,
+      input: s
+    }),
+    i = r.direction === "down" && r.result && (r.result instanceof Error || "error" in r.result.result) ? "error" : "log";
+  t[i].apply(null, [a.join(" ")].concat(o));
+};
+function Es(t = {}) {
+  const {
+      enabled: e = () => !0
+    } = t,
+    r = t.colorMode ?? (typeof window > "u" ? "ansi" : "css"),
+    {
+      logger: n = Ts({
+        c: t.console,
+        colorMode: r
+      })
+    } = t;
+  return () => ({
+    op: s,
+    next: a
+  }) => Qt.observable(o => {
+    e({
+      ...s,
+      direction: "up"
+    }) && n({
+      ...s,
+      direction: "up"
+    });
+    const i = Date.now();
+    function c(u) {
+      const l = Date.now() - i;
+      e({
+        ...s,
+        direction: "down",
+        result: u
+      }) && n({
+        ...s,
+        direction: "down",
+        elapsedMs: l,
+        result: u
+      });
+    }
+    return a(s).pipe(Qt.tap({
+      next(u) {
+        c(u);
+      },
+      error(u) {
+        c(u);
+      }
+    })).subscribe(o);
+  });
+}
+Pt.loggerLink = Es;
+var rt = {};
+Object.defineProperty(rt, "__esModule", {
+  value: !0
+});
+var ks = he,
+  Cs = et,
+  Mr = me;
+/* istanbul ignore next -- @preserve */
+const Rs = t => t === 0 ? 0 : Math.min(1e3 * 2 ** t, 3e4);
+function Os(t) {
+  const {
+    url: e,
+    WebSocket: r = WebSocket,
+    retryDelayMs: n = Rs,
+    onOpen: s,
+    onClose: a
+  } = t;
+  /* istanbul ignore next -- @preserve */
+  if (!r) throw new Error("No WebSocket implementation found - you probably don't want to use this on the server, but if you do you need to pass a `WebSocket`-ponyfill");
+  let o = [];
+  const i = /* @__PURE__ */Object.create(null);
+  let c = 0,
+    u = null,
+    l = null,
+    f = jt(),
+    m = "connecting";
+  function v() {
+    m !== "open" || u || (u = setTimeout(() => {
+      u = null, o.length === 1 ? f.send(JSON.stringify(o.pop())) : f.send(JSON.stringify(o)), o = [];
+    }));
+  }
+  function E() {
+    if (l !== null || m === "closed") return;
+    const R = n(c++);
+    ne(R);
+  }
+  function S() {
+    m = "connecting";
+    const R = f;
+    f = jt(), A(R);
+  }
+  function ne(R) {
+    l || (m = "connecting", l = setTimeout(S, R));
+  }
+  function A(R) {
+    Object.values(i).some(se => se.ws === R) || R.close();
+  }
+  function q() {
+    Object.values(i).forEach(R => {
+      R.type === "subscription" && R.callbacks.complete();
+    });
+  }
+  function Mt(R) {
+    o.some(P => P.id === R.op.id) || $t(R.op, R.callbacks);
+  }
+  function jt() {
+    const R = typeof e == "function" ? e() : e,
+      P = new r(R);
+    clearTimeout(l), l = null, P.addEventListener("open", () => {
+      /* istanbul ignore next -- @preserve */
+      P === f && (c = 0, m = "open", s?.(), v());
+    }), P.addEventListener("error", () => {
+      P === f && E();
+    });
+    const se = L => {
+        if (L.method === "reconnect" && P === f) {
+          m === "open" && a?.(), S();
+          for (const k of Object.values(i)) k.type === "subscription" && Mt(k);
+        }
+      },
+      ct = L => {
+        const k = L.id !== null && i[L.id];
+        if (k) {
+          if (k.callbacks.next?.(L), k.ws !== f && P === f) {
+            const B = k.ws;
+            k.ws = f, A(B);
+          }
+          "result" in L && L.result.type === "stopped" && P === f && k.callbacks.complete();
+        }
+      };
+    return P.addEventListener("message", ({
+      data: L
+    }) => {
+      const k = JSON.parse(L);
+      "method" in k ? se(k) : ct(k), (P !== f || m === "closed") && A(P);
+    }), P.addEventListener("close", ({
+      code: L
+    }) => {
+      m === "open" && a?.({
+        code: L
+      }), f === P && E();
+      for (const [k, B] of Object.entries(i)) if (B.ws === P) {
+        if (m === "closed") {
+          delete i[k], B.callbacks.complete?.();
+          continue;
+        }
+        B.type === "subscription" ? Mt(B) : (delete i[k], B.callbacks.error?.(Mr.TRPCClientError.from(new St("WebSocket closed prematurely"))));
+      }
+    }), P;
+  }
+  function $t(R, P) {
+    const {
+        type: se,
+        input: ct,
+        path: L,
+        id: k
+      } = R,
+      B = {
+        id: k,
+        method: se,
+        params: {
+          input: ct,
+          path: L
+        }
+      };
+    return i[k] = {
+      ws: f,
+      type: se,
+      callbacks: P,
+      op: R
+    }, o.push(B), v(), () => {
+      const nn = i[k]?.callbacks;
+      delete i[k], o = o.filter(sn => sn.id !== k), nn?.complete?.(), f.readyState === r.OPEN && R.type === "subscription" && (o.push({
+        id: k,
+        method: "subscription.stop"
+      }), v());
+    };
+  }
+  return {
+    close: () => {
+      m = "closed", a?.(), q(), A(f), clearTimeout(l), l = null;
+    },
+    request: $t,
+    getConnection() {
+      return f;
+    }
+  };
+}
+class St extends Error {
+  constructor(e) {
+    super(e), this.name = "TRPCWebSocketClosedError", Object.setPrototypeOf(this, St.prototype);
+  }
+}
+function Ps(t) {
+  return e => {
+    const {
+      client: r
+    } = t;
+    return ({
+      op: n
+    }) => ks.observable(s => {
+      const {
+          type: a,
+          path: o,
+          id: i,
+          context: c
+        } = n,
+        u = e.transformer.serialize(n.input),
+        l = r.request({
+          type: a,
+          path: o,
+          input: u,
+          id: i,
+          context: c
+        }, {
+          error(f) {
+            s.error(f), l();
+          },
+          complete() {
+            s.complete();
+          },
+          next(f) {
+            const m = Cs.transformResult(f, e);
+            if (!m.ok) {
+              s.error(Mr.TRPCClientError.from(m.error));
+              return;
+            }
+            s.next({
+              result: m.result
+            }), n.type !== "subscription" && (l(), s.complete());
+          }
+        });
+      return () => {
+        l();
+      };
+    });
+  };
+}
+rt.createWSClient = Os;
+rt.wsLink = Ps;
+Object.defineProperty(O, "__esModule", {
+  value: !0
+});
+var Xt = he,
+  jr = Rt,
+  $r = me,
+  Kt = as,
+  we = z,
+  Dr = Ot,
+  Nt = tt,
+  Ss = Pt,
+  Zr = rt;
+class nt {
+  $request({
+    type: e,
+    input: r,
+    path: n,
+    context: s = {}
+  }) {
+    return jr.createChain({
+      links: this.links,
+      op: {
+        id: ++this.requestId,
+        type: e,
+        path: n,
+        input: r,
+        context: s
+      }
+    }).pipe(Xt.share());
+  }
+  requestAsPromise(e) {
+    const r = this.$request(e),
+      {
+        promise: n,
+        abort: s
+      } = Xt.observableToPromise(r);
+    return new Promise((o, i) => {
+      e.signal?.addEventListener("abort", s), n.then(c => {
+        o(c.result.data);
+      }).catch(c => {
+        i($r.TRPCClientError.from(c));
+      });
+    });
+  }
+  query(e, r, n) {
+    return this.requestAsPromise({
+      type: "query",
+      path: e,
+      input: r,
+      context: n?.context,
+      signal: n?.signal
+    });
+  }
+  mutation(e, r, n) {
+    return this.requestAsPromise({
+      type: "mutation",
+      path: e,
+      input: r,
+      context: n?.context,
+      signal: n?.signal
+    });
+  }
+  subscription(e, r, n) {
+    return this.$request({
+      type: "subscription",
+      path: e,
+      input: r,
+      context: n?.context
+    }).subscribe({
+      next(a) {
+        a.result.type === "started" ? n.onStarted?.() : a.result.type === "stopped" ? n.onStopped?.() : n.onData?.(a.result.data);
+      },
+      error(a) {
+        n.onError?.(a);
+      },
+      complete() {
+        n.onComplete?.();
+      }
+    });
+  }
+  constructor(e) {
+    this.requestId = 0;
+    const r = (() => {
+      const n = e.transformer;
+      return n ? "input" in n ? e.transformer : {
+        input: n,
+        output: n
+      } : {
+        input: {
+          serialize: s => s,
+          deserialize: s => s
+        },
+        output: {
+          serialize: s => s,
+          deserialize: s => s
+        }
+      };
+    })();
+    this.runtime = {
+      transformer: {
+        serialize: n => r.input.serialize(n),
+        deserialize: n => r.output.deserialize(n)
+      },
+      combinedTransformer: r
+    }, this.links = e.links.map(n => n(this.runtime));
+  }
+}
+function Ns(t) {
+  return new nt(t);
+}
+function Is(t) {
+  return new nt(t);
+}
+const Ls = {
+    query: "query",
+    mutate: "mutation",
+    subscribe: "subscription"
+  },
+  Ur = t => Ls[t];
+function Wr(t) {
+  return Kt.createFlatProxy(e => t.hasOwnProperty(e) ? t[e] : e === "__untypedClient" ? t : Kt.createRecursiveProxy(({
+    path: r,
+    args: n
+  }) => {
+    const s = [e, ...r],
+      a = Ur(s.pop()),
+      o = s.join(".");
+    return t[a](o, ...n);
+  }));
+}
+function As(t) {
+  const e = new nt(t);
+  return Wr(e);
+}
+function Ms(t) {
+  return t.__untypedClient;
+}
+function js(t) {
+  if (t) return t;
+  if (typeof window < "u" && window.TextDecoder) return new window.TextDecoder();
+  if (typeof globalThis < "u" && globalThis.TextDecoder) return new globalThis.TextDecoder();
+  throw new Error("No TextDecoder implementation found");
+}
+async function $s(t) {
+  const e = t.parse ?? JSON.parse,
+    r = n => {
+      if (t.signal?.aborted || !n || n === "}") return;
+      const s = n.indexOf(":"),
+        a = n.substring(2, s - 1),
+        o = n.substring(s + 1);
+      t.onSingle(Number(a), e(o));
+    };
+  await Ds(t.readableStream, r, t.textDecoder);
+}
+async function Ds(t, e, r) {
+  let n = "";
+  const s = a => {
+    const i = r.decode(a).split(`
+`);
+    if (i.length === 1) n += i[0];else if (i.length > 1) {
+      e(n + i[0]);
+      for (let c = 1; c < i.length - 1; c++) e(i[c]);
+      n = i[i.length - 1];
+    }
+  };
+  "getReader" in t ? await Us(t, s) : await Zs(t, s), e(n);
+}
+function Zs(t, e) {
+  return new Promise(r => {
+    t.on("data", e), t.on("end", r);
+  });
+}
+async function Us(t, e) {
+  const r = t.getReader();
+  let n = await r.read();
+  for (; !n.done;) e(n.value), n = await r.read();
+}
+const Ws = (t, e) => {
+    const r = t.AbortController ? new t.AbortController() : null,
+      n = we.fetchHTTPResponse({
+        ...t,
+        contentTypeHeader: "application/json",
+        batchModeHeader: "stream",
+        getUrl: we.getUrl,
+        getBody: we.getBody
+      }, r),
+      s = () => r?.abort(),
+      a = n.then(async o => {
+        if (!o.body) throw new Error("Received response without body");
+        const i = {
+          response: o
+        };
+        return $s({
+          readableStream: o.body,
+          onSingle: e,
+          parse: c => ({
+            json: JSON.parse(c),
+            meta: i
+          }),
+          signal: r?.signal,
+          textDecoder: t.textDecoder
+        });
+      });
+    return {
+      cancel: s,
+      promise: a
+    };
+  },
+  zs = t => {
+    const e = js(t.opts.textDecoder);
+    return (r, n) => {
+      const s = r.map(c => c.path).join(","),
+        a = r.map(c => c.input),
+        {
+          cancel: o,
+          promise: i
+        } = Ws({
+          ...t,
+          textDecoder: e,
+          path: s,
+          inputs: a,
+          headers() {
+            return t.opts.headers ? typeof t.opts.headers == "function" ? t.opts.headers({
+              opList: r
+            }) : t.opts.headers : {};
+          }
+        }, (c, u) => {
+          n(c, u);
+        });
+      return {
+        /**
+        * return an empty array because the batchLoader expects an array of results
+        * but we've already called the `unitResolver` for each of them, there's
+        * nothing left to do here.
+        */
+        promise: i.then(() => []),
+        cancel: o
+      };
+    };
+  },
+  qs = Dr.createHTTPBatchLink(zs),
+  Bs = t => {
+    if ("input" in t) {
+      if (!(t.input instanceof FormData)) throw new Error("Input is not FormData");
+      return t.input;
+    }
+  },
+  Vs = t => {
+    if (t.type !== "mutation") throw new Error("We only handle mutations with formdata");
+    return we.httpRequest({
+      ...t,
+      getUrl() {
+        return `${t.url}/${t.path}`;
+      },
+      getBody: Bs
+    });
+  },
+  Hs = Nt.httpLinkFactory({
+    requester: Vs
+  });
+O.splitLink = jr.splitLink;
+O.TRPCClientError = $r.TRPCClientError;
+O.getFetch = we.getFetch;
+O.httpBatchLink = Dr.httpBatchLink;
+O.httpLink = Nt.httpLink;
+O.httpLinkFactory = Nt.httpLinkFactory;
+O.loggerLink = Ss.loggerLink;
+O.createWSClient = Zr.createWSClient;
+O.wsLink = Zr.wsLink;
+O.TRPCUntypedClient = nt;
+O.clientCallTypeToProcedureType = Ur;
+O.createTRPCClient = Is;
+O.createTRPCClientProxy = Wr;
+O.createTRPCProxyClient = As;
+O.createTRPCUntypedClient = Ns;
+O.experimental_formDataLink = Hs;
+O.getUntypedClient = Ms;
+O.unstable_httpBatchStreamLink = qs;
+var X = {},
+  It = {};
+function Fs(t) {
+  return t;
+}
+function Js(t) {
+  return t.length === 0 ? Fs : t.length === 1 ? t[0] : function (r) {
+    return t.reduce((n, s) => s(n), r);
+  };
+}
+function Gs(t) {
+  return typeof t == "object" && t !== null && "subscribe" in t;
+}
+function Ys(t) {
+  const e = {
+    subscribe(r) {
+      let n = null,
+        s = !1,
+        a = !1,
+        o = !1;
+      function i() {
+        if (n === null) {
+          o = !0;
+          return;
+        }
+        a || (a = !0, typeof n == "function" ? n() : n && n.unsubscribe());
+      }
+      return n = t({
+        next(c) {
+          s || r.next?.(c);
+        },
+        error(c) {
+          s || (s = !0, r.error?.(c), i());
+        },
+        complete() {
+          s || (s = !0, r.complete?.(), i());
+        }
+      }), o && i(), {
+        unsubscribe: i
+      };
+    },
+    pipe(...r) {
+      return Js(r)(e);
+    }
+  };
+  return e;
+}
+It.isObservable = Gs;
+It.observable = Ys;
+Object.defineProperty(X, "__esModule", {
+  value: !0
+});
+var zr = It;
+function Qs(t) {
+  return e => {
+    let r = 0,
+      n = null;
+    const s = [];
+    function a() {
+      n || (n = e.subscribe({
+        next(i) {
+          for (const c of s) c.next?.(i);
+        },
+        error(i) {
+          for (const c of s) c.error?.(i);
+        },
+        complete() {
+          for (const i of s) i.complete?.();
+        }
+      }));
+    }
+    function o() {
+      if (r === 0 && n) {
+        const i = n;
+        n = null, i.unsubscribe();
+      }
+    }
+    return {
+      subscribe(i) {
+        return r++, s.push(i), a(), {
+          unsubscribe() {
+            r--, o();
+            const c = s.findIndex(u => u === i);
+            c > -1 && s.splice(c, 1);
+          }
+        };
+      }
+    };
+  };
+}
+function Xs(t) {
+  return e => ({
+    subscribe(r) {
+      let n = 0;
+      return e.subscribe({
+        next(a) {
+          r.next?.(t(a, n++));
+        },
+        error(a) {
+          r.error?.(a);
+        },
+        complete() {
+          r.complete?.();
+        }
+      });
+    }
+  });
+}
+function Ks(t) {
+  return e => ({
+    subscribe(r) {
+      return e.subscribe({
+        next(n) {
+          t.next?.(n), r.next?.(n);
+        },
+        error(n) {
+          t.error?.(n), r.error?.(n);
+        },
+        complete() {
+          t.complete?.(), r.complete?.();
+        }
+      });
+    }
+  });
+}
+class Lt extends Error {
+  constructor(e) {
+    super(e), this.name = "ObservableAbortError", Object.setPrototypeOf(this, Lt.prototype);
+  }
+}
+function ea(t) {
+  let e;
+  return {
+    promise: new Promise((n, s) => {
+      let a = !1;
+      function o() {
+        a || (a = !0, s(new Lt("This operation was aborted.")), i.unsubscribe());
+      }
+      const i = t.subscribe({
+        next(c) {
+          a = !0, n(c), o();
+        },
+        error(c) {
+          a = !0, s(c), o();
+        },
+        complete() {
+          a = !0, o();
+        }
+      });
+      e = o;
+    }),
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    abort: e
+  };
+}
+X.isObservable = zr.isObservable;
+X.observable = zr.observable;
+X.map = Xs;
+X.observableToPromise = ea;
+X.share = Qs;
+X.tap = Ks;
+var Z = {};
+Object.defineProperty(Z, "__esModule", {
+  value: !0
+});
+Z.isTRPCRequestWithId = Z.isTRPCRequest = Z.isTRPCResponse = Z.isTRPCMessage = void 0;
+function er(t) {
+  return typeof t == "object" && t !== null && !Array.isArray(t);
+}
+function ta(t) {
+  return t == null;
+}
+function qr(t) {
+  return !!(er(t) && "trpc" in t && er(t.trpc));
+}
+Z.isTRPCMessage = qr;
+function At(t) {
+  return qr(t) && "id" in t.trpc && !ta(t.trpc.id);
+}
+function ra(t) {
+  return At(t) && ("error" in t.trpc || "result" in t.trpc);
+}
+Z.isTRPCResponse = ra;
+function Br(t) {
+  return At(t) && "method" in t.trpc;
+}
+Z.isTRPCRequest = Br;
+function na(t) {
+  return Br(t) && At(t);
+}
+Z.isTRPCRequestWithId = na;
+Object.defineProperty(pe, "__esModule", {
+  value: !0
+});
+pe.createBaseLink = void 0;
+const mt = O,
+  sa = X,
+  aa = Z,
+  oa = t => e => ({
+    op: r
+  }) => (0, sa.observable)(n => {
+    const s = [],
+      {
+        id: a,
+        type: o,
+        path: i
+      } = r;
+    try {
+      const c = e.transformer.serialize(r.input),
+        u = () => {
+          n.error(new mt.TRPCClientError("Port disconnected prematurely"));
+        };
+      t.addCloseListener(u), s.push(() => t.removeCloseListener(u));
+      const l = f => {
+        if (!(0, aa.isTRPCResponse)(f)) return;
+        const {
+          trpc: m
+        } = f;
+        if (a === m.id) {
+          if ("error" in m) {
+            const v = e.transformer.deserialize(m.error);
+            n.error(mt.TRPCClientError.from(Object.assign(Object.assign({}, m), {
+              error: v
+            })));
+            return;
+          }
+          n.next({
+            result: Object.assign(Object.assign({}, m.result), (!m.result.type || m.result.type === "data") && {
+              type: "data",
+              data: e.transformer.deserialize(m.result.data)
+            })
+          }), (o !== "subscription" || m.result.type === "stopped") && n.complete();
+        }
+      };
+      t.addMessageListener(l), s.push(() => t.removeMessageListener(l)), t.postMessage({
+        trpc: {
+          id: a,
+          jsonrpc: void 0,
+          method: o,
+          params: {
+            path: i,
+            input: c
+          }
+        }
+      });
+    } catch (c) {
+      n.error(new mt.TRPCClientError(c instanceof Error ? c.message : "Unknown error"));
+    }
+    return () => {
+      o === "subscription" && t.postMessage({
+        trpc: {
+          id: a,
+          jsonrpc: void 0,
+          method: "subscription.stop"
+        }
+      }), s.forEach(c => c());
+    };
+  });
+pe.createBaseLink = oa;
+Object.defineProperty(Ke, "__esModule", {
+  value: !0
+});
+Ke.chromeLink = void 0;
+const ia = pe,
+  ca = t => (0, ia.createBaseLink)({
+    postMessage(e) {
+      t.port.postMessage(e);
+    },
+    addMessageListener(e) {
+      t.port.onMessage.addListener(e);
+    },
+    removeMessageListener(e) {
+      t.port.onMessage.removeListener(e);
+    },
+    addCloseListener(e) {
+      t.port.onDisconnect.addListener(e);
+    },
+    removeCloseListener(e) {
+      t.port.onDisconnect.removeListener(e);
+    }
+  });
+Ke.chromeLink = ca;
+var st = {};
+Object.defineProperty(st, "__esModule", {
+  value: !0
+});
+st.windowLink = void 0;
+const ua = pe,
+  la = t => {
+    var e;
+    const r = /* @__PURE__ */new Map(),
+      n = t.window,
+      s = (e = t.postWindow) !== null && e !== void 0 ? e : n;
+    return (0, ua.createBaseLink)({
+      postMessage(a) {
+        s.postMessage(a, {
+          targetOrigin: t.postOrigin
+        });
+      },
+      addMessageListener(a) {
+        const o = i => {
+          a(i.data);
+        };
+        r.set(a, o), n.addEventListener("message", o);
+      },
+      removeMessageListener(a) {
+        const o = r.get(a);
+        o && n.removeEventListener("message", o);
+      },
+      addCloseListener(a) {
+        n.addEventListener("beforeunload", a);
+      },
+      removeCloseListener(a) {
+        n.removeEventListener("beforeunload", a);
+      }
+    });
+  };
+st.windowLink = la;
+var at = {},
+  ot = {};
+Object.defineProperty(ot, "__esModule", {
+  value: !0
+});
+ot.TRPC_BROWSER_LOADED_EVENT = void 0;
+ot.TRPC_BROWSER_LOADED_EVENT = "TRPC_BROWSER::POPUP_LOADED";
+Object.defineProperty(at, "__esModule", {
+  value: !0
+});
+at.popupLink = void 0;
+const da = ot,
+  fa = pe,
+  pa = t => {
+    const e = /* @__PURE__ */new Map(),
+      r = /* @__PURE__ */new Set();
+    let n = null;
+    async function s(a) {
+      if (!n || n.closed) {
+        n = t.createPopup(), await Promise.race([
+        // wait til window is loaded (same origin)
+        new Promise(o => {
+          var i;
+          try {
+            (i = n?.addEventListener) === null || i === void 0 || i.call(n, "load", o);
+          } catch {}
+        }),
+        // this is needed for cross-origin popups as they don't have a load event
+        new Promise(o => {
+          a.addEventListener("message", i => {
+            i.data === da.TRPC_BROWSER_LOADED_EVENT && o();
+          });
+        }),
+        // expect the popup to load after 15s max, in case non of the above events fire
+        new Promise(o => {
+          console.warn("Could not detect if popup loading succeeded after 15s timeout, continuing anyway"), setTimeout(o, 15e3);
+        })]);
+        try {
+          if (!n.addEventListener) throw new Error("popupWindow.addEventListener is not a function");
+          n.addEventListener("beforeunload", () => {
+            n = null;
+          });
+        } catch {
+          const i = setInterval(() => {
+            n && n.closed && (n = null, r.forEach(c => {
+              c();
+            }), clearInterval(i));
+          }, 1e3);
+        }
+      }
+      return n;
+    }
+    return (0, fa.createBaseLink)({
+      async postMessage(a) {
+        return (await s(t.listenWindow)).postMessage(a, {
+          targetOrigin: t.postOrigin
+        });
+      },
+      addMessageListener(a) {
+        const o = i => {
+          a(i.data);
+        };
+        e.set(a, o), t.listenWindow.addEventListener("message", o);
+      },
+      removeMessageListener(a) {
+        const o = e.get(a);
+        o && t.listenWindow.removeEventListener("message", o);
+      },
+      addCloseListener(a) {
+        t.listenWindow.addEventListener("beforeunload", a), r.add(a);
+      },
+      removeCloseListener(a) {
+        t.listenWindow.removeEventListener("beforeunload", a), r.delete(a);
+      }
+    });
+  };
+at.popupLink = pa;
+(function (t) {
+  var e = _lastConnectedB964dc.c && _lastConnectedB964dc.c.__createBinding || (Object.create ? function (n, s, a, o) {
+      o === void 0 && (o = a);
+      var i = Object.getOwnPropertyDescriptor(s, a);
+      (!i || ("get" in i ? !s.__esModule : i.writable || i.configurable)) && (i = {
+        enumerable: !0,
+        get: function () {
+          return s[a];
+        }
+      }), Object.defineProperty(n, o, i);
+    } : function (n, s, a, o) {
+      o === void 0 && (o = a), n[o] = s[a];
+    }),
+    r = _lastConnectedB964dc.c && _lastConnectedB964dc.c.__exportStar || function (n, s) {
+      for (var a in n) a !== "default" && !Object.prototype.hasOwnProperty.call(s, a) && e(s, n, a);
+    };
+  Object.defineProperty(t, "__esModule", {
+    value: !0
+  }), r(Ke, t), r(st, t), r(at, t);
+})(bt);
+var T;
+(function (t) {
+  t.assertEqual = s => s;
+  function e(s) {}
+  t.assertIs = e;
+  function r(s) {
+    throw new Error();
+  }
+  t.assertNever = r, t.arrayToEnum = s => {
+    const a = {};
+    for (const o of s) a[o] = o;
+    return a;
+  }, t.getValidEnumValues = s => {
+    const a = t.objectKeys(s).filter(i => typeof s[s[i]] != "number"),
+      o = {};
+    for (const i of a) o[i] = s[i];
+    return t.objectValues(o);
+  }, t.objectValues = s => t.objectKeys(s).map(function (a) {
+    return s[a];
+  }), t.objectKeys = typeof Object.keys == "function" ? s => Object.keys(s) : s => {
+    const a = [];
+    for (const o in s) Object.prototype.hasOwnProperty.call(s, o) && a.push(o);
+    return a;
+  }, t.find = (s, a) => {
+    for (const o of s) if (a(o)) return o;
+  }, t.isInteger = typeof Number.isInteger == "function" ? s => Number.isInteger(s) : s => typeof s == "number" && isFinite(s) && Math.floor(s) === s;
+  function n(s, a = " | ") {
+    return s.map(o => typeof o == "string" ? `'${o}'` : o).join(a);
+  }
+  t.joinValues = n, t.jsonStringifyReplacer = (s, a) => typeof a == "bigint" ? a.toString() : a;
+})(T || (T = {}));
+const h = T.arrayToEnum(["string", "nan", "number", "integer", "float", "boolean", "date", "bigint", "symbol", "function", "undefined", "null", "array", "object", "unknown", "promise", "void", "never", "map", "set"]),
+  G = t => {
+    switch (typeof t) {
+      case "undefined":
+        return h.undefined;
+      case "string":
+        return h.string;
+      case "number":
+        return isNaN(t) ? h.nan : h.number;
+      case "boolean":
+        return h.boolean;
+      case "function":
+        return h.function;
+      case "bigint":
+        return h.bigint;
+      case "symbol":
+        return h.symbol;
+      case "object":
+        return Array.isArray(t) ? h.array : t === null ? h.null : t.then && typeof t.then == "function" && t.catch && typeof t.catch == "function" ? h.promise : typeof Map < "u" && t instanceof Map ? h.map : typeof Set < "u" && t instanceof Set ? h.set : typeof Date < "u" && t instanceof Date ? h.date : h.object;
+      default:
+        return h.unknown;
+    }
+  },
+  d = T.arrayToEnum(["invalid_type", "invalid_literal", "custom", "invalid_union", "invalid_union_discriminator", "invalid_enum_value", "unrecognized_keys", "invalid_arguments", "invalid_return_type", "invalid_date", "invalid_string", "too_small", "too_big", "invalid_intersection_types", "not_multiple_of", "not_finite"]),
+  ha = t => JSON.stringify(t, null, 2).replace(/"([^"]+)":/g, "$1:");
+class V extends Error {
+  constructor(e) {
+    super(), this.issues = [], this.addIssue = n => {
+      this.issues = [...this.issues, n];
+    }, this.addIssues = (n = []) => {
+      this.issues = [...this.issues, ...n];
+    };
+    const r = new.target.prototype;
+    Object.setPrototypeOf ? Object.setPrototypeOf(this, r) : this.__proto__ = r, this.name = "ZodError", this.issues = e;
+  }
+  get errors() {
+    return this.issues;
+  }
+  format(e) {
+    const r = e || function (a) {
+        return a.message;
+      },
+      n = {
+        _errors: []
+      },
+      s = a => {
+        for (const o of a.issues) if (o.code === "invalid_union") o.unionErrors.map(s);else if (o.code === "invalid_return_type") s(o.returnTypeError);else if (o.code === "invalid_arguments") s(o.argumentsError);else if (o.path.length === 0) n._errors.push(r(o));else {
+          let i = n,
+            c = 0;
+          for (; c < o.path.length;) {
+            const u = o.path[c];
+            c === o.path.length - 1 ? (i[u] = i[u] || {
+              _errors: []
+            }, i[u]._errors.push(r(o))) : i[u] = i[u] || {
+              _errors: []
+            }, i = i[u], c++;
+          }
+        }
+      };
+    return s(this), n;
+  }
+  toString() {
+    return this.message;
+  }
+  get message() {
+    return JSON.stringify(this.issues, T.jsonStringifyReplacer, 2);
+  }
+  get isEmpty() {
+    return this.issues.length === 0;
+  }
+  flatten(e = r => r.message) {
+    const r = {},
+      n = [];
+    for (const s of this.issues) s.path.length > 0 ? (r[s.path[0]] = r[s.path[0]] || [], r[s.path[0]].push(e(s))) : n.push(e(s));
+    return {
+      formErrors: n,
+      fieldErrors: r
+    };
+  }
+  get formErrors() {
+    return this.flatten();
+  }
+}
+V.create = t => new V(t);
+const xe = (t, e) => {
+  let r;
+  switch (t.code) {
+    case d.invalid_type:
+      t.received === h.undefined ? r = "Required" : r = `Expected ${t.expected}, received ${t.received}`;
+      break;
+    case d.invalid_literal:
+      r = `Invalid literal value, expected ${JSON.stringify(t.expected, T.jsonStringifyReplacer)}`;
+      break;
+    case d.unrecognized_keys:
+      r = `Unrecognized key(s) in object: ${T.joinValues(t.keys, ", ")}`;
+      break;
+    case d.invalid_union:
+      r = "Invalid input";
+      break;
+    case d.invalid_union_discriminator:
+      r = `Invalid discriminator value. Expected ${T.joinValues(t.options)}`;
+      break;
+    case d.invalid_enum_value:
+      r = `Invalid enum value. Expected ${T.joinValues(t.options)}, received '${t.received}'`;
+      break;
+    case d.invalid_arguments:
+      r = "Invalid function arguments";
+      break;
+    case d.invalid_return_type:
+      r = "Invalid function return type";
+      break;
+    case d.invalid_date:
+      r = "Invalid date";
+      break;
+    case d.invalid_string:
+      typeof t.validation == "object" ? "startsWith" in t.validation ? r = `Invalid input: must start with "${t.validation.startsWith}"` : "endsWith" in t.validation ? r = `Invalid input: must end with "${t.validation.endsWith}"` : T.assertNever(t.validation) : t.validation !== "regex" ? r = `Invalid ${t.validation}` : r = "Invalid";
+      break;
+    case d.too_small:
+      t.type === "array" ? r = `Array must contain ${t.exact ? "exactly" : t.inclusive ? "at least" : "more than"} ${t.minimum} element(s)` : t.type === "string" ? r = `String must contain ${t.exact ? "exactly" : t.inclusive ? "at least" : "over"} ${t.minimum} character(s)` : t.type === "number" ? r = `Number must be ${t.exact ? "exactly equal to " : t.inclusive ? "greater than or equal to " : "greater than "}${t.minimum}` : t.type === "date" ? r = `Date must be ${t.exact ? "exactly equal to " : t.inclusive ? "greater than or equal to " : "greater than "}${new Date(t.minimum)}` : r = "Invalid input";
+      break;
+    case d.too_big:
+      t.type === "array" ? r = `Array must contain ${t.exact ? "exactly" : t.inclusive ? "at most" : "less than"} ${t.maximum} element(s)` : t.type === "string" ? r = `String must contain ${t.exact ? "exactly" : t.inclusive ? "at most" : "under"} ${t.maximum} character(s)` : t.type === "number" ? r = `Number must be ${t.exact ? "exactly" : t.inclusive ? "less than or equal to" : "less than"} ${t.maximum}` : t.type === "date" ? r = `Date must be ${t.exact ? "exactly" : t.inclusive ? "smaller than or equal to" : "smaller than"} ${new Date(t.maximum)}` : r = "Invalid input";
+      break;
+    case d.custom:
+      r = "Invalid input";
+      break;
+    case d.invalid_intersection_types:
+      r = "Intersection results could not be merged";
+      break;
+    case d.not_multiple_of:
+      r = `Number must be a multiple of ${t.multipleOf}`;
+      break;
+    case d.not_finite:
+      r = "Number must be finite";
+      break;
+    default:
+      r = e.defaultError, T.assertNever(t);
+  }
+  return {
+    message: r
+  };
+};
+let Vr = xe;
+function ma(t) {
+  Vr = t;
+}
+function We() {
+  return Vr;
+}
+const ze = t => {
+    const {
+        data: e,
+        path: r,
+        errorMaps: n,
+        issueData: s
+      } = t,
+      a = [...r, ...(s.path || [])],
+      o = {
+        ...s,
+        path: a
+      };
+    let i = "";
+    const c = n.filter(u => !!u).slice().reverse();
+    for (const u of c) i = u(o, {
+      data: e,
+      defaultError: i
+    }).message;
+    return {
+      ...s,
+      path: a,
+      message: s.message || i
+    };
+  },
+  ya = [];
+function y(t, e) {
+  const r = ze({
+    issueData: e,
+    data: t.data,
+    path: t.path,
+    errorMaps: [t.common.contextualErrorMap, t.schemaErrorMap, We(), xe
+    // then global default map
+    ].filter(n => !!n)
+  });
+  t.common.issues.push(r);
+}
+class I {
+  constructor() {
+    this.value = "valid";
+  }
+  dirty() {
+    this.value === "valid" && (this.value = "dirty");
+  }
+  abort() {
+    this.value !== "aborted" && (this.value = "aborted");
+  }
+  static mergeArray(e, r) {
+    const n = [];
+    for (const s of r) {
+      if (s.status === "aborted") return b;
+      s.status === "dirty" && e.dirty(), n.push(s.value);
+    }
+    return {
+      status: e.value,
+      value: n
+    };
+  }
+  static async mergeObjectAsync(e, r) {
+    const n = [];
+    for (const s of r) n.push({
+      key: await s.key,
+      value: await s.value
+    });
+    return I.mergeObjectSync(e, n);
+  }
+  static mergeObjectSync(e, r) {
+    const n = {};
+    for (const s of r) {
+      const {
+        key: a,
+        value: o
+      } = s;
+      if (a.status === "aborted" || o.status === "aborted") return b;
+      a.status === "dirty" && e.dirty(), o.status === "dirty" && e.dirty(), (typeof o.value < "u" || s.alwaysSet) && (n[a.value] = o.value);
+    }
+    return {
+      status: e.value,
+      value: n
+    };
+  }
+}
+const b = Object.freeze({
+    status: "aborted"
+  }),
+  Hr = t => ({
+    status: "dirty",
+    value: t
+  }),
+  N = t => ({
+    status: "valid",
+    value: t
+  }),
+  _t = t => t.status === "aborted",
+  vt = t => t.status === "dirty",
+  qe = t => t.status === "valid",
+  Be = t => typeof Promise < "u" && t instanceof Promise;
+var x;
+(function (t) {
+  t.errToObj = e => typeof e == "string" ? {
+    message: e
+  } : e || {}, t.toString = e => typeof e == "string" ? e : e?.message;
+})(x || (x = {}));
+class U {
+  constructor(e, r, n, s) {
+    this.parent = e, this.data = r, this._path = n, this._key = s;
+  }
+  get path() {
+    return this._path.concat(this._key);
+  }
+}
+const tr = (t, e) => {
+  if (qe(e)) return {
+    success: !0,
+    data: e.value
+  };
+  if (!t.common.issues.length) throw new Error("Validation failed but no issues detected.");
+  return {
+    success: !1,
+    error: new V(t.common.issues)
+  };
+};
+function w(t) {
+  if (!t) return {};
+  const {
+    errorMap: e,
+    invalid_type_error: r,
+    required_error: n,
+    description: s
+  } = t;
+  if (e && (r || n)) throw new Error(`Can't use "invalid_type_error" or "required_error" in conjunction with custom error map.`);
+  return e ? {
+    errorMap: e,
+    description: s
+  } : {
+    errorMap: (o, i) => o.code !== "invalid_type" ? {
+      message: i.defaultError
+    } : typeof i.data > "u" ? {
+      message: n ?? i.defaultError
+    } : {
+      message: r ?? i.defaultError
+    },
+    description: s
+  };
+}
+class _ {
+  constructor(e) {
+    this.spa = this.safeParseAsync, this._def = e, this.parse = this.parse.bind(this), this.safeParse = this.safeParse.bind(this), this.parseAsync = this.parseAsync.bind(this), this.safeParseAsync = this.safeParseAsync.bind(this), this.spa = this.spa.bind(this), this.refine = this.refine.bind(this), this.refinement = this.refinement.bind(this), this.superRefine = this.superRefine.bind(this), this.optional = this.optional.bind(this), this.nullable = this.nullable.bind(this), this.nullish = this.nullish.bind(this), this.array = this.array.bind(this), this.promise = this.promise.bind(this), this.or = this.or.bind(this), this.and = this.and.bind(this), this.transform = this.transform.bind(this), this.brand = this.brand.bind(this), this.default = this.default.bind(this), this.catch = this.catch.bind(this), this.describe = this.describe.bind(this), this.pipe = this.pipe.bind(this), this.isNullable = this.isNullable.bind(this), this.isOptional = this.isOptional.bind(this);
+  }
+  get description() {
+    return this._def.description;
+  }
+  _getType(e) {
+    return G(e.data);
+  }
+  _getOrReturnCtx(e, r) {
+    return r || {
+      common: e.parent.common,
+      data: e.data,
+      parsedType: G(e.data),
+      schemaErrorMap: this._def.errorMap,
+      path: e.path,
+      parent: e.parent
+    };
+  }
+  _processInputParams(e) {
+    return {
+      status: new I(),
+      ctx: {
+        common: e.parent.common,
+        data: e.data,
+        parsedType: G(e.data),
+        schemaErrorMap: this._def.errorMap,
+        path: e.path,
+        parent: e.parent
+      }
+    };
+  }
+  _parseSync(e) {
+    const r = this._parse(e);
+    if (Be(r)) throw new Error("Synchronous parse encountered promise.");
+    return r;
+  }
+  _parseAsync(e) {
+    const r = this._parse(e);
+    return Promise.resolve(r);
+  }
+  parse(e, r) {
+    const n = this.safeParse(e, r);
+    if (n.success) return n.data;
+    throw n.error;
+  }
+  safeParse(e, r) {
+    var n;
+    const s = {
+        common: {
+          issues: [],
+          async: (n = r?.async) !== null && n !== void 0 ? n : !1,
+          contextualErrorMap: r?.errorMap
+        },
+        path: r?.path || [],
+        schemaErrorMap: this._def.errorMap,
+        parent: null,
+        data: e,
+        parsedType: G(e)
+      },
+      a = this._parseSync({
+        data: e,
+        path: s.path,
+        parent: s
+      });
+    return tr(s, a);
+  }
+  async parseAsync(e, r) {
+    const n = await this.safeParseAsync(e, r);
+    if (n.success) return n.data;
+    throw n.error;
+  }
+  async safeParseAsync(e, r) {
+    const n = {
+        common: {
+          issues: [],
+          contextualErrorMap: r?.errorMap,
+          async: !0
+        },
+        path: r?.path || [],
+        schemaErrorMap: this._def.errorMap,
+        parent: null,
+        data: e,
+        parsedType: G(e)
+      },
+      s = this._parse({
+        data: e,
+        path: n.path,
+        parent: n
+      }),
+      a = await (Be(s) ? s : Promise.resolve(s));
+    return tr(n, a);
+  }
+  refine(e, r) {
+    const n = s => typeof r == "string" || typeof r > "u" ? {
+      message: r
+    } : typeof r == "function" ? r(s) : r;
+    return this._refinement((s, a) => {
+      const o = e(s),
+        i = () => a.addIssue({
+          code: d.custom,
+          ...n(s)
+        });
+      return typeof Promise < "u" && o instanceof Promise ? o.then(c => c ? !0 : (i(), !1)) : o ? !0 : (i(), !1);
+    });
+  }
+  refinement(e, r) {
+    return this._refinement((n, s) => e(n) ? !0 : (s.addIssue(typeof r == "function" ? r(n, s) : r), !1));
+  }
+  _refinement(e) {
+    return new D({
+      schema: this,
+      typeName: g.ZodEffects,
+      effect: {
+        type: "refinement",
+        refinement: e
+      }
+    });
+  }
+  superRefine(e) {
+    return this._refinement(e);
+  }
+  optional() {
+    return H.create(this, this._def);
+  }
+  nullable() {
+    return re.create(this, this._def);
+  }
+  nullish() {
+    return this.nullable().optional();
+  }
+  array() {
+    return $.create(this, this._def);
+  }
+  promise() {
+    return fe.create(this, this._def);
+  }
+  or(e) {
+    return Re.create([this, e], this._def);
+  }
+  and(e) {
+    return Oe.create(this, e, this._def);
+  }
+  transform(e) {
+    return new D({
+      ...w(this._def),
+      schema: this,
+      typeName: g.ZodEffects,
+      effect: {
+        type: "transform",
+        transform: e
+      }
+    });
+  }
+  default(e) {
+    const r = typeof e == "function" ? e : () => e;
+    return new Le({
+      ...w(this._def),
+      innerType: this,
+      defaultValue: r,
+      typeName: g.ZodDefault
+    });
+  }
+  brand() {
+    return new Jr({
+      typeName: g.ZodBranded,
+      type: this,
+      ...w(this._def)
+    });
+  }
+  catch(e) {
+    const r = typeof e == "function" ? e : () => e;
+    return new Ge({
+      ...w(this._def),
+      innerType: this,
+      catchValue: r,
+      typeName: g.ZodCatch
+    });
+  }
+  describe(e) {
+    const r = this.constructor;
+    return new r({
+      ...this._def,
+      description: e
+    });
+  }
+  pipe(e) {
+    return Ae.create(this, e);
+  }
+  isOptional() {
+    return this.safeParse(void 0).success;
+  }
+  isNullable() {
+    return this.safeParse(null).success;
+  }
+}
+const ga = /^c[^\s-]{8,}$/i,
+  ba = /^[a-z][a-z0-9]*$/,
+  wa = /^([a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[a-f0-9]{4}-[a-f0-9]{12}|00000000-0000-0000-0000-000000000000)$/i,
+  _a = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|([^-]([a-zA-Z0-9-]*\.)+[a-zA-Z]{2,}))$/,
+  va = t => t.precision ? t.offset ? new RegExp(`^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{${t.precision}}(([+-]\\d{2}(:?\\d{2})?)|Z)$`) : new RegExp(`^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{${t.precision}}Z$`) : t.precision === 0 ? t.offset ? new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(([+-]\\d{2}(:?\\d{2})?)|Z)$") : new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$") : t.offset ? new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(([+-]\\d{2}(:?\\d{2})?)|Z)$") : new RegExp("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$");
+class F extends _ {
+  constructor() {
+    super(...arguments), this._regex = (e, r, n) => this.refinement(s => e.test(s), {
+      validation: r,
+      code: d.invalid_string,
+      ...x.errToObj(n)
+    }), this.nonempty = e => this.min(1, x.errToObj(e)), this.trim = () => new F({
+      ...this._def,
+      checks: [...this._def.checks, {
+        kind: "trim"
+      }]
+    });
+  }
+  _parse(e) {
+    if (this._def.coerce && (e.data = String(e.data)), this._getType(e) !== h.string) {
+      const a = this._getOrReturnCtx(e);
+      return y(a, {
+        code: d.invalid_type,
+        expected: h.string,
+        received: a.parsedType
+      }
+      //
+      ), b;
+    }
+    const n = new I();
+    let s;
+    for (const a of this._def.checks) if (a.kind === "min") e.data.length < a.value && (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.too_small,
+      minimum: a.value,
+      type: "string",
+      inclusive: !0,
+      exact: !1,
+      message: a.message
+    }), n.dirty());else if (a.kind === "max") e.data.length > a.value && (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.too_big,
+      maximum: a.value,
+      type: "string",
+      inclusive: !0,
+      exact: !1,
+      message: a.message
+    }), n.dirty());else if (a.kind === "length") {
+      const o = e.data.length > a.value,
+        i = e.data.length < a.value;
+      (o || i) && (s = this._getOrReturnCtx(e, s), o ? y(s, {
+        code: d.too_big,
+        maximum: a.value,
+        type: "string",
+        inclusive: !0,
+        exact: !0,
+        message: a.message
+      }) : i && y(s, {
+        code: d.too_small,
+        minimum: a.value,
+        type: "string",
+        inclusive: !0,
+        exact: !0,
+        message: a.message
+      }), n.dirty());
+    } else if (a.kind === "email") _a.test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      validation: "email",
+      code: d.invalid_string,
+      message: a.message
+    }), n.dirty());else if (a.kind === "uuid") wa.test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      validation: "uuid",
+      code: d.invalid_string,
+      message: a.message
+    }), n.dirty());else if (a.kind === "cuid") ga.test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      validation: "cuid",
+      code: d.invalid_string,
+      message: a.message
+    }), n.dirty());else if (a.kind === "cuid2") ba.test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      validation: "cuid2",
+      code: d.invalid_string,
+      message: a.message
+    }), n.dirty());else if (a.kind === "url") try {
+      new URL(e.data);
+    } catch {
+      s = this._getOrReturnCtx(e, s), y(s, {
+        validation: "url",
+        code: d.invalid_string,
+        message: a.message
+      }), n.dirty();
+    } else a.kind === "regex" ? (a.regex.lastIndex = 0, a.regex.test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      validation: "regex",
+      code: d.invalid_string,
+      message: a.message
+    }), n.dirty())) : a.kind === "trim" ? e.data = e.data.trim() : a.kind === "startsWith" ? e.data.startsWith(a.value) || (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.invalid_string,
+      validation: {
+        startsWith: a.value
+      },
+      message: a.message
+    }), n.dirty()) : a.kind === "endsWith" ? e.data.endsWith(a.value) || (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.invalid_string,
+      validation: {
+        endsWith: a.value
+      },
+      message: a.message
+    }), n.dirty()) : a.kind === "datetime" ? va(a).test(e.data) || (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.invalid_string,
+      validation: "datetime",
+      message: a.message
+    }), n.dirty()) : T.assertNever(a);
+    return {
+      status: n.value,
+      value: e.data
+    };
+  }
+  _addCheck(e) {
+    return new F({
+      ...this._def,
+      checks: [...this._def.checks, e]
+    });
+  }
+  email(e) {
+    return this._addCheck({
+      kind: "email",
+      ...x.errToObj(e)
+    });
+  }
+  url(e) {
+    return this._addCheck({
+      kind: "url",
+      ...x.errToObj(e)
+    });
+  }
+  uuid(e) {
+    return this._addCheck({
+      kind: "uuid",
+      ...x.errToObj(e)
+    });
+  }
+  cuid(e) {
+    return this._addCheck({
+      kind: "cuid",
+      ...x.errToObj(e)
+    });
+  }
+  cuid2(e) {
+    return this._addCheck({
+      kind: "cuid2",
+      ...x.errToObj(e)
+    });
+  }
+  datetime(e) {
+    var r;
+    return typeof e == "string" ? this._addCheck({
+      kind: "datetime",
+      precision: null,
+      offset: !1,
+      message: e
+    }) : this._addCheck({
+      kind: "datetime",
+      precision: typeof e?.precision > "u" ? null : e?.precision,
+      offset: (r = e?.offset) !== null && r !== void 0 ? r : !1,
+      ...x.errToObj(e?.message)
+    });
+  }
+  regex(e, r) {
+    return this._addCheck({
+      kind: "regex",
+      regex: e,
+      ...x.errToObj(r)
+    });
+  }
+  startsWith(e, r) {
+    return this._addCheck({
+      kind: "startsWith",
+      value: e,
+      ...x.errToObj(r)
+    });
+  }
+  endsWith(e, r) {
+    return this._addCheck({
+      kind: "endsWith",
+      value: e,
+      ...x.errToObj(r)
+    });
+  }
+  min(e, r) {
+    return this._addCheck({
+      kind: "min",
+      value: e,
+      ...x.errToObj(r)
+    });
+  }
+  max(e, r) {
+    return this._addCheck({
+      kind: "max",
+      value: e,
+      ...x.errToObj(r)
+    });
+  }
+  length(e, r) {
+    return this._addCheck({
+      kind: "length",
+      value: e,
+      ...x.errToObj(r)
+    });
+  }
+  get isDatetime() {
+    return !!this._def.checks.find(e => e.kind === "datetime");
+  }
+  get isEmail() {
+    return !!this._def.checks.find(e => e.kind === "email");
+  }
+  get isURL() {
+    return !!this._def.checks.find(e => e.kind === "url");
+  }
+  get isUUID() {
+    return !!this._def.checks.find(e => e.kind === "uuid");
+  }
+  get isCUID() {
+    return !!this._def.checks.find(e => e.kind === "cuid");
+  }
+  get isCUID2() {
+    return !!this._def.checks.find(e => e.kind === "cuid2");
+  }
+  get minLength() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "min" && (e === null || r.value > e) && (e = r.value);
+    return e;
+  }
+  get maxLength() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "max" && (e === null || r.value < e) && (e = r.value);
+    return e;
+  }
+}
+F.create = t => {
+  var e;
+  return new F({
+    checks: [],
+    typeName: g.ZodString,
+    coerce: (e = t?.coerce) !== null && e !== void 0 ? e : !1,
+    ...w(t)
+  });
+};
+function xa(t, e) {
+  const r = (t.toString().split(".")[1] || "").length,
+    n = (e.toString().split(".")[1] || "").length,
+    s = r > n ? r : n,
+    a = parseInt(t.toFixed(s).replace(".", "")),
+    o = parseInt(e.toFixed(s).replace(".", ""));
+  return a % o / Math.pow(10, s);
+}
+class Y extends _ {
+  constructor() {
+    super(...arguments), this.min = this.gte, this.max = this.lte, this.step = this.multipleOf;
+  }
+  _parse(e) {
+    if (this._def.coerce && (e.data = Number(e.data)), this._getType(e) !== h.number) {
+      const a = this._getOrReturnCtx(e);
+      return y(a, {
+        code: d.invalid_type,
+        expected: h.number,
+        received: a.parsedType
+      }), b;
+    }
+    let n;
+    const s = new I();
+    for (const a of this._def.checks) a.kind === "int" ? T.isInteger(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+      code: d.invalid_type,
+      expected: "integer",
+      received: "float",
+      message: a.message
+    }), s.dirty()) : a.kind === "min" ? (a.inclusive ? e.data < a.value : e.data <= a.value) && (n = this._getOrReturnCtx(e, n), y(n, {
+      code: d.too_small,
+      minimum: a.value,
+      type: "number",
+      inclusive: a.inclusive,
+      exact: !1,
+      message: a.message
+    }), s.dirty()) : a.kind === "max" ? (a.inclusive ? e.data > a.value : e.data >= a.value) && (n = this._getOrReturnCtx(e, n), y(n, {
+      code: d.too_big,
+      maximum: a.value,
+      type: "number",
+      inclusive: a.inclusive,
+      exact: !1,
+      message: a.message
+    }), s.dirty()) : a.kind === "multipleOf" ? xa(e.data, a.value) !== 0 && (n = this._getOrReturnCtx(e, n), y(n, {
+      code: d.not_multiple_of,
+      multipleOf: a.value,
+      message: a.message
+    }), s.dirty()) : a.kind === "finite" ? Number.isFinite(e.data) || (n = this._getOrReturnCtx(e, n), y(n, {
+      code: d.not_finite,
+      message: a.message
+    }), s.dirty()) : T.assertNever(a);
+    return {
+      status: s.value,
+      value: e.data
+    };
+  }
+  gte(e, r) {
+    return this.setLimit("min", e, !0, x.toString(r));
+  }
+  gt(e, r) {
+    return this.setLimit("min", e, !1, x.toString(r));
+  }
+  lte(e, r) {
+    return this.setLimit("max", e, !0, x.toString(r));
+  }
+  lt(e, r) {
+    return this.setLimit("max", e, !1, x.toString(r));
+  }
+  setLimit(e, r, n, s) {
+    return new Y({
+      ...this._def,
+      checks: [...this._def.checks, {
+        kind: e,
+        value: r,
+        inclusive: n,
+        message: x.toString(s)
+      }]
+    });
+  }
+  _addCheck(e) {
+    return new Y({
+      ...this._def,
+      checks: [...this._def.checks, e]
+    });
+  }
+  int(e) {
+    return this._addCheck({
+      kind: "int",
+      message: x.toString(e)
+    });
+  }
+  positive(e) {
+    return this._addCheck({
+      kind: "min",
+      value: 0,
+      inclusive: !1,
+      message: x.toString(e)
+    });
+  }
+  negative(e) {
+    return this._addCheck({
+      kind: "max",
+      value: 0,
+      inclusive: !1,
+      message: x.toString(e)
+    });
+  }
+  nonpositive(e) {
+    return this._addCheck({
+      kind: "max",
+      value: 0,
+      inclusive: !0,
+      message: x.toString(e)
+    });
+  }
+  nonnegative(e) {
+    return this._addCheck({
+      kind: "min",
+      value: 0,
+      inclusive: !0,
+      message: x.toString(e)
+    });
+  }
+  multipleOf(e, r) {
+    return this._addCheck({
+      kind: "multipleOf",
+      value: e,
+      message: x.toString(r)
+    });
+  }
+  finite(e) {
+    return this._addCheck({
+      kind: "finite",
+      message: x.toString(e)
+    });
+  }
+  get minValue() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "min" && (e === null || r.value > e) && (e = r.value);
+    return e;
+  }
+  get maxValue() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "max" && (e === null || r.value < e) && (e = r.value);
+    return e;
+  }
+  get isInt() {
+    return !!this._def.checks.find(e => e.kind === "int" || e.kind === "multipleOf" && T.isInteger(e.value));
+  }
+  get isFinite() {
+    let e = null,
+      r = null;
+    for (const n of this._def.checks) {
+      if (n.kind === "finite" || n.kind === "int" || n.kind === "multipleOf") return !0;
+      n.kind === "min" ? (r === null || n.value > r) && (r = n.value) : n.kind === "max" && (e === null || n.value < e) && (e = n.value);
+    }
+    return Number.isFinite(r) && Number.isFinite(e);
+  }
+}
+Y.create = t => new Y({
+  checks: [],
+  typeName: g.ZodNumber,
+  coerce: t?.coerce || !1,
+  ...w(t)
+});
+class Te extends _ {
+  _parse(e) {
+    if (this._def.coerce && (e.data = BigInt(e.data)), this._getType(e) !== h.bigint) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.bigint,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+Te.create = t => {
+  var e;
+  return new Te({
+    typeName: g.ZodBigInt,
+    coerce: (e = t?.coerce) !== null && e !== void 0 ? e : !1,
+    ...w(t)
+  });
+};
+class Ee extends _ {
+  _parse(e) {
+    if (this._def.coerce && (e.data = !!e.data), this._getType(e) !== h.boolean) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.boolean,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+Ee.create = t => new Ee({
+  typeName: g.ZodBoolean,
+  coerce: t?.coerce || !1,
+  ...w(t)
+});
+class ee extends _ {
+  _parse(e) {
+    if (this._def.coerce && (e.data = new Date(e.data)), this._getType(e) !== h.date) {
+      const a = this._getOrReturnCtx(e);
+      return y(a, {
+        code: d.invalid_type,
+        expected: h.date,
+        received: a.parsedType
+      }), b;
+    }
+    if (isNaN(e.data.getTime())) {
+      const a = this._getOrReturnCtx(e);
+      return y(a, {
+        code: d.invalid_date
+      }), b;
+    }
+    const n = new I();
+    let s;
+    for (const a of this._def.checks) a.kind === "min" ? e.data.getTime() < a.value && (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.too_small,
+      message: a.message,
+      inclusive: !0,
+      exact: !1,
+      minimum: a.value,
+      type: "date"
+    }), n.dirty()) : a.kind === "max" ? e.data.getTime() > a.value && (s = this._getOrReturnCtx(e, s), y(s, {
+      code: d.too_big,
+      message: a.message,
+      inclusive: !0,
+      exact: !1,
+      maximum: a.value,
+      type: "date"
+    }), n.dirty()) : T.assertNever(a);
+    return {
+      status: n.value,
+      value: new Date(e.data.getTime())
+    };
+  }
+  _addCheck(e) {
+    return new ee({
+      ...this._def,
+      checks: [...this._def.checks, e]
+    });
+  }
+  min(e, r) {
+    return this._addCheck({
+      kind: "min",
+      value: e.getTime(),
+      message: x.toString(r)
+    });
+  }
+  max(e, r) {
+    return this._addCheck({
+      kind: "max",
+      value: e.getTime(),
+      message: x.toString(r)
+    });
+  }
+  get minDate() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "min" && (e === null || r.value > e) && (e = r.value);
+    return e != null ? new Date(e) : null;
+  }
+  get maxDate() {
+    let e = null;
+    for (const r of this._def.checks) r.kind === "max" && (e === null || r.value < e) && (e = r.value);
+    return e != null ? new Date(e) : null;
+  }
+}
+ee.create = t => new ee({
+  checks: [],
+  coerce: t?.coerce || !1,
+  typeName: g.ZodDate,
+  ...w(t)
+});
+class Ve extends _ {
+  _parse(e) {
+    if (this._getType(e) !== h.symbol) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.symbol,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+Ve.create = t => new Ve({
+  typeName: g.ZodSymbol,
+  ...w(t)
+});
+class ke extends _ {
+  _parse(e) {
+    if (this._getType(e) !== h.undefined) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.undefined,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+ke.create = t => new ke({
+  typeName: g.ZodUndefined,
+  ...w(t)
+});
+class Ce extends _ {
+  _parse(e) {
+    if (this._getType(e) !== h.null) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.null,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+Ce.create = t => new Ce({
+  typeName: g.ZodNull,
+  ...w(t)
+});
+class de extends _ {
+  constructor() {
+    super(...arguments), this._any = !0;
+  }
+  _parse(e) {
+    return N(e.data);
+  }
+}
+de.create = t => new de({
+  typeName: g.ZodAny,
+  ...w(t)
+});
+class K extends _ {
+  constructor() {
+    super(...arguments), this._unknown = !0;
+  }
+  _parse(e) {
+    return N(e.data);
+  }
+}
+K.create = t => new K({
+  typeName: g.ZodUnknown,
+  ...w(t)
+});
+class J extends _ {
+  _parse(e) {
+    const r = this._getOrReturnCtx(e);
+    return y(r, {
+      code: d.invalid_type,
+      expected: h.never,
+      received: r.parsedType
+    }), b;
+  }
+}
+J.create = t => new J({
+  typeName: g.ZodNever,
+  ...w(t)
+});
+class He extends _ {
+  _parse(e) {
+    if (this._getType(e) !== h.undefined) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.void,
+        received: n.parsedType
+      }), b;
+    }
+    return N(e.data);
+  }
+}
+He.create = t => new He({
+  typeName: g.ZodVoid,
+  ...w(t)
+});
+class $ extends _ {
+  _parse(e) {
+    const {
+        ctx: r,
+        status: n
+      } = this._processInputParams(e),
+      s = this._def;
+    if (r.parsedType !== h.array) return y(r, {
+      code: d.invalid_type,
+      expected: h.array,
+      received: r.parsedType
+    }), b;
+    if (s.exactLength !== null) {
+      const o = r.data.length > s.exactLength.value,
+        i = r.data.length < s.exactLength.value;
+      (o || i) && (y(r, {
+        code: o ? d.too_big : d.too_small,
+        minimum: i ? s.exactLength.value : void 0,
+        maximum: o ? s.exactLength.value : void 0,
+        type: "array",
+        inclusive: !0,
+        exact: !0,
+        message: s.exactLength.message
+      }), n.dirty());
+    }
+    if (s.minLength !== null && r.data.length < s.minLength.value && (y(r, {
+      code: d.too_small,
+      minimum: s.minLength.value,
+      type: "array",
+      inclusive: !0,
+      exact: !1,
+      message: s.minLength.message
+    }), n.dirty()), s.maxLength !== null && r.data.length > s.maxLength.value && (y(r, {
+      code: d.too_big,
+      maximum: s.maxLength.value,
+      type: "array",
+      inclusive: !0,
+      exact: !1,
+      message: s.maxLength.message
+    }), n.dirty()), r.common.async) return Promise.all([...r.data].map((o, i) => s.type._parseAsync(new U(r, o, r.path, i)))).then(o => I.mergeArray(n, o));
+    const a = [...r.data].map((o, i) => s.type._parseSync(new U(r, o, r.path, i)));
+    return I.mergeArray(n, a);
+  }
+  get element() {
+    return this._def.type;
+  }
+  min(e, r) {
+    return new $({
+      ...this._def,
+      minLength: {
+        value: e,
+        message: x.toString(r)
+      }
+    });
+  }
+  max(e, r) {
+    return new $({
+      ...this._def,
+      maxLength: {
+        value: e,
+        message: x.toString(r)
+      }
+    });
+  }
+  length(e, r) {
+    return new $({
+      ...this._def,
+      exactLength: {
+        value: e,
+        message: x.toString(r)
+      }
+    });
+  }
+  nonempty(e) {
+    return this.min(1, e);
+  }
+}
+$.create = (t, e) => new $({
+  type: t,
+  minLength: null,
+  maxLength: null,
+  exactLength: null,
+  typeName: g.ZodArray,
+  ...w(e)
+});
+var Fe;
+(function (t) {
+  t.mergeShapes = (e, r) => ({
+    ...e,
+    ...r
+    // second overwrites first
+  });
+})(Fe || (Fe = {}));
+function ie(t) {
+  if (t instanceof C) {
+    const e = {};
+    for (const r in t.shape) {
+      const n = t.shape[r];
+      e[r] = H.create(ie(n));
+    }
+    return new C({
+      ...t._def,
+      shape: () => e
+    });
+  } else return t instanceof $ ? $.create(ie(t.element)) : t instanceof H ? H.create(ie(t.unwrap())) : t instanceof re ? re.create(ie(t.unwrap())) : t instanceof W ? W.create(t.items.map(e => ie(e))) : t;
+}
+class C extends _ {
+  constructor() {
+    super(...arguments), this._cached = null, this.nonstrict = this.passthrough, this.augment = this.extend;
+  }
+  _getCached() {
+    if (this._cached !== null) return this._cached;
+    const e = this._def.shape(),
+      r = T.objectKeys(e);
+    return this._cached = {
+      shape: e,
+      keys: r
+    };
+  }
+  _parse(e) {
+    if (this._getType(e) !== h.object) {
+      const u = this._getOrReturnCtx(e);
+      return y(u, {
+        code: d.invalid_type,
+        expected: h.object,
+        received: u.parsedType
+      }), b;
+    }
+    const {
+        status: n,
+        ctx: s
+      } = this._processInputParams(e),
+      {
+        shape: a,
+        keys: o
+      } = this._getCached(),
+      i = [];
+    if (!(this._def.catchall instanceof J && this._def.unknownKeys === "strip")) for (const u in s.data) o.includes(u) || i.push(u);
+    const c = [];
+    for (const u of o) {
+      const l = a[u],
+        f = s.data[u];
+      c.push({
+        key: {
+          status: "valid",
+          value: u
+        },
+        value: l._parse(new U(s, f, s.path, u)),
+        alwaysSet: u in s.data
+      });
+    }
+    if (this._def.catchall instanceof J) {
+      const u = this._def.unknownKeys;
+      if (u === "passthrough") for (const l of i) c.push({
+        key: {
+          status: "valid",
+          value: l
+        },
+        value: {
+          status: "valid",
+          value: s.data[l]
+        }
+      });else if (u === "strict") i.length > 0 && (y(s, {
+        code: d.unrecognized_keys,
+        keys: i
+      }), n.dirty());else if (u !== "strip") throw new Error("Internal ZodObject error: invalid unknownKeys value.");
+    } else {
+      const u = this._def.catchall;
+      for (const l of i) {
+        const f = s.data[l];
+        c.push({
+          key: {
+            status: "valid",
+            value: l
+          },
+          value: u._parse(new U(s, f, s.path, l)
+          //, ctx.child(key), value, getParsedType(value)
+          ),
+          alwaysSet: l in s.data
+        });
+      }
+    }
+    return s.common.async ? Promise.resolve().then(async () => {
+      const u = [];
+      for (const l of c) {
+        const f = await l.key;
+        u.push({
+          key: f,
+          value: await l.value,
+          alwaysSet: l.alwaysSet
+        });
+      }
+      return u;
+    }).then(u => I.mergeObjectSync(n, u)) : I.mergeObjectSync(n, c);
+  }
+  get shape() {
+    return this._def.shape();
+  }
+  strict(e) {
+    return x.errToObj, new C({
+      ...this._def,
+      unknownKeys: "strict",
+      ...(e !== void 0 ? {
+        errorMap: (r, n) => {
+          var s, a, o, i;
+          const c = (o = (a = (s = this._def).errorMap) === null || a === void 0 ? void 0 : a.call(s, r, n).message) !== null && o !== void 0 ? o : n.defaultError;
+          return r.code === "unrecognized_keys" ? {
+            message: (i = x.errToObj(e).message) !== null && i !== void 0 ? i : c
+          } : {
+            message: c
+          };
+        }
+      } : {})
+    });
+  }
+  strip() {
+    return new C({
+      ...this._def,
+      unknownKeys: "strip"
+    });
+  }
+  passthrough() {
+    return new C({
+      ...this._def,
+      unknownKeys: "passthrough"
+    });
+  }
+  // const AugmentFactory =
+  //   <Def extends ZodObjectDef>(def: Def) =>
+  //   <Augmentation extends ZodRawShape>(
+  //     augmentation: Augmentation
+  //   ): ZodObject<
+  //     extendShape<ReturnType<Def["shape"]>, Augmentation>,
+  //     Def["unknownKeys"],
+  //     Def["catchall"]
+  //   > => {
+  //     return new ZodObject({
+  //       ...def,
+  //       shape: () => ({
+  //         ...def.shape(),
+  //         ...augmentation,
+  //       }),
+  //     }) as any;
+  //   };
+  extend(e) {
+    return new C({
+      ...this._def,
+      shape: () => ({
+        ...this._def.shape(),
+        ...e
+      })
+    });
+  }
+  /**
+   * Prior to zod@1.0.12 there was a bug in the
+   * inferred type of merged objects. Please
+   * upgrade if you are experiencing issues.
+   */
+  merge(e) {
+    return new C({
+      unknownKeys: e._def.unknownKeys,
+      catchall: e._def.catchall,
+      shape: () => Fe.mergeShapes(this._def.shape(), e._def.shape()),
+      typeName: g.ZodObject
+    });
+  }
+  // merge<
+  //   Incoming extends AnyZodObject,
+  //   Augmentation extends Incoming["shape"],
+  //   NewOutput extends {
+  //     [k in keyof Augmentation | keyof Output]: k extends keyof Augmentation
+  //       ? Augmentation[k]["_output"]
+  //       : k extends keyof Output
+  //       ? Output[k]
+  //       : never;
+  //   },
+  //   NewInput extends {
+  //     [k in keyof Augmentation | keyof Input]: k extends keyof Augmentation
+  //       ? Augmentation[k]["_input"]
+  //       : k extends keyof Input
+  //       ? Input[k]
+  //       : never;
+  //   }
+  // >(
+  //   merging: Incoming
+  // ): ZodObject<
+  //   extendShape<T, ReturnType<Incoming["_def"]["shape"]>>,
+  //   Incoming["_def"]["unknownKeys"],
+  //   Incoming["_def"]["catchall"],
+  //   NewOutput,
+  //   NewInput
+  // > {
+  //   const merged: any = new ZodObject({
+  //     unknownKeys: merging._def.unknownKeys,
+  //     catchall: merging._def.catchall,
+  //     shape: () =>
+  //       objectUtil.mergeShapes(this._def.shape(), merging._def.shape()),
+  //     typeName: ZodFirstPartyTypeKind.ZodObject,
+  //   }) as any;
+  //   return merged;
+  // }
+  setKey(e, r) {
+    return this.augment({
+      [e]: r
+    });
+  }
+  // merge<Incoming extends AnyZodObject>(
+  //   merging: Incoming
+  // ): //ZodObject<T & Incoming["_shape"], UnknownKeys, Catchall> = (merging) => {
+  // ZodObject<
+  //   extendShape<T, ReturnType<Incoming["_def"]["shape"]>>,
+  //   Incoming["_def"]["unknownKeys"],
+  //   Incoming["_def"]["catchall"]
+  // > {
+  //   // const mergedShape = objectUtil.mergeShapes(
+  //   //   this._def.shape(),
+  //   //   merging._def.shape()
+  //   // );
+  //   const merged: any = new ZodObject({
+  //     unknownKeys: merging._def.unknownKeys,
+  //     catchall: merging._def.catchall,
+  //     shape: () =>
+  //       objectUtil.mergeShapes(this._def.shape(), merging._def.shape()),
+  //     typeName: ZodFirstPartyTypeKind.ZodObject,
+  //   }) as any;
+  //   return merged;
+  // }
+  catchall(e) {
+    return new C({
+      ...this._def,
+      catchall: e
+    });
+  }
+  pick(e) {
+    const r = {};
+    return T.objectKeys(e).forEach(n => {
+      e[n] && this.shape[n] && (r[n] = this.shape[n]);
+    }), new C({
+      ...this._def,
+      shape: () => r
+    });
+  }
+  omit(e) {
+    const r = {};
+    return T.objectKeys(this.shape).forEach(n => {
+      e[n] || (r[n] = this.shape[n]);
+    }), new C({
+      ...this._def,
+      shape: () => r
+    });
+  }
+  deepPartial() {
+    return ie(this);
+  }
+  partial(e) {
+    const r = {};
+    return T.objectKeys(this.shape).forEach(n => {
+      const s = this.shape[n];
+      e && !e[n] ? r[n] = s : r[n] = s.optional();
+    }), new C({
+      ...this._def,
+      shape: () => r
+    });
+  }
+  required(e) {
+    const r = {};
+    return T.objectKeys(this.shape).forEach(n => {
+      if (e && !e[n]) r[n] = this.shape[n];else {
+        let a = this.shape[n];
+        for (; a instanceof H;) a = a._def.innerType;
+        r[n] = a;
+      }
+    }), new C({
+      ...this._def,
+      shape: () => r
+    });
+  }
+  keyof() {
+    return Fr(T.objectKeys(this.shape));
+  }
+}
+C.create = (t, e) => new C({
+  shape: () => t,
+  unknownKeys: "strip",
+  catchall: J.create(),
+  typeName: g.ZodObject,
+  ...w(e)
+});
+C.strictCreate = (t, e) => new C({
+  shape: () => t,
+  unknownKeys: "strict",
+  catchall: J.create(),
+  typeName: g.ZodObject,
+  ...w(e)
+});
+C.lazycreate = (t, e) => new C({
+  shape: t,
+  unknownKeys: "strip",
+  catchall: J.create(),
+  typeName: g.ZodObject,
+  ...w(e)
+});
+class Re extends _ {
+  _parse(e) {
+    const {
+        ctx: r
+      } = this._processInputParams(e),
+      n = this._def.options;
+    function s(a) {
+      for (const i of a) if (i.result.status === "valid") return i.result;
+      for (const i of a) if (i.result.status === "dirty") return r.common.issues.push(...i.ctx.common.issues), i.result;
+      const o = a.map(i => new V(i.ctx.common.issues));
+      return y(r, {
+        code: d.invalid_union,
+        unionErrors: o
+      }), b;
+    }
+    if (r.common.async) return Promise.all(n.map(async a => {
+      const o = {
+        ...r,
+        common: {
+          ...r.common,
+          issues: []
+        },
+        parent: null
+      };
+      return {
+        result: await a._parseAsync({
+          data: r.data,
+          path: r.path,
+          parent: o
+        }),
+        ctx: o
+      };
+    })).then(s);
+    {
+      let a;
+      const o = [];
+      for (const c of n) {
+        const u = {
+            ...r,
+            common: {
+              ...r.common,
+              issues: []
+            },
+            parent: null
+          },
+          l = c._parseSync({
+            data: r.data,
+            path: r.path,
+            parent: u
+          });
+        if (l.status === "valid") return l;
+        l.status === "dirty" && !a && (a = {
+          result: l,
+          ctx: u
+        }), u.common.issues.length && o.push(u.common.issues);
+      }
+      if (a) return r.common.issues.push(...a.ctx.common.issues), a.result;
+      const i = o.map(c => new V(c));
+      return y(r, {
+        code: d.invalid_union,
+        unionErrors: i
+      }), b;
+    }
+  }
+  get options() {
+    return this._def.options;
+  }
+}
+Re.create = (t, e) => new Re({
+  options: t,
+  typeName: g.ZodUnion,
+  ...w(e)
+});
+const Ze = t => t instanceof Se ? Ze(t.schema) : t instanceof D ? Ze(t.innerType()) : t instanceof Ne ? [t.value] : t instanceof Q ? t.options : t instanceof Ie ? Object.keys(t.enum) : t instanceof Le ? Ze(t._def.innerType) : t instanceof ke ? [void 0] : t instanceof Ce ? [null] : null;
+class it extends _ {
+  _parse(e) {
+    const {
+      ctx: r
+    } = this._processInputParams(e);
+    if (r.parsedType !== h.object) return y(r, {
+      code: d.invalid_type,
+      expected: h.object,
+      received: r.parsedType
+    }), b;
+    const n = this.discriminator,
+      s = r.data[n],
+      a = this.optionsMap.get(s);
+    return a ? r.common.async ? a._parseAsync({
+      data: r.data,
+      path: r.path,
+      parent: r
+    }) : a._parseSync({
+      data: r.data,
+      path: r.path,
+      parent: r
+    }) : (y(r, {
+      code: d.invalid_union_discriminator,
+      options: Array.from(this.optionsMap.keys()),
+      path: [n]
+    }), b);
+  }
+  get discriminator() {
+    return this._def.discriminator;
+  }
+  get options() {
+    return this._def.options;
+  }
+  get optionsMap() {
+    return this._def.optionsMap;
+  }
+  /**
+   * The constructor of the discriminated union schema. Its behaviour is very similar to that of the normal z.union() constructor.
+   * However, it only allows a union of objects, all of which need to share a discriminator property. This property must
+   * have a different value for each object in the union.
+   * @param discriminator the name of the discriminator property
+   * @param types an array of object schemas
+   * @param params
+   */
+  static create(e, r, n) {
+    const s = /* @__PURE__ */new Map();
+    for (const a of r) {
+      const o = Ze(a.shape[e]);
+      if (!o) throw new Error(`A discriminator value for key \`${e}\` could not be extracted from all schema options`);
+      for (const i of o) {
+        if (s.has(i)) throw new Error(`Discriminator property ${String(e)} has duplicate value ${String(i)}`);
+        s.set(i, a);
+      }
+    }
+    return new it({
+      typeName: g.ZodDiscriminatedUnion,
+      discriminator: e,
+      options: r,
+      optionsMap: s,
+      ...w(n)
+    });
+  }
+}
+function xt(t, e) {
+  const r = G(t),
+    n = G(e);
+  if (t === e) return {
+    valid: !0,
+    data: t
+  };
+  if (r === h.object && n === h.object) {
+    const s = T.objectKeys(e),
+      a = T.objectKeys(t).filter(i => s.indexOf(i) !== -1),
+      o = {
+        ...t,
+        ...e
+      };
+    for (const i of a) {
+      const c = xt(t[i], e[i]);
+      if (!c.valid) return {
+        valid: !1
+      };
+      o[i] = c.data;
+    }
+    return {
+      valid: !0,
+      data: o
+    };
+  } else if (r === h.array && n === h.array) {
+    if (t.length !== e.length) return {
+      valid: !1
+    };
+    const s = [];
+    for (let a = 0; a < t.length; a++) {
+      const o = t[a],
+        i = e[a],
+        c = xt(o, i);
+      if (!c.valid) return {
+        valid: !1
+      };
+      s.push(c.data);
+    }
+    return {
+      valid: !0,
+      data: s
+    };
+  } else return r === h.date && n === h.date && +t == +e ? {
+    valid: !0,
+    data: t
+  } : {
+    valid: !1
+  };
+}
+class Oe extends _ {
+  _parse(e) {
+    const {
+        status: r,
+        ctx: n
+      } = this._processInputParams(e),
+      s = (a, o) => {
+        if (_t(a) || _t(o)) return b;
+        const i = xt(a.value, o.value);
+        return i.valid ? ((vt(a) || vt(o)) && r.dirty(), {
+          status: r.value,
+          value: i.data
+        }) : (y(n, {
+          code: d.invalid_intersection_types
+        }), b);
+      };
+    return n.common.async ? Promise.all([this._def.left._parseAsync({
+      data: n.data,
+      path: n.path,
+      parent: n
+    }), this._def.right._parseAsync({
+      data: n.data,
+      path: n.path,
+      parent: n
+    })]).then(([a, o]) => s(a, o)) : s(this._def.left._parseSync({
+      data: n.data,
+      path: n.path,
+      parent: n
+    }), this._def.right._parseSync({
+      data: n.data,
+      path: n.path,
+      parent: n
+    }));
+  }
+}
+Oe.create = (t, e, r) => new Oe({
+  left: t,
+  right: e,
+  typeName: g.ZodIntersection,
+  ...w(r)
+});
+class W extends _ {
+  _parse(e) {
+    const {
+      status: r,
+      ctx: n
+    } = this._processInputParams(e);
+    if (n.parsedType !== h.array) return y(n, {
+      code: d.invalid_type,
+      expected: h.array,
+      received: n.parsedType
+    }), b;
+    if (n.data.length < this._def.items.length) return y(n, {
+      code: d.too_small,
+      minimum: this._def.items.length,
+      inclusive: !0,
+      exact: !1,
+      type: "array"
+    }), b;
+    !this._def.rest && n.data.length > this._def.items.length && (y(n, {
+      code: d.too_big,
+      maximum: this._def.items.length,
+      inclusive: !0,
+      exact: !1,
+      type: "array"
+    }), r.dirty());
+    const a = [...n.data].map((o, i) => {
+      const c = this._def.items[i] || this._def.rest;
+      return c ? c._parse(new U(n, o, n.path, i)) : null;
+    }).filter(o => !!o);
+    return n.common.async ? Promise.all(a).then(o => I.mergeArray(r, o)) : I.mergeArray(r, a);
+  }
+  get items() {
+    return this._def.items;
+  }
+  rest(e) {
+    return new W({
+      ...this._def,
+      rest: e
+    });
+  }
+}
+W.create = (t, e) => {
+  if (!Array.isArray(t)) throw new Error("You must pass an array of schemas to z.tuple([ ... ])");
+  return new W({
+    items: t,
+    typeName: g.ZodTuple,
+    rest: null,
+    ...w(e)
+  });
+};
+class Pe extends _ {
+  get keySchema() {
+    return this._def.keyType;
+  }
+  get valueSchema() {
+    return this._def.valueType;
+  }
+  _parse(e) {
+    const {
+      status: r,
+      ctx: n
+    } = this._processInputParams(e);
+    if (n.parsedType !== h.object) return y(n, {
+      code: d.invalid_type,
+      expected: h.object,
+      received: n.parsedType
+    }), b;
+    const s = [],
+      a = this._def.keyType,
+      o = this._def.valueType;
+    for (const i in n.data) s.push({
+      key: a._parse(new U(n, i, n.path, i)),
+      value: o._parse(new U(n, n.data[i], n.path, i))
+    });
+    return n.common.async ? I.mergeObjectAsync(r, s) : I.mergeObjectSync(r, s);
+  }
+  get element() {
+    return this._def.valueType;
+  }
+  static create(e, r, n) {
+    return r instanceof _ ? new Pe({
+      keyType: e,
+      valueType: r,
+      typeName: g.ZodRecord,
+      ...w(n)
+    }) : new Pe({
+      keyType: F.create(),
+      valueType: e,
+      typeName: g.ZodRecord,
+      ...w(r)
+    });
+  }
+}
+class Je extends _ {
+  _parse(e) {
+    const {
+      status: r,
+      ctx: n
+    } = this._processInputParams(e);
+    if (n.parsedType !== h.map) return y(n, {
+      code: d.invalid_type,
+      expected: h.map,
+      received: n.parsedType
+    }), b;
+    const s = this._def.keyType,
+      a = this._def.valueType,
+      o = [...n.data.entries()].map(([i, c], u) => ({
+        key: s._parse(new U(n, i, n.path, [u, "key"])),
+        value: a._parse(new U(n, c, n.path, [u, "value"]))
+      }));
+    if (n.common.async) {
+      const i = /* @__PURE__ */new Map();
+      return Promise.resolve().then(async () => {
+        for (const c of o) {
+          const u = await c.key,
+            l = await c.value;
+          if (u.status === "aborted" || l.status === "aborted") return b;
+          (u.status === "dirty" || l.status === "dirty") && r.dirty(), i.set(u.value, l.value);
+        }
+        return {
+          status: r.value,
+          value: i
+        };
+      });
+    } else {
+      const i = /* @__PURE__ */new Map();
+      for (const c of o) {
+        const u = c.key,
+          l = c.value;
+        if (u.status === "aborted" || l.status === "aborted") return b;
+        (u.status === "dirty" || l.status === "dirty") && r.dirty(), i.set(u.value, l.value);
+      }
+      return {
+        status: r.value,
+        value: i
+      };
+    }
+  }
+}
+Je.create = (t, e, r) => new Je({
+  valueType: e,
+  keyType: t,
+  typeName: g.ZodMap,
+  ...w(r)
+});
+class te extends _ {
+  _parse(e) {
+    const {
+      status: r,
+      ctx: n
+    } = this._processInputParams(e);
+    if (n.parsedType !== h.set) return y(n, {
+      code: d.invalid_type,
+      expected: h.set,
+      received: n.parsedType
+    }), b;
+    const s = this._def;
+    s.minSize !== null && n.data.size < s.minSize.value && (y(n, {
+      code: d.too_small,
+      minimum: s.minSize.value,
+      type: "set",
+      inclusive: !0,
+      exact: !1,
+      message: s.minSize.message
+    }), r.dirty()), s.maxSize !== null && n.data.size > s.maxSize.value && (y(n, {
+      code: d.too_big,
+      maximum: s.maxSize.value,
+      type: "set",
+      inclusive: !0,
+      exact: !1,
+      message: s.maxSize.message
+    }), r.dirty());
+    const a = this._def.valueType;
+    function o(c) {
+      const u = /* @__PURE__ */new Set();
+      for (const l of c) {
+        if (l.status === "aborted") return b;
+        l.status === "dirty" && r.dirty(), u.add(l.value);
+      }
+      return {
+        status: r.value,
+        value: u
+      };
+    }
+    const i = [...n.data.values()].map((c, u) => a._parse(new U(n, c, n.path, u)));
+    return n.common.async ? Promise.all(i).then(c => o(c)) : o(i);
+  }
+  min(e, r) {
+    return new te({
+      ...this._def,
+      minSize: {
+        value: e,
+        message: x.toString(r)
+      }
+    });
+  }
+  max(e, r) {
+    return new te({
+      ...this._def,
+      maxSize: {
+        value: e,
+        message: x.toString(r)
+      }
+    });
+  }
+  size(e, r) {
+    return this.min(e, r).max(e, r);
+  }
+  nonempty(e) {
+    return this.min(1, e);
+  }
+}
+te.create = (t, e) => new te({
+  valueType: t,
+  minSize: null,
+  maxSize: null,
+  typeName: g.ZodSet,
+  ...w(e)
+});
+class ue extends _ {
+  constructor() {
+    super(...arguments), this.validate = this.implement;
+  }
+  _parse(e) {
+    const {
+      ctx: r
+    } = this._processInputParams(e);
+    if (r.parsedType !== h.function) return y(r, {
+      code: d.invalid_type,
+      expected: h.function,
+      received: r.parsedType
+    }), b;
+    function n(i, c) {
+      return ze({
+        data: i,
+        path: r.path,
+        errorMaps: [r.common.contextualErrorMap, r.schemaErrorMap, We(), xe].filter(u => !!u),
+        issueData: {
+          code: d.invalid_arguments,
+          argumentsError: c
+        }
+      });
+    }
+    function s(i, c) {
+      return ze({
+        data: i,
+        path: r.path,
+        errorMaps: [r.common.contextualErrorMap, r.schemaErrorMap, We(), xe].filter(u => !!u),
+        issueData: {
+          code: d.invalid_return_type,
+          returnTypeError: c
+        }
+      });
+    }
+    const a = {
+        errorMap: r.common.contextualErrorMap
+      },
+      o = r.data;
+    return this._def.returns instanceof fe ? N(async (...i) => {
+      const c = new V([]),
+        u = await this._def.args.parseAsync(i, a).catch(m => {
+          throw c.addIssue(n(i, m)), c;
+        }),
+        l = await o(...u);
+      return await this._def.returns._def.type.parseAsync(l, a).catch(m => {
+        throw c.addIssue(s(l, m)), c;
+      });
+    }) : N((...i) => {
+      const c = this._def.args.safeParse(i, a);
+      if (!c.success) throw new V([n(i, c.error)]);
+      const u = o(...c.data),
+        l = this._def.returns.safeParse(u, a);
+      if (!l.success) throw new V([s(u, l.error)]);
+      return l.data;
+    });
+  }
+  parameters() {
+    return this._def.args;
+  }
+  returnType() {
+    return this._def.returns;
+  }
+  args(...e) {
+    return new ue({
+      ...this._def,
+      args: W.create(e).rest(K.create())
+    });
+  }
+  returns(e) {
+    return new ue({
+      ...this._def,
+      returns: e
+    });
+  }
+  implement(e) {
+    return this.parse(e);
+  }
+  strictImplement(e) {
+    return this.parse(e);
+  }
+  static create(e, r, n) {
+    return new ue({
+      args: e || W.create([]).rest(K.create()),
+      returns: r || K.create(),
+      typeName: g.ZodFunction,
+      ...w(n)
+    });
+  }
+}
+class Se extends _ {
+  get schema() {
+    return this._def.getter();
+  }
+  _parse(e) {
+    const {
+      ctx: r
+    } = this._processInputParams(e);
+    return this._def.getter()._parse({
+      data: r.data,
+      path: r.path,
+      parent: r
+    });
+  }
+}
+Se.create = (t, e) => new Se({
+  getter: t,
+  typeName: g.ZodLazy,
+  ...w(e)
+});
+class Ne extends _ {
+  _parse(e) {
+    if (e.data !== this._def.value) {
+      const r = this._getOrReturnCtx(e);
+      return y(r, {
+        received: r.data,
+        code: d.invalid_literal,
+        expected: this._def.value
+      }), b;
+    }
+    return {
+      status: "valid",
+      value: e.data
+    };
+  }
+  get value() {
+    return this._def.value;
+  }
+}
+Ne.create = (t, e) => new Ne({
+  value: t,
+  typeName: g.ZodLiteral,
+  ...w(e)
+});
+function Fr(t, e) {
+  return new Q({
+    values: t,
+    typeName: g.ZodEnum,
+    ...w(e)
+  });
+}
+class Q extends _ {
+  _parse(e) {
+    if (typeof e.data != "string") {
+      const r = this._getOrReturnCtx(e),
+        n = this._def.values;
+      return y(r, {
+        expected: T.joinValues(n),
+        received: r.parsedType,
+        code: d.invalid_type
+      }), b;
+    }
+    if (this._def.values.indexOf(e.data) === -1) {
+      const r = this._getOrReturnCtx(e),
+        n = this._def.values;
+      return y(r, {
+        received: r.data,
+        code: d.invalid_enum_value,
+        options: n
+      }), b;
+    }
+    return N(e.data);
+  }
+  get options() {
+    return this._def.values;
+  }
+  get enum() {
+    const e = {};
+    for (const r of this._def.values) e[r] = r;
+    return e;
+  }
+  get Values() {
+    const e = {};
+    for (const r of this._def.values) e[r] = r;
+    return e;
+  }
+  get Enum() {
+    const e = {};
+    for (const r of this._def.values) e[r] = r;
+    return e;
+  }
+  extract(e) {
+    return Q.create(e);
+  }
+  exclude(e) {
+    return Q.create(this.options.filter(r => !e.includes(r)));
+  }
+}
+Q.create = Fr;
+class Ie extends _ {
+  _parse(e) {
+    const r = T.getValidEnumValues(this._def.values),
+      n = this._getOrReturnCtx(e);
+    if (n.parsedType !== h.string && n.parsedType !== h.number) {
+      const s = T.objectValues(r);
+      return y(n, {
+        expected: T.joinValues(s),
+        received: n.parsedType,
+        code: d.invalid_type
+      }), b;
+    }
+    if (r.indexOf(e.data) === -1) {
+      const s = T.objectValues(r);
+      return y(n, {
+        received: n.data,
+        code: d.invalid_enum_value,
+        options: s
+      }), b;
+    }
+    return N(e.data);
+  }
+  get enum() {
+    return this._def.values;
+  }
+}
+Ie.create = (t, e) => new Ie({
+  values: t,
+  typeName: g.ZodNativeEnum,
+  ...w(e)
+});
+class fe extends _ {
+  unwrap() {
+    return this._def.type;
+  }
+  _parse(e) {
+    const {
+      ctx: r
+    } = this._processInputParams(e);
+    if (r.parsedType !== h.promise && r.common.async === !1) return y(r, {
+      code: d.invalid_type,
+      expected: h.promise,
+      received: r.parsedType
+    }), b;
+    const n = r.parsedType === h.promise ? r.data : Promise.resolve(r.data);
+    return N(n.then(s => this._def.type.parseAsync(s, {
+      path: r.path,
+      errorMap: r.common.contextualErrorMap
+    })));
+  }
+}
+fe.create = (t, e) => new fe({
+  type: t,
+  typeName: g.ZodPromise,
+  ...w(e)
+});
+class D extends _ {
+  innerType() {
+    return this._def.schema;
+  }
+  sourceType() {
+    return this._def.schema._def.typeName === g.ZodEffects ? this._def.schema.sourceType() : this._def.schema;
+  }
+  _parse(e) {
+    const {
+        status: r,
+        ctx: n
+      } = this._processInputParams(e),
+      s = this._def.effect || null;
+    if (s.type === "preprocess") {
+      const o = s.transform(n.data);
+      return n.common.async ? Promise.resolve(o).then(i => this._def.schema._parseAsync({
+        data: i,
+        path: n.path,
+        parent: n
+      })) : this._def.schema._parseSync({
+        data: o,
+        path: n.path,
+        parent: n
+      });
+    }
+    const a = {
+      addIssue: o => {
+        y(n, o), o.fatal ? r.abort() : r.dirty();
+      },
+      get path() {
+        return n.path;
+      }
+    };
+    if (a.addIssue = a.addIssue.bind(a), s.type === "refinement") {
+      const o = i => {
+        const c = s.refinement(i, a);
+        if (n.common.async) return Promise.resolve(c);
+        if (c instanceof Promise) throw new Error("Async refinement encountered during synchronous parse operation. Use .parseAsync instead.");
+        return i;
+      };
+      if (n.common.async === !1) {
+        const i = this._def.schema._parseSync({
+          data: n.data,
+          path: n.path,
+          parent: n
+        });
+        return i.status === "aborted" ? b : (i.status === "dirty" && r.dirty(), o(i.value), {
+          status: r.value,
+          value: i.value
+        });
+      } else return this._def.schema._parseAsync({
+        data: n.data,
+        path: n.path,
+        parent: n
+      }).then(i => i.status === "aborted" ? b : (i.status === "dirty" && r.dirty(), o(i.value).then(() => ({
+        status: r.value,
+        value: i.value
+      }))));
+    }
+    if (s.type === "transform") if (n.common.async === !1) {
+      const o = this._def.schema._parseSync({
+        data: n.data,
+        path: n.path,
+        parent: n
+      });
+      if (!qe(o)) return o;
+      const i = s.transform(o.value, a);
+      if (i instanceof Promise) throw new Error("Asynchronous transform encountered during synchronous parse operation. Use .parseAsync instead.");
+      return {
+        status: r.value,
+        value: i
+      };
+    } else return this._def.schema._parseAsync({
+      data: n.data,
+      path: n.path,
+      parent: n
+    }).then(o => qe(o) ? Promise.resolve(s.transform(o.value, a)).then(i => ({
+      status: r.value,
+      value: i
+    })) : o);
+    T.assertNever(s);
+  }
+}
+D.create = (t, e, r) => new D({
+  schema: t,
+  typeName: g.ZodEffects,
+  effect: e,
+  ...w(r)
+});
+D.createWithPreprocess = (t, e, r) => new D({
+  schema: e,
+  effect: {
+    type: "preprocess",
+    transform: t
+  },
+  typeName: g.ZodEffects,
+  ...w(r)
+});
+class H extends _ {
+  _parse(e) {
+    return this._getType(e) === h.undefined ? N(void 0) : this._def.innerType._parse(e);
+  }
+  unwrap() {
+    return this._def.innerType;
+  }
+}
+H.create = (t, e) => new H({
+  innerType: t,
+  typeName: g.ZodOptional,
+  ...w(e)
+});
+class re extends _ {
+  _parse(e) {
+    return this._getType(e) === h.null ? N(null) : this._def.innerType._parse(e);
+  }
+  unwrap() {
+    return this._def.innerType;
+  }
+}
+re.create = (t, e) => new re({
+  innerType: t,
+  typeName: g.ZodNullable,
+  ...w(e)
+});
+class Le extends _ {
+  _parse(e) {
+    const {
+      ctx: r
+    } = this._processInputParams(e);
+    let n = r.data;
+    return r.parsedType === h.undefined && (n = this._def.defaultValue()), this._def.innerType._parse({
+      data: n,
+      path: r.path,
+      parent: r
+    });
+  }
+  removeDefault() {
+    return this._def.innerType;
+  }
+}
+Le.create = (t, e) => new Le({
+  innerType: t,
+  typeName: g.ZodDefault,
+  defaultValue: typeof e.default == "function" ? e.default : () => e.default,
+  ...w(e)
+});
+class Ge extends _ {
+  _parse(e) {
+    const {
+        ctx: r
+      } = this._processInputParams(e),
+      n = this._def.innerType._parse({
+        data: r.data,
+        path: r.path,
+        parent: {
+          ...r,
+          common: {
+            ...r.common,
+            issues: []
+            // don't collect issues from inner type
+          }
+        }
+      });
+    return Be(n) ? n.then(s => ({
+      status: "valid",
+      value: s.status === "valid" ? s.value : this._def.catchValue()
+    })) : {
+      status: "valid",
+      value: n.status === "valid" ? n.value : this._def.catchValue()
+    };
+  }
+  removeCatch() {
+    return this._def.innerType;
+  }
+}
+Ge.create = (t, e) => new Ge({
+  innerType: t,
+  typeName: g.ZodCatch,
+  catchValue: typeof e.catch == "function" ? e.catch : () => e.catch,
+  ...w(e)
+});
+class Ye extends _ {
+  _parse(e) {
+    if (this._getType(e) !== h.nan) {
+      const n = this._getOrReturnCtx(e);
+      return y(n, {
+        code: d.invalid_type,
+        expected: h.nan,
+        received: n.parsedType
+      }), b;
+    }
+    return {
+      status: "valid",
+      value: e.data
+    };
+  }
+}
+Ye.create = t => new Ye({
+  typeName: g.ZodNaN,
+  ...w(t)
+});
+const Ta = Symbol("zod_brand");
+class Jr extends _ {
+  _parse(e) {
+    const {
+        ctx: r
+      } = this._processInputParams(e),
+      n = r.data;
+    return this._def.type._parse({
+      data: n,
+      path: r.path,
+      parent: r
+    });
+  }
+  unwrap() {
+    return this._def.type;
+  }
+}
+class Ae extends _ {
+  _parse(e) {
+    const {
+      status: r,
+      ctx: n
+    } = this._processInputParams(e);
+    if (n.common.async) return (async () => {
+      const a = await this._def.in._parseAsync({
+        data: n.data,
+        path: n.path,
+        parent: n
+      });
+      return a.status === "aborted" ? b : a.status === "dirty" ? (r.dirty(), Hr(a.value)) : this._def.out._parseAsync({
+        data: a.value,
+        path: n.path,
+        parent: n
+      });
+    })();
+    {
+      const s = this._def.in._parseSync({
+        data: n.data,
+        path: n.path,
+        parent: n
+      });
+      return s.status === "aborted" ? b : s.status === "dirty" ? (r.dirty(), {
+        status: "dirty",
+        value: s.value
+      }) : this._def.out._parseSync({
+        data: s.value,
+        path: n.path,
+        parent: n
+      });
+    }
+  }
+  static create(e, r) {
+    return new Ae({
+      in: e,
+      out: r,
+      typeName: g.ZodPipeline
+    });
+  }
+}
+const Gr = (t, e = {}, r) => t ? de.create().superRefine((n, s) => {
+    if (!t(n)) {
+      const a = typeof e == "function" ? e(n) : e,
+        o = typeof a == "string" ? {
+          message: a
+        } : a;
+      s.addIssue({
+        code: "custom",
+        ...o,
+        fatal: r
+      });
+    }
+  }) : de.create(),
+  Ea = {
+    object: C.lazycreate
+  };
+var g;
+(function (t) {
+  t.ZodString = "ZodString", t.ZodNumber = "ZodNumber", t.ZodNaN = "ZodNaN", t.ZodBigInt = "ZodBigInt", t.ZodBoolean = "ZodBoolean", t.ZodDate = "ZodDate", t.ZodSymbol = "ZodSymbol", t.ZodUndefined = "ZodUndefined", t.ZodNull = "ZodNull", t.ZodAny = "ZodAny", t.ZodUnknown = "ZodUnknown", t.ZodNever = "ZodNever", t.ZodVoid = "ZodVoid", t.ZodArray = "ZodArray", t.ZodObject = "ZodObject", t.ZodUnion = "ZodUnion", t.ZodDiscriminatedUnion = "ZodDiscriminatedUnion", t.ZodIntersection = "ZodIntersection", t.ZodTuple = "ZodTuple", t.ZodRecord = "ZodRecord", t.ZodMap = "ZodMap", t.ZodSet = "ZodSet", t.ZodFunction = "ZodFunction", t.ZodLazy = "ZodLazy", t.ZodLiteral = "ZodLiteral", t.ZodEnum = "ZodEnum", t.ZodEffects = "ZodEffects", t.ZodNativeEnum = "ZodNativeEnum", t.ZodOptional = "ZodOptional", t.ZodNullable = "ZodNullable", t.ZodDefault = "ZodDefault", t.ZodCatch = "ZodCatch", t.ZodPromise = "ZodPromise", t.ZodBranded = "ZodBranded", t.ZodPipeline = "ZodPipeline";
+})(g || (g = {}));
+const ka = (t, e = {
+    message: `Input not instance of ${t.name}`
+  }) => Gr(r => r instanceof t, e, !0),
+  Yr = F.create,
+  Qr = Y.create,
+  Ca = Ye.create,
+  Ra = Te.create,
+  Xr = Ee.create,
+  Oa = ee.create,
+  Pa = Ve.create,
+  Sa = ke.create,
+  Na = Ce.create,
+  Ia = de.create,
+  La = K.create,
+  Aa = J.create,
+  Ma = He.create,
+  ja = $.create,
+  $a = C.create,
+  Da = C.strictCreate,
+  Za = Re.create,
+  Ua = it.create,
+  Wa = Oe.create,
+  za = W.create,
+  qa = Pe.create,
+  Ba = Je.create,
+  Va = te.create,
+  Ha = ue.create,
+  Fa = Se.create,
+  Ja = Ne.create,
+  Ga = Q.create,
+  Ya = Ie.create,
+  Qa = fe.create,
+  rr = D.create,
+  Xa = H.create,
+  Ka = re.create,
+  eo = D.createWithPreprocess,
+  to = Ae.create,
+  ro = () => Yr().optional(),
+  no = () => Qr().optional(),
+  so = () => Xr().optional(),
+  ao = {
+    string: t => F.create({
+      ...t,
+      coerce: !0
+    }),
+    number: t => Y.create({
+      ...t,
+      coerce: !0
+    }),
+    boolean: t => Ee.create({
+      ...t,
+      coerce: !0
+    }),
+    bigint: t => Te.create({
+      ...t,
+      coerce: !0
+    }),
+    date: t => ee.create({
+      ...t,
+      coerce: !0
+    })
+  },
+  oo = b;
+var p = /* @__PURE__ */Object.freeze({
+  __proto__: null,
+  defaultErrorMap: xe,
+  setErrorMap: ma,
+  getErrorMap: We,
+  makeIssue: ze,
+  EMPTY_PATH: ya,
+  addIssueToContext: y,
+  ParseStatus: I,
+  INVALID: b,
+  DIRTY: Hr,
+  OK: N,
+  isAborted: _t,
+  isDirty: vt,
+  isValid: qe,
+  isAsync: Be,
+  get util() {
+    return T;
+  },
+  ZodParsedType: h,
+  getParsedType: G,
+  ZodType: _,
+  ZodString: F,
+  ZodNumber: Y,
+  ZodBigInt: Te,
+  ZodBoolean: Ee,
+  ZodDate: ee,
+  ZodSymbol: Ve,
+  ZodUndefined: ke,
+  ZodNull: Ce,
+  ZodAny: de,
+  ZodUnknown: K,
+  ZodNever: J,
+  ZodVoid: He,
+  ZodArray: $,
+  get objectUtil() {
+    return Fe;
+  },
+  ZodObject: C,
+  ZodUnion: Re,
+  ZodDiscriminatedUnion: it,
+  ZodIntersection: Oe,
+  ZodTuple: W,
+  ZodRecord: Pe,
+  ZodMap: Je,
+  ZodSet: te,
+  ZodFunction: ue,
+  ZodLazy: Se,
+  ZodLiteral: Ne,
+  ZodEnum: Q,
+  ZodNativeEnum: Ie,
+  ZodPromise: fe,
+  ZodEffects: D,
+  ZodTransformer: D,
+  ZodOptional: H,
+  ZodNullable: re,
+  ZodDefault: Le,
+  ZodCatch: Ge,
+  ZodNaN: Ye,
+  BRAND: Ta,
+  ZodBranded: Jr,
+  ZodPipeline: Ae,
+  custom: Gr,
+  Schema: _,
+  ZodSchema: _,
+  late: Ea,
+  get ZodFirstPartyTypeKind() {
+    return g;
+  },
+  coerce: ao,
+  any: Ia,
+  array: ja,
+  bigint: Ra,
+  boolean: Xr,
+  date: Oa,
+  discriminatedUnion: Ua,
+  effect: rr,
+  enum: Ga,
+  function: Ha,
+  instanceof: ka,
+  intersection: Wa,
+  lazy: Fa,
+  literal: Ja,
+  map: Ba,
+  nan: Ca,
+  nativeEnum: Ya,
+  never: Aa,
+  null: Na,
+  nullable: Ka,
+  number: Qr,
+  object: $a,
+  oboolean: so,
+  onumber: no,
+  optional: Xa,
+  ostring: ro,
+  pipeline: to,
+  preprocess: eo,
+  promise: Qa,
+  record: qa,
+  set: Va,
+  strictObject: Da,
+  string: Yr,
+  symbol: Pa,
+  transformer: rr,
+  tuple: za,
+  undefined: Sa,
+  union: Za,
+  unknown: La,
+  void: Ma,
+  NEVER: oo,
+  ZodIssueCode: d,
+  quotelessJson: ha,
+  ZodError: V
+});
+const Kr = /^0x[0-9a-f]+$/i,
+  en = /^\d+$/,
+  io = p.string().nonempty("The short string cannot be empty").max(31, "The short string cannot exceed 31 characters").refine(t => !Kr.test(t), "The shortString should not be a hex string").refine(t => !en.test(t), "The shortString should not be an integer string"),
+  _e = p.union([p.string().regex(Kr, "Only hex, integers and bigint are supported in calldata"), p.string().regex(en, "Only hex, integers and bigint are supported in calldata"), io, p.number().int("Only hex, integers and bigint are supported in calldata"), p.bigint()]),
+  tn = p.object({
+    contractAddress: p.string(),
+    entrypoint: p.string(),
+    calldata: p.array(_e.or(p.array(_e))).optional()
+  }),
+  co = p.array(tn).nonempty(),
+  uo = p.object({
+    types: p.record(p.array(p.union([p.object({
+      name: p.string(),
+      type: p.string()
+    }), p.object({
+      name: p.string(),
+      type: p.literal("merkletree"),
+      contains: p.string()
+    })]))),
+    primaryType: p.string(),
+    domain: p.record(p.unknown()),
+    message: p.record(p.unknown())
+  }),
+  nr = {
+    enable: p.tuple([p.object({
+      starknetVersion: p.union([p.literal("v4"), p.literal("v5")]).optional()
+    }).optional()]).or(p.tuple([])),
+    addStarknetChain: p.tuple([p.object({
+      id: p.string(),
+      chainId: p.string(),
+      chainName: p.string(),
+      rpcUrls: p.array(p.string()).optional(),
+      nativeCurrency: p.object({
+        name: p.string(),
+        symbol: p.string(),
+        decimals: p.number()
+      }).optional(),
+      blockExplorerUrls: p.array(p.string()).optional()
+    })]),
+    switchStarknetChain: p.tuple([p.object({
+      chainId: p.string()
+    })]),
+    watchAsset: p.tuple([p.object({
+      type: p.literal("ERC20"),
+      options: p.object({
+        address: p.string(),
+        symbol: p.string().optional(),
+        decimals: p.number().optional(),
+        image: p.string().optional(),
+        name: p.string().optional()
+      })
+    })]),
+    execute: p.tuple([co.or(tn), p.object({
+      nonce: _e.optional(),
+      maxFee: _e.optional(),
+      version: _e.optional()
+    }).optional()]),
+    signMessage: p.tuple([uo])
+  },
+  j = ts.create({
+    isServer: !1,
+    allowOutsideOfServer: !0
+  });
+let Tt = cr,
+  Et = "",
+  rn = "";
+const ve = ({
+  width: t = 775,
+  height: e = 385,
+  origin: r,
+  location: n,
+  atLeftBottom: s = !1
+}) => {
+  const a = window?.outerWidth ?? window?.innerWidth ?? window?.screen.width ?? 0,
+    o = window?.outerHeight ?? window?.innerHeight ?? window?.screen.height ?? 0,
+    i = window?.screenLeft ?? window?.screenX ?? 0,
+    c = window?.screenTop ?? window?.screenY ?? 0,
+    u = s ? 0 : i + a / 2 - t / 2,
+    l = s ? window.screen.availHeight + 10 : c + o / 2 - e / 2;
+  Tt = r ?? Tt, Et = n ?? Et, rn = `width=${t},height=${e},top=${l},left=${u},toolbar=no,menubar=no,scrollbars=no,location=no,status=no,popup=1`;
+};
+j.router({
+  authorize: j.procedure.output(p.boolean()).mutation(async () => !0),
+  connect: j.procedure.mutation(async () => ""),
+  enable: j.procedure.output(p.string()).mutation(async () => ""),
+  execute: j.procedure.input(nr.execute).output(p.string()).mutation(async () => ""),
+  signMessage: j.procedure.input(nr.signMessage).output(p.string().array()).mutation(async () => []),
+  getLoginStatus: j.procedure.output(p.object({
+    isLoggedIn: p.boolean(),
+    hasSession: p.boolean().optional(),
+    isPreauthorized: p.boolean().optional()
+  })).mutation(async () => ({
+    isLoggedIn: !0
+  })),
+  addStarknetChain: j.procedure.mutation(t => {
+    throw Error("not implemented");
+  }),
+  switchStarknetChain: j.procedure.mutation(t => {
+    throw Error("not implemented");
+  }),
+  watchAsset: j.procedure.mutation(t => {
+    throw Error("not implemented");
+  }),
+  updateModal: j.procedure.subscription(async () => {})
+});
+const yt = ({
+    iframe: t
+  }) => $n({
+    links: [In({
+      enabled: e => process.env.NODE_ENV === "development" && typeof window < "u" || process.env.NODE_ENV === "development" && e.direction === "down" && e.result instanceof Error
+    }), xn({
+      condition(e) {
+        if (!t && e.type === "subscription") throw new Error("subscription is not supported without an iframe window");
+        return !!t;
+      },
+      true: bt.windowLink({
+        window,
+        postWindow: t,
+        postOrigin: "*"
+      }),
+      false: bt.popupLink({
+        listenWindow: window,
+        createPopup: () => {
+          let e = null;
+          const r = document.createElement("button");
+          if (r.style.display = "none", r.addEventListener("click", () => {
+            e = window.open(`${Tt}${Et}`, "popup", rn);
+          }), r.click(), (async () => {
+            for (; !e;) await new Promise(n => setTimeout(n, 100));
+          })(), !e) throw new Error("Could not open popup");
+          return e;
+        },
+        postOrigin: "*"
+      })
+    })]
+  }),
+  lo = 385,
+  fo = 775,
+  po = 385,
+  ho = 440,
+  mo = 886,
+  yo = 562;
+class sr {
+  async getPubKey() {
+    throw new Error("Method not implemented");
+  }
+  async signMessage() {
+    throw new Error("Method not implemented");
+  }
+  async signTransaction() {
+    throw new Error("Method not implemented");
+  }
+  async signDeclareTransaction() {
+    throw new Error("Method not implemented");
+  }
+  async signDeployAccountTransaction() {
+    throw new Error("Method not implemented");
+  }
+}
+class go extends _starknet.Account {
+  constructor(r, n, s) {
+    super(r, n, new sr());
+    ae(this, "signer", new sr());
+    ae(this, "execute", async (r, n, s = {}) => {
+      try {
+        ve({
+          width: lo,
+          height: fo,
+          location: "/review"
+        }), Array.isArray(r) && r[0] && r[0].entrypoint === "use_offchain_session" && ve({
+          width: 1,
+          height: 1,
+          location: "/executeSessionTx",
+          atLeftBottom: !0
+        });
+        const a = n === void 0 || Array.isArray(n) ? s : n;
+        return {
+          transaction_hash: await this.proxyLink.execute.mutate([r, a])
+        };
+      } catch (a) {
+        throw a instanceof Error ? new Error(a.message) : new Error("Error while execute a transaction");
+      }
+    });
+    ae(this, "signMessage", async r => {
+      try {
+        return ve({
+          width: po,
+          height: ho,
+          location: "/signMessage"
+        }), await this.proxyLink.signMessage.mutate([r]);
+      } catch (n) {
+        throw n instanceof Error ? new Error(n.message) : new Error("Error while sign a message");
+      }
+    });
+    this.address = n, this.proxyLink = s;
+  }
+}
+const je = [],
+  bo = (t, e, r) => {
+    const n = {
+      ...t,
+      isConnected: !1,
+      provider: e,
+      getLoginStatus: () => r.getLoginStatus.mutate(),
+      async request(s) {
+        switch (s.type) {
+          case "wallet_addStarknetChain":
+            return await r.addStarknetChain.mutate();
+          case "wallet_switchStarknetChain":
+            return await r.switchStarknetChain.mutate();
+          case "wallet_watchAsset":
+            return await r.watchAsset.mutate();
+          default:
+            throw new Error("not implemented");
+        }
+      },
+      async enable(s) {
+        if (s?.starknetVersion !== "v4") throw Error("not implemented");
+        try {
+          ve({
+            width: mo,
+            height: yo,
+            location: "/interstitialLogin"
+          });
+          const o = await r.enable.mutate();
+          return await wo(n, e, r, o), [o];
+        } catch (a) {
+          throw a instanceof Error ? new Error(a.message) : new Error("Unknow error on enable wallet");
+        }
+      },
+      async isPreauthorized() {
+        const {
+          isLoggedIn: s,
+          isPreauthorized: a
+        } = await r.getLoginStatus.mutate();
+        return !!(s && a);
+      },
+      on: (s, a) => {
+        if (s === "accountsChanged") je.push({
+          type: s,
+          handler: a
+        });else if (s === "networkChanged") je.push({
+          type: s,
+          handler: a
+        });else throw new Error(`Unknwown event: ${s}`);
+      },
+      off: (s, a) => {
+        if (s !== "accountsChanged" && s !== "networkChanged") throw new Error(`Unknwown event: ${s}`);
+        const o = je.findIndex(i => i.type === s && i.handler === a);
+        o >= 0 && je.splice(o, 1);
+      }
+    };
+    return n;
+  };
+async function wo(t, e, r, n) {
+  if (t.isConnected) return t;
+  const a = {
+    isConnected: !0,
+    chainId: await e.getChainId(),
+    selectedAddress: n,
+    account: new go(e, n, r),
+    provider: e
+  };
+  return Object.assign(t, a);
+}
+const _o = t => {
+    t.style.position = "fixed", t.style.top = "50%", t.style.left = "50%", t.style.transform = "translate(-50%, -50%)", t.style.width = "380px", t.style.height = "420px", t.style.border = "none", t.style.borderRadius = "40px", t.style.boxShadow = "0px 4px 20px rgba(0, 0, 0, 0.5)";
+    const e = document.createElement("div");
+    return e.style.display = "none", e.style.position = "fixed", e.style.top = "0", e.style.left = "0", e.style.right = "0", e.style.bottom = "0", e.style.backgroundColor = "rgba(0, 0, 0, 0.5)", e.style.zIndex = "99999", e.style.backdropFilter = "blur(4px)", e.appendChild(t), e;
+  },
+  vo = t => {
+    t.style.display = "block";
+  },
+  xo = t => {
+    t.style.display = "none";
+  },
+  To = (t, e) => {
+    t.style.height = `min(${e || 420}px, 100%)`;
+  },
+  Eo = async (t, e) => {
+    const r = new URL(t);
+    r.pathname = "/iframes/comms", t = r.toString();
+    const n = document.createElement("iframe");
+    n.src = t, n.loading = "eager", n.sandbox.add("allow-scripts", "allow-same-origin", "allow-forms", "allow-top-navigation", "allow-popups"), n.allow = "clipboard-write", n.id = "argent-webwallet-iframe";
+    const s = _o(n);
+    return s.style.display = e ? "block" : "none", s.id = "argent-webwallet-modal", window.document.body.appendChild(s), await new Promise((a, o) => {
+      const i = setTimeout(() => o(new Error("Timeout while loading an iframe")), 2e4);
+      n.addEventListener("load", async () => {
+        clearTimeout(i), a();
+      });
+    }), {
+      iframe: n,
+      modal: s
+    };
+  };
+function ko(t) {
+  const e = (0, _publicRcpNodesBe.g)();
+  try {
+    const {
+      origin: r
+    } = new URL(t);
+    if (r.includes("localhost") || r.includes("127.0.0.1") || r.includes("hydrogen")) return e.testnet;
+    if (r.includes("staging") || r.includes("argent.xyz")) return e.mainnet;
+  } catch {
+    console.warn("Could not determine rpc nodeUrl from target URL, defaulting to mainnet");
+  }
+  return e.mainnet;
+}
+const gt = async (t, e, r, n) => {
+    const s = typeof window < "u" ? window : void 0;
+    if (!s) throw new Error("window is not defined");
+    const a = ko(t),
+      o = r ?? new _starknet.RpcProvider({
+        nodeUrl: a
+      }),
+      i = bo({
+        host: s.location.origin,
+        id: "argentWebWallet",
+        icon: "https://www.argent.xyz/favicon.ico",
+        name: "Argent Web Wallet",
+        version: "1.0.0"
+      }, o, e);
+    if (n) {
+      const {
+        iframe: c,
+        modal: u
+      } = n;
+      e.updateModal.subscribe.apply(null, [void 0, {
+        onData(l) {
+          switch (l.action) {
+            case "show":
+              vo(u);
+              break;
+            case "hide":
+              xo(u);
+              break;
+            case "updateHeight":
+              To(c, l.height);
+          }
+        }
+      }]);
+    }
+    return i;
+  },
+  ce = _starknet.constants.NetworkName,
+  Co = ce.SN_SEPOLIA;
+function Ro(t) {
+  try {
+    const {
+      origin: e
+    } = new URL(t);
+    if (e.includes("localhost") || e.includes("127.0.0.1")) return Co;
+    if (e.includes("hydrogen")) return ce.SN_SEPOLIA;
+    if (e.includes("staging")) return ce.SN_MAIN;
+    if (e.includes("dev")) return ce.SN_SEPOLIA;
+    if (e.includes("argent.xyz")) return ce.SN_MAIN;
+  } catch {
+    console.warn("Could not determine network from target URL, defaulting to mainnet-alpha");
+  }
+  return ce.SN_MAIN;
+}
+const ar = "allowed-dapps",
+  Oo = async t => {
+    const e = t === _starknet.constants.NetworkName.SN_MAIN ? mn : hn;
+    try {
+      const n = await (await caches.open(ar)).match(e);
+      if (n) {
+        const u = parseInt(n.headers.get("X-Cache-Timestamp"), 10);
+        if ((( /* @__PURE__ */new Date()).getTime() - u) / (1e3 * 60 * 60) < 24) return n.json();
+      }
+      const s = await fetch(e),
+        a = new Headers(s.headers);
+      a.set("X-Cache-Timestamp", ( /* @__PURE__ */new Date()).getTime().toString());
+      const o = await s.json(),
+        i = new Response(JSON.stringify(o), {
+          status: s.status,
+          statusText: s.statusText,
+          headers: a
+        });
+      return await (await caches.open(ar)).put(e, i), o;
+    } catch (r) {
+      throw new Error(r);
+    }
+  },
+  Po = async t => new Promise(e => {
+    if (!t) return e(!1);
+    try {
+      navigator.webkitTemporaryStorage.queryUsageAndQuota((n, s) => {
+        e(Math.round(s / (1024 * 1024)) < Math.round((performance?.memory?.jsHeapSizeLimit ?? 1073741824) / (1024 * 1024)) * 2);
+      }, () => e(!1));
+    } catch {
+      e(!1);
+    }
+  }),
+  So = async (t, e) => {
+    const {
+        userAgent: r
+      } = navigator,
+      n = !!(navigator.vendor && navigator.vendor.indexOf("Google") === 0 && navigator.brave === void 0 && !r.match(/Edg/) && !r.match(/OPR/)),
+      s = await Po(n);
+    if (!n || s) {
+      const i = yt({});
+      return await gt(t, i, e, void 0);
+    }
+    const a = Ro(t),
+      {
+        allowedDapps: o
+      } = await Oo(a);
+    if (o.includes(window.location.hostname)) {
+      const i = "argent-webwallet-modal",
+        c = "argent-webwallet-iframe",
+        u = document.getElementById(i),
+        l = document.getElementById(c);
+      u && u && l && (u.remove(), l.remove());
+      const {
+          iframe: f,
+          modal: m
+        } = await Eo(t, !1),
+        v = yt({
+          iframe: f.contentWindow ?? void 0
+        });
+      return await v.authorize.mutate(), await gt(t, v, e, {
+        modal: m,
+        iframe: f
+      });
+    } else {
+      const i = yt({});
+      return await gt(t, i, e, void 0);
+    }
+  };
+let M = null;
+class jo extends _lastConnectedB964dc.C {
+  constructor(r = {}) {
+    super();
+    ae(this, "_wallet", null);
+    ae(this, "_options");
+    this._options = r;
+  }
+  available() {
+    return !0;
+  }
+  async ready() {
+    return M ? (this._wallet = M, this._wallet.isPreauthorized()) : (this._wallet = null, !1);
+  }
+  get id() {
+    return this._wallet = M, this._wallet?.id || "argentWebWallet";
+  }
+  get name() {
+    return this._wallet = M, this._wallet?.name || "Argent Web Wallet";
+  }
+  get icon() {
+    return {
+      light: Ut,
+      dark: Ut
+    };
+  }
+  get wallet() {
+    if (!this._wallet) throw new _lastConnectedB964dc.a();
+    return this._wallet;
+  }
+  get title() {
+    return "Email";
+  }
+  get subtitle() {
+    return "Powered by Argent";
+  }
+  async connect() {
+    if (await this.ensureWallet(), !this._wallet) throw new _lastConnectedB964dc.b();
+    try {
+      await this._wallet.enable({
+        starknetVersion: "v4"
+      });
+    } catch (s) {
+      throw console.log(s), new _lastConnectedB964dc.U();
+    }
+    if (!this._wallet.isConnected) throw new _lastConnectedB964dc.U();
+    const r = this._wallet.account,
+      n = await this.chainId();
+    return {
+      account: r.address,
+      chainId: n
+    };
+  }
+  async disconnect() {
+    if (!this.available() && !this._wallet) throw new _lastConnectedB964dc.b();
+    if (!this._wallet?.isConnected) throw new _lastConnectedB964dc.d();
+    M = null, this._wallet = M, (0, _lastConnectedB964dc.r)();
+  }
+  async account() {
+    if (this._wallet = M, !this._wallet || !this._wallet.account) throw new _lastConnectedB964dc.a();
+    return this._wallet.account;
+  }
+  async chainId() {
+    if (!this._wallet || !this.wallet.account || !this._wallet.provider) throw new _lastConnectedB964dc.a();
+    const r = await this._wallet.provider.getChainId();
+    return BigInt(r);
+  }
+  async initEventListener(r) {
+    if (this._wallet = M, !this._wallet) throw new _lastConnectedB964dc.a();
+    this._wallet.on("accountsChanged", r);
+  }
+  async removeEventListener(r) {
+    if (this._wallet = M, !this._wallet) throw new _lastConnectedB964dc.a();
+    this._wallet.off("accountsChanged", r), M = null, this._wallet = null;
+  }
+  async ensureWallet() {
+    const r = this._options.url || cr,
+      n = this._options.provider;
+    ve({
+      origin: r,
+      location: "/interstitialLogin"
+    }), M = (await So(r, n)) ?? null, this._wallet = M;
+  }
+}
+exports.W = jo;
+
+}).call(this)}).call(this,require('_process'))
+},{"./lastConnected-b964dc30.js":12,"./publicRcpNodes-be041588.js":14,"_process":1,"starknet":undefined}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "InjectedConnector", {
+  enumerable: true,
+  get: function () {
+    return _index25202aca.I;
+  }
+});
+require("starknet");
+require("./lastConnected-b964dc30.js");
+var _index25202aca = require("./index-25202aca.js");
+
+},{"./index-25202aca.js":4,"./lastConnected-b964dc30.js":12,"starknet":undefined}],11:[function(require,module,exports){
 (function (global){(function (){
 "use strict";var L=Object.defineProperty;var O=(o,i,s)=>i in o?L(o,i,{enumerable:!0,configurable:!0,writable:!0,value:s}):o[i]=s;var h=(o,i,s)=>(O(o,typeof i!="symbol"?i+"":i,s),s);class j extends Error{constructor(){super(...arguments);h(this,"name","ConnectorNotConnectedError");h(this,"message","Connector not connected")}}class N extends Error{constructor(){super(...arguments);h(this,"name","ConnectorNotFoundError");h(this,"message","Connector not found")}}class k extends Error{constructor(){super(...arguments);h(this,"name","UserRejectedRequestError");h(this,"message","User rejected request")}}class S extends Error{constructor(){super(...arguments);h(this,"name","UserNotConnectedError");h(this,"message","User not connected")}}var U=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{};function b(o){return o&&o.__esModule&&Object.prototype.hasOwnProperty.call(o,"default")?o.default:o}function A(o){if(o.__esModule)return o;var i=o.default;if(typeof i=="function"){var s=function d(){if(this instanceof d){var y=[null];y.push.apply(y,arguments);var C=Function.bind.apply(i,y);return new C}return i.apply(this,arguments)};s.prototype=i.prototype}else s={};return Object.defineProperty(s,"__esModule",{value:!0}),Object.keys(o).forEach(function(d){var y=Object.getOwnPropertyDescriptor(o,d);Object.defineProperty(s,d,y.get?y:{enumerable:!0,get:function(){return o[d]}})}),s}var w={exports:{}};(function(o){var i=Object.prototype.hasOwnProperty,s="~";function d(){}Object.create&&(d.prototype=Object.create(null),new d().__proto__||(s=!1));function y(c,t,n){this.fn=c,this.context=t,this.once=n||!1}function C(c,t,n,r,p){if(typeof n!="function")throw new TypeError("The listener must be a function");var u=new y(n,r||c,p),l=s?s+t:t;return c._events[l]?c._events[l].fn?c._events[l]=[c._events[l],u]:c._events[l].push(u):(c._events[l]=u,c._eventsCount++),c}function E(c,t){--c._eventsCount===0?c._events=new d:delete c._events[t]}function f(){this._events=new d,this._eventsCount=0}f.prototype.eventNames=function(){var t=[],n,r;if(this._eventsCount===0)return t;for(r in n=this._events)i.call(n,r)&&t.push(s?r.slice(1):r);return Object.getOwnPropertySymbols?t.concat(Object.getOwnPropertySymbols(n)):t},f.prototype.listeners=function(t){var n=s?s+t:t,r=this._events[n];if(!r)return[];if(r.fn)return[r.fn];for(var p=0,u=r.length,l=new Array(u);p<u;p++)l[p]=r[p].fn;return l},f.prototype.listenerCount=function(t){var n=s?s+t:t,r=this._events[n];return r?r.fn?1:r.length:0},f.prototype.emit=function(t,n,r,p,u,l){var v=s?s+t:t;if(!this._events[v])return!1;var e=this._events[v],m=arguments.length,_,a;if(e.fn){switch(e.once&&this.removeListener(t,e.fn,void 0,!0),m){case 1:return e.fn.call(e.context),!0;case 2:return e.fn.call(e.context,n),!0;case 3:return e.fn.call(e.context,n,r),!0;case 4:return e.fn.call(e.context,n,r,p),!0;case 5:return e.fn.call(e.context,n,r,p,u),!0;case 6:return e.fn.call(e.context,n,r,p,u,l),!0}for(a=1,_=new Array(m-1);a<m;a++)_[a-1]=arguments[a];e.fn.apply(e.context,_)}else{var x=e.length,g;for(a=0;a<x;a++)switch(e[a].once&&this.removeListener(t,e[a].fn,void 0,!0),m){case 1:e[a].fn.call(e[a].context);break;case 2:e[a].fn.call(e[a].context,n);break;case 3:e[a].fn.call(e[a].context,n,r);break;case 4:e[a].fn.call(e[a].context,n,r,p);break;default:if(!_)for(g=1,_=new Array(m-1);g<m;g++)_[g-1]=arguments[g];e[a].fn.apply(e[a].context,_)}}return!0},f.prototype.on=function(t,n,r){return C(this,t,n,r,!1)},f.prototype.once=function(t,n,r){return C(this,t,n,r,!0)},f.prototype.removeListener=function(t,n,r,p){var u=s?s+t:t;if(!this._events[u])return this;if(!n)return E(this,u),this;var l=this._events[u];if(l.fn)l.fn===n&&(!p||l.once)&&(!r||l.context===r)&&E(this,u);else{for(var v=0,e=[],m=l.length;v<m;v++)(l[v].fn!==n||p&&!l[v].once||r&&l[v].context!==r)&&e.push(l[v]);e.length?this._events[u]=e.length===1?e[0]:e:E(this,u)}return this},f.prototype.removeAllListeners=function(t){var n;return t?(n=s?s+t:t,this._events[n]&&E(this,n)):(this._events=new d,this._eventsCount=0),this},f.prototype.off=f.prototype.removeListener,f.prototype.addListener=f.prototype.on,f.prefixed=s,f.EventEmitter=f,o.exports=f})(w);var P=w.exports;const F=b(P);class R extends F{}const W=o=>{localStorage.setItem("starknetLastConnectedWallet",o)},q=()=>{localStorage.removeItem("starknetLastConnectedWallet")};exports.Connector=R;exports.ConnectorNotConnectedError=j;exports.ConnectorNotFoundError=N;exports.UserNotConnectedError=S;exports.UserRejectedRequestError=k;exports.commonjsGlobal=U;exports.getAugmentedNamespace=A;exports.getDefaultExportFromCjs=b;exports.removeStarknetLastConnectedWallet=q;exports.setStarknetLastConnectedWallet=W;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],7:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+(function (global){(function (){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.d = exports.c = exports.b = exports.a = exports.U = exports.C = void 0;
+exports.e = L;
+exports.g = R;
+exports.s = exports.r = void 0;
+var x = Object.defineProperty;
+var O = (o, f, s) => f in o ? x(o, f, {
+  enumerable: !0,
+  configurable: !0,
+  writable: !0,
+  value: s
+}) : o[f] = s;
+var h = (o, f, s) => (O(o, typeof f != "symbol" ? f + "" : f, s), s);
+class P extends Error {
+  constructor() {
+    super(...arguments);
+    h(this, "name", "ConnectorNotConnectedError");
+    h(this, "message", "Connector not connected");
+  }
+}
+exports.a = P;
+class U extends Error {
+  constructor() {
+    super(...arguments);
+    h(this, "name", "ConnectorNotFoundError");
+    h(this, "message", "Connector not found");
+  }
+}
+exports.b = U;
+class A extends Error {
+  constructor() {
+    super(...arguments);
+    h(this, "name", "UserRejectedRequestError");
+    h(this, "message", "User rejected request");
+  }
+}
+exports.U = A;
+class S extends Error {
+  constructor() {
+    super(...arguments);
+    h(this, "name", "UserNotConnectedError");
+    h(this, "message", "User not connected");
+  }
+}
+exports.d = S;
+var F = exports.c = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+function L(o) {
+  return o && o.__esModule && Object.prototype.hasOwnProperty.call(o, "default") ? o.default : o;
+}
+function R(o) {
+  if (o.__esModule) return o;
+  var f = o.default;
+  if (typeof f == "function") {
+    var s = function v() {
+      if (this instanceof v) {
+        var y = [null];
+        y.push.apply(y, arguments);
+        var E = Function.bind.apply(f, y);
+        return new E();
+      }
+      return f.apply(this, arguments);
+    };
+    s.prototype = f.prototype;
+  } else s = {};
+  return Object.defineProperty(s, "__esModule", {
+    value: !0
+  }), Object.keys(o).forEach(function (v) {
+    var y = Object.getOwnPropertyDescriptor(o, v);
+    Object.defineProperty(s, v, y.get ? y : {
+      enumerable: !0,
+      get: function () {
+        return o[v];
+      }
+    });
+  }), s;
+}
+var C = {
+  exports: {}
+};
+(function (o) {
+  var f = Object.prototype.hasOwnProperty,
+    s = "~";
+  function v() {}
+  Object.create && (v.prototype = /* @__PURE__ */Object.create(null), new v().__proto__ || (s = !1));
+  function y(c, t, n) {
+    this.fn = c, this.context = t, this.once = n || !1;
+  }
+  function E(c, t, n, r, p) {
+    if (typeof n != "function") throw new TypeError("The listener must be a function");
+    var u = new y(n, r || c, p),
+      a = s ? s + t : t;
+    return c._events[a] ? c._events[a].fn ? c._events[a] = [c._events[a], u] : c._events[a].push(u) : (c._events[a] = u, c._eventsCount++), c;
+  }
+  function b(c, t) {
+    --c._eventsCount === 0 ? c._events = new v() : delete c._events[t];
+  }
+  function l() {
+    this._events = new v(), this._eventsCount = 0;
+  }
+  l.prototype.eventNames = function () {
+    var t = [],
+      n,
+      r;
+    if (this._eventsCount === 0) return t;
+    for (r in n = this._events) f.call(n, r) && t.push(s ? r.slice(1) : r);
+    return Object.getOwnPropertySymbols ? t.concat(Object.getOwnPropertySymbols(n)) : t;
+  }, l.prototype.listeners = function (t) {
+    var n = s ? s + t : t,
+      r = this._events[n];
+    if (!r) return [];
+    if (r.fn) return [r.fn];
+    for (var p = 0, u = r.length, a = new Array(u); p < u; p++) a[p] = r[p].fn;
+    return a;
+  }, l.prototype.listenerCount = function (t) {
+    var n = s ? s + t : t,
+      r = this._events[n];
+    return r ? r.fn ? 1 : r.length : 0;
+  }, l.prototype.emit = function (t, n, r, p, u, a) {
+    var d = s ? s + t : t;
+    if (!this._events[d]) return !1;
+    var e = this._events[d],
+      m = arguments.length,
+      _,
+      i;
+    if (e.fn) {
+      switch (e.once && this.removeListener(t, e.fn, void 0, !0), m) {
+        case 1:
+          return e.fn.call(e.context), !0;
+        case 2:
+          return e.fn.call(e.context, n), !0;
+        case 3:
+          return e.fn.call(e.context, n, r), !0;
+        case 4:
+          return e.fn.call(e.context, n, r, p), !0;
+        case 5:
+          return e.fn.call(e.context, n, r, p, u), !0;
+        case 6:
+          return e.fn.call(e.context, n, r, p, u, a), !0;
+      }
+      for (i = 1, _ = new Array(m - 1); i < m; i++) _[i - 1] = arguments[i];
+      e.fn.apply(e.context, _);
+    } else {
+      var w = e.length,
+        g;
+      for (i = 0; i < w; i++) switch (e[i].once && this.removeListener(t, e[i].fn, void 0, !0), m) {
+        case 1:
+          e[i].fn.call(e[i].context);
+          break;
+        case 2:
+          e[i].fn.call(e[i].context, n);
+          break;
+        case 3:
+          e[i].fn.call(e[i].context, n, r);
+          break;
+        case 4:
+          e[i].fn.call(e[i].context, n, r, p);
+          break;
+        default:
+          if (!_) for (g = 1, _ = new Array(m - 1); g < m; g++) _[g - 1] = arguments[g];
+          e[i].fn.apply(e[i].context, _);
+      }
+    }
+    return !0;
+  }, l.prototype.on = function (t, n, r) {
+    return E(this, t, n, r, !1);
+  }, l.prototype.once = function (t, n, r) {
+    return E(this, t, n, r, !0);
+  }, l.prototype.removeListener = function (t, n, r, p) {
+    var u = s ? s + t : t;
+    if (!this._events[u]) return this;
+    if (!n) return b(this, u), this;
+    var a = this._events[u];
+    if (a.fn) a.fn === n && (!p || a.once) && (!r || a.context === r) && b(this, u);else {
+      for (var d = 0, e = [], m = a.length; d < m; d++) (a[d].fn !== n || p && !a[d].once || r && a[d].context !== r) && e.push(a[d]);
+      e.length ? this._events[u] = e.length === 1 ? e[0] : e : b(this, u);
+    }
+    return this;
+  }, l.prototype.removeAllListeners = function (t) {
+    var n;
+    return t ? (n = s ? s + t : t, this._events[n] && b(this, n)) : (this._events = new v(), this._eventsCount = 0), this;
+  }, l.prototype.off = l.prototype.removeListener, l.prototype.addListener = l.prototype.on, l.prefixed = s, l.EventEmitter = l, o.exports = l;
+})(C);
+var j = C.exports;
+const N = /* @__PURE__ */L(j);
+class T extends N {}
+exports.C = T;
+const W = o => {
+    localStorage.setItem("starknetLastConnectedWallet", o);
+  },
+  q = () => {
+    localStorage.removeItem("starknetLastConnectedWallet");
+  };
+exports.r = q;
+exports.s = W;
+
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],13:[function(require,module,exports){
 "use strict";const a={mainnet:"https://starknet-mainnet.public.blastapi.io",testnet:"https://starknet-sepolia.public.blastapi.io"},e={mainnet:"https://rpc.starknet.lava.build",testnet:"https://rpc.starknet-sepolia.lava.build"},t=[a,e];function s(){const n=Math.floor(Math.random()*t.length);return t[n]}exports.getRandomPublicRPCNode=s;
 
-},{}],8:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.g = s;
+const a = {
+    mainnet: "https://starknet-mainnet.public.blastapi.io",
+    testnet: "https://starknet-sepolia.public.blastapi.io"
+  },
+  e = {
+    mainnet: "https://rpc.starknet.lava.build",
+    testnet: "https://rpc.starknet-sepolia.lava.build"
+  },
+  t = [a, e];
+function s() {
+  const n = Math.floor(Math.random() * t.length);
+  return t[n];
+}
+
+},{}],15:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -305,6 +6705,7 @@ const _e = require("./index-a73af6c1.cjs"),
   $e = require("./index-6f5141f0.cjs"),
   J = require("./index-63073fd9.cjs"),
   we = require("./lastConnected-080a1315.cjs");
+require("starknet");
 require("./publicRcpNodes-77022e83.cjs");
 var et = Object.defineProperty,
   tt = (t, e, r) => e in t ? et(t, e, {
@@ -2526,7 +8927,24 @@ exports.getSelectedConnectorWallet = ur;
 exports.useStarknetkitConnectModal = dr;
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./index-63073fd9.cjs":3,"./index-6f5141f0.cjs":4,"./index-a73af6c1.cjs":5,"./lastConnected-080a1315.cjs":6,"./publicRcpNodes-77022e83.cjs":7,"starknet":undefined}],9:[function(require,module,exports){
+},{"./index-63073fd9.cjs":5,"./index-6f5141f0.cjs":6,"./index-a73af6c1.cjs":8,"./lastConnected-080a1315.cjs":11,"./publicRcpNodes-77022e83.cjs":13,"starknet":undefined}],16:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "WebWalletConnector", {
+  enumerable: true,
+  get: function () {
+    return _indexC4ef.W;
+  }
+});
+require("./lastConnected-b964dc30.js");
+var _indexC4ef = require("./index-c4ef0430.js");
+require("starknet");
+require("./publicRcpNodes-be041588.js");
+
+},{"./index-c4ef0430.js":9,"./lastConnected-b964dc30.js":12,"./publicRcpNodes-be041588.js":14,"starknet":undefined}],17:[function(require,module,exports){
 'use strict';
 
 module.exports = function () {
@@ -2536,8 +8954,11 @@ module.exports = function () {
   );
 };
 
-},{}],10:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 const starknetkit = require("starknetkit");
-module.exports = {starknetkit};
-},{"starknetkit":8}]},{},[10])(10)
+const starknetkitArgentMobile = require("starknetkit/dist/argentMobile.js");
+const starknetkitInjected = require("starknetkit/dist/injectedConnector.js");
+const starknetkitWebwallet = require("starknetkit/dist/webwalletConnector.js");
+module.exports = {starknetkit,starknetkitArgentMobile,starknetkitInjected,starknetkitWebwallet};
+},{"starknetkit":15,"starknetkit/dist/argentMobile.js":2,"starknetkit/dist/injectedConnector.js":10,"starknetkit/dist/webwalletConnector.js":16}]},{},[18])(18)
 });
