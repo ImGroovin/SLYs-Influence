@@ -3087,7 +3087,7 @@ class Q {
   getSessionProofs(t, e) {
     const o = this.buildMerkleTree(t);
     return e.map(n => {
-      const r = t.allowed_methods.findIndex(a => a["Contract Address"] == n.contractAddress && a.selector == n.entrypoint);
+      const r = t.allowed_methods.findIndex(a => _index.num.hexToDecimalString(a["Contract Address"]) === _index.num.hexToDecimalString(n.contractAddress) && a.selector == n.entrypoint);
       return o.getProof(o.leaves[r], o.leaves);
     });
   }
