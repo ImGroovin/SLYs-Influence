@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SLY's Influence
 // @namespace    http://tampermonkey.net/
-// @version      0.01
+// @version      0.02
 // @description  try to take over the world!
 // @author       You
 // @match        https://game.influenceth.io/
@@ -124,6 +124,22 @@
         return ownedCrews.data;
     }
 
+    async function getBuildingsByLot(lotIds) {
+        console.log('getBuildingsByLot - lotIds: ', lotIds);
+        const esb = BrowserESB.esb;
+        const buildingQueryBuilder = esb.boolQuery();
+        buildingQueryBuilder.should(
+            esb.termsQuery('Location.location.id', lotIds),
+        );
+
+        const buildingQ = esb.requestBodySearch();
+        buildingQ.query(buildingQueryBuilder);
+        buildingQ.from(0);
+        buildingQ.size(10000);
+        let buildingQueryResponse = await axiosInstance.post(`/_search/building`, buildingQ.toJSON());
+        return buildingQueryResponse.data.hits.hits.map(bldg => bldg._source);
+    }
+
     async function buildExtendPrepaidAgreement(lotData) {
         let daysInSeconds = 86400 * lotData.days;
         let rate = lotData.rate * 24 * lotData.days;
@@ -202,6 +218,19 @@
         return systemCalls;
     }
 
+    function getLotIndex(lotID) {
+        const split = 2 ** 32;
+        return {
+            asteroidId: lotID % split,
+            lotIndex: Math.floor(lotID / split)
+        }
+    }
+
+    function getLotID(lotIndex, asteroidID=1) {
+        let lotID = Number(asteroidID) + Number(lotIndex) * 2 ** 32;
+        return lotID
+    }
+
     async function getStoredValue(key) {
 		const storedValueJson = await GM.getValue(key, '{}');
 		return JSON.parse(storedValueJson);
@@ -243,7 +272,7 @@
         starknetAccount = starknetWalletObj.wallet.account;
         starknetAccountAddress = BrowserInfluence.influencesdk.Address.toStandard(starknetAccount.address);
 
-        if (globalSettings.apiToken.expiration < Date.now()) {
+        if (!(globalSettings.apiToken) || (globalSettings.apiToken && globalSettings.apiToken.expiration < Date.now())) {
             // Get message (with nonce) to be signed by user
             const loginRequestResponse = await axiosInstance.get(`/v2/auth/login/${starknetAccountAddress}`);
             let loginMessage = loginRequestResponse.data.message;
@@ -388,7 +417,7 @@
                     let extendDays = lotLeaseSyncElem.checked ? syncDays : lotLeaseDaysElem.value;
                     let controller = lotOwners.data.find(owner => owner.id == lot.meta.asteroid.Control.controller.id);
                     let recipient = controller.Crew.delegatedTo;
-                    if (extendDays > 0) lotData.push({lotID: lot.id, lotUUID: lot.uuid, lotController: controller.Crew.delegatedTo, borrowerCrewID: lot.PrepaidAgreements[0].permitted.id, borrowerCrewUUID: lot.PrepaidAgreements[0].permitted.uuid, rate: lot.PrepaidAgreements[0].rate, days: extendDays});
+                    if (extendDays > 0 && lot.Location.location.id == 1) lotData.push({lotID: lot.id, lotUUID: lot.uuid, lotController: controller.Crew.delegatedTo, borrowerCrewID: lot.PrepaidAgreements[0].permitted.id, borrowerCrewUUID: lot.PrepaidAgreements[0].permitted.uuid, rate: lot.PrepaidAgreements[0].rate, days: extendDays});
                 }
                 let extendPrepaidAgreementCalls = [];
                 let callsSubgroup = [];
@@ -409,19 +438,11 @@
                 for (let call of extendPrepaidAgreementCalls) {
                     await starknetAccount.execute(call);
                 }
-                lotLeaseExtendElem.disabled = false;
+                lotLeaseExtendElem.removeAttribute('disabled');
                 slyLeaseModalToggle();
             });
         } else {
             targetElem.style.display = 'none';
-        }
-    }
-
-    function getLotIndex(lotID) {
-        const split = 2 ** 32;
-        return {
-            asteroidId: lotID % split,
-            lotIndex: Math.floor(lotID / split)
         }
     }
 
@@ -546,6 +567,59 @@
         }
     }
 
+    async function slyBlacklistModalToggle() {
+        let targetElem = document.getElementById('slyBlacklistModal');
+        if (targetElem.style.display === 'none') {
+            targetElem.style.display = 'block';
+
+            let blacklistLotsObj = await getStoredValue('BlacklistLots');
+            let blacklistLotsStored = blacklistLotsObj.lots ? [...new Set(blacklistLotsObj.lots)].join(",") : '';
+            let blacklistElem = document.getElementById('blacklistTargets');
+            blacklistElem.value = blacklistLotsStored;
+            let enableBtn = document.getElementById('blacklistEnable');
+            enableBtn.addEventListener('click', async () => {
+                enableBtn.disabled = true;
+                let blacklistLots = blacklistElem.value.split(",").map(Number);
+                setStoredValue('BlacklistLots', 'lots', blacklistLots);
+                let lotIDs = blacklistLots.map(lot => getLotID(Number(lot)));
+                let results = await getBuildingsByLot(lotIDs);
+                let blacklistNames = results.map(bldg => bldg.Name.name);
+                console.log('blacklistNames: ', blacklistNames);
+                new MutationObserver(function(mutations, observer) {
+                    let targetElem = document.querySelectorAll('div > div > label > span');
+                    if (targetElem.length > 0) {
+                        for (let mutation of mutations){
+                            if (mutation.addedNodes.length > 0) {
+                                let targetSpans = mutation.addedNodes[0].querySelectorAll('div > div > label > span');
+                                if (targetSpans[0] && targetSpans[0].innerText === 'Permitted Inventories') {
+                                    let tableRows = mutation.addedNodes[0].querySelectorAll('table tr');
+                                    let targetRow = Array.from(tableRows).find(row => {
+                                        let targetTd = row.querySelector('td:nth-child(2)');
+                                        if (targetTd && blacklistNames.includes(targetTd.innerText)) return row;
+                                    });
+                                    if(targetRow) targetRow.style.display = 'none';
+                                    new MutationObserver(function(tableMutations, tableObserver) {
+                                        let tableRows = mutation.addedNodes[0].querySelectorAll('table tr');
+                                        let targetRow = Array.from(tableRows).find(row => {
+                                            let targetTd = row.querySelector('td:nth-child(2)');
+                                            if (targetTd && blacklistNames.includes(targetTd.innerText)) return row;
+                                        });
+                                        if(targetRow) targetRow.style.display = 'none';
+                                        tableObserver.disconnect();
+                                    }).observe(mutation.addedNodes[0].querySelector('table > tbody'), {childList: true});
+                                }
+                            }
+                        }
+                    }
+                }).observe(document.querySelector('body'), {childList: true});
+                await wait(2000);
+                enableBtn.removeAttribute('disabled');
+            });
+        } else {
+            targetElem.style.display = 'none';
+        }
+    }
+
     let observer = new MutationObserver(waitForLoad);
     function waitForLoad(mutations, observer){
         let elemTrigger = '#root > main > div:nth-child(2) > #topMenu';
@@ -598,6 +672,16 @@
             slyPermissionModalContent.innerHTML = `<div class="sly-modal-header"><span style="padding-left: 15px;">SLY's Influence v${GM_info.script.version} - Building Permission Management</span><div class="sly-modal-header-right"><span class="sly-btn-close">x</span></div></div><div class="sly-modal-body flex-column"><div style="max-width: 100%;"><input id="whitelistNew" type="text" style="width: 375px;"><button id="addItemBtn" class="sly-btn sly-btn-primary">Add</button></div><div style="max-width: 100%;"><div id="whitelistSelectDiv"></div><div style="display: flex;"><div style="margin-left: auto;"><span>Count: </span><span id="whitelistCount" style="padding: 0 20px 0 10px"></span><button id="removeItemBtn" class="sly-btn sly-btn-primary">Remove</button></div></div></div><table id="slyPermissionTable"><tr><td>Building</td><td>Asteroid</td><td>Lot#</td><td>Type</td><td>Lot Controlled</td><td><div style="display: flex; flex-direction: row;"><div><span style="verticalAlign: middle;">Permission 1<span></div><div style="margin-right: 20px; margin-left: auto;"><input id="slyPermission1SelectAll" type="checkbox" style="verticalAlign: middle;"></input></div></div></td><td><div style="display: flex; flex-direction: row;"><div><span style="verticalAlign: middle;">Permission 2<span></div><div style="margin-right: 20px; margin-left: auto;"><input id="slyPermission2SelectAll" type="checkbox" style="verticalAlign: middle;"></input></div></div></td><td><div style="display: flex; flex-direction: row;"><div><span style="verticalAlign: middle;">Permission 3<span></div><div style="margin-right: 20px; margin-left: auto;"><input id="slyPermission3SelectAll" type="checkbox" style="verticalAlign: middle;"></input></div></div></td><td><div style="display: flex; flex-direction: row;"><div><span style="verticalAlign: middle;">Permission 4<span></div><div style="margin-right: 20px; margin-left: auto;"><input id="slyPermission4SelectAll" type="checkbox" style="verticalAlign: middle;"></input></div></div></td></tr></table><div class="flex-row" style="justify-content: flex-end"><div><button id="permissionUpdate" class="sly-btn sly-btn-primary sly-label">Update</button></div></div></div>`;
 			slyPermissionModal.append(slyPermissionModalContent);
 
+            let slyBlacklistModal = document.createElement('div');
+			slyBlacklistModal.classList.add('sly-modal');
+			slyBlacklistModal.id = 'slyBlacklistModal';
+			slyBlacklistModal.style.display = 'none';
+			let slyBlacklistModalContent = document.createElement('div');
+			slyBlacklistModalContent.classList.add('sly-modal-content');
+            slyBlacklistModalContent.style.width = '560px';
+			slyBlacklistModalContent.innerHTML = `<div class="sly-modal-header"><span style="padding-left: 15px;">SLY's Influence v${GM_info.script.version} - Blacklist Management</span><div class="sly-modal-header-right"><span class="sly-btn-close">x</span></div></div><div class="sly-modal-body flex-column"><div class="flex-row">Blacklisted warehouses will not be shown in the Destination warehouse list.</div><div><span class="sly-label">Enter lot IDs in a comma separated list</span></div><div><input id="blacklistTargets" placeholder="e.g. 1111111,2222222,3333333" size="70"></input></div><div class="flex-row" style="justify-content: flex-end"><div><button id="blacklistEnable" class="sly-btn sly-btn-primary sly-label">Enable Blacklist</button></div></div></div>`;
+			slyBlacklistModal.append(slyBlacklistModalContent);
+
             let slyMenuContainer = document.createElement('div');
 			slyMenuContainer.classList.add('sly-menu');
 			slyMenuContainer.addEventListener('click', function() {slyMenuContainer.classList.remove('show');});
@@ -629,20 +713,33 @@
 			slyPermissionButtonSpan.style.fontSize = '14px';
 			slyPermissionButton.appendChild(slyPermissionButtonSpan);
 
+            let slyBlacklistButton = document.createElement('button');
+			slyBlacklistButton.id = 'slyBlacklistBtn';
+			slyBlacklistButton.classList.add('sly-btn','sly-menu-btn');
+			slyBlacklistButton.addEventListener('click', function() {slyBlacklistModalToggle();});
+			let slyBlacklistButtonSpan = document.createElement('span');
+			slyBlacklistButtonSpan.innerText = 'Blacklist';
+			slyBlacklistButtonSpan.style.fontSize = '14px';
+			slyBlacklistButton.appendChild(slyBlacklistButtonSpan);
+
             slyMenuContainer.appendChild(slyLeaseButton);
             slyMenuContainer.appendChild(slyPermissionButton);
+            slyMenuContainer.appendChild(slyBlacklistButton);
 
             slyContainer.appendChild(slyCSS);
             slyContainer.appendChild(slyMainButton);
             slyContainer.appendChild(slyMenuContainer);
             slyContainer.appendChild(slyLeaseModal);
             slyContainer.appendChild(slyPermissionModal);
+            slyContainer.appendChild(slyBlacklistModal);
             targetElem.prepend(slyContainer);
 
             let slyLeaseModalClose = document.querySelector('#slyLeaseModal .sly-btn-close');
 			slyLeaseModalClose.addEventListener('click', function() {slyLeaseModalToggle();});
             let slyPermissionModalClose = document.querySelector('#slyPermissionModal .sly-btn-close');
 			slyPermissionModalClose.addEventListener('click', function() {slyPermissionModalToggle();});
+            let slyBlacklistModalClose = document.querySelector('#slyBlacklistModal .sly-btn-close');
+			slyBlacklistModalClose.addEventListener('click', function() {slyBlacklistModalToggle();});
         }
     }
     observer.observe(document, {childList: true, subtree: true});
