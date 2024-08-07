@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SLY's Influence
 // @namespace    http://tampermonkey.net/
-// @version      0.02
+// @version      0.03
 // @description  try to take over the world!
 // @author       You
 // @match        https://game.influenceth.io/
@@ -78,6 +78,254 @@
         MARKETPLACE: [8,9,10,11],
         HABITAT: [5,6]
     };
+    const productTypes = [
+		'EMPTY0',
+        'WATER',
+        'HYDROGEN',
+        'AMMONIA',
+        'NITROGEN',
+        'SULFUR_DIOXIDE',
+        'CARBON_DIOXIDE',
+        'CARBON_MONOXIDE',
+        'METHANE',
+        'APATITE',
+        'BITUMEN',
+        'CALCITE',
+        'FELDSPAR',
+        'OLIVINE',
+        'PYROXENE',
+        'COFFINITE',
+        'MERRILLITE',
+        'XENOTIME',
+        'RHABDITE',
+        'GRAPHITE',
+        'TAENITE',
+        'TROILITE',
+        'URANINITE',
+        'OXYGEN',
+        'DEIONIZED_WATER',
+        'RAW_SALTS',
+        'SILICA',
+        'NAPHTHA',
+        'SODIUM_BICARBONATE',
+        'IRON',
+        'COPPER',
+        'NICKEL',
+        'QUICKLIME',
+        'ACETYLENE',
+        'AMMONIUM_CARBONATE',
+        'TRIPLE_SUPERPHOSPHATE',
+        'PHOSPHATE_AND_SULFATE_SALTS',
+        'IRON_SULFIDE',
+        'LEAD_SULFIDE',
+        'TIN_SULFIDE',
+        'MOLYBDENUM_DISULFIDE',
+        'FUSED_QUARTZ',
+        'FIBERGLASS',
+        'BARE_COPPER_WIRE',
+        'CEMENT',
+        'SODIUM_CHLORIDE',
+        'POTASSIUM_CHLORIDE',
+        'BORAX',
+        'LITHIUM_CARBONATE',
+        'MAGNESIUM_CHLORIDE',
+        'PROPYLENE',
+        'SULFUR',
+        'STEEL',
+        'SILICON',
+        'NITRIC_ACID',
+        'SULFURIC_ACID',
+        'SOIL',
+        'FERROSILICON',
+        'WEATHERED_OLIVINE',
+        'OXALIC_ACID',
+        'SILVER',
+        'GOLD',
+        'TIN',
+        'IRON_OXIDE',
+        'SPIRULINA_AND_CHLORELLA_ALGAE',
+        'MOLYBDENUM_TRIOXIDE',
+        'SILICA_POWDER',
+        'SOLDER',
+        'FIBER_OPTIC_CABLE',
+        'STEEL_BEAM',
+        'STEEL_SHEET',
+        'STEEL_PIPE',
+        'STEEL_WIRE',
+        'ACRYLONITRILE',
+        'POLYPROPYLENE',
+        'MAGNESIUM',
+        'CHLORINE',
+        'SODIUM_CARBONATE',
+        'CALCIUM_CHLORIDE',
+        'BORIA',
+        'LITHIUM_SULFATE',
+        'HYDROCHLORIC_ACID',
+        'HYDROFLUORIC_ACID',
+        'PHOSPHORIC_ACID',
+        'BORIC_ACID',
+        'ZINC_OXIDE',
+        'NICKEL_OXIDE',
+        'MAGNESIA',
+        'ALUMINA',
+        'SODIUM_HYDROXIDE',
+        'POTASSIUM_HYDROXIDE',
+        'SOYBEANS',
+        'POTATOES',
+        'AMMONIUM_OXALATE',
+        'RARE_EARTH_SULFATES',
+        'FERROCHROMIUM',
+        'YELLOWCAKE',
+        'ALUMINA_CERAMIC',
+        'AUSTENITIC_NICHROME',
+        'COPPER_WIRE',
+        'SILICON_WAFER',
+        'STEEL_CABLE',
+        'POLYACRYLONITRILE',
+        'NATURAL_FLAVORINGS',
+        'PLATINUM',
+        'LITHIUM_CHLORIDE',
+        'ZINC',
+        'EPICHLOROHYDRIN',
+        'BISPHENOL_A',
+        'RARE_EARTH_OXIDES',
+        'AMMONIUM_CHLORIDE',
+        'ALUMINIUM',
+        'CALCIUM',
+        'SODIUM_CHROMATE',
+        'LEACHED_COFFINITE',
+        'URANYL_NITRATE',
+        'FLUORINE',
+        'SODIUM_TUNGSTATE',
+        'FERRITE',
+        'DIODE',
+        'LASER_DIODE',
+        'BALL_VALVE',
+        'ALUMINIUM_BEAM',
+        'ALUMINIUM_SHEET',
+        'ALUMINIUM_PIPE',
+        'POLYACRYLONITRILE_FABRIC',
+        'COLD_GAS_THRUSTER',
+        'COLD_GAS_TORQUE_THRUSTER',
+        'CARBON_FIBER',
+        'FOOD',
+        'SMALL_PROPELLANT_TANK',
+        'BOROSILICATE_GLASS',
+        'BALL_BEARING',
+        'LARGE_THRUST_BEARING',
+        'BORON',
+        'LITHIUM',
+        'EPOXY',
+        'NEODYMIUM_OXIDE',
+        'YTTRIA',
+        'SODIUM_DICHROMATE',
+        'NOVOLAK_PREPOLYMER_RESIN',
+        'FERROMOLYBDENUM',
+        'AMMONIUM_DIURANATE',
+        'AMMONIUM_PARATUNGSTATE',
+        'ENGINE_BELL',
+        'STEEL_TRUSS',
+        'ALUMINIUM_HULL_PLATE',
+        'ALUMINIUM_TRUSS',
+        'CARGO_MODULE',
+        'PRESSURE_VESSEL',
+        'PROPELLANT_TANK',
+        'STAINLESS_STEEL',
+        'BARE_CIRCUIT_BOARD',
+        'FERRITE_BEAD_INDUCTOR',
+        'CORE_DRILL_BIT',
+        'CORE_DRILL_THRUSTER',
+        'PARABOLIC_DISH',
+        'PHOTOVOLTAIC_PANEL',
+        'LIPO_BATTERY',
+        'NEODYMIUM_TRICHLORIDE',
+		'EMPTY160',
+        'CHROMIA',
+        'PHOTORESIST_EPOXY',
+        'URANIUM_DIOXIDE',
+        'TUNGSTEN',
+        'SHUTTLE_HULL',
+        'LIGHT_TRANSPORT_HULL',
+        'CARGO_RING',
+        'HEAVY_TRANSPORT_HULL',
+        'TUNGSTEN_POWDER',
+        'HYDROGEN_PROPELLANT',
+        'STAINLESS_STEEL_SHEET',
+        'STAINLESS_STEEL_PIPE',
+        'CCD',
+        'COMPUTER_CHIP',
+        'CORE_DRILL',
+        'NEODYMIUM',
+		'EMPTY177',
+        'CHROMIUM',
+        'URANIUM_TETRAFLUORIDE',
+        'PURE_NITROGEN',
+        'ND_YAG_LASER_ROD',
+        'NICHROME',
+        'NEODYMIUM_MAGNET',
+        'UNENRICHED_URANIUM_HEXAFLUORIDE',
+        'HIGHLY_ENRICHED_URANIUM_HEXAFLUORIDE',
+        'ND_YAG_LASER',
+        'THIN_FILM_RESISTOR',
+        'HIGHLY_ENRICHED_URANIUM_POWDER',
+        'LEACHED_FELDSPAR',
+        'ROASTED_RHABDITE',
+        'RHABDITE_SLAG',
+        'POTASSIUM_CARBONATE',
+        'HYDROGEN_HEPTAFLUOROTANTALATE_AND_NIOBATE',
+        'LEAD',
+        'POTASSIUM_FLUORIDE',
+        'POTASSIUM_HEPTAFLUOROTANTALATE',
+        'DIEPOXY_PREPOLYMER_RESIN',
+		'EMPTY198',
+        'TANTALUM',
+        'PEDOT',
+        'POLYMER_TANTALUM_CAPACITOR',
+        'SURFACE_MOUNT_DEVICE_REEL',
+        'CIRCUIT_BOARD',
+        'BRUSHLESS_MOTOR_STATOR',
+        'BRUSHLESS_MOTOR_ROTOR',
+        'BRUSHLESS_MOTOR',
+        'LANDING_LEG',
+        'LANDING_AUGER',
+        'PUMP',
+        'RADIO_ANTENNA',
+        'FIBER_OPTIC_GYROSCOPE',
+        'STAR_TRACKER',
+        'COMPUTER',
+        'CONTROL_MOMENT_GYROSCOPE',
+        'ROBOTIC_ARM',
+		'EMPTY216',
+        'BERYLLIUM_CARBONATE',
+        'BERYLLIA',
+        'BERYLLIA_CERAMIC',
+        'NEON',
+        'HEAT_EXCHANGER',
+        'TURBOPUMP',
+		'EMPTY223',
+        'NEON_FUEL_SEPARATOR_CENTRIFUGE',
+        'FUEL_MAKE_UP_TANK',
+        'NEON_MAKE_UP_TANK',
+        'LIGHTBULB_END_MODERATORS',
+		'EMPTY228',
+        'FUSED_QUARTZ_LIGHTBULB_TUBE',
+        'REACTOR_PLUMBING_ASSEMBLY',
+        'FLOW_DIVIDER_MODERATOR',
+        'NUCLEAR_LIGHTBULB',
+        'COMPOSITE_OVERWRAPPED_REACTOR_SHELL',
+        'CLOSED_CYCLE_GAS_CORE_NUCLEAR_REACTOR_ENGINE',
+        'HABITATION_MODULE',
+        'MOBILITY_MODULE',
+        'FLUIDS_AUTOMATION_MODULE',
+        'SOLIDS_AUTOMATION_MODULE',
+        'TERRAIN_INTERFACE_MODULE',
+        'AVIONICS_MODULE',
+        'ESCAPE_MODULE',
+        'ATTITUDE_CONTROL_MODULE',
+        'POWER_MODULE',
+        'THERMAL_MODULE',
+        'PROPULSION_MODULE'
+    ];
     let starknetAccount, starknetAccountAddress;
 
     const STARKNET_DISPATCHER = "0x0422d33a3638dcc4c62e72e1d6942cd31eb643ef596ccac2351e0e21f6cd4bf4";
@@ -138,6 +386,34 @@
         buildingQ.size(10000);
         let buildingQueryResponse = await axiosInstance.post(`/_search/building`, buildingQ.toJSON());
         return buildingQueryResponse.data.hits.hits.map(bldg => bldg._source);
+    }
+
+    async function getBuildingData(buildingIds) {
+        buildingIds = [...new Set(buildingIds)].join(",");
+        console.log('buildingIds: ', buildingIds);
+        let bldgData = await axiosInstance.get(`/v2/entities?id=${buildingIds}&label=5`);
+        return bldgData.data;
+    }
+
+    async function getMarketOrders(productId) {
+        const esb = BrowserESB.esb;
+        const orderQueryBuilder = esb.boolQuery();
+        //orderQueryBuilder.filter(
+        //    esb.nestedQuery().path('Location.locations').query(esb.termsQuery('Location.locations.id', 1)),
+        //);
+        orderQueryBuilder.filter(esb.termQuery('orderType', 2));
+        orderQueryBuilder.filter(esb.termQuery('status', 1));
+        //orderQueryBuilder.filter(esb.termQuery('entity.id', 3309));
+        orderQueryBuilder.filter(esb.termsQuery('product', productId));
+
+        const buildingQ = esb.requestBodySearch();
+        buildingQ.query(orderQueryBuilder);
+        buildingQ.from(0);
+        buildingQ.size(10000);
+        let buildingQueryResponse = await axiosInstance.post(`/_search/order`, buildingQ.toJSON());
+        return buildingQueryResponse.data.hits.hits.map(order => {
+            return {...order._source, price: order._source.price / 1e6,}
+        });
     }
 
     async function buildExtendPrepaidAgreement(lotData) {
@@ -620,6 +896,58 @@
         }
     }
 
+    async function slyMarketModalToggle() {
+        let marketObserver;
+        new MutationObserver(function(mutations, observer) {
+            let targetElem = document.querySelectorAll('#root > main > div:nth-child(2) h1');
+            if (targetElem.length > 0) {
+                for (let mutation of mutations) {
+                    if (mutation.addedNodes.length > 0) {
+                        if (targetElem.length > 1 && targetElem[1].innerText === 'ADALIA PRIME MARKETS') {
+                            let marketPanel = targetElem[1].parentNode.parentNode.parentNode.parentNode;
+                            marketObserver = new MutationObserver(async function(marketMutations, marketObserver) {
+                                let processed = false;
+                                for (let marketMutation of marketMutations) {
+                                    if (!processed) {
+                                        let productLabel = marketMutation.target.children[0].querySelector('h1');
+                                        productLabel = productLabel && productLabel.innerText.replace(' ', '_');
+                                        let productId = productTypes.indexOf(productLabel);
+                                        if (productId > 0) {
+                                            processed = true;
+                                            let marketOrders = await getMarketOrders(productId);
+                                            let marketOrdersGrouped = marketOrders.reduce((acc, obj) => {
+                                                const key = obj.entity.id;
+                                                const curGroup = acc[key] ?? [];
+                                                return { ...acc, [key]: [...curGroup, obj] };
+                                            }, {});
+                                            let buildingData = await getBuildingData(Object.keys(marketOrdersGrouped));
+                                            let marketNames = [];
+                                            for (let [key, value] of Object.entries(marketOrdersGrouped)) {
+                                                let ordersSorted = value.sort((a,b) => a.price - b.price);
+                                                if (ordersSorted.length > 1 && ordersSorted[0].amount / ordersSorted[1].amount < 0.10) {
+                                                    let targetBuilding = buildingData.find(bldg => bldg.id == key);
+                                                    marketNames.push(targetBuilding.Name.name);
+                                                }
+                                            }
+                                            let tableRows = marketMutation.target.querySelectorAll('table tr');
+                                            let targetRows = Array.from(tableRows).filter(row => {
+                                                let targetTd = row.querySelector('td:nth-child(1) span:nth-child(2)');
+                                                if (targetTd && marketNames.includes(targetTd.innerText)) return row;
+                                            });
+                                            for (let targetRow of targetRows) {
+                                                targetRow.querySelector('td:nth-child(1)').style.backgroundColor = '#550000';
+                                            }
+                                        }
+                                    }
+                                }
+                            }).observe(targetElem[1].parentNode.parentNode.parentNode.parentNode, {childList: true});
+                        }
+                    }
+                }
+            }
+        }).observe(document.querySelector('#root > main > div:nth-child(2) > div'), {childList: true});
+    }
+
     let observer = new MutationObserver(waitForLoad);
     function waitForLoad(mutations, observer){
         let elemTrigger = '#root > main > div:nth-child(2) > #topMenu';
@@ -722,9 +1050,19 @@
 			slyBlacklistButtonSpan.style.fontSize = '14px';
 			slyBlacklistButton.appendChild(slyBlacklistButtonSpan);
 
+            let slyMarketButton = document.createElement('button');
+			slyMarketButton.id = 'slyMarketBtn';
+			slyMarketButton.classList.add('sly-btn','sly-menu-btn');
+			slyMarketButton.addEventListener('click', function() {slyMarketModalToggle();});
+			let slyMarketButtonSpan = document.createElement('span');
+			slyMarketButtonSpan.innerText = 'Enable Market Tagging';
+			slyMarketButtonSpan.style.fontSize = '14px';
+			slyMarketButton.appendChild(slyMarketButtonSpan);
+
             slyMenuContainer.appendChild(slyLeaseButton);
             slyMenuContainer.appendChild(slyPermissionButton);
             slyMenuContainer.appendChild(slyBlacklistButton);
+            slyMenuContainer.appendChild(slyMarketButton);
 
             slyContainer.appendChild(slyCSS);
             slyContainer.appendChild(slyMainButton);
